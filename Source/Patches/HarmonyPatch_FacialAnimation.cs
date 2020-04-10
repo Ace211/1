@@ -31,7 +31,7 @@ namespace Rimworld_Animations {
 
 			CompBodyAnimator bodyAnim = ___pawn.TryGetComp<CompBodyAnimator>();
 
-			if (bodyAnim.isAnimating && !portrait) {
+			if (bodyAnim != null && bodyAnim.isAnimating && !portrait) {
 
 				headFacing = bodyAnim.headFacing;
 				headOrigin = new Vector3(bodyAnim.getPawnHeadPosition().x, headOrigin.y, bodyAnim.getPawnHeadPosition().z);

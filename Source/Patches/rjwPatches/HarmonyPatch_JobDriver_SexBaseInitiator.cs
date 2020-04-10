@@ -68,12 +68,18 @@ namespace Rimworld_Animations {
 				Log.Message("Now playing " + anim.defName);
 
 				bool mirror = GenTicks.TicksGame % 2 == 0;
+
+				IntVec3 pos = pawn.Position;
+
 				for (int i = 0; i < pawnsToAnimate.Count; i++) {
 
 					if (bed != null)
 						pawnsToAnimate[i].TryGetComp<CompBodyAnimator>().setAnchor(bed);
-					else
-						pawnsToAnimate[i].TryGetComp<CompBodyAnimator>().setAnchor(pawn);
+					else {
+
+						pawnsToAnimate[i].TryGetComp<CompBodyAnimator>().setAnchor(pos);
+					}
+						
 
 					pawnsToAnimate[i].TryGetComp<CompBodyAnimator>().StartAnimation(anim, i, mirror);
 					(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).ticks_left = anim.animationTimeTicks;
@@ -111,11 +117,6 @@ namespace Rimworld_Animations {
 						//prevents pawns who started a new anim from stopping their new anim
 						if (!((parteners[i].jobs.curDriver as JobDriver_SexBaseInitiator) != null && (parteners[i].jobs.curDriver as JobDriver_SexBaseInitiator).Target != __instance.pawn))
 							parteners[i].TryGetComp<CompBodyAnimator>().isAnimating = false;
-
-						if (xxx.is_human(parteners[i])) {
-							parteners[i].Drawer.renderer.graphics.ResolveApparelGraphics();
-							PortraitsCache.SetDirty(parteners[i]);
-						}
 
 					}
 

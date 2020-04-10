@@ -118,7 +118,7 @@ namespace Rimworld_Animations {
                 tickAnim();
 
                 if (pawn?.jobs?.curDriver == null || (pawn?.jobs?.curDriver != null && !(pawn?.jobs?.curDriver is rjw.JobDriver_Sex))) {
-                    Animating = false;
+                    isAnimating = false;
                 }
             }
         }
