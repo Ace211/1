@@ -107,6 +107,37 @@ namespace Rimworld_Animations {
 
 		public static void Postfix(ref JobDriver_SexBaseInitiator __instance) {
 
+			//Stolen from vanilla lovin
+			//to make sure vanilla lovin variables are set
+			if(__instance.pawn?.mindState?.canLovinTick != null) {
+
+				SimpleCurve LovinIntervalHoursFromAgeCurve = new SimpleCurve
+				{
+					new CurvePoint(16f, 1.5f),
+					new CurvePoint(22f, 1.5f),
+					new CurvePoint(30f, 4f),
+					new CurvePoint(50f, 12f),
+					new CurvePoint(75f, 36f)
+				};
+
+				int ticksToNextLovin;
+				if (DebugSettings.alwaysDoLovin) {
+
+					ticksToNextLovin = 100;
+
+				} else {
+
+					float centerX = LovinIntervalHoursFromAgeCurve.Evaluate(__instance.pawn.ageTracker.AgeBiologicalYearsFloat);
+
+					centerX = Rand.Gaussian(centerX, 0.3f);
+					if (centerX < 0.5f) {
+						centerX = 0.5f;
+					}
+					ticksToNextLovin = (int)(centerX * 2500f);
+				}
+				__instance.pawn.mindState.canLovinTick = Find.TickManager.TicksGame + ticksToNextLovin;
+			}
+
 			if (__instance.Target.jobs?.curDriver is JobDriver_SexBaseReciever) {
 				if (__instance.pawn.TryGetComp<CompBodyAnimator>().isAnimating) {
 

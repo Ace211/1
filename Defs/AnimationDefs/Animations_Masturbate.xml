@@ -2,8 +2,8 @@
 <Defs>
   <!--
   <rjw.AnimationDef>
-    Todo, finalize vanilla template first
-
+    Todo: tell Ed to uncomment start() and end() in jobdrivers
+    
   </rjw.AnimationDef>
   -->
 </Defs>

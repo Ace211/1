@@ -2,7 +2,8 @@
 
 <ModMetaData>
 	<name>Rimworld-Animations</name>
-	<author>Platinumspoons</author>
+	<author>C0ffee</author>
+  <url>https://gitgud.io/Platinumspoons/rimworld-animations/</url>
 	<supportedVersions>
 		<li>1.1</li>
 	</supportedVersions>
@@ -20,12 +21,23 @@
 			<downloadUrl>https://github.com/UnlimitedHugs/RimworldHugsLib/releases/latest</downloadUrl>
 			<steamWorkshopUrl>steam://url/CommunityFilePage/818773962</steamWorkshopUrl>
 		</li>
+    <li>
+      <packageId>rim.job.world</packageId>
+      <displayName>RimJobWorld</displayName>
+      <downloadUrl>https://www.loverslab.com/topic/110270-mod-rimjobworld/</downloadUrl>
+    </li>
 	</modDependencies>
 	<loadAfter>
 		<li>UnlimitedHugs.HugsLib</li>
 		<li>brrainz.harmony</li>
+    <li>rim.job.world</li>
 	</loadAfter>
 	<description>
-Rimworld Animations! Hurray!
-	</description>
+    Rimworld Animations! Hurray!
+
+    Questions or bugs?
+    Chat with me on the forums: https://www.loverslab.com/topic/140386-rjw-animations/
+    Or on the rjw discord: https://discord.gg/CXwHhv8
+
+  </description>
 </ModMetaData>

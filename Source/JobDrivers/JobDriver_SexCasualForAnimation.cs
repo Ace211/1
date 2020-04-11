@@ -38,7 +38,6 @@ namespace Rimworld_Animations {
             Toil startPartnerSex = new Toil();
             startPartnerSex.initAction = delegate {
 
-                Log.Message("Attempting to start job...");
                 Job gettinLovedJob = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("GettinLovedAnimation"), pawn, Bed); // new gettin loved toil that wakes up the pawn goes here
                 
                 Partner.jobs.jobQueue.EnqueueFirst(gettinLovedJob);
