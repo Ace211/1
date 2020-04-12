@@ -28,6 +28,8 @@ namespace Rimworld_Animations {
                 if(value == true) {
                     xxx.DrawNude(pawn);
                 } else {
+                    pawn.Position = anchor.ToIntVec3();
+                    pawn.Notify_Teleported(false, true);
                     pawn.Drawer.renderer.graphics.ResolveAllGraphics();
                 }
 
@@ -52,13 +54,14 @@ namespace Rimworld_Animations {
 
         public void setAnchor(IntVec3 pos)
         {
-            anchor = pos.ToVector3();
+            anchor = pos.ToVector3Shifted();
         }
         public void setAnchor(Thing thing) {
-            anchor = thing.Position.ToVector3();
+            
             //center on bed
             if(thing is Building_Bed) {
-                if(((Building_Bed)thing).SleepingSlotsCount == 2) {
+                anchor = thing.Position.ToVector3();
+                if (((Building_Bed)thing).SleepingSlotsCount == 2) {
                     if (thing.Rotation.AsInt == 0) {
                         anchor.x += 1;
                         anchor.z += 1;
@@ -87,6 +90,9 @@ namespace Rimworld_Animations {
                     }
                 }
             }
+            else {
+                anchor = thing.Position.ToVector3Shifted();
+            }
         }
         public void StartAnimation(AnimationDef anim, int actor, bool mirror = false) {
 
@@ -110,13 +116,8 @@ namespace Rimworld_Animations {
         public override void CompTick() {
             base.CompTick();
 
-            //maybe this is causing anim to stop mid?
-
-
             if(Animating) {
-
                 tickAnim();
-
                 if (pawn?.jobs?.curDriver == null || (pawn?.jobs?.curDriver != null && !(pawn?.jobs?.curDriver is rjw.JobDriver_Sex))) {
                     isAnimating = false;
                 }
