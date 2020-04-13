@@ -17,9 +17,8 @@ namespace Rimworld_Animations {
         public static void Postfix(ref Pawn pawn, ref Job __result) {
 
             if(__result != null) {
-
-                RestUtility.WakeUp(pawn);
                 Pawn partnerInMyBed = LovePartnerRelationUtility.GetPartnerInMyBed(pawn);
+                RestUtility.WakeUp(pawn);
                 __result = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("JoinInBedAnimation", true), partnerInMyBed, partnerInMyBed.CurrentBed());
             }
 
