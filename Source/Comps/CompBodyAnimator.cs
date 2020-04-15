@@ -30,6 +30,7 @@ namespace Rimworld_Animations {
                 } else {
                     pawn.Position = anchor.ToIntVec3();
                     pawn.Notify_Teleported(false, true);
+                    pawn.pather.StopDead();
                     pawn.Drawer.renderer.graphics.ResolveAllGraphics();
                 }
 
