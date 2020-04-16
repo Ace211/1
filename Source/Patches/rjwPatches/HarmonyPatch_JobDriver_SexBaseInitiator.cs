@@ -146,9 +146,10 @@ namespace Rimworld_Animations {
 					for (int i = 0; i < parteners.Count; i++) {
 
 						//prevents pawns who started a new anim from stopping their new anim
-						if (!((parteners[i].jobs.curDriver as JobDriver_SexBaseInitiator) != null && (parteners[i].jobs.curDriver as JobDriver_SexBaseInitiator).Target != __instance.pawn))
+						if (!((parteners[i].jobs.curDriver as JobDriver_SexBaseInitiator) != null && (parteners[i].jobs.curDriver as JobDriver_SexBaseInitiator).Target != __instance.pawn)) {
 							parteners[i].TryGetComp<CompBodyAnimator>().isAnimating = false;
-
+						}
+							
 					}
 
 					__instance.Target.TryGetComp<CompBodyAnimator>().isAnimating = false;

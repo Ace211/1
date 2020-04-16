@@ -28,16 +28,28 @@ namespace Rimworld_Animations {
                 if(value == true) {
                     xxx.DrawNude(pawn);
                 } else {
-                    pawn.Position = anchor.ToIntVec3();
-                    pawn.Notify_Teleported(false, true);
-                    pawn.pather.StopDead();
                     pawn.Drawer.renderer.graphics.ResolveAllGraphics();
+                    resetPosition = true;
                 }
 
                 PortraitsCache.SetDirty(pawn);
             }
         }
-        private bool Animating;
+
+        public bool resetPosition {
+            get {
+                if (resetPos) {
+                    resetPos = false;
+                    return true;
+                }
+                return false;
+            }
+            set {
+                resetPos = value;
+            }
+        }
+
+        private bool Animating, resetPos = false;
         private bool mirror = false;
         private int actor;
 
@@ -45,6 +57,7 @@ namespace Rimworld_Animations {
         private int curStage = 0;
         private float clipPercent = 0;
 
+        public IntVec3 positionReset;
         public Vector3 anchor, deltaPos, headBob;
         public float bodyAngle, headAngle;
         public Rot4 headFacing, bodyFacing;
@@ -55,11 +68,13 @@ namespace Rimworld_Animations {
 
         public void setAnchor(IntVec3 pos)
         {
+            positionReset = pos;
             anchor = pos.ToVector3Shifted();
         }
         public void setAnchor(Thing thing) {
-            
+
             //center on bed
+            positionReset = thing.Position;
             if(thing is Building_Bed) {
                 anchor = thing.Position.ToVector3();
                 if (((Building_Bed)thing).SleepingSlotsCount == 2) {
@@ -117,16 +132,17 @@ namespace Rimworld_Animations {
         public override void CompTick() {
             base.CompTick();
 
-            if(Animating) {
+            if(isAnimating) {
                 tickAnim();
                 if (pawn?.jobs?.curDriver == null || (pawn?.jobs?.curDriver != null && !(pawn?.jobs?.curDriver is rjw.JobDriver_Sex))) {
+
                     isAnimating = false;
                 }
             }
         }
         public void animatePawn(ref Vector3 rootLoc, ref float angle, ref Rot4 bodyFacing, ref Rot4 headFacing) {
 
-            if(!Animating) {
+            if(!isAnimating) {
                 return;
             }
             rootLoc = anchor + deltaPos;
@@ -142,13 +158,13 @@ namespace Rimworld_Animations {
 
         public void tickAnim() {
 
-            if (!Animating) return;
+            if (!isAnimating) return;
 
             animTicks++;
             if (animTicks < anim.animationTimeTicks) {
                 tickStage();
             } else {
-                Animating = false;
+                isAnimating = false;
             }
         }
 
