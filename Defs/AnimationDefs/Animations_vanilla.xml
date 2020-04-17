@@ -710,7 +710,6 @@
           </li>
         </animationClips>
       </li>
-
       <li>
         <stageName>Cum</stageName>
         <isLooping>true</isLooping>
@@ -843,6 +842,111 @@
       </li>
     </animationStages>
 
+  </Rimworld_Animations.AnimationDef>
+  <Rimworld_Animations.AnimationDef>
+    <defName>ReverseStandAndCarry</defName>
+    <label>ReverseStandAndCarry</label>
+    <sounds>true</sounds>
+    <actors>
+      <li>
+        <!--each type cooresponds to an animation clip in each animationStage-->
+        <defNames>
+          <li>Human</li>
+        </defNames>
+        <isFucked>true</isFucked>
+      </li>
+      <li>
+        <defNames>
+          <li>Human</li>
+        </defNames>
+        <isFucking>true</isFucking>
+      </li>
+    </actors>
+
+    <animationStages>
+      <li>
+        <stageName>Slow_Fuck</stageName>
+        <isLooping>true</isLooping>
+        <playTimeTicks>1140</playTimeTicks>
+        <stageIndex>0</stageIndex>
+        <animationClips>
+          <li Class="Rimworld_Animations.PawnAnimationClip">
+            <keyframes>
+              <li>
+                <tickDuration>30</tickDuration>
+                <bodyAngle>11.23</bodyAngle>
+                <headAngle>11.23</headAngle>
+                <bodyOffsetX>-0.183</bodyOffsetX>
+                <bodyOffsetZ>0.468</bodyOffsetZ>
+                <bodyFacing>3</bodyFacing>
+                <headFacing>3</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>29</tickDuration>
+                <bodyAngle>6.04</bodyAngle>
+                <headAngle>15</headAngle>
+                <bodyOffsetX>-0.175</bodyOffsetX>
+                <bodyOffsetZ>0.437</bodyOffsetZ>
+                <bodyFacing>3</bodyFacing>
+                <headFacing>3</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>1</tickDuration>
+                <bodyAngle>11.23</bodyAngle>
+                <headAngle>11.23</headAngle>
+                <bodyOffsetX>-0.183</bodyOffsetX>
+                <bodyOffsetZ>0.468</bodyOffsetZ>
+                <bodyFacing>3</bodyFacing>
+                <headFacing>3</headFacing>
+                <headBob>0</headBob>
+              </li>
+            </keyframes>
+          </li>
+
+          <li Class="Rimworld_Animations.PawnAnimationClip">
+            <layer>LayingPawn</layer>
+            <keyframes>
+              <li>
+                <tickDuration>30</tickDuration>
+                <bodyAngle>-7.18</bodyAngle>
+                <headAngle>-0.41</headAngle>
+                <bodyOffsetX>0.222</bodyOffsetX>
+                <bodyOffsetZ>0.356</bodyOffsetZ>
+                <bodyFacing>3</bodyFacing>
+                <headFacing>3</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <soundEffect>Fuck</soundEffect>
+                <tickDuration>29</tickDuration>
+                <bodyAngle>7.11</bodyAngle>
+                <headAngle>-2.87</headAngle>
+                <bodyOffsetX>0.214</bodyOffsetX>
+                <bodyOffsetZ>0.359</bodyOffsetZ>
+                <bodyFacing>3</bodyFacing>
+                <headFacing>3</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>1</tickDuration>
+                <bodyAngle>-7.18</bodyAngle>
+                <headAngle>-0.41</headAngle>
+                <bodyOffsetX>0.222</bodyOffsetX>
+                <bodyOffsetZ>0.356</bodyOffsetZ>
+                <bodyFacing>3</bodyFacing>
+                <headFacing>3</headFacing>
+                <headBob>0</headBob>
+              </li>
+            </keyframes>
+          </li>
+        </animationClips>
+        
+        
+      </li>
+    </animationStages>
+    
   </Rimworld_Animations.AnimationDef>
 </Defs>
 

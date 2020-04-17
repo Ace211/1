@@ -28,8 +28,6 @@ namespace Rimworld_Animations {
                 if(value == true) {
                     xxx.DrawNude(pawn);
                 } else {
-                    pawn.Position = anchor.ToIntVec3();
-                    pawn.Notify_Teleported(false, true);
                     pawn.Drawer.renderer.graphics.ResolveAllGraphics();
                 }
 
