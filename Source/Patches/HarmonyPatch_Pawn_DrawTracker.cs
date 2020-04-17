@@ -15,7 +15,6 @@ namespace Rimworld_Animations {
 
             if(___pawn.TryGetComp<CompBodyAnimator>() != null && ___pawn.TryGetComp<CompBodyAnimator>().isAnimating) {
                 __result = ___pawn.TryGetComp<CompBodyAnimator>().anchor + ___pawn.TryGetComp<CompBodyAnimator>().deltaPos;
-                ___pawn.Position = __result.ToIntVec3();
                 return false;
             }
             return true;
