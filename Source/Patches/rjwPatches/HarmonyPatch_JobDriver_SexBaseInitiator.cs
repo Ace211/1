@@ -65,9 +65,11 @@ namespace Rimworld_Animations {
 
 			if (anim != null) {
 
-				Log.Message("Now playing " + anim.defName);
-
 				bool mirror = GenTicks.TicksGame % 2 == 0;
+
+				Log.Message("Now playing " + anim.defName + (mirror ? " mirrored" : ""));
+
+				
 
 				IntVec3 pos = pawn.Position;
 

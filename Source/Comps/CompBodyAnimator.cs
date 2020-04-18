@@ -99,7 +99,7 @@ namespace Rimworld_Animations {
             AlienRaceOffset offset = anim?.actors[actor]?.raceOffsets?.Find(x => x.defName == pawn.def.defName);
 
             if (offset != null) {
-                anchor.x += offset.x;
+                anchor.x += mirror ? offset.x * -1f : offset.x;
                 anchor.z += offset.z;
             }
 
