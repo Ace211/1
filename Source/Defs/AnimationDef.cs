@@ -13,6 +13,7 @@ namespace Rimworld_Animations {
         public List<Actor> actors;
         public int animationTimeTicks = 0; //do not set manually
         public bool sounds = false;
+        public List<rjw.xxx.rjwSextype> sexTypes;
 
         public override void PostLoad() {
             base.PostLoad();

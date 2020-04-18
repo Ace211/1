@@ -4,6 +4,10 @@
     <defName>Quadruped_Doggystyle</defName>
     <label>quadruped doggystyle</label>
     <sounds>true</sounds>
+    <sexTypes>
+      <li>Anal</li>
+      <li>Vaginal</li>
+    </sexTypes>
     <actors>
       <li>
         <defNames>
@@ -19,6 +23,8 @@
         <isFucking>true</isFucking>
       </li>
     </actors>
+
+
     
     <animationStages>
       <li>

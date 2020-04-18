@@ -4,6 +4,9 @@
     <defName>Double_Penetration</defName>
     <label>double penetration</label>
     <sounds>true</sounds>
+    <sexTypes>
+      <li>DoublePenetration</li>
+    </sexTypes>
     <actors>
       <li>
         <defNames>

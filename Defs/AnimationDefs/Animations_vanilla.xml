@@ -5,6 +5,10 @@
     <defName>Doggystyle</defName>
     <label>doggystyle</label>
     <sounds>true</sounds>
+    <sexTypes>
+      <li>Vaginal</li>
+      <li>Anal</li>
+    </sexTypes>
     <actors>
       <li>
         <!--each type cooresponds to an animation clip in each animationStage-->
@@ -450,6 +454,9 @@
     <defName>Blowjob</defName>
     <label>blowjob</label>
     <sounds>true</sounds>
+    <sexTypes>
+      <li>Oral</li>
+    </sexTypes>
     <actors>
       <li>
         <!--each type cooresponds to an animation clip in each animationStage-->
@@ -847,6 +854,10 @@
     <defName>ReverseStandAndCarry</defName>
     <label>ReverseStandAndCarry</label>
     <sounds>true</sounds>
+    <sexTypes>
+      <li>Anal</li>
+      <li>Oral</li>
+    </sexTypes>
     <actors>
       <li>
         <!--each type cooresponds to an animation clip in each animationStage-->

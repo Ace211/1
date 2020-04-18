@@ -19,7 +19,7 @@ namespace Rimworld_Animations {
 				return;
 			}
 
-			Pawn Target = __instance.Target;
+			Pawn Target = __instance.Target as Pawn;
 			Pawn pawn = __instance.pawn;
 
 			Building_Bed bed = __instance.Bed;
@@ -33,22 +33,22 @@ namespace Rimworld_Animations {
 				bed = (__instance as JobDriver_SexCasualForAnimation).Bed;
 			}
 
-			if (__instance.Target.jobs?.curDriver is JobDriver_SexBaseReciever) {
+			if ((__instance.Target as Pawn).jobs?.curDriver is JobDriver_SexBaseReciever) {
 
 				if (!(Target.jobs.curDriver as JobDriver_SexBaseReciever).parteners.Contains(pawn)) {
 					(Target.jobs.curDriver as JobDriver_SexBaseReciever).parteners.Add(pawn);
 				}
 
 				if (bed != null) {
-					RerollAnimations(Target, __instance.duration, bed as Thing);
+					RerollAnimations(Target, __instance.duration, bed as Thing, __instance.sexType);
 				}
 				else {
-					RerollAnimations(Target, __instance.duration);
+					RerollAnimations(Target, __instance.duration, sexType: __instance.sexType);
 				}
 			}
 		}
 
-		public static void RerollAnimations(Pawn pawn, int duration, Thing bed = null) {
+		public static void RerollAnimations(Pawn pawn, int duration, Thing bed = null, xxx.rjwSextype sexType = xxx.rjwSextype.None) {
 
 			if(pawn == null || !(pawn.jobs?.curDriver is JobDriver_SexBaseReciever)) {
 				Log.Message("Error: Tried to reroll animations when pawn isn't sexing");
@@ -61,7 +61,7 @@ namespace Rimworld_Animations {
 				pawnsToAnimate = pawnsToAnimate.Append(pawn).ToList();
 			}
 
-			AnimationDef anim = AnimationUtility.tryFindAnimation(ref pawnsToAnimate);
+			AnimationDef anim = AnimationUtility.tryFindAnimation(ref pawnsToAnimate, sexType);
 
 			if (anim != null) {
 
@@ -138,10 +138,10 @@ namespace Rimworld_Animations {
 				__instance.pawn.mindState.canLovinTick = Find.TickManager.TicksGame + ticksToNextLovin;
 			}
 
-			if (__instance.Target.jobs?.curDriver is JobDriver_SexBaseReciever) {
+			if ((__instance.Target as Pawn)?.jobs?.curDriver is JobDriver_SexBaseReciever) {
 				if (__instance.pawn.TryGetComp<CompBodyAnimator>().isAnimating) {
 
-					List<Pawn> parteners = (__instance.Target.jobs.curDriver as JobDriver_SexBaseReciever).parteners;
+					List<Pawn> parteners = ((__instance.Target as Pawn)?.jobs.curDriver as JobDriver_SexBaseReciever).parteners;
 
 					for (int i = 0; i < parteners.Count; i++) {
 
@@ -153,13 +153,13 @@ namespace Rimworld_Animations {
 
 					__instance.Target.TryGetComp<CompBodyAnimator>().isAnimating = false;
 
-					if (xxx.is_human(__instance.Target)) {
-						__instance.Target.Drawer.renderer.graphics.ResolveApparelGraphics();
-						PortraitsCache.SetDirty(__instance.Target);
+					if (xxx.is_human((__instance.Target as Pawn))) {
+						(__instance.Target as Pawn)?.Drawer.renderer.graphics.ResolveApparelGraphics();
+						PortraitsCache.SetDirty((__instance.Target as Pawn));
 					}
 				}
 
-				(__instance.Target.jobs.curDriver as JobDriver_SexBaseReciever).parteners.Remove(__instance.pawn);
+				((__instance.Target as Pawn)?.jobs.curDriver as JobDriver_SexBaseReciever).parteners.Remove(__instance.pawn);
 
 			}
 

@@ -4,6 +4,9 @@
     <defName>Tribadism</defName>
     <label>scissoring</label>
     <sounds>true</sounds>
+    <sexTypes>
+      <li>Scissoring</li>
+    </sexTypes>
     <actors>
       <li>
         <defNames>

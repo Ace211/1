@@ -14,7 +14,7 @@ namespace Rimworld_Animations {
          Note: always make the list in this order:
              Female pawns, animal female pawns, male pawns, animal male pawns
         */
-        public static AnimationDef tryFindAnimation(ref List<Pawn> participants) {
+        public static AnimationDef tryFindAnimation(ref List<Pawn> participants, rjw.xxx.rjwSextype sexType = 0) {
 
             //aggressors first
             participants = participants.OrderByDescending(p => p.jobs.curDriver is rjw.JobDriver_SexBaseInitiator).ToList();
@@ -83,6 +83,13 @@ namespace Rimworld_Animations {
                 }
                 return true;
             });
+
+            List<AnimationDef> optionsWithSexType = options.ToList().FindAll(x => x.sexTypes.Contains(sexType));
+
+            if (optionsWithSexType.Any()) {
+                Log.Message("Selecting animation for rjwSexType " + sexType.ToStringSafe() + "...");
+                return optionsWithSexType.RandomElement();
+            }
 
             if (options != null && options.Any()) {
                 Log.Message("Randomly selecting animation...");
