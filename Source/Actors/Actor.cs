@@ -9,6 +9,7 @@ namespace Rimworld_Animations {
     public class Actor {
         public List<string> defNames;
         public List<string> requiredGenitals;
+        public List<AlienRaceOffset> raceOffsets;
         public bool activeRole = false;
         public string gender;
         public bool isFucking = false;
