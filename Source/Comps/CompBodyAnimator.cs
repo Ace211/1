@@ -123,9 +123,11 @@ namespace Rimworld_Animations {
             base.CompTick();
 
             if(Animating) {
-                tickAnim();
                 if (pawn?.jobs?.curDriver == null || (pawn?.jobs?.curDriver != null && !(pawn?.jobs?.curDriver is rjw.JobDriver_Sex))) {
                     isAnimating = false;
+                }
+                else {
+                    tickAnim();
                 }
             }
         }
