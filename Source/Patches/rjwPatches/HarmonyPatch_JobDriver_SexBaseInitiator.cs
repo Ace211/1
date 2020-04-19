@@ -14,12 +14,19 @@ namespace Rimworld_Animations {
     static class HarmonyPatch_JobDriver_SexBaseInitiator_Start {
         public static void Postfix(ref JobDriver_SexBaseInitiator __instance) {
 
+			/*
+			 These particular jobs need special code
+			 don't play anim for now
+			 */
+			if(__instance is JobDriver_Masturbate_Bed || __instance is JobDriver_Masturbate_Quick || __instance is JobDriver_ViolateCorpse) {
+				return;
+			}
+
 			if(__instance is JobDriver_JoinInBed) {
 				Log.Warning("Tried to start wrong JobDriver with Rimworld-Animations installed. If you see this warning soon after installing this mod, it's fine and animated sex will start soon. If you see this a long time after installing, that's a problem.");	
 				return;
 			}
 
-			Pawn Target = __instance.Target as Pawn;
 			Pawn pawn = __instance.pawn;
 
 			Building_Bed bed = __instance.Bed;
@@ -29,11 +36,15 @@ namespace Rimworld_Animations {
 			else if (__instance is JobDriver_WhoreIsServingVisitors) {
 				bed = (__instance as JobDriver_WhoreIsServingVisitors).Bed;
 			}
-			else if(__instance is JobDriver_SexCasualForAnimation) {
+			else if (__instance is JobDriver_SexCasualForAnimation) {
 				bed = (__instance as JobDriver_SexCasualForAnimation).Bed;
 			}
+			else if (__instance is JobDriver_Masturbate_Bed)
+				bed = (__instance as JobDriver_Masturbate_Bed).Bed;
 
-			if ((__instance.Target as Pawn).jobs?.curDriver is JobDriver_SexBaseReciever) {
+			if ((__instance.Target as Pawn)?.jobs?.curDriver is JobDriver_SexBaseReciever) {
+
+				Pawn Target = __instance.Target as Pawn;
 
 				if (!(Target.jobs.curDriver as JobDriver_SexBaseReciever).parteners.Contains(pawn)) {
 					(Target.jobs.curDriver as JobDriver_SexBaseReciever).parteners.Add(pawn);

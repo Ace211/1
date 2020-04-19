@@ -21,7 +21,6 @@ namespace Rimworld_Animations {
                 RestUtility.WakeUp(pawn);
                 __result = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("JoinInBedAnimation", true), partnerInMyBed, partnerInMyBed.CurrentBed());
             }
-
         }
     }
 }

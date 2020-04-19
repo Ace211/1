@@ -119,6 +119,7 @@ namespace Rimworld_Animations {
 
         }
         public override void CompTick() {
+
             base.CompTick();
 
             if(Animating) {
