@@ -122,7 +122,7 @@ namespace Rimworld_Animations {
 
             base.CompTick();
 
-            if(Animating) {
+            if(isAnimating) {
                 if (pawn?.jobs?.curDriver == null || (pawn?.jobs?.curDriver != null && !(pawn?.jobs?.curDriver is rjw.JobDriver_Sex))) {
                     isAnimating = false;
                 }
@@ -133,7 +133,7 @@ namespace Rimworld_Animations {
         }
         public void animatePawn(ref Vector3 rootLoc, ref float angle, ref Rot4 bodyFacing, ref Rot4 headFacing) {
 
-            if(!Animating) {
+            if(!isAnimating) {
                 return;
             }
             rootLoc = anchor + deltaPos;
@@ -149,13 +149,13 @@ namespace Rimworld_Animations {
 
         public void tickAnim() {
 
-            if (!Animating) return;
+            if (!isAnimating) return;
 
             animTicks++;
             if (animTicks < anim.animationTimeTicks) {
                 tickStage();
             } else {
-                Animating = false;
+                isAnimating = false;
             }
         }
 
@@ -164,7 +164,9 @@ namespace Rimworld_Animations {
             stageTicks++;
 
             if(stageTicks >= stage.playTimeTicks) {
+
                 curStage++;
+
                 stageTicks = 0;
                 clipTicks = 0;
                 clipPercent = 0;
