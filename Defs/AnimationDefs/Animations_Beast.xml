@@ -21,6 +21,7 @@
           <li>Wolf_Arctic</li>
         </defNames>
         <isFucking>true</isFucking>
+        <initiator>true</initiator>
       </li>
     </actors>
 

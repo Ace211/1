@@ -22,6 +22,7 @@
           <li>Human</li>
         </defNames>
         <isFucking>true</isFucking>
+        <initiator>true</initiator>
       </li>
     </actors>
     
@@ -463,12 +464,14 @@
         <defNames>
           <li>Human</li>
         </defNames>
+        <initiator>true</initiator>
       </li>
       <li>
         <defNames>
           <li>Human</li>
         </defNames>
         <isFucking>true</isFucking>
+        <initiator>true</initiator>
       </li>
     </actors>
     <animationStages>
@@ -852,7 +855,7 @@
   </Rimworld_Animations.AnimationDef>
   <Rimworld_Animations.AnimationDef>
     <defName>ReverseStandAndCarry</defName>
-    <label>ReverseStandAndCarry</label>
+    <label>reverse stand-and-carry</label>
     <sounds>true</sounds>
     <sexTypes>
       <li>Anal</li>
@@ -870,6 +873,7 @@
         <defNames>
           <li>Human</li>
         </defNames>
+        <initiator>true</initiator>
         <isFucking>true</isFucking>
       </li>
     </actors>
@@ -1950,6 +1954,574 @@
     </animationStages>
     
   </Rimworld_Animations.AnimationDef>
+  <Rimworld_Animations.AnimationDef>
+    <defName>Cowgirl</defName>
+    <label>cowgirl</label>
+    <sounds>true</sounds>
+    <sexTypes>
+      <li>Anal</li>
+      <li>Vaginal</li>
+    </sexTypes>
+    <actors>
+      <li>
+        <!--each type cooresponds to an animation clip in each animationStage-->
+        <defNames>
+          <li>Human</li>
+        </defNames>
+        <isFucked>true</isFucked>
+        <initiator>true</initiator>
+      </li>
+      <li>
+        <defNames>
+          <li>Human</li>
+        </defNames>
+        <isFucking>true</isFucking>
+      </li>
+    </actors>
+
+    <animationStages>
+      <li>
+        <stageName>Slow_Fuck</stageName>
+        <isLooping>true</isLooping>
+        <playTimeTicks>1340</playTimeTicks>
+        <stageIndex>0</stageIndex>
+        <animationClips>
+          <li Class="Rimworld_Animations.PawnAnimationClip">
+            <keyframes>
+              <!--Turning hips-->
+              <li>
+                <tickDuration>16</tickDuration>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.554</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>17</tickDuration>
+                <bodyAngle>3.5</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>-0.03</bodyOffsetX>
+                <bodyOffsetZ>0.624</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>-0.02</headBob>
+              </li>
+              <li>
+                <tickDuration>16</tickDuration>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.694</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>-0.03</headBob>
+              </li>
+              <li>
+                <tickDuration>17</tickDuration>
+                <bodyAngle>-3.5</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0.03</bodyOffsetX>
+                <bodyOffsetZ>0.624</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>-0.02</headBob>
+              </li>
+              <li>
+                <tickDuration>1</tickDuration>
+                <soundEffect>Fuck</soundEffect>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.554</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+
+              <li>
+                <tickDuration>16</tickDuration>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.554</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>17</tickDuration>
+                <bodyAngle>3.5</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>-0.03</bodyOffsetX>
+                <bodyOffsetZ>0.624</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>-0.02</headBob>
+              </li>
+              <li>
+                <tickDuration>16</tickDuration>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.694</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>-0.03</headBob>
+              </li>
+              <li>
+                <tickDuration>17</tickDuration>
+                <bodyAngle>-3.5</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0.03</bodyOffsetX>
+                <bodyOffsetZ>0.624</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>-0.02</headBob>
+              </li>
+              <li>
+                <tickDuration>1</tickDuration>
+                <soundEffect>Fuck</soundEffect>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.554</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+
+              <!--Straight up and down-->
+              <li>
+                <tickDuration>33</tickDuration>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.554</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>33</tickDuration>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.694</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>-0.03</headBob>
+              </li>
+              <li>
+                <tickDuration>1</tickDuration>
+                <soundEffect>Fuck</soundEffect>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.554</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+
+              <li>
+                <tickDuration>33</tickDuration>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.554</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>33</tickDuration>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.694</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>-0.03</headBob>
+              </li>
+              <li>
+                <tickDuration>1</tickDuration>
+                <soundEffect>Fuck</soundEffect>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.554</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+            </keyframes>
+          </li>
+          <li Class="Rimworld_Animations.PawnAnimationClip">
+            <layer>LayingPawn</layer>
+            <keyframes>
+              <li>
+                <tickDuration>33</tickDuration>
+                <bodyAngle>180</bodyAngle>
+                <headAngle>180</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>-0.263</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>33</tickDuration>
+                <bodyAngle>180</bodyAngle>
+                <headAngle>180</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>-0.213</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0.045</headBob>
+              </li>
+              <li>
+                <tickDuration>1</tickDuration>
+                <bodyAngle>180</bodyAngle>
+                <headAngle>180</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>-0.263</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+            </keyframes>
+          </li>
+        </animationClips>
+      </li>
+      <li>
+        <stageName>Fast_Fuck</stageName>
+        <isLooping>true</isLooping>
+        <playTimeTicks>780</playTimeTicks>
+        <stageIndex>0</stageIndex>
+        <animationClips>
+          <li Class="Rimworld_Animations.PawnAnimationClip">
+            <keyframes>
+              <li>
+                <tickDuration>13</tickDuration>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.554</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>13</tickDuration>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.694</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>-0.03</headBob>
+              </li>
+              <li>
+                <tickDuration>1</tickDuration>
+                <soundEffect>Fuck</soundEffect>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.554</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+            </keyframes>
+          </li>
+          <li Class="Rimworld_Animations.PawnAnimationClip">
+            <layer>LayingPawn</layer>
+            <keyframes>
+              <li>
+                <tickDuration>13</tickDuration>
+                <bodyAngle>180</bodyAngle>
+                <headAngle>180</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>-0.263</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>13</tickDuration>
+                <bodyAngle>180</bodyAngle>
+                <headAngle>180</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>-0.213</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0.045</headBob>
+              </li>
+              <li>
+                <tickDuration>1</tickDuration>
+                <bodyAngle>180</bodyAngle>
+                <headAngle>180</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>-0.263</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+            </keyframes>
+          </li>
+        </animationClips>
+      </li>
+      <li>
+        <stageName>Cum</stageName>
+        <isLooping>true</isLooping>
+        <playTimeTicks>594</playTimeTicks>
+        <stageIndex>0</stageIndex>
+        <animationClips>
+          <li Class="Rimworld_Animations.PawnAnimationClip">
+            <keyframes>
+              <li>
+                <tickDuration>10</tickDuration>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.554</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>10</tickDuration>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.694</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>-0.03</headBob>
+              </li>
+              <li>
+                <tickDuration>1</tickDuration>
+                <soundEffect>Fuck</soundEffect>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.554</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+
+              <li>
+                <tickDuration>10</tickDuration>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.554</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>10</tickDuration>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.694</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>-0.03</headBob>
+              </li>
+              <li>
+                <tickDuration>1</tickDuration>
+                <soundEffect>Fuck</soundEffect>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.554</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+
+              <li>
+                <tickDuration>10</tickDuration>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.554</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>10</tickDuration>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.694</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>-0.03</headBob>
+              </li>
+              <li>
+                <tickDuration>45</tickDuration>
+                <soundEffect>Cum</soundEffect>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.554</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>40</tickDuration>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.534</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>1</tickDuration>
+                <bodyAngle>0</bodyAngle>
+                <headAngle>0</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>0.554</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+            </keyframes>
+          </li>
+          <li Class="Rimworld_Animations.PawnAnimationClip">
+            <layer>LayingPawn</layer>
+            <keyframes>
+              <li>
+                <tickDuration>10</tickDuration>
+                <bodyAngle>180</bodyAngle>
+                <headAngle>180</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>-0.263</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>10</tickDuration>
+                <bodyAngle>180</bodyAngle>
+                <headAngle>180</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>-0.213</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0.045</headBob>
+              </li>
+              <li>
+                <tickDuration>1</tickDuration>
+                <bodyAngle>180</bodyAngle>
+                <headAngle>180</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>-0.263</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+
+              <li>
+                <tickDuration>10</tickDuration>
+                <bodyAngle>180</bodyAngle>
+                <headAngle>180</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>-0.263</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>10</tickDuration>
+                <bodyAngle>180</bodyAngle>
+                <headAngle>180</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>-0.213</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0.045</headBob>
+              </li>
+              <li>
+                <tickDuration>1</tickDuration>
+                <bodyAngle>180</bodyAngle>
+                <headAngle>180</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>-0.263</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+
+              <li>
+                <tickDuration>10</tickDuration>
+                <bodyAngle>180</bodyAngle>
+                <headAngle>180</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>-0.263</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>10</tickDuration>
+                <bodyAngle>180</bodyAngle>
+                <headAngle>180</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>-0.213</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0.045</headBob>
+              </li>
+              <li>
+                <tickDuration>45</tickDuration>
+                <bodyAngle>180</bodyAngle>
+                <headAngle>180</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>-0.263</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>40</tickDuration>
+                <bodyAngle>180</bodyAngle>
+                <headAngle>180</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>-0.263</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>1</tickDuration>
+                <bodyAngle>180</bodyAngle>
+                <headAngle>180</headAngle>
+                <bodyOffsetX>0</bodyOffsetX>
+                <bodyOffsetZ>-0.263</bodyOffsetZ>
+                <bodyFacing>2</bodyFacing>
+                <headFacing>2</headFacing>
+                <headBob>0</headBob>
+              </li>
+            </keyframes>
+          </li>
+        </animationClips>
+      </li>
+    </animationStages>
+
+  </Rimworld_Animations.AnimationDef>
+  
 </Defs>
 
 

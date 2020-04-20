@@ -10,7 +10,7 @@ namespace Rimworld_Animations {
         public List<string> defNames;
         public List<string> requiredGenitals;
         public List<AlienRaceOffset> raceOffsets;
-        public bool activeRole = false;
+        public bool initiator = false;
         public string gender;
         public bool isFucking = false;
         public bool isFucked = false;

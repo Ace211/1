@@ -19,12 +19,14 @@
           <li>Human</li>
         </defNames>
         <isFucking>true</isFucking>
+        <initiator>true</initiator>
       </li>
       <li>
         <defNames>
           <li>Human</li>
         </defNames>
         <isFucking>true</isFucking>
+        <initiator>true</initiator>
       </li>
     </actors>
 

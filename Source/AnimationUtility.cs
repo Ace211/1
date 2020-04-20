@@ -46,10 +46,11 @@ namespace Rimworld_Animations {
                         if (!x.actors[i].defNames.Contains(localParticipants[i].def.defName)) {
 
                             if (rjw.RJWSettings.DevMode) {
-                                Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " is not ");
+                                string animInfo = x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " is not ";
                                 foreach(String defname in x.actors[i].defNames) {
-                                    Log.Message(defname + ", ");
+                                    animInfo += defname + ", ";
                                 }
+                                Log.Message(animInfo);
                             }
 
                             return false;
@@ -67,9 +68,10 @@ namespace Rimworld_Animations {
 
                     //TESTING ANIMATIONS ONLY REMEMBER TO COMMENT OUT BEFORE PUSH
                     /*
-                    if (x.defName != "ReverseStandAndCarry")
+                    if (x.defName != "Cowgirl")
                         return false;
-                    */
+                        */
+                    
 
                     if (x.actors[i].isFucking && !rjw.xxx.can_fuck(localParticipants[i])) {
                         Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " can't fuck");
@@ -83,19 +85,51 @@ namespace Rimworld_Animations {
                 }
                 return true;
             });
-
             List<AnimationDef> optionsWithSexType = options.ToList().FindAll(x => x.sexTypes.Contains(sexType));
+            List<AnimationDef> optionsWithSexTypeAndInitiator = optionsWithSexType.FindAll(x => {
+                bool initiatorsAlignWithSexType = true;
+                for (int i = 0; i < x.actors.Count; i++) {
+
+                    //if the animation not for initiators, but an initiator is playing it
+
+                    if (x.actors[i].initiator && !(localParticipants[i].jobs.curDriver is rjw.JobDriver_SexBaseInitiator)) {
+                        initiatorsAlignWithSexType = false;
+                    }
+                }
+                return initiatorsAlignWithSexType;
+            });
+            List<AnimationDef> optionsWithInitiator = options.ToList().FindAll(x => {
+                bool initiatorsAlignWithSexType = true;
+                for (int i = 0; i < x.actors.Count; i++) {
+
+                    //if the animation not for initiators, but an initiator is playing it
+
+                    if (x.actors[i].initiator && !(localParticipants[i].jobs.curDriver is rjw.JobDriver_SexBaseInitiator)) {
+                        initiatorsAlignWithSexType = false;
+                    }
+                }
+                return initiatorsAlignWithSexType;
+            });
+
+
+            if (optionsWithSexTypeAndInitiator.Any()) {
+                Log.Message("Selecting animation for rjwSexType " + sexType.ToStringSafe() + " and initiators...");
+                return optionsWithSexType.RandomElement();
+            }
 
             if (optionsWithSexType.Any()) {
                 Log.Message("Selecting animation for rjwSexType " + sexType.ToStringSafe() + "...");
                 return optionsWithSexType.RandomElement();
             }
 
+            if(optionsWithInitiator.Any()) {
+                Log.Message("Selecting animation for initiators...");
+            }
+
             if (options != null && options.Any()) {
                 Log.Message("Randomly selecting animation...");
                 return options.RandomElement();
             }
-                
             else
                 return null;
         }

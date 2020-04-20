@@ -13,6 +13,7 @@
           <li>Human</li>
         </defNames>
         <isFucked>true</isFucked>
+        <initiator>true</initiator>
         <requiredGenitals>
           <li>Vagina</li>
         </requiredGenitals>
