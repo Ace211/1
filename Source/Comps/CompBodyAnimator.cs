@@ -35,7 +35,7 @@ namespace Rimworld_Animations {
             }
         }
         private bool Animating;
-        private bool mirror = false, quiver = false;
+        private bool mirror = false, quiver = false, shiver = false;
         private int actor;
 
         private int animTicks = 0, stageTicks = 0, clipTicks = 0;
@@ -92,7 +92,7 @@ namespace Rimworld_Animations {
                 anchor = thing.Position.ToVector3Shifted();
             }
         }
-        public void StartAnimation(AnimationDef anim, int actor, bool mirror = false) {
+        public void StartAnimation(AnimationDef anim, int actor, bool mirror = false, bool shiver = false) {
 
             isAnimating = true;
 
@@ -115,6 +115,7 @@ namespace Rimworld_Animations {
             clipTicks = 0;
 
             quiver = false;
+            this.shiver = shiver && AnimationSettings.rapeShiver;
 
             //tick once for initialization
             tickAnim();
@@ -202,7 +203,7 @@ namespace Rimworld_Animations {
         public void calculateDrawValues() {
 
             deltaPos = new Vector3(clip.BodyOffsetX.Evaluate(clipPercent) * (mirror ? -1 : 1), clip.layer.AltitudeFor(), clip.BodyOffsetZ.Evaluate(clipPercent));
-            bodyAngle = (clip.BodyAngle.Evaluate(clipPercent) + (quiver ? (Rand.Value * 2f) - 1f : 0f)) * (mirror ? -1 : 1);
+            bodyAngle = (clip.BodyAngle.Evaluate(clipPercent) + (quiver || shiver ? ((Rand.Value * AnimationSettings.shiverIntensity) - (AnimationSettings.shiverIntensity / 2f)) : 0f)) * (mirror ? -1 : 1);
             headAngle = clip.HeadAngle.Evaluate(clipPercent) * (mirror ? -1 : 1);
             bodyFacing = mirror ? new Rot4((int)clip.BodyFacing.Evaluate(clipPercent)).Opposite : new Rot4((int)clip.BodyFacing.Evaluate(clipPercent));
 

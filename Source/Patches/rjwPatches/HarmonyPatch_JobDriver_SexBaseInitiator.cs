@@ -94,9 +94,9 @@ namespace Rimworld_Animations {
 
 						pawnsToAnimate[i].TryGetComp<CompBodyAnimator>().setAnchor(pos);
 					}
-						
 
-					pawnsToAnimate[i].TryGetComp<CompBodyAnimator>().StartAnimation(anim, i, mirror);
+					bool shiver = pawnsToAnimate[i].jobs.curDriver is JobDriver_SexBaseRecieverRaped;
+					pawnsToAnimate[i].TryGetComp<CompBodyAnimator>().StartAnimation(anim, i, mirror, shiver);
 					(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).ticks_left = anim.animationTimeTicks;
 					(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).ticksLeftThisToil = anim.animationTimeTicks;
 					(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).duration = anim.animationTimeTicks;

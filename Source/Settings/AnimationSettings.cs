@@ -9,10 +9,13 @@ using UnityEngine;
 namespace Rimworld_Animations {
     public class AnimationSettings : ModSettings {
 
-        public static bool orgasmQuiver;
+        public static bool orgasmQuiver, rapeShiver;
+        public static float shiverIntensity = 2f;
 
         public override void ExposeData() {
             Scribe_Values.Look(ref orgasmQuiver, "orgasmQuiver");
+            Scribe_Values.Look(ref rapeShiver, "rapeShiver");
+            Scribe_Values.Look(ref shiverIntensity, "shiverIntensity", 2f);
             base.ExposeData();
         }
 
@@ -29,6 +32,11 @@ namespace Rimworld_Animations {
             listingStandard.Begin(inRect);
 
             listingStandard.CheckboxLabeled("Enable Orgasm Quiver", ref AnimationSettings.orgasmQuiver);
+            listingStandard.CheckboxLabeled("Enable Rape Shiver", ref AnimationSettings.rapeShiver);
+
+            listingStandard.Label("Shiver/Quiver Intensity (default 2): " + AnimationSettings.shiverIntensity);
+            AnimationSettings.shiverIntensity = listingStandard.Slider(AnimationSettings.shiverIntensity, 0.0f, 12f);
+
             listingStandard.End();
             base.DoSettingsWindowContents(inRect);
         }
