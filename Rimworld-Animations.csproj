@@ -96,6 +96,7 @@
     <Compile Include="Source\Patches\rjwPatches\HarmonyPatch_JoinInBedGiveJob.cs" />
     <Compile Include="Source\Patches\rjwPatches\HarmonyPatch_SexTick.cs" />
     <Compile Include="Source\Patches\rjwPatches\HarmonyPatch_WorkGiverSex.cs" />
+    <Compile Include="Source\Settings\Animation_Settings.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

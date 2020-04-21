@@ -13,6 +13,7 @@ namespace Rimworld_Animations {
         public AltitudeLayer layer = AltitudeLayer.Pawn;
 
         public Dictionary<int, string> SoundEffects = new Dictionary<int, string>();
+        public Dictionary<int, bool> quiver = new Dictionary<int, bool>();
         public SimpleCurve BodyAngle = new SimpleCurve();
         public SimpleCurve HeadAngle = new SimpleCurve();
         public SimpleCurve HeadBob = new SimpleCurve();
@@ -89,6 +90,11 @@ namespace Rimworld_Animations {
                         SoundEffects.Add(keyframePosition, frame.soundEffect);
                     }
 
+                    if(frame.tickDuration != 1 && frame.quiver.HasValue) {
+
+                        quiver.Add(keyframePosition, true);
+                        quiver.Add(keyframePosition + frame.tickDuration - 1, false);
+                    }
                     keyframePosition += frame.tickDuration;
 
                 }

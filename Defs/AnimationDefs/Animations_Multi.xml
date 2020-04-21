@@ -379,6 +379,7 @@
                 <headBob>0</headBob>
               </li>
               <li>
+                <quiver>true</quiver>
                 <tickDuration>120</tickDuration>
                 <bodyAngle>60.7</bodyAngle>
                 <headAngle>5.6</headAngle>

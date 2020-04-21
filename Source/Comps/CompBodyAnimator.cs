@@ -35,7 +35,7 @@ namespace Rimworld_Animations {
             }
         }
         private bool Animating;
-        private bool mirror = false;
+        private bool mirror = false, quiver = false;
         private int actor;
 
         private int animTicks = 0, stageTicks = 0, clipTicks = 0;
@@ -114,6 +114,8 @@ namespace Rimworld_Animations {
             stageTicks = 0;
             clipTicks = 0;
 
+            quiver = false;
+
             //tick once for initialization
             tickAnim();
 
@@ -184,6 +186,9 @@ namespace Rimworld_Animations {
             if(rjw.RJWSettings.sounds_enabled && clip.SoundEffects.ContainsKey(clipTicks)) {
                 SoundDef.Named(clip.SoundEffects[clipTicks]).PlayOneShot(new TargetInfo(pawn.Position, pawn.Map));
             }
+            if(AnimationSettings.orgasmQuiver && clip.quiver.ContainsKey(clipTicks)) {
+                quiver = clip.quiver[clipTicks];
+            }
             
             //loop animation if possible
             if (clipPercent >= 1 && stage.isLooping) {
@@ -197,7 +202,7 @@ namespace Rimworld_Animations {
         public void calculateDrawValues() {
 
             deltaPos = new Vector3(clip.BodyOffsetX.Evaluate(clipPercent) * (mirror ? -1 : 1), clip.layer.AltitudeFor(), clip.BodyOffsetZ.Evaluate(clipPercent));
-            bodyAngle = clip.BodyAngle.Evaluate(clipPercent) * (mirror ? -1 : 1);
+            bodyAngle = (clip.BodyAngle.Evaluate(clipPercent) + (quiver ? (Rand.Value * 2f) - 1f : 0f)) * (mirror ? -1 : 1);
             headAngle = clip.HeadAngle.Evaluate(clipPercent) * (mirror ? -1 : 1);
             bodyFacing = mirror ? new Rot4((int)clip.BodyFacing.Evaluate(clipPercent)).Opposite : new Rot4((int)clip.BodyFacing.Evaluate(clipPercent));
 
@@ -243,6 +248,8 @@ namespace Rimworld_Animations {
 
             Scribe_Values.Look(ref headFacing, "headFacing");
             Scribe_Values.Look(ref headFacing, "bodyFacing");
+
+            Scribe_Values.Look(ref quiver, "orgasmQuiver");                             
         }
 
     }

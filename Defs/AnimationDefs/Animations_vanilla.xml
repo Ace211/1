@@ -382,6 +382,7 @@
                 <headAngle>-1</headAngle>
                 <bodyFacing>1</bodyFacing>
                 <headFacing>1</headFacing>
+                <quiver>true</quiver>
               </li>
               <li>
                 <tickDuration>12</tickDuration>
@@ -758,6 +759,7 @@
                 <headBob>-0.008</headBob>
               </li>
               <li>
+                <quiver>true</quiver>
                 <tickDuration>60</tickDuration>
                 <bodyAngle>0</bodyAngle>
                 <bodyOffsetX>0</bodyOffsetX>
@@ -1776,6 +1778,7 @@
                 <headBob>0</headBob>
               </li>
               <li>
+                <quiver>true</quiver>
                 <tickDuration>75</tickDuration>
                 <bodyAngle>6.04</bodyAngle>
                 <headAngle>15</headAngle>
@@ -2367,6 +2370,7 @@
                 <headBob>-0.03</headBob>
               </li>
               <li>
+                <quiver>true</quiver>
                 <tickDuration>45</tickDuration>
                 <soundEffect>Cum</soundEffect>
                 <bodyAngle>0</bodyAngle>
@@ -2378,6 +2382,7 @@
                 <headBob>0</headBob>
               </li>
               <li>
+                <quiver>true</quiver>
                 <tickDuration>40</tickDuration>
                 <bodyAngle>0</bodyAngle>
                 <headAngle>0</headAngle>

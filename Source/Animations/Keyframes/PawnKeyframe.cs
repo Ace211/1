@@ -21,6 +21,7 @@ namespace Rimworld_Animations {
         public int? headFacing;
 
         public string soundEffect;
+        public bool? quiver;
 
         public float? atTick;
     }

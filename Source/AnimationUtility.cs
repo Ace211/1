@@ -68,7 +68,7 @@ namespace Rimworld_Animations {
 
                     //TESTING ANIMATIONS ONLY REMEMBER TO COMMENT OUT BEFORE PUSH
                     /*
-                    if (x.defName != "Cowgirl")
+                    if (x.defName != "Doggystyle")
                         return false;
                         */
                     

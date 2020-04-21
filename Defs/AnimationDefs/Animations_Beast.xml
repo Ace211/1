@@ -20,6 +20,19 @@
           <li>Wolf_Timber</li>
           <li>Wolf_Arctic</li>
           <li>Whitefox</li>
+          
+          <!--Animals Expanded-->
+          <li>AEXP_WelshTerrier</li>
+          <li>AEXP_Rottweiler</li>
+          <li>AEXP_Poodle</li>
+          <li>AEXP_GreatDane</li>
+          <li>AEXP_GermanShepherd</li>
+          <li>AEXP_FrenchBulldog</li>
+          <li>AEXP_Corgi</li>
+          <li>AEXP_CatAbyssinian</li>
+          <li>AEXP_CatBengal</li>
+          <li>AEXP_CatMaineCoon</li>
+          <li>AEXP_CatSphynx</li>
         </defNames>
         <isFucking>true</isFucking>
         <initiator>true</initiator>
@@ -899,6 +912,7 @@
             <layer>LayingPawn</layer>
             <keyframes>
               <li>
+                <quiver>true</quiver>
                 <tickDuration>60</tickDuration>
                 <bodyAngle>53.7</bodyAngle>
                 <headAngle>25.4</headAngle>
