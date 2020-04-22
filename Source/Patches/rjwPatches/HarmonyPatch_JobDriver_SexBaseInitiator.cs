@@ -101,6 +101,9 @@ namespace Rimworld_Animations {
 					(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).ticksLeftThisToil = anim.animationTimeTicks;
 					(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).duration = anim.animationTimeTicks;
 					(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).ticks_remaining = anim.animationTimeTicks;
+					if(!AnimationSettings.hearts) {
+						(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).ticks_between_hearts = Int32.MaxValue;
+					}
 
 				}
 			}
