@@ -17,7 +17,7 @@ namespace Rimworld_Animations {
         public static AnimationDef tryFindAnimation(ref List<Pawn> participants, rjw.xxx.rjwSextype sexType = 0) {
 
             //aggressors first
-            participants = participants.OrderByDescending(p => p.jobs.curDriver is rjw.JobDriver_SexBaseInitiator).ToList();
+            participants = participants.OrderBy(p => p.jobs.curDriver is rjw.JobDriver_SexBaseInitiator).ToList();
 
             //fucked first, fucking second
             participants = participants.OrderBy(p => rjw.xxx.can_fuck(p)).ToList();
