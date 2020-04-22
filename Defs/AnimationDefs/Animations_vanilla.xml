@@ -612,6 +612,7 @@
             </keyframes>
           </li>
           <li Class="Rimworld_Animations.PawnAnimationClip">
+            <layer>LayingPawn</layer>
             <keyframes>
               <li>
                 <tickDuration>35</tickDuration>
@@ -687,6 +688,7 @@
             </keyframes>
           </li>
           <li Class="Rimworld_Animations.PawnAnimationClip">
+            <layer>LayingPawn</layer>
             <keyframes>
               <li>
                 <tickDuration>15</tickDuration>
@@ -790,6 +792,7 @@
             </keyframes>
           </li>
           <li Class="Rimworld_Animations.PawnAnimationClip">
+            <layer>LayingPawn</layer>
             <keyframes>
               <li>
                 <tickDuration>12</tickDuration>
