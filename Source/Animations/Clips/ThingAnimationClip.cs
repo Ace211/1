@@ -10,6 +10,7 @@ namespace Rimworld_Animations {
         public List<ThingKeyframe> keyframes;
 
         public override void buildSimpleCurves() {
+
         }
     }
 }

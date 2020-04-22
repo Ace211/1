@@ -41,7 +41,7 @@ namespace Rimworld_Animations {
 
 		public static bool Prefix_AnimateHeadAddons(bool portrait, Vector3 vector, Pawn pawn, Quaternion quat, Rot4 rotation, bool invisible) {
 
-			if (portrait) return true;
+			if (portrait || pawn.TryGetComp<CompBodyAnimator>() == null || !pawn.TryGetComp<CompBodyAnimator>().isAnimating) return true;
 			if (!(pawn.def is ThingDef_AlienRace alienProps) || invisible) return false;
 
 			List<AlienPartGenerator.BodyAddon> addons = alienProps.alienRace.generalSettings.alienPartGenerator.bodyAddons;
