@@ -21,7 +21,7 @@ namespace Rimworld_Animations {
 				pawn.rotationTracker.Face(((Thing)partner).DrawPos);
 				partner.rotationTracker.Face(((Thing)pawn).DrawPos);
 			}
-			if (RJWSettings.sounds_enabled && !pawn.TryGetComp<CompBodyAnimator>().isAnimating) {
+			if (RJWSettings.sounds_enabled && (!pawn.TryGetComp<CompBodyAnimator>().isAnimating || !AnimationSettings.soundOverride)) {
 				SoundDef.Named("Sex").PlayOneShot(new TargetInfo(pawn.Position, pawn.Map));
 			}
 			pawn.Drawer.Notify_MeleeAttackOn((Thing)(object)partner);

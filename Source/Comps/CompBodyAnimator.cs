@@ -184,7 +184,7 @@ namespace Rimworld_Animations {
             clipTicks++;
 
             //play sound effect
-            if(rjw.RJWSettings.sounds_enabled && clip.SoundEffects.ContainsKey(clipTicks)) {
+            if(rjw.RJWSettings.sounds_enabled && clip.SoundEffects.ContainsKey(clipTicks) && AnimationSettings.soundOverride) {
                 SoundDef.Named(clip.SoundEffects[clipTicks]).PlayOneShot(new TargetInfo(pawn.Position, pawn.Map));
             }
             if(AnimationSettings.orgasmQuiver && clip.quiver.ContainsKey(clipTicks)) {
@@ -204,7 +204,16 @@ namespace Rimworld_Animations {
 
             deltaPos = new Vector3(clip.BodyOffsetX.Evaluate(clipPercent) * (mirror ? -1 : 1), clip.layer.AltitudeFor(), clip.BodyOffsetZ.Evaluate(clipPercent));
             bodyAngle = (clip.BodyAngle.Evaluate(clipPercent) + (quiver || shiver ? ((Rand.Value * AnimationSettings.shiverIntensity) - (AnimationSettings.shiverIntensity / 2f)) : 0f)) * (mirror ? -1 : 1);
+
+            //don't go past 360 or less than 0
+            if (bodyAngle < 0) bodyAngle = 360 - ((-1f*bodyAngle) % 360);
+            if (bodyAngle > 360) bodyAngle %= 360;
+
             headAngle = clip.HeadAngle.Evaluate(clipPercent) * (mirror ? -1 : 1);
+            if (headAngle < 0) headAngle = 360 - ((-1f * headAngle) % 360);
+            if (headAngle > 360) headAngle %= 360;
+
+
             bodyFacing = mirror ? new Rot4((int)clip.BodyFacing.Evaluate(clipPercent)).Opposite : new Rot4((int)clip.BodyFacing.Evaluate(clipPercent));
 
             bodyFacing = new Rot4((int)clip.BodyFacing.Evaluate(clipPercent));

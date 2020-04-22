@@ -11,9 +11,6 @@ namespace Rimworld_Animations {
 		public readonly TargetIndex ipartner = TargetIndex.A;
 		public readonly TargetIndex ibed = TargetIndex.B;
 
-		public Pawn Partner => (Pawn)(job.GetTarget(ipartner));
-		public new Building_Bed Bed => (Building_Bed)(job.GetTarget(ibed));
-
 		protected override IEnumerable<Toil> MakeNewToils() {
 			setup_ticks();
 			parteners.Add(Partner);// add job starter, so this wont fail, before Initiator starts his job

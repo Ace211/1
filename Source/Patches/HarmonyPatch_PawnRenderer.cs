@@ -51,7 +51,7 @@ namespace Rimworld_Animations {
 		[HarmonyReversePatch(HarmonyReversePatchType.Snapshot)]
 		public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
 
-			MethodInfo drawMeshNowOrLater = AccessTools.Method(typeof(GenDraw), "DrawMeshNowOrLater");//typeof(GenDraw).GetMethod("DrawMeshNowOrLater", BindingFlags.Static | BindingFlags.Public);
+			MethodInfo drawMeshNowOrLater = AccessTools.Method(typeof(GenDraw), "DrawMeshNowOrLater");
 			FieldInfo headGraphic = AccessTools.Field(typeof(PawnGraphicSet), "headGraphic");
 
 
