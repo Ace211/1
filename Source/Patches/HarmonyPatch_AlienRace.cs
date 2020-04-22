@@ -46,20 +46,36 @@ namespace Rimworld_Animations {
 
 			List<AlienPartGenerator.BodyAddon> addons = alienProps.alienRace.generalSettings.alienPartGenerator.bodyAddons;
 			AlienPartGenerator.AlienComp alienComp = pawn.GetComp<AlienPartGenerator.AlienComp>();
+			CompBodyAnimator pawnAnimator = pawn.TryGetComp<CompBodyAnimator>();
 
 			for (int i = 0; i < addons.Count; i++) {
 				AlienPartGenerator.BodyAddon ba = addons[index: i];
 				if (!ba.CanDrawAddon(pawn: pawn)) continue;
 
+				AlienPartGenerator.RotationOffset offset;
+				if (ba.drawnInBed) {
 
+					offset = pawnAnimator.headFacing == Rot4.South ?
+														ba.offsets.south :
+														pawnAnimator.headFacing == Rot4.North ?
+															ba.offsets.north :
+															pawnAnimator.headFacing == Rot4.East ?
+															ba.offsets.east :
+															ba.offsets.west;
 
-				AlienPartGenerator.RotationOffset offset = rotation == Rot4.South ?
-															   ba.offsets.south :
-															   rotation == Rot4.North ?
-																   ba.offsets.north :
-																   rotation == Rot4.East ?
-																	ba.offsets.east :
-																	ba.offsets.west;
+				} else {
+
+					offset = rotation == Rot4.South ?
+										ba.offsets.south :
+										rotation == Rot4.North ?
+											ba.offsets.north :
+											rotation == Rot4.East ?
+											ba.offsets.east :
+											ba.offsets.west;
+
+				}
+
+				
 
 				Vector2 bodyOffset = (portrait ? offset?.portraitBodyTypes ?? offset?.bodyTypes : offset?.bodyTypes)?.FirstOrDefault(predicate: to => to.bodyType == pawn.story.bodyType)
 								   ?.offset ?? Vector2.zero;
@@ -73,10 +89,10 @@ namespace Rimworld_Animations {
 
 				float moffsetX = 0.42f;
 				float moffsetZ = -0.22f;
-				float moffsetY = ba.inFrontOfBody ? 0.002f + ba.layerOffset : -0.002f - ba.layerOffset;
+				float moffsetY = ba.inFrontOfBody ? 0.3f + ba.layerOffset : -0.3f - ba.layerOffset;
 				float num = ba.angle;
 
-				if (rotation == Rot4.North) {
+				if ((ba.drawnInBed ? pawnAnimator.headFacing : rotation) == Rot4.North) {
 					moffsetX = 0f;
 					if (ba.layerInvert)
 						moffsetY = -moffsetY;
@@ -88,7 +104,7 @@ namespace Rimworld_Animations {
 				moffsetX += bodyOffset.x + crownOffset.x;
 				moffsetZ += bodyOffset.y + crownOffset.y;
 
-				if (rotation == Rot4.East) {
+				if ((ba.drawnInBed ? pawnAnimator.headFacing : rotation) == Rot4.East) {
 					moffsetX = -moffsetX;
 					num = -num; //Angle
 				}
@@ -100,7 +116,6 @@ namespace Rimworld_Animations {
 				//assume drawnInBed means headAddon
 				if (ba.drawnInBed && pawn.TryGetComp<CompBodyAnimator>() != null && pawn.TryGetComp<CompBodyAnimator>().isAnimating) {
 
-					CompBodyAnimator pawnAnimator = pawn.TryGetComp<CompBodyAnimator>();
 					Quaternion headQuatInAnimation = Quaternion.AngleAxis(pawnAnimator.headAngle, Vector3.up);
 					Rot4 headRotInAnimation = pawnAnimator.headFacing;
 					Vector3 headPositionInAnimation = pawnAnimator.getPawnHeadPosition() - pawn.Drawer.renderer.BaseHeadOffsetAt(pawnAnimator.headFacing).RotatedBy(angle: Mathf.Acos(f: Quaternion.Dot(a: Quaternion.identity, b: headQuatInAnimation)) * 2f * 57.29578f);
