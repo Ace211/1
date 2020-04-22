@@ -761,7 +761,6 @@
                 <headBob>-0.008</headBob>
               </li>
               <li>
-                <quiver>true</quiver>
                 <tickDuration>60</tickDuration>
                 <bodyAngle>0</bodyAngle>
                 <bodyOffsetX>0</bodyOffsetX>
@@ -824,6 +823,7 @@
                 <headBob>-0.04</headBob>
               </li>
               <li>
+                <quiver>true</quiver>
                 <tickDuration>60</tickDuration>
                 <bodyAngle>0</bodyAngle>
                 <bodyOffsetX>0</bodyOffsetX>
