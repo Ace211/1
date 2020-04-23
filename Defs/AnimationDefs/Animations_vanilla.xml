@@ -1968,24 +1968,27 @@
       <li>Anal</li>
       <li>Vaginal</li>
     </sexTypes>
+    
+    
+    
     <actors>
+      
       <li>
         <!--each type cooresponds to an animation clip in each animationStage-->
         <defNames>
           <li>Human</li>
         </defNames>
-        <blacklistedRaces>
-          <li>Human</li>
-        </blacklistedRaces>
         <isFucked>true</isFucked>
         <initiator>true</initiator>
       </li>
+      
       <li>
         <defNames>
           <li>Human</li>
         </defNames>
         <isFucking>true</isFucking>
       </li>
+      
     </actors>
 
     <animationStages>
