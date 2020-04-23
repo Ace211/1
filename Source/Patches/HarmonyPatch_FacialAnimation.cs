@@ -72,10 +72,6 @@ namespace Rimworld_Animations {
 
 		public static bool Prefix_IsSameA(JobDef job, string ___jobDef, ref bool __result) {
 
-			if(job?.defName != null) {
-				Log.Message("Defname: " + job.defName);
-			}
-
 			if(___jobDef != null && ___jobDef == "Lovin" && job?.defName != null && rjwLovinDefNames.Contains(job?.defName)) {
 				__result = true;
 				return false;
@@ -85,11 +81,6 @@ namespace Rimworld_Animations {
 		}
 
 		public static bool Prefix_IsSameB(string jobName, string ___jobDef, ref bool __result) {
-
-			if (jobName != null) {
-				Log.Message("Defname: " + jobName);
-			}
-
 
 			if (___jobDef != null && ___jobDef == "Lovin" && jobName != null && rjwLovinDefNames.Contains(jobName)) {
 				__result = true;
