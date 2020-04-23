@@ -1974,6 +1974,9 @@
         <defNames>
           <li>Human</li>
         </defNames>
+        <blacklistedRaces>
+          <li>Human</li>
+        </blacklistedRaces>
         <isFucked>true</isFucked>
         <initiator>true</initiator>
       </li>

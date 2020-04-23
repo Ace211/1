@@ -31,6 +31,12 @@ namespace Rimworld_Animations {
                 }
                 for (int i = 0; i < x.actors.Count; i++) {
 
+                    if((x.actors[i].blacklistedRaces != null) && x.actors[i].blacklistedRaces.Contains(localParticipants[i].def.defName)) {
+                        if (rjw.RJWSettings.DevMode) {
+                            Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " is blacklisted");
+                        }
+                        return false;
+                    }
 
                     if(x.actors[i].defNames.Contains("Human")) {
                         if (!rjw.xxx.is_human(localParticipants[i])) {
