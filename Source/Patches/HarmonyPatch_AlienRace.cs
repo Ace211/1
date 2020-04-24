@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using Verse;
-using AlienRace;
 
 namespace Rimworld_Animations {
     [StaticConstructorOnStartup]
@@ -42,17 +41,17 @@ namespace Rimworld_Animations {
 		public static bool Prefix_AnimateHeadAddons(bool portrait, Vector3 vector, Pawn pawn, Quaternion quat, Rot4 rotation, bool invisible) {
 
 			if (portrait || pawn.TryGetComp<CompBodyAnimator>() == null || !pawn.TryGetComp<CompBodyAnimator>().isAnimating) return true;
-			if (!(pawn.def is ThingDef_AlienRace alienProps) || invisible) return false;
+			if (!(pawn.def is AlienRace.ThingDef_AlienRace alienProps) || invisible) return false;
 
-			List<AlienPartGenerator.BodyAddon> addons = alienProps.alienRace.generalSettings.alienPartGenerator.bodyAddons;
-			AlienPartGenerator.AlienComp alienComp = pawn.GetComp<AlienPartGenerator.AlienComp>();
+			List<AlienRace.AlienPartGenerator.BodyAddon> addons = alienProps.alienRace.generalSettings.alienPartGenerator.bodyAddons;
+			AlienRace.AlienPartGenerator.AlienComp alienComp = pawn.GetComp<AlienRace.AlienPartGenerator.AlienComp>();
 			CompBodyAnimator pawnAnimator = pawn.TryGetComp<CompBodyAnimator>();
 
 			for (int i = 0; i < addons.Count; i++) {
-				AlienPartGenerator.BodyAddon ba = addons[index: i];
+				AlienRace.AlienPartGenerator.BodyAddon ba = addons[index: i];
 				if (!ba.CanDrawAddon(pawn: pawn)) continue;
 
-				AlienPartGenerator.RotationOffset offset;
+				AlienRace.AlienPartGenerator.RotationOffset offset;
 				if (ba.drawnInBed) {
 
 					offset = pawnAnimator.headFacing == Rot4.South ?
