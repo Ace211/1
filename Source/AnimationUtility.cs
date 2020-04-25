@@ -22,6 +22,10 @@ namespace Rimworld_Animations {
             //fucked first, fucking second
             participants = participants.OrderBy(p => rjw.xxx.can_fuck(p)).ToList();
 
+            if(rjw.RJWPreferenceSettings.Malesex == rjw.RJWPreferenceSettings.AllowedSex.Nohomo) {
+                participants = participants.OrderBy(x => rjw.xxx.is_male(x)).ToList();
+            }
+
             List<Pawn> localParticipants = new List<Pawn>(participants);
 
             IEnumerable<AnimationDef> options = DefDatabase<AnimationDef>.AllDefs.Where((AnimationDef x) => {
