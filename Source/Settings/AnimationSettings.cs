@@ -13,13 +13,16 @@ namespace Rimworld_Animations {
         public static float shiverIntensity = 2f;
 
         public override void ExposeData() {
+
+            base.ExposeData();
+
             Scribe_Values.Look(ref orgasmQuiver, "orgasmQuiver");
             Scribe_Values.Look(ref rapeShiver, "rapeShiver");
             Scribe_Values.Look(ref hearts, "heartsOnLovin");
             Scribe_Values.Look(ref soundOverride, "rjwAnimSoundOverride", true);
             Scribe_Values.Look(ref shiverIntensity, "shiverIntensity", 2f);
 
-            base.ExposeData();
+            
         }
 
     }
@@ -27,6 +30,7 @@ namespace Rimworld_Animations {
     public class RJW_Animations : Mod {
 
         public RJW_Animations(ModContentPack content) : base(content) {
+            GetSettings<AnimationSettings>();
         }
 
         public override void DoSettingsWindowContents(Rect inRect) {

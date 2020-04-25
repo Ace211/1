@@ -158,6 +158,7 @@ namespace Rimworld_Animations {
             if (animTicks < anim.animationTimeTicks) {
                 tickStage();
             } else {
+
                 isAnimating = false;
             }
         }
@@ -173,6 +174,10 @@ namespace Rimworld_Animations {
                 stageTicks = 0;
                 clipTicks = 0;
                 clipPercent = 0;
+            }
+
+            if(curStage >= anim.animationStages.Count && animTicks < anim.animationTimeTicks && pawn.jobs.curDriver is JobDriver_SexBaseInitiator) {
+                pawn.jobs.curDriver.ReadyForNextToil();
             }
 
             tickClip();
