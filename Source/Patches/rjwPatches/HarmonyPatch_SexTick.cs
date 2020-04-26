@@ -11,32 +11,35 @@ using Verse.Sound;
 
 namespace Rimworld_Animations {
 
-    [HarmonyPatch(typeof(xxx), "sexTick")]
-    public static class HarmonyPatch_SexTick {
+	[HarmonyPatch(typeof(JobDriver_Sex), "SexTick")]
+	public static class HarmonyPatch_SexTick {
 
-        public static bool Prefix(ref Pawn pawn, ref Pawn partner, ref bool enablerotation, ref bool pawnnude, ref bool partnernude) {
+		public static bool Prefix(ref JobDriver_Sex __instance, ref Pawn pawn, ref Thing target, ref bool pawnnude, ref bool partnernude) {
 
+			Pawn pawn2 = target as Pawn;
+			if (pawn.IsHashIntervalTick(__instance.ticks_between_thrusts)) {
 
-			if (enablerotation) {
-				pawn.rotationTracker.Face(((Thing)partner).DrawPos);
-				partner.rotationTracker.Face(((Thing)pawn).DrawPos);
+				__instance.Animate(pawn, pawn2);
+
+				if (!AnimationSettings.soundOverride) {
+					__instance.PlaySexSound();
+				}
+
+				if (!__instance.isRape) {
+					pawn.GainComfortFromCellIfPossible();
+					pawn2?.GainComfortFromCellIfPossible();
+				}
 			}
-			if (RJWSettings.sounds_enabled && (!pawn.TryGetComp<CompBodyAnimator>().isAnimating || !AnimationSettings.soundOverride)) {
-				SoundDef.Named("Sex").PlayOneShot(new TargetInfo(pawn.Position, pawn.Map));
-			}
-			pawn.Drawer.Notify_MeleeAttackOn((Thing)(object)partner);
-			if (enablerotation) {
-				pawn.rotationTracker.FaceCell(partner.Position);
-			}
-			if (pawnnude && !xxx.has_quirk(pawn, "Endytophile")) {
-				xxx.DrawNude(pawn);
-			}
-			if (partnernude && !xxx.has_quirk(pawn, "Endytophile")) {
-				xxx.DrawNude(partner);
+			if (!xxx.has_quirk(pawn, "Endytophile")) {
+				if (pawnnude) {
+					SexUtility.DrawNude(pawn);
+				}
+				if (pawn2 != null && partnernude) {
+					SexUtility.DrawNude(pawn2);
+				}
 			}
 
 			return false;
 		}
-
-    }
+	}
 }

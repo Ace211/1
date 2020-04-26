@@ -14,11 +14,8 @@ namespace Rimworld_Animations {
         public readonly TargetIndex ipartner = TargetIndex.A;
         public readonly TargetIndex ibed = TargetIndex.B;
 
-        public Pawn Partner => (Pawn)job.GetTarget(ipartner);
-        public new Building_Bed Bed => (Building_Bed)job.GetTarget(ibed);
-
         public override bool TryMakePreToilReservations(bool errorOnFailed) {
-            return ReservationUtility.Reserve(base.pawn, Partner, job, xxx.max_rapists_per_prisoner, 0, null, errorOnFailed);
+            return pawn.Reserve(Target, job, xxx.max_rapists_per_prisoner, 0, null, errorOnFailed);
         }
 
         protected override IEnumerable<Toil> MakeNewToils() {
@@ -49,6 +46,7 @@ namespace Rimworld_Animations {
             sexToil.FailOn(() => (Partner.CurJobDef == null) || Partner.CurJobDef != DefDatabase<JobDef>.GetNamed("GettinLovedAnimation", true)); //partner jobdriver is not sexbaserecieverlovedforanim
             sexToil.socialMode = RandomSocialMode.Off;
             sexToil.defaultCompleteMode = ToilCompleteMode.Never;
+            sexToil.handlingFacing = true;
             sexToil.initAction = delegate {
 
                 usedCondom = (CondomUtility.TryUseCondom(base.pawn) || CondomUtility.TryUseCondom(Partner));
@@ -61,10 +59,9 @@ namespace Rimworld_Animations {
                 if(Gen.IsHashIntervalTick(pawn, ticks_between_hearts)) {
                     MoteMaker.ThrowMetaIcon(pawn.Position, pawn.Map, ThingDefOf.Mote_Heart);
                 }
-                PawnUtility.GainComfortFromCellIfPossible(pawn, false);
-                PawnUtility.GainComfortFromCellIfPossible(Partner, false);
-                xxx.reduce_rest(Partner);
-                xxx.reduce_rest(pawn, 2);
+                SexTick(pawn, Partner);
+                SexUtility.reduce_rest(Partner);
+                SexUtility.reduce_rest(pawn, 2);
                 if (ticks_left <= 0)
                     ReadyForNextToil();
 
@@ -72,16 +69,13 @@ namespace Rimworld_Animations {
             sexToil.AddFinishAction(delegate {
 
                 End();
-                if(xxx.is_human(pawn)) {
-                    pawn.Drawer.renderer.graphics.ResolveApparelGraphics();
-                }
 
             });
             yield return sexToil;
 
             Toil finish = new Toil();
             finish.initAction = delegate {
-                SexUtility.ProcessSex(pawn, Partner, usedCondom);    
+                SexUtility.ProcessSex(pawn, Partner, usedCondom, isRape, isCoreLovin: false, isWhoring, sexType);    
             };
             finish.defaultCompleteMode = ToilCompleteMode.Instant;
             yield return finish;

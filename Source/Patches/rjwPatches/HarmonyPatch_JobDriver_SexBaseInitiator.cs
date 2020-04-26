@@ -41,8 +41,8 @@ namespace Rimworld_Animations {
 			}
 			else if (__instance is JobDriver_Masturbate_Bed)
 				bed = (__instance as JobDriver_Masturbate_Bed).Bed;
-			else if (__instance is JobDriver_RapeComfortPawn || __instance is JobDriver_Breeding)
-				bed = (__instance?.Partner?.jobs?.curDriver as JobDriver_Sex)?.pBed;
+			else if (__instance is JobDriver_Rape)
+				bed = (__instance?.Partner?.jobs?.curDriver as JobDriver_Sex)?.Bed;
 
 			if ((__instance.Target as Pawn)?.jobs?.curDriver is JobDriver_SexBaseReciever) {
 

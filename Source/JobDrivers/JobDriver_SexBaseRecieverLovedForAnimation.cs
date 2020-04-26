@@ -41,11 +41,10 @@ namespace Rimworld_Animations {
 			get_loved.FailOn(() => Partner.CurJobDef != DefDatabase<JobDef>.GetNamed("JoinInBedAnimation", true));
 			get_loved.defaultCompleteMode = ToilCompleteMode.Never;
 			get_loved.socialMode = RandomSocialMode.Off;
+			get_loved.handlingFacing = true;
 			get_loved.AddPreTickAction(delegate {
 				if (pawn.IsHashIntervalTick(ticks_between_hearts))
 					MoteMaker.ThrowMetaIcon(pawn.Position, pawn.Map, ThingDefOf.Mote_Heart);
-				if (pawn.IsHashIntervalTick(ticks_between_thrusts))
-					xxx.sexTick(pawn, Partner, false);
 			});
 			get_loved.AddFinishAction(delegate {
 				if (xxx.is_human(pawn))

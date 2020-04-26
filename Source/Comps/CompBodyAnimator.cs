@@ -26,7 +26,7 @@ namespace Rimworld_Animations {
                 Animating = value;
 
                 if(value == true) {
-                    xxx.DrawNude(pawn);
+                    SexUtility.DrawNude(pawn);
                 } else {
                     pawn.Drawer.renderer.graphics.ResolveAllGraphics();
                 }
