@@ -96,11 +96,11 @@ namespace Rimworld_Animations {
 
             isAnimating = true;
 
-            AlienRaceOffset offset = anim?.actors[actor]?.raceOffsets?.Find(x => x.defName == pawn.def.defName);
+            AlienRaceOffset raceOffset = anim?.actors[actor]?.raceOffsets?.Find(x => x.defName == pawn.def.defName);
 
-            if (offset != null) {
-                anchor.x += mirror ? offset.x * -1f : offset.x;
-                anchor.z += offset.z;
+            if (raceOffset != null) {
+                anchor.x += mirror ? raceOffset.offset.x * -1f : raceOffset.offset.x;
+                anchor.z += raceOffset.offset.y;
             }
 
             pawn.jobs.posture = PawnPosture.Standing;
