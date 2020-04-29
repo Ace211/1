@@ -77,10 +77,10 @@ namespace Rimworld_Animations {
                     }
 
                     //TESTING ANIMATIONS ONLY REMEMBER TO COMMENT OUT BEFORE PUSH
-                    
+                    /*
                     if (x.defName != "Cowgirl")
                         return false;
-                    
+                    */
                     
 
                     if (x.actors[i].isFucking && !rjw.xxx.can_fuck(localParticipants[i])) {

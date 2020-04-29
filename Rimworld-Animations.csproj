@@ -97,6 +97,7 @@
     <Compile Include="Source\Patches\HarmonyPatch_ShowHairWithHats.cs" />
     <Compile Include="Source\Patches\Harmony_PatchAll.cs" />
     <Compile Include="Source\Patches\rjwPatches\HarmonyPatch_DoLovinAnimationPatch.cs" />
+    <Compile Include="Source\Patches\rjwPatches\HarmonyPatch_DrawSemen.cs" />
     <Compile Include="Source\Patches\rjwPatches\HarmonyPatch_JobDriver_SexBaseInitiator.cs" />
     <Compile Include="Source\Patches\rjwPatches\HarmonyPatch_JoinInBedGiveJob.cs" />
     <Compile Include="Source\Patches\rjwPatches\HarmonyPatch_SexTick.cs" />

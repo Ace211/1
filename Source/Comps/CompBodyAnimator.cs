@@ -195,6 +195,15 @@ namespace Rimworld_Animations {
             //play sound effect
             if(rjw.RJWSettings.sounds_enabled && clip.SoundEffects.ContainsKey(clipTicks) && AnimationSettings.soundOverride) {
                 SoundDef.Named(clip.SoundEffects[clipTicks]).PlayOneShot(new TargetInfo(pawn.Position, pawn.Map));
+
+                if((pawn?.jobs?.curDriver is JobDriver_Sex) && clip.SoundEffects[clipTicks] == "Cum") {
+
+                    Pawn partner = (pawn.jobs.curDriver as JobDriver_Sex)?.Partner;
+
+                    if(anim.sexTypes.Contains((pawn.jobs.curDriver as JobDriver_Sex).sexType))
+                        SemenHelper.calculateAndApplySemen(pawn, partner, (pawn.jobs.curDriver as JobDriver_Sex).sexType);
+                }
+
             }
             if(AnimationSettings.orgasmQuiver && clip.quiver.ContainsKey(clipTicks)) {
                 quiver = clip.quiver[clipTicks];
