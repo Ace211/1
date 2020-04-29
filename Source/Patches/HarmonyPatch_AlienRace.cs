@@ -126,10 +126,16 @@ namespace Rimworld_Animations {
 						quat: Quaternion.AngleAxis(angle: num, axis: Vector3.up) * headQuatInAnimation, mat: alienComp.addonGraphics[index: i].MatAt(rot: pawnAnimator.headFacing), drawNow: portrait);
 
 				}
+
 				else {
 
+					Quaternion addonRotation = quat;
+					if (AnimationSettings.controlGenitalRotation && pawnAnimator.controlGenitalAngle && ba.hediffGraphics[0] != null && (ba.hediffGraphics[0].path.Contains("Penis") || ba.hediffGraphics[0].path.Contains("penis"))) {
+						addonRotation = Quaternion.AngleAxis(angle: pawnAnimator.genitalAngle, axis: Vector3.up);
+					}
+
 					GenDraw.DrawMeshNowOrLater(mesh: alienComp.addonGraphics[index: i].MeshAt(rot: rotation), loc: vector + offsetVector.RotatedBy(angle: Mathf.Acos(f: Quaternion.Dot(a: Quaternion.identity, b: quat)) * 2f * 57.29578f),
-					quat: Quaternion.AngleAxis(angle: num, axis: Vector3.up) * quat, mat: alienComp.addonGraphics[index: i].MatAt(rot: rotation), drawNow: portrait);
+					quat: Quaternion.AngleAxis(angle: num, axis: Vector3.up) * addonRotation, mat: alienComp.addonGraphics[index: i].MatAt(rot: rotation), drawNow: portrait);
 
 				}
 

@@ -43,8 +43,10 @@ namespace Rimworld_Animations {
         private float clipPercent = 0;
 
         public Vector3 anchor, deltaPos, headBob;
-        public float bodyAngle, headAngle;
+        public float bodyAngle, headAngle, genitalAngle;
         public Rot4 headFacing, bodyFacing;
+
+        public bool controlGenitalAngle = false;
 
         private AnimationDef anim;
         private AnimationStage stage => anim.animationStages[curStage];
@@ -116,6 +118,8 @@ namespace Rimworld_Animations {
 
             quiver = false;
             this.shiver = shiver && AnimationSettings.rapeShiver;
+
+            controlGenitalAngle = anim.actors[actor].controlGenitalAngle;
 
             //tick once for initialization
             tickAnim();
@@ -191,6 +195,17 @@ namespace Rimworld_Animations {
             //play sound effect
             if(rjw.RJWSettings.sounds_enabled && clip.SoundEffects.ContainsKey(clipTicks) && AnimationSettings.soundOverride) {
                 SoundDef.Named(clip.SoundEffects[clipTicks]).PlayOneShot(new TargetInfo(pawn.Position, pawn.Map));
+
+                if (AnimationSettings.applySemenOnAnimationOrgasm && (pawn?.jobs?.curDriver is JobDriver_Sex) && clip.SoundEffects[clipTicks] == "Cum") {
+
+                    Pawn partner = (pawn.jobs.curDriver as JobDriver_Sex)?.Partner;
+
+                    if(anim.sexTypes.Contains((pawn.jobs.curDriver as JobDriver_Sex).sexType)) {
+                        SemenHelper.calculateAndApplySemen(pawn, partner, (pawn.jobs.curDriver as JobDriver_Sex).sexType);
+                    }
+                        
+                }
+
             }
             if(AnimationSettings.orgasmQuiver && clip.quiver.ContainsKey(clipTicks)) {
                 quiver = clip.quiver[clipTicks];
@@ -218,6 +233,11 @@ namespace Rimworld_Animations {
             if (headAngle < 0) headAngle = 360 - ((-1f * headAngle) % 360);
             if (headAngle > 360) headAngle %= 360;
 
+            if (controlGenitalAngle) {
+                genitalAngle = clip.GenitalAngle.Evaluate(clipPercent) * (mirror ? -1 : 1);
+                if (genitalAngle < 0) genitalAngle = 360 - ((-1f * genitalAngle) % 360);
+                if (genitalAngle > 360) genitalAngle %= 360;
+            }
 
             bodyFacing = mirror ? new Rot4((int)clip.BodyFacing.Evaluate(clipPercent)).Opposite : new Rot4((int)clip.BodyFacing.Evaluate(clipPercent));
 
@@ -231,6 +251,7 @@ namespace Rimworld_Animations {
                 headFacing = headFacing.Opposite;
             }
             headBob = new Vector3(0, 0, clip.HeadBob.Evaluate(clipPercent));
+
         }
 
         public Vector3 getPawnHeadPosition() {

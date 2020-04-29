@@ -15,6 +15,7 @@ namespace Rimworld_Animations {
         public string gender;
         public bool isFucking = false;
         public bool isFucked = false;
+        public bool controlGenitalAngle = false;
         public Vector3 offset = new Vector2(0, 0);
     }
 }
