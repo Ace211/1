@@ -14,6 +14,7 @@ namespace Rimworld_Animations {
 
         public Dictionary<int, string> SoundEffects = new Dictionary<int, string>();
         public Dictionary<int, bool> quiver = new Dictionary<int, bool>();
+        public SimpleCurve GenitalAngle = new SimpleCurve();
         public SimpleCurve BodyAngle = new SimpleCurve();
         public SimpleCurve HeadAngle = new SimpleCurve();
         public SimpleCurve HeadBob = new SimpleCurve();
@@ -60,9 +61,14 @@ namespace Rimworld_Animations {
                     if (frame.headBob.HasValue)
                         HeadBob.Add((float)frame.atTick / (float)duration, frame.headBob.Value, true);
 
+                    if (frame.genitalAngle.HasValue)
+                        GenitalAngle.Add((float)frame.atTick / (float)duration, frame.genitalAngle.Value, true);
+
                     if (frame.soundEffect != null) {
                         SoundEffects.Add((int)frame.atTick, frame.soundEffect);
                     }
+
+                    
                 }
                 else {
                     if (frame.bodyAngle.HasValue)
@@ -85,6 +91,9 @@ namespace Rimworld_Animations {
 
                     if (frame.headBob.HasValue)
                         HeadBob.Add((float)keyframePosition / (float)duration, frame.headBob.Value, true);
+
+                    if (frame.genitalAngle.HasValue)
+                        GenitalAngle.Add((float)keyframePosition / (float)duration, frame.genitalAngle.Value, true);
 
                     if (frame.soundEffect != null) {
                         SoundEffects.Add(keyframePosition, frame.soundEffect);

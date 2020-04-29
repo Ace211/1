@@ -11,6 +11,8 @@ namespace Rimworld_Animations {
         public float? bodyAngle;
         public float? headAngle;
 
+        public float? genitalAngle;
+
         public float? bodyOffsetZ;
         public float? bodyOffsetX;
 

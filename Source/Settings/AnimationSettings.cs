@@ -9,13 +9,14 @@ using UnityEngine;
 namespace Rimworld_Animations {
     public class AnimationSettings : ModSettings {
 
-        public static bool orgasmQuiver, rapeShiver, soundOverride = true, hearts = true;
+        public static bool orgasmQuiver, rapeShiver, soundOverride = true, hearts = true, controlGenitalRotation = false;
         public static float shiverIntensity = 2f;
 
         public override void ExposeData() {
 
             base.ExposeData();
 
+            Scribe_Values.Look(ref controlGenitalRotation, "controlGenitalRotation", false);
             Scribe_Values.Look(ref orgasmQuiver, "orgasmQuiver");
             Scribe_Values.Look(ref rapeShiver, "rapeShiver");
             Scribe_Values.Look(ref hearts, "heartsOnLovin");
@@ -39,6 +40,7 @@ namespace Rimworld_Animations {
             listingStandard.Begin(inRect);
 
             listingStandard.CheckboxLabeled("Enable Sound Override", ref AnimationSettings.soundOverride);
+            listingStandard.CheckboxLabeled("Control Genital Rotation", ref AnimationSettings.controlGenitalRotation);
             listingStandard.CheckboxLabeled("Enable Orgasm Quiver", ref AnimationSettings.orgasmQuiver);
             listingStandard.CheckboxLabeled("Enable Rape Shiver", ref AnimationSettings.rapeShiver);
             listingStandard.CheckboxLabeled("Enable hearts during lovin'", ref AnimationSettings.hearts);
