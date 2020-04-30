@@ -43,6 +43,11 @@ namespace Rimworld_Animations {
             listingStandard.CheckboxLabeled("Enable Sound Override", ref AnimationSettings.soundOverride);
             listingStandard.CheckboxLabeled("Control Genital Rotation", ref AnimationSettings.controlGenitalRotation);
             listingStandard.CheckboxLabeled("Apply Semen on Animation Orgasm", ref AnimationSettings.applySemenOnAnimationOrgasm);
+
+            if(AnimationSettings.applySemenOnAnimationOrgasm) {
+                listingStandard.Label("Recommended--turn down \"Cum on body percent\" in RJW settings to about 33%");
+            }
+
             listingStandard.CheckboxLabeled("Enable Orgasm Quiver", ref AnimationSettings.orgasmQuiver);
             listingStandard.CheckboxLabeled("Enable Rape Shiver", ref AnimationSettings.rapeShiver);
             listingStandard.CheckboxLabeled("Enable hearts during lovin'", ref AnimationSettings.hearts);

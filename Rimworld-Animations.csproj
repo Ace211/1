@@ -90,6 +90,7 @@
     <Compile Include="Source\JobDrivers\JobDriver_SexCasualForAnimation.cs" />
     <Compile Include="Source\MainTabWindows\MainTabWindow_SexAnimator.cs" />
     <Compile Include="Source\Patches\HarmonyPatch_AlienRace.cs" />
+    <Compile Include="Source\Patches\HarmonyPatch_CSL.cs" />
     <Compile Include="Source\Patches\HarmonyPatch_FacialAnimation.cs" />
     <Compile Include="Source\Patches\HarmonyPatch_PawnRenderer.cs" />
     <Compile Include="Source\Patches\HarmonyPatch_PawnRotation.cs" />

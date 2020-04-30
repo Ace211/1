@@ -161,5 +161,26 @@ namespace Rimworld_Animations {
                 GenDraw.DrawMeshNowOrLater(mesh, pawnHeadPosition, Quaternion.AngleAxis(pawnAnimator.headAngle, Vector3.up), material, portrait);
             }
         }
+
+        public static void RenderPawnHeadMeshInAnimation(Mesh mesh, Vector3 loc, Quaternion quaternion, Material material, bool portrait, Pawn pawn, float bodySizeFactor = 1) {
+
+            if (pawn == null) {
+                GenDraw.DrawMeshNowOrLater(mesh, loc, quaternion, material, portrait);
+                return;
+            }
+
+            CompBodyAnimator pawnAnimator = pawn.TryGetComp<CompBodyAnimator>();
+
+            if (pawnAnimator == null || !pawnAnimator.isAnimating || portrait) {
+                GenDraw.DrawMeshNowOrLater(mesh, loc, quaternion, material, portrait);
+            }
+            else {
+                Vector3 pawnHeadPosition = pawnAnimator.getPawnHeadPosition();
+                pawnHeadPosition.x *= bodySizeFactor;
+                pawnHeadPosition.x *= bodySizeFactor;
+                pawnHeadPosition.y = loc.y;
+                GenDraw.DrawMeshNowOrLater(mesh, pawnHeadPosition, Quaternion.AngleAxis(pawnAnimator.headAngle, Vector3.up), material, portrait);
+            }
+        }
     }
 }
