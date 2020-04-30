@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace Rimworld_Animations {
 				((Action)(() => {
 					if (LoadedModManager.RunningModsListForReading.Any(x => x.Name == "Children, school and learning")) {
 
-						(new Harmony("rjw")).Patch(AccessTools.Method(AccessTools.TypeByName("PawnRenderer_RenderPawnInternal_Patch"), "RenderPawnInternalScaled"),
+						(new Harmony("rjw")).Patch(AccessTools.Method(AccessTools.TypeByName("Children.PawnRenderer_RenderPawnInternal_Patch"), "RenderPawnInternalScaled"),
 							prefix: new HarmonyMethod(AccessTools.Method(typeof(HarmonyPatch_CSL), "Prefix_CSL")),
 							transpiler: new HarmonyMethod(AccessTools.Method(typeof(HarmonyPatch_CSL), "Transpiler_CSL")));
 					}
@@ -83,4 +84,4 @@ namespace Rimworld_Animations {
 		}
 
 	}
-}
+}*/
