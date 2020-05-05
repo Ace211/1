@@ -52,16 +52,18 @@ namespace Rimworld_Animations {
 					(Target.jobs.curDriver as JobDriver_SexBaseReciever).parteners.Add(pawn);
 				}
 
+				bool quickie = (__instance is JobDriver_SexQuick) && AnimationSettings.fastAnimForQuickie;
+
 				if (bed != null) {
-					RerollAnimations(Target, __instance.duration, bed as Thing, __instance.sexType);
+					RerollAnimations(Target, __instance.duration, bed as Thing, __instance.sexType, quickie);
 				}
 				else {
-					RerollAnimations(Target, __instance.duration, sexType: __instance.sexType);
+					RerollAnimations(Target, __instance.duration, sexType: __instance.sexType, fastAnimForQuickie: quickie);
 				}
 			}
 		}
 
-		public static void RerollAnimations(Pawn pawn, int duration, Thing bed = null, xxx.rjwSextype sexType = xxx.rjwSextype.None) {
+		public static void RerollAnimations(Pawn pawn, int duration, Thing bed = null, xxx.rjwSextype sexType = xxx.rjwSextype.None, bool fastAnimForQuickie = false) {
 
 			if(pawn == null || !(pawn.jobs?.curDriver is JobDriver_SexBaseReciever)) {
 				Log.Message("Error: Tried to reroll animations when pawn isn't sexing");
@@ -82,8 +84,6 @@ namespace Rimworld_Animations {
 
 				Log.Message("Now playing " + anim.defName + (mirror ? " mirrored" : ""));
 
-				
-
 				IntVec3 pos = pawn.Position;
 
 				for (int i = 0; i < pawnsToAnimate.Count; i++) {
@@ -96,7 +96,7 @@ namespace Rimworld_Animations {
 					}
 
 					bool shiver = pawnsToAnimate[i].jobs.curDriver is JobDriver_SexBaseRecieverRaped;
-					pawnsToAnimate[i].TryGetComp<CompBodyAnimator>().StartAnimation(anim, i, mirror, shiver);
+					pawnsToAnimate[i].TryGetComp<CompBodyAnimator>().StartAnimation(anim, i, mirror, shiver, fastAnimForQuickie);
 					(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).ticks_left = anim.animationTimeTicks;
 					(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).ticksLeftThisToil = anim.animationTimeTicks;
 					(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).duration = anim.animationTimeTicks;
@@ -105,7 +105,7 @@ namespace Rimworld_Animations {
 						(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).ticks_between_hearts = Int32.MaxValue;
 					}
 
-				}
+				} 
 			}
 			else {
 				Log.Message("Anim not found");

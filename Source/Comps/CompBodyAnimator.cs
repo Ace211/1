@@ -94,7 +94,7 @@ namespace Rimworld_Animations {
                 anchor = thing.Position.ToVector3Shifted();
             }
         }
-        public void StartAnimation(AnimationDef anim, int actor, bool mirror = false, bool shiver = false) {
+        public void StartAnimation(AnimationDef anim, int actor, bool mirror = false, bool shiver = false, bool fastAnimForQuickie = false) {
 
             isAnimating = true;
 
@@ -111,7 +111,7 @@ namespace Rimworld_Animations {
             this.anim = anim;
             this.mirror = mirror;
 
-            curStage = 0;
+            curStage = fastAnimForQuickie ? 1 : 0;
             animTicks = 0;
             stageTicks = 0;
             clipTicks = 0;
@@ -180,11 +180,15 @@ namespace Rimworld_Animations {
                 clipPercent = 0;
             }
 
-            if(curStage >= anim.animationStages.Count && animTicks < anim.animationTimeTicks && pawn.jobs.curDriver is JobDriver_SexBaseInitiator) {
+            if(curStage >= anim.animationStages.Count) {
+                isAnimating = false;
                 pawn.jobs.curDriver.ReadyForNextToil();
+                
+            } else {
+                tickClip();
             }
 
-            tickClip();
+            
             
         }
 
