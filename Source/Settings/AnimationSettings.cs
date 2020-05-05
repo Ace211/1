@@ -9,7 +9,7 @@ using UnityEngine;
 namespace Rimworld_Animations {
     public class AnimationSettings : ModSettings {
 
-        public static bool orgasmQuiver, rapeShiver, soundOverride = true, hearts = true, controlGenitalRotation = false, applySemenOnAnimationOrgasm = false;
+        public static bool orgasmQuiver, rapeShiver, soundOverride = true, hearts = true, controlGenitalRotation = false, applySemenOnAnimationOrgasm = false, fastAnimForQuickie = false;
         public static float shiverIntensity = 2f;
 
         public override void ExposeData() {
@@ -18,6 +18,7 @@ namespace Rimworld_Animations {
 
             Scribe_Values.Look(ref controlGenitalRotation, "controlGenitalRotation", false);
             Scribe_Values.Look(ref orgasmQuiver, "orgasmQuiver");
+            Scribe_Values.Look(ref fastAnimForQuickie, "fastAnimForQuickie");
             Scribe_Values.Look(ref rapeShiver, "rapeShiver");
             Scribe_Values.Look(ref hearts, "heartsOnLovin");
             Scribe_Values.Look(ref applySemenOnAnimationOrgasm, "applySemenOnOrgasm", false);
@@ -42,6 +43,7 @@ namespace Rimworld_Animations {
 
             listingStandard.CheckboxLabeled("Enable Sound Override", ref AnimationSettings.soundOverride);
             listingStandard.CheckboxLabeled("Control Genital Rotation", ref AnimationSettings.controlGenitalRotation);
+            listingStandard.CheckboxLabeled("Play Fast Animation for Quickie", ref AnimationSettings.fastAnimForQuickie);
             listingStandard.CheckboxLabeled("Apply Semen on Animation Orgasm", ref AnimationSettings.applySemenOnAnimationOrgasm);
 
             if(AnimationSettings.applySemenOnAnimationOrgasm) {
