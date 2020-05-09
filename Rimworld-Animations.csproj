@@ -69,6 +69,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Source\Actors\Actor.cs" />
     <Compile Include="Source\Actors\AlienRaceOffset.cs" />
+    <Compile Include="Source\Actors\BodyTypeOffset.cs" />
     <Compile Include="Source\Animations\AnimationStage.cs" />
     <Compile Include="Source\Animations\Clips\BaseAnimationClip.cs" />
     <Compile Include="Source\Animations\Clips\PawnAnimationClip.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Source\MainTabWindows\MainTabWindow_SexAnimator.cs" />
     <Compile Include="Source\Patches\HarmonyPatch_AlienRace.cs" />
     <Compile Include="Source\Patches\HarmonyPatch_CSL.cs" />
+    <Compile Include="Source\Patches\HarmonyPatch_DontShaveYourHead.cs" />
     <Compile Include="Source\Patches\HarmonyPatch_FacialAnimation.cs" />
     <Compile Include="Source\Patches\HarmonyPatch_PawnRenderer.cs" />
     <Compile Include="Source\Patches\HarmonyPatch_PawnRotation.cs" />

@@ -105,6 +105,30 @@ namespace Rimworld_Animations {
                 anchor.z += raceOffset.offset.y;
             }
 
+            //change the offset based on pawn body type
+            if(pawn?.story?.bodyType != null) {
+                if (pawn.story.bodyType == BodyTypeDefOf.Fat && anim?.actors[actor]?.bodyTypeOffset?.Fat != null) {
+                    anchor.x += anim.actors[actor].bodyTypeOffset.Fat.Value.x * (mirror ? -1f : 1f);
+                    anchor.z += anim.actors[actor].bodyTypeOffset.Fat.Value.y;
+                }
+                else if (pawn.story.bodyType == BodyTypeDefOf.Female && anim?.actors[actor]?.bodyTypeOffset?.Female != null) {
+                    anchor.x += anim.actors[actor].bodyTypeOffset.Female.Value.x * (mirror ? -1f : 1f);
+                    anchor.z += anim.actors[actor].bodyTypeOffset.Female.Value.y;
+                }
+                else if (pawn.story.bodyType == BodyTypeDefOf.Male && anim?.actors[actor]?.bodyTypeOffset?.Male != null) {
+                    anchor.x += anim.actors[actor].bodyTypeOffset.Male.Value.x * (mirror ? -1f : 1f);
+                    anchor.z += anim.actors[actor].bodyTypeOffset.Male.Value.y;
+                }
+                else if (pawn.story.bodyType == BodyTypeDefOf.Thin && anim?.actors[actor]?.bodyTypeOffset?.Thin != null) {
+                    anchor.x += anim.actors[actor].bodyTypeOffset.Thin.Value.x * (mirror ? -1f : 1f);
+                    anchor.z += anim.actors[actor].bodyTypeOffset.Thin.Value.y;
+                }
+                else if (pawn.story.bodyType == BodyTypeDefOf.Hulk && anim?.actors[actor]?.bodyTypeOffset?.Hulk != null) {
+                    anchor.x += anim.actors[actor].bodyTypeOffset.Hulk.Value.x * (mirror ? -1f : 1f);
+                    anchor.z += anim.actors[actor].bodyTypeOffset.Hulk.Value.y;
+                }
+            }
+
             pawn.jobs.posture = PawnPosture.Standing;
 
             this.actor = actor;
