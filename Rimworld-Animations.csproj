@@ -73,6 +73,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Source\Actors\Actor.cs" />
     <Compile Include="Source\Actors\AlienRaceOffset.cs" />
+    <Compile Include="Source\Actors\BodyTypeOffset.cs" />
     <Compile Include="Source\Animations\AnimationStage.cs" />
     <Compile Include="Source\Animations\Clips\BaseAnimationClip.cs" />
     <Compile Include="Source\Animations\Clips\PawnAnimationClip.cs" />

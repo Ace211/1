@@ -23,6 +23,9 @@
         </defNames>
         <isFucking>true</isFucking>
         <initiator>true</initiator>
+        <bodyTypeOffset>
+          <Hulk>(0, 0.2)</Hulk>
+        </bodyTypeOffset>
       </li>
     </actors>
     
@@ -465,6 +468,9 @@
         <defNames>
           <li>Human</li>
         </defNames>
+        <bodyTypeOffset>
+          <Hulk>(0, -0.2)</Hulk>
+        </bodyTypeOffset>
       </li>
       <li>
         <defNames>
@@ -473,6 +479,9 @@
         <isFucking>true</isFucking>
         <controlGenitalAngle>true</controlGenitalAngle>
         <initiator>true</initiator>
+        <bodyTypeOffset>
+          <Hulk>(0, 0.2)</Hulk>
+        </bodyTypeOffset>
       </li>
     </actors>
     <animationStages>
@@ -879,6 +888,9 @@
           <li>Human</li>
         </defNames>
         <isFucked>true</isFucked>
+        <bodyTypeOffset>
+          <Hulk>(0, 0.2)</Hulk>
+        </bodyTypeOffset>
       </li>
       <li>
         <defNames>
@@ -886,6 +898,9 @@
         </defNames>
         <initiator>true</initiator>
         <isFucking>true</isFucking>
+        <bodyTypeOffset>
+          <Hulk>(0, 0.2)</Hulk>
+        </bodyTypeOffset>
       </li>
     </actors>
 
@@ -1984,6 +1999,9 @@
         </defNames>
         <isFucked>true</isFucked>
         <initiator>true</initiator>
+        <bodyTypeOffset>
+          <Hulk>(0, 0.2)</Hulk>
+        </bodyTypeOffset>
       </li>
       
       <li>
@@ -1992,6 +2010,9 @@
         </defNames>
         <isFucking>true</isFucking>
         <controlGenitalAngle>true</controlGenitalAngle>
+        <bodyTypeOffset>
+          <Hulk>(0, -0.2)</Hulk>
+        </bodyTypeOffset>
       </li>
       
     </actors>
