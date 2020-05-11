@@ -182,5 +182,9 @@ namespace Rimworld_Animations {
                 GenDraw.DrawMeshNowOrLater(mesh, pawnHeadPosition, Quaternion.AngleAxis(pawnAnimator.headAngle, Vector3.up), material, portrait);
             }
         }
+
+        public static readonly JobDef JoinInBedAnimation = DefDatabase<JobDef>.GetNamed("JoinInBedAnimation", true);
+        public static readonly JobDef GettinLovedAnimation = DefDatabase<JobDef>.GetNamed("GettinLovedAnimation", true);
+
     }
 }

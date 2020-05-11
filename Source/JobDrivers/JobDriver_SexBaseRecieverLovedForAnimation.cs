@@ -38,7 +38,7 @@ namespace Rimworld_Animations {
 			yield return Toils_Reserve.Reserve(ibed, Bed.SleepingSlotsCount, 0);
 
 			Toil get_loved = new Toil();
-			get_loved.FailOn(() => Partner.CurJobDef != DefDatabase<JobDef>.GetNamed("JoinInBedAnimation", true));
+			get_loved.FailOn(() => Partner.CurJobDef != AnimationUtility.JoinInBedAnimation);
 			get_loved.defaultCompleteMode = ToilCompleteMode.Never;
 			get_loved.socialMode = RandomSocialMode.Off;
 			get_loved.handlingFacing = true;

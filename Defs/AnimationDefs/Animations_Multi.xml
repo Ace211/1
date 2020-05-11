@@ -20,6 +20,9 @@
         </defNames>
         <isFucking>true</isFucking>
         <initiator>true</initiator>
+        <bodyTypeOffset>
+          <Hulk>(0, 0.2)</Hulk>
+        </bodyTypeOffset>
       </li>
       <li>
         <defNames>
@@ -27,6 +30,9 @@
         </defNames>
         <isFucking>true</isFucking>
         <initiator>true</initiator>
+        <bodyTypeOffset>
+          <Hulk>(0, 0.2)</Hulk>
+        </bodyTypeOffset>
       </li>
     </actors>
 

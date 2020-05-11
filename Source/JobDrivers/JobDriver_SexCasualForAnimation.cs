@@ -27,7 +27,7 @@ namespace Rimworld_Animations {
             yield return Toils_Reserve.Reserve(ipartner, xxx.max_rapists_per_prisoner, 0, null);
 
             Toil goToPawnInBed = Toils_Goto.GotoThing(ipartner, PathEndMode.OnCell);
-            goToPawnInBed.FailOn(() => !RestUtility.InBed(Partner) && !xxx.in_same_bed(Partner, pawn));
+            goToPawnInBed.FailOn(() => !(RestUtility.InBed(Partner) || Partner.CurJobDef == AnimationUtility.GettinLovedAnimation));
 
             yield return goToPawnInBed;
 
@@ -35,15 +35,17 @@ namespace Rimworld_Animations {
             Toil startPartnerSex = new Toil();
             startPartnerSex.initAction = delegate {
 
-                Job gettinLovedJob = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("GettinLovedAnimation"), pawn, Bed); // new gettin loved toil that wakes up the pawn goes here
+                if(Partner.CurJobDef != AnimationUtility.GettinLovedAnimation) {
+                    Job gettinLovedJob = JobMaker.MakeJob(AnimationUtility.GettinLovedAnimation, pawn, Bed); // new gettin loved toil that wakes up the pawn goes here
+                    Partner.jobs.jobQueue.EnqueueFirst(gettinLovedJob);
+                    Partner.jobs.EndCurrentJob(JobCondition.InterruptForced);
+                }
                 
-                Partner.jobs.jobQueue.EnqueueFirst(gettinLovedJob);
-                Partner.jobs.EndCurrentJob(JobCondition.InterruptForced);
             };
             yield return startPartnerSex;
 
             Toil sexToil = new Toil();
-            sexToil.FailOn(() => (Partner.CurJobDef == null) || Partner.CurJobDef != DefDatabase<JobDef>.GetNamed("GettinLovedAnimation", true)); //partner jobdriver is not sexbaserecieverlovedforanim
+            sexToil.FailOn(() => (Partner.CurJobDef == null) || Partner.CurJobDef != AnimationUtility.GettinLovedAnimation); //partner jobdriver is not sexbaserecieverlovedforanim
             sexToil.socialMode = RandomSocialMode.Off;
             sexToil.defaultCompleteMode = ToilCompleteMode.Never;
             sexToil.handlingFacing = true;

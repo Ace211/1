@@ -19,7 +19,7 @@ namespace Rimworld_Animations {
             if(__result != null) {
                 Pawn partnerInMyBed = LovePartnerRelationUtility.GetPartnerInMyBed(pawn);
                 RestUtility.WakeUp(pawn);
-                __result = JobMaker.MakeJob(DefDatabase<JobDef>.GetNamed("JoinInBedAnimation", true), partnerInMyBed, partnerInMyBed.CurrentBed());
+                __result = JobMaker.MakeJob(AnimationUtility.JoinInBedAnimation, partnerInMyBed, partnerInMyBed.CurrentBed());
             }
         }
     }
