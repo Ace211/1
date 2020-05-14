@@ -19,7 +19,7 @@ namespace Rimworld_Animations {
 			Pawn pawn2 = target as Pawn;
 			if (pawn.IsHashIntervalTick(__instance.ticks_between_thrusts)) {
 
-				__instance.Animate(pawn, pawn2);
+				__instance.Animate(pawn, (Thing)pawn2);
 
 				if (!AnimationSettings.soundOverride || !pawn.TryGetComp<CompBodyAnimator>().isAnimating) {
 					__instance.PlaySexSound();
