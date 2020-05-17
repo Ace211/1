@@ -8,6 +8,16 @@
       <li>Scissoring</li>
     </sexTypes>
     <actors>
+      
+      <li>
+        <defNames>
+          <li>Human</li>
+        </defNames>
+        <isFucked>true</isFucked>
+        <requiredGenitals>
+          <li>Vagina</li>
+        </requiredGenitals>
+      </li>
       <li>
         <defNames>
           <li>Human</li>
@@ -18,15 +28,7 @@
           <li>Vagina</li>
         </requiredGenitals>
       </li>
-      <li>
-        <defNames>
-          <li>Human</li>
-        </defNames>
-        <isFucked>true</isFucked>
-        <requiredGenitals>
-          <li>Vagina</li>
-        </requiredGenitals>
-      </li>
+      
     </actors>
 
     <animationStages>
@@ -37,51 +39,6 @@
         <stageIndex>0</stageIndex>
         <animationClips>
           <li Class="Rimworld_Animations.PawnAnimationClip">
-            <keyframes>
-              <li>
-                <!--Active female right-->
-                <tickDuration>20</tickDuration>
-                <bodyAngle>9.97</bodyAngle>
-                <headAngle>-7.61</headAngle>
-                <bodyOffsetX>0.444</bodyOffsetX>
-                <bodyOffsetZ>0.368</bodyOffsetZ>
-                <bodyFacing>3</bodyFacing>
-                <headFacing>3</headFacing>
-                <headBob>0</headBob>
-              </li>
-              <li>
-                <tickDuration>20</tickDuration>
-                <bodyAngle>23.82</bodyAngle>
-                <headAngle>-6.90</headAngle>
-                <bodyOffsetX>0.432</bodyOffsetX>
-                <bodyOffsetZ>0.403</bodyOffsetZ>
-                <bodyFacing>3</bodyFacing>
-                <headFacing>3</headFacing>
-                <headBob>0</headBob>
-              </li>
-              <li>
-                <tickDuration>20</tickDuration>
-                <bodyAngle>5.19</bodyAngle>
-                <headAngle>-6.19</headAngle>
-                <bodyOffsetX>0.442</bodyOffsetX>
-                <bodyOffsetZ>0.388</bodyOffsetZ>
-                <bodyFacing>3</bodyFacing>
-                <headFacing>3</headFacing>
-                <headBob>0</headBob>
-              </li>
-              <li>
-                <tickDuration>1</tickDuration>
-                <bodyAngle>9.97</bodyAngle>
-                <headAngle>-7.61</headAngle>
-                <bodyOffsetX>0.444</bodyOffsetX>
-                <bodyOffsetZ>0.368</bodyOffsetZ>
-                <bodyFacing>3</bodyFacing>
-                <headFacing>3</headFacing>
-                <headBob>0</headBob>
-              </li>
-            </keyframes>
-          </li>
-          <li Class="Rimworld_Animations.PawnAnimationClip">
             <layer>LayingPawn</layer>
             <keyframes>
               <li>
@@ -128,6 +85,52 @@
               </li>
             </keyframes>
           </li>
+          <li Class="Rimworld_Animations.PawnAnimationClip">
+            <keyframes>
+              <li>
+                <!--Active female right-->
+                <tickDuration>20</tickDuration>
+                <bodyAngle>9.97</bodyAngle>
+                <headAngle>-7.61</headAngle>
+                <bodyOffsetX>0.444</bodyOffsetX>
+                <bodyOffsetZ>0.368</bodyOffsetZ>
+                <bodyFacing>3</bodyFacing>
+                <headFacing>3</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>20</tickDuration>
+                <bodyAngle>23.82</bodyAngle>
+                <headAngle>-6.90</headAngle>
+                <bodyOffsetX>0.432</bodyOffsetX>
+                <bodyOffsetZ>0.403</bodyOffsetZ>
+                <bodyFacing>3</bodyFacing>
+                <headFacing>3</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>20</tickDuration>
+                <bodyAngle>5.19</bodyAngle>
+                <headAngle>-6.19</headAngle>
+                <bodyOffsetX>0.442</bodyOffsetX>
+                <bodyOffsetZ>0.388</bodyOffsetZ>
+                <bodyFacing>3</bodyFacing>
+                <headFacing>3</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>1</tickDuration>
+                <bodyAngle>9.97</bodyAngle>
+                <headAngle>-7.61</headAngle>
+                <bodyOffsetX>0.444</bodyOffsetX>
+                <bodyOffsetZ>0.368</bodyOffsetZ>
+                <bodyFacing>3</bodyFacing>
+                <headFacing>3</headFacing>
+                <headBob>0</headBob>
+              </li>
+            </keyframes>
+          </li>
+
         </animationClips>
       </li>
       <li>
@@ -137,51 +140,6 @@
         <stageIndex>0</stageIndex>
         <animationClips>
           <li Class="Rimworld_Animations.PawnAnimationClip">
-            <keyframes>
-              <li>
-                <!--Active female right-->
-                <tickDuration>10</tickDuration>
-                <bodyAngle>9.97</bodyAngle>
-                <headAngle>-7.61</headAngle>
-                <bodyOffsetX>0.444</bodyOffsetX>
-                <bodyOffsetZ>0.368</bodyOffsetZ>
-                <bodyFacing>3</bodyFacing>
-                <headFacing>3</headFacing>
-                <headBob>0</headBob>
-              </li>
-              <li>
-                <tickDuration>10</tickDuration>
-                <bodyAngle>23.82</bodyAngle>
-                <headAngle>-6.90</headAngle>
-                <bodyOffsetX>0.432</bodyOffsetX>
-                <bodyOffsetZ>0.403</bodyOffsetZ>
-                <bodyFacing>3</bodyFacing>
-                <headFacing>3</headFacing>
-                <headBob>0</headBob>
-              </li>
-              <li>
-                <tickDuration>10</tickDuration>
-                <bodyAngle>5.19</bodyAngle>
-                <headAngle>-6.19</headAngle>
-                <bodyOffsetX>0.442</bodyOffsetX>
-                <bodyOffsetZ>0.388</bodyOffsetZ>
-                <bodyFacing>3</bodyFacing>
-                <headFacing>3</headFacing>
-                <headBob>0</headBob>
-              </li>
-              <li>
-                <tickDuration>1</tickDuration>
-                <bodyAngle>9.97</bodyAngle>
-                <headAngle>-7.61</headAngle>
-                <bodyOffsetX>0.444</bodyOffsetX>
-                <bodyOffsetZ>0.368</bodyOffsetZ>
-                <bodyFacing>3</bodyFacing>
-                <headFacing>3</headFacing>
-                <headBob>0</headBob>
-              </li>
-            </keyframes>
-          </li>
-          <li Class="Rimworld_Animations.PawnAnimationClip">
             <layer>LayingPawn</layer>
             <keyframes>
               <li>
@@ -658,6 +616,51 @@
                 <bodyOffsetZ>0.073</bodyOffsetZ>
                 <bodyFacing>2</bodyFacing>
                 <headFacing>1</headFacing>
+                <headBob>0</headBob>
+              </li>
+            </keyframes>
+          </li>
+          <li Class="Rimworld_Animations.PawnAnimationClip">
+            <keyframes>
+              <li>
+                <!--Active female right-->
+                <tickDuration>10</tickDuration>
+                <bodyAngle>9.97</bodyAngle>
+                <headAngle>-7.61</headAngle>
+                <bodyOffsetX>0.444</bodyOffsetX>
+                <bodyOffsetZ>0.368</bodyOffsetZ>
+                <bodyFacing>3</bodyFacing>
+                <headFacing>3</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>10</tickDuration>
+                <bodyAngle>23.82</bodyAngle>
+                <headAngle>-6.90</headAngle>
+                <bodyOffsetX>0.432</bodyOffsetX>
+                <bodyOffsetZ>0.403</bodyOffsetZ>
+                <bodyFacing>3</bodyFacing>
+                <headFacing>3</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>10</tickDuration>
+                <bodyAngle>5.19</bodyAngle>
+                <headAngle>-6.19</headAngle>
+                <bodyOffsetX>0.442</bodyOffsetX>
+                <bodyOffsetZ>0.388</bodyOffsetZ>
+                <bodyFacing>3</bodyFacing>
+                <headFacing>3</headFacing>
+                <headBob>0</headBob>
+              </li>
+              <li>
+                <tickDuration>1</tickDuration>
+                <bodyAngle>9.97</bodyAngle>
+                <headAngle>-7.61</headAngle>
+                <bodyOffsetX>0.444</bodyOffsetX>
+                <bodyOffsetZ>0.368</bodyOffsetZ>
+                <bodyFacing>3</bodyFacing>
+                <headFacing>3</headFacing>
                 <headBob>0</headBob>
               </li>
             </keyframes>
