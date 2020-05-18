@@ -45,8 +45,7 @@
       <HintPath>..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="RJW, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="RJW">
       <HintPath>..\rjw-master\1.1\Assemblies\RJW.dll</HintPath>
       <Private>False</Private>
     </Reference>
