@@ -632,7 +632,7 @@
                 <bodyFacing>2</bodyFacing>
                 <headFacing>2</headFacing>
                 <headBob>0</headBob>
-                <genitalAngle>90</genitalAngle>
+                <genitalAngle>180</genitalAngle>
               </li>
               <li>
                 <tickDuration>59</tickDuration>
@@ -652,7 +652,7 @@
                 <bodyFacing>2</bodyFacing>
                 <headFacing>2</headFacing>
                 <headBob>0</headBob>
-                <genitalAngle>90</genitalAngle>
+                <genitalAngle>180</genitalAngle>
               </li>
             </keyframes>
           </li>
@@ -710,7 +710,7 @@
                 <bodyFacing>2</bodyFacing>
                 <headFacing>2</headFacing>
                 <headBob>0</headBob>
-                <genitalAngle>90</genitalAngle>
+                <genitalAngle>180</genitalAngle>
               </li>
               <li>
                 <tickDuration>14</tickDuration>
@@ -730,7 +730,7 @@
                 <bodyFacing>2</bodyFacing>
                 <headFacing>2</headFacing>
                 <headBob>0</headBob>
-                <genitalAngle>90</genitalAngle>
+                <genitalAngle>180</genitalAngle>
               </li>
             </keyframes>
           </li>
@@ -815,7 +815,7 @@
                 <bodyFacing>2</bodyFacing>
                 <headFacing>2</headFacing>
                 <headBob>0</headBob>
-                <genitalAngle>90</genitalAngle>
+                <genitalAngle>180</genitalAngle>
               </li>
               <li>
                 <tickDuration>7</tickDuration>
@@ -864,7 +864,7 @@
                 <bodyFacing>2</bodyFacing>
                 <headFacing>2</headFacing>
                 <headBob>0</headBob>
-                <genitalAngle>90</genitalAngle>
+                <genitalAngle>180</genitalAngle>
               </li>
             </keyframes>
           </li>

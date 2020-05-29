@@ -154,7 +154,7 @@ namespace Rimworld_Animations {
             base.CompTick();
 
             if(isAnimating) {
-                if (pawn?.jobs?.curDriver == null || (pawn?.jobs?.curDriver != null && !(pawn?.jobs?.curDriver is rjw.JobDriver_Sex))) {
+                if (pawn.Dead || pawn?.jobs?.curDriver == null || (pawn?.jobs?.curDriver != null && !(pawn?.jobs?.curDriver is rjw.JobDriver_Sex))) {
                     isAnimating = false;
                 }
                 else {
@@ -309,6 +309,9 @@ namespace Rimworld_Animations {
             Scribe_Values.Look(ref headBob, "headBob");
             Scribe_Values.Look(ref bodyAngle, "bodyAngle");
             Scribe_Values.Look(ref headAngle, "headAngle");
+
+            Scribe_Values.Look(ref genitalAngle, "GenitalAngle");
+            Scribe_Values.Look(ref controlGenitalAngle, "controlGenitalAngle");
 
             Scribe_Values.Look(ref headFacing, "headFacing");
             Scribe_Values.Look(ref headFacing, "bodyFacing");

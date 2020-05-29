@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   <Rimworld_Animations.AnimationDef>
-    <defName>Quadruped_Doggystyle</defName>
-    <label>quadruped doggystyle</label>
+    <defName>Dog_Doggystyle</defName>
+    <label>dog doggystyle</label>
     <sounds>true</sounds>
     <sexTypes>
       <li>Anal</li>
