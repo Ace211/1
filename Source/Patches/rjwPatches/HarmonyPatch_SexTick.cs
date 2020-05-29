@@ -17,6 +17,12 @@ namespace Rimworld_Animations {
 		public static bool Prefix(ref JobDriver_Sex __instance, ref Pawn pawn, ref Thing target, ref bool pawnnude, ref bool partnernude) {
 
 			Pawn pawn2 = target as Pawn;
+
+			if (pawn == null || pawn2 == null) {
+				return true;
+			}
+
+			
 			if (pawn.IsHashIntervalTick(__instance.ticks_between_thrusts)) {
 
 				__instance.Animate(pawn, (Thing)pawn2);
