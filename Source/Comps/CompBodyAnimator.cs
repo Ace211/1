@@ -34,7 +34,7 @@ namespace Rimworld_Animations {
                 PortraitsCache.SetDirty(pawn);
             }
         }
-        private bool Animating;
+        private bool Animating = false;
         private bool mirror = false, quiver = false, shiver = false;
         private int actor;
 
