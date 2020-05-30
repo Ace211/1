@@ -284,8 +284,28 @@ namespace Rimworld_Animations {
 
         public Vector3 getPawnHeadPosition() {
 
-            return anchor + deltaPos + Quaternion.AngleAxis(bodyAngle, Vector3.up) * (pawn.Drawer.renderer.BaseHeadOffsetAt(headFacing) + headBob);
+            Vector3 headPos = anchor + deltaPos + Quaternion.AngleAxis(bodyAngle, Vector3.up) * (pawn.Drawer.renderer.BaseHeadOffsetAt(headFacing) + headBob);
 
+            if (CurrentAnimation?.actors[ActorIndex]?.offsetsByDefName != null && CurrentAnimation.actors[ActorIndex].offsetsByDefName.ContainsKey(pawn.def.defName)) {
+                headPos.x += CurrentAnimation.actors[ActorIndex].offsetsByDefName[pawn.def.defName].x;
+                headPos.z += CurrentAnimation.actors[ActorIndex].offsetsByDefName[pawn.def.defName].y;
+            }
+
+            return headPos;
+
+        }
+
+
+        public AnimationDef CurrentAnimation {
+            get {
+                return anim;
+            }
+        }
+
+        public int ActorIndex {
+            get {
+                return actor;
+            }
         }
 
         public override void PostExposeData() {
