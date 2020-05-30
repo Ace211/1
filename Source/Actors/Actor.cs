@@ -21,9 +21,11 @@ namespace Rimworld_Animations {
         public Vector3 offset = new Vector2(0, 0);
 
         public Dictionary<string, Vector2> offsetsByDefName = new Dictionary<string, Vector2>();
+        public Dictionary<string, float> rotationByDefName = new Dictionary<string, float>();
 
         public void ExposeData() {
             Scribe_Collections.Look(ref offsetsByDefName, "OffsetsSetInOptions", LookMode.Value, LookMode.Value);
+            Scribe_Collections.Look(ref rotationByDefName, "RotationOffsetsFromOptions", LookMode.Value, LookMode.Value);
         }
     }
 }

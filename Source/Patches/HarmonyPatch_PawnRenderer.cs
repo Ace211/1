@@ -44,11 +44,6 @@ namespace Rimworld_Animations {
 				bodyAnim.tickGraphics(graphics);
 				bodyAnim.animatePawn(ref rootLoc, ref angle, ref bodyFacing, ref headFacing);
 
-				if(bodyAnim.CurrentAnimation?.actors[bodyAnim.ActorIndex]?.offsetsByDefName != null && bodyAnim.CurrentAnimation.actors[bodyAnim.ActorIndex].offsetsByDefName.ContainsKey(pawn.def.defName)) {
-					rootLoc.x += bodyAnim.CurrentAnimation.actors[bodyAnim.ActorIndex].offsetsByDefName[pawn.def.defName].x;
-					rootLoc.z += bodyAnim.CurrentAnimation.actors[bodyAnim.ActorIndex].offsetsByDefName[pawn.def.defName].y;
-				}
-
 			}
 		}
 
