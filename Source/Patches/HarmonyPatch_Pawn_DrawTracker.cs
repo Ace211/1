@@ -26,7 +26,6 @@ namespace Rimworld_Animations {
                 return false;
             }
             return true;
-
         }
     }
 }
