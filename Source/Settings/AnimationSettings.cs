@@ -5,12 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Verse;
 using UnityEngine;
+using RimWorld;
 
 namespace Rimworld_Animations {
     public class AnimationSettings : ModSettings {
 
         public static bool orgasmQuiver, rapeShiver, soundOverride = true, hearts = true, controlGenitalRotation = false, applySemenOnAnimationOrgasm = false, fastAnimForQuickie = false;
         public static float shiverIntensity = 2f;
+
+        public static Dictionary<string, Vector2> offsetsByDefName;
 
         public override void ExposeData() {
 
@@ -25,6 +28,7 @@ namespace Rimworld_Animations {
             Scribe_Values.Look(ref soundOverride, "rjwAnimSoundOverride", true);
             Scribe_Values.Look(ref shiverIntensity, "shiverIntensity", 2f);
 
+            //todo: save offsetsByDefName
             
         }
 
@@ -54,9 +58,12 @@ namespace Rimworld_Animations {
             listingStandard.CheckboxLabeled("Enable Rape Shiver", ref AnimationSettings.rapeShiver);
             listingStandard.CheckboxLabeled("Enable hearts during lovin'", ref AnimationSettings.hearts);
 
+            listingStandard.CheckboxLabeled("Enable Offset Tab", ref OffsetMainButtonDefOf.OffsetManager.buttonVisible);
+
             listingStandard.Label("Shiver/Quiver Intensity (default 2): " + AnimationSettings.shiverIntensity);
             AnimationSettings.shiverIntensity = listingStandard.Slider(AnimationSettings.shiverIntensity, 0.0f, 12f);
 
+           
             listingStandard.End();
             base.DoSettingsWindowContents(inRect);
         }

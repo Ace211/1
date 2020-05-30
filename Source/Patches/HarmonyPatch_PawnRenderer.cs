@@ -40,9 +40,14 @@ namespace Rimworld_Animations {
 			}
 
 			
-			if (bodyAnim != null && bodyAnim.isAnimating && !portrait) {
+			if (bodyAnim != null && bodyAnim.isAnimating && !portrait && pawn.Map == Find.CurrentMap) {
 				bodyAnim.tickGraphics(graphics);
-				pawn.TryGetComp<CompBodyAnimator>().animatePawn(ref rootLoc, ref angle, ref bodyFacing, ref headFacing);
+				bodyAnim.animatePawn(ref rootLoc, ref angle, ref bodyFacing, ref headFacing);
+
+				if(bodyAnim.CurrentAnimation?.actors[bodyAnim.ActorIndex]?.offsetsByDefName != null && bodyAnim.CurrentAnimation.actors[bodyAnim.ActorIndex].offsetsByDefName.ContainsKey(pawn.def.defName)) {
+					rootLoc.x += bodyAnim.CurrentAnimation.actors[bodyAnim.ActorIndex].offsetsByDefName[pawn.def.defName].x;
+					rootLoc.z += bodyAnim.CurrentAnimation.actors[bodyAnim.ActorIndex].offsetsByDefName[pawn.def.defName].y;
+				}
 
 			}
 		}

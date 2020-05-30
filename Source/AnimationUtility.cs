@@ -146,7 +146,7 @@ namespace Rimworld_Animations {
 
         public static void RenderPawnHeadMeshInAnimation(Mesh mesh, Vector3 loc, Quaternion quaternion, Material material, bool portrait, Pawn pawn) {
 
-            if(pawn == null) {
+            if(pawn == null || pawn.Map != Find.CurrentMap) {
                 GenDraw.DrawMeshNowOrLater(mesh, loc, quaternion, material, portrait);
                 return;
             }

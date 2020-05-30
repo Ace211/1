@@ -84,7 +84,8 @@
     <Compile Include="Source\Defs\AnimationDef.cs" />
     <Compile Include="Source\JobDrivers\JobDriver_SexBaseRecieverLovedForAnimation.cs" />
     <Compile Include="Source\JobDrivers\JobDriver_SexCasualForAnimation.cs" />
-    <Compile Include="Source\MainTabWindows\MainTabWindow_SexAnimator.cs" />
+    <Compile Include="Source\MainTabWindows\MainTabWindow_OffsetConfigure.cs" />
+    <Compile Include="Source\MainTabWindows\OffsetMainButtonDefOf.cs" />
     <Compile Include="Source\Patches\HarmonyPatch_AlienRace.cs" />
     <Compile Include="Source\Patches\HarmonyPatch_CSL.cs" />
     <Compile Include="Source\Patches\HarmonyPatch_DontShaveYourHead.cs" />
@@ -102,6 +103,15 @@
     <Compile Include="Source\Patches\rjwPatches\HarmonyPatch_WorkGiverSex.cs" />
     <Compile Include="Source\Settings\AnimationSettings.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Defs\AnimationDefs\Animations_Beast.xml" />
+    <Content Include="Defs\AnimationDefs\Animations_Lesbian.xml" />
+    <Content Include="Defs\AnimationDefs\Animations_Masturbate.xml" />
+    <Content Include="Defs\AnimationDefs\Animations_Multi.xml" />
+    <Content Include="Defs\AnimationDefs\Animations_vanilla.xml" />
+    <Content Include="Defs\JobDefs\Jobs_SexForAnim.xml" />
+    <Content Include="Defs\MainTabDefs\MainButtonDef.xml" />
+    <Content Include="Defs\SoundDefs\Sounds_Sex.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
