@@ -52,6 +52,12 @@ namespace Rimworld_Animations {
         private AnimationStage stage => anim.animationStages[curStage];
         private PawnAnimationClip clip => (PawnAnimationClip)stage.animationClips[actor];
 
+        public bool Mirror {
+            get {
+                return mirror;
+            }
+        }
+
         public void setAnchor(IntVec3 pos)
         {
             anchor = pos.ToVector3Shifted();
@@ -172,6 +178,9 @@ namespace Rimworld_Animations {
             bodyFacing = this.bodyFacing;
             headFacing = this.headFacing;
 
+
+
+
         }
 
         public void tickGraphics(PawnGraphicSet graphics) {
@@ -251,21 +260,39 @@ namespace Rimworld_Animations {
         public void calculateDrawValues() {
 
             deltaPos = new Vector3(clip.BodyOffsetX.Evaluate(clipPercent) * (mirror ? -1 : 1), clip.layer.AltitudeFor(), clip.BodyOffsetZ.Evaluate(clipPercent));
+
+            if (CurrentAnimation?.actors[ActorIndex]?.offsetsByDefName != null && CurrentAnimation.actors[ActorIndex].offsetsByDefName.ContainsKey(pawn.def.defName)) {
+                deltaPos.x += CurrentAnimation.actors[ActorIndex].offsetsByDefName[pawn.def.defName].x * (mirror ? -1 : 1);
+                deltaPos.z += CurrentAnimation.actors[ActorIndex].offsetsByDefName[pawn.def.defName].y;
+            }
+
+
             bodyAngle = (clip.BodyAngle.Evaluate(clipPercent) + (quiver || shiver ? ((Rand.Value * AnimationSettings.shiverIntensity) - (AnimationSettings.shiverIntensity / 2f)) : 0f)) * (mirror ? -1 : 1);
+            headAngle = clip.HeadAngle.Evaluate(clipPercent) * (mirror ? -1 : 1);
+
+            if (controlGenitalAngle) {
+                genitalAngle = clip.GenitalAngle.Evaluate(clipPercent) * (mirror ? -1 : 1);
+            }
+
+            if (CurrentAnimation?.actors[ActorIndex]?.rotationByDefName != null && CurrentAnimation.actors[ActorIndex].rotationByDefName.ContainsKey(pawn.def.defName)) {
+                float offsetRotation = CurrentAnimation.actors[ActorIndex].rotationByDefName[pawn.def.defName] * (Mirror ? -1 : 1);
+                genitalAngle += offsetRotation;
+                bodyAngle += offsetRotation;
+                headAngle += offsetRotation;
+            }
+
 
             //don't go past 360 or less than 0
             if (bodyAngle < 0) bodyAngle = 360 - ((-1f*bodyAngle) % 360);
             if (bodyAngle > 360) bodyAngle %= 360;
 
-            headAngle = clip.HeadAngle.Evaluate(clipPercent) * (mirror ? -1 : 1);
+            
             if (headAngle < 0) headAngle = 360 - ((-1f * headAngle) % 360);
             if (headAngle > 360) headAngle %= 360;
 
-            if (controlGenitalAngle) {
-                genitalAngle = clip.GenitalAngle.Evaluate(clipPercent) * (mirror ? -1 : 1);
-                if (genitalAngle < 0) genitalAngle = 360 - ((-1f * genitalAngle) % 360);
-                if (genitalAngle > 360) genitalAngle %= 360;
-            }
+            if (genitalAngle < 0) genitalAngle = 360 - ((-1f * genitalAngle) % 360);
+            if (genitalAngle > 360) genitalAngle %= 360;
+
 
             bodyFacing = mirror ? new Rot4((int)clip.BodyFacing.Evaluate(clipPercent)).Opposite : new Rot4((int)clip.BodyFacing.Evaluate(clipPercent));
 
@@ -285,11 +312,6 @@ namespace Rimworld_Animations {
         public Vector3 getPawnHeadPosition() {
 
             Vector3 headPos = anchor + deltaPos + Quaternion.AngleAxis(bodyAngle, Vector3.up) * (pawn.Drawer.renderer.BaseHeadOffsetAt(headFacing) + headBob);
-
-            if (CurrentAnimation?.actors[ActorIndex]?.offsetsByDefName != null && CurrentAnimation.actors[ActorIndex].offsetsByDefName.ContainsKey(pawn.def.defName)) {
-                headPos.x += CurrentAnimation.actors[ActorIndex].offsetsByDefName[pawn.def.defName].x;
-                headPos.z += CurrentAnimation.actors[ActorIndex].offsetsByDefName[pawn.def.defName].y;
-            }
 
             return headPos;
 

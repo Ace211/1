@@ -18,11 +18,6 @@ namespace Rimworld_Animations {
             if (bodyAnim != null && bodyAnim.isAnimating) {
                 __result = ___pawn.TryGetComp<CompBodyAnimator>().anchor + ___pawn.TryGetComp<CompBodyAnimator>().deltaPos;
 
-                if (bodyAnim.CurrentAnimation?.actors[bodyAnim.ActorIndex]?.offsetsByDefName != null && bodyAnim.CurrentAnimation.actors[bodyAnim.ActorIndex].offsetsByDefName.ContainsKey(___pawn.def.defName)) {
-                    __result.x += bodyAnim.CurrentAnimation.actors[bodyAnim.ActorIndex].offsetsByDefName[___pawn.def.defName].x;
-                    __result.z += bodyAnim.CurrentAnimation.actors[bodyAnim.ActorIndex].offsetsByDefName[___pawn.def.defName].y;
-                }
-
                 return false;
             }
             return true;
