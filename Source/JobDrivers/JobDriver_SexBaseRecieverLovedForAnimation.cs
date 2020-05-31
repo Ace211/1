@@ -11,10 +11,15 @@ namespace Rimworld_Animations {
 		public readonly TargetIndex ipartner = TargetIndex.A;
 		public readonly TargetIndex ibed = TargetIndex.B;
 
+		public override bool TryMakePreToilReservations(bool errorOnFailed) {
+
+			return base.TryMakePreToilReservations(errorOnFailed);
+		}
+
 		protected override IEnumerable<Toil> MakeNewToils() {
+
+
 			setup_ticks();
-			parteners.Add(Partner);// add job starter, so this wont fail, before Initiator starts his job
-								   //--Log.Message("[RJW]JobDriver_GettinLoved::MakeNewToils is called");
 
 			float partner_ability = xxx.get_sex_ability(Partner);
 
@@ -29,6 +34,10 @@ namespace Rimworld_Animations {
 				ticks_between_hearts += 50;
 			else if (pawn.relations.OpinionOf(Partner) > 60)
 				ticks_between_hearts -= 25;
+
+
+			parteners.Add(Partner);// add job starter, so this wont fail, before Initiator starts his job
+								   //--Log.Message("[RJW]JobDriver_GettinLoved::MakeNewToils is called");
 
 			this.FailOnDespawnedOrNull(ipartner);
 			this.FailOn(() => !Partner.health.capacities.CanBeAwake);

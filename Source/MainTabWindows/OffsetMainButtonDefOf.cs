@@ -16,7 +16,6 @@ namespace Rimworld_Animations {
 
         static OffsetMainButtonDefOf() {
             DefOfHelper.EnsureInitializedInCtor(typeof(OffsetMainButtonDefOf));
-            //OffsetManager.buttonVisible = false; 
         }
 
     }
