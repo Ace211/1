@@ -261,9 +261,9 @@ namespace Rimworld_Animations {
 
             deltaPos = new Vector3(clip.BodyOffsetX.Evaluate(clipPercent) * (mirror ? -1 : 1), clip.layer.AltitudeFor(), clip.BodyOffsetZ.Evaluate(clipPercent));
 
-            if (CurrentAnimation?.actors[ActorIndex]?.offsetsByDefName != null && CurrentAnimation.actors[ActorIndex].offsetsByDefName.ContainsKey(pawn.def.defName)) {
-                deltaPos.x += CurrentAnimation.actors[ActorIndex].offsetsByDefName[pawn.def.defName].x * (mirror ? -1 : 1);
-                deltaPos.z += CurrentAnimation.actors[ActorIndex].offsetsByDefName[pawn.def.defName].y;
+            if (AnimationSettings.offsets != null && AnimationSettings.offsets.ContainsKey(CurrentAnimation.defName + pawn.def.defName + ActorIndex)) {
+                deltaPos.x += AnimationSettings.offsets[CurrentAnimation.defName + pawn.def.defName + ActorIndex].x * (mirror ? -1 : 1);
+                deltaPos.z += AnimationSettings.offsets[CurrentAnimation.defName + pawn.def.defName + ActorIndex].y;
             }
 
 
@@ -274,8 +274,8 @@ namespace Rimworld_Animations {
                 genitalAngle = clip.GenitalAngle.Evaluate(clipPercent) * (mirror ? -1 : 1);
             }
 
-            if (CurrentAnimation?.actors[ActorIndex]?.rotationByDefName != null && CurrentAnimation.actors[ActorIndex].rotationByDefName.ContainsKey(pawn.def.defName)) {
-                float offsetRotation = CurrentAnimation.actors[ActorIndex].rotationByDefName[pawn.def.defName] * (Mirror ? -1 : 1);
+            if (AnimationSettings.rotation != null && AnimationSettings.rotation.ContainsKey(CurrentAnimation.defName + pawn.def.defName + ActorIndex)) {
+                float offsetRotation = AnimationSettings.rotation[CurrentAnimation.defName + pawn.def.defName + ActorIndex] * (Mirror ? -1 : 1);
                 genitalAngle += offsetRotation;
                 bodyAngle += offsetRotation;
                 headAngle += offsetRotation;

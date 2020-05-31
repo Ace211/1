@@ -31,22 +31,22 @@ namespace Rimworld_Animations {
 
                 if (curPawn.TryGetComp<CompBodyAnimator>().isAnimating) {
 
-                    Actor curActor = curPawn.TryGetComp<CompBodyAnimator>().CurrentAnimation.actors[curPawn.TryGetComp<CompBodyAnimator>().ActorIndex];
-
+                    AnimationDef def = curPawn.TryGetComp<CompBodyAnimator>().CurrentAnimation;
+                    int ActorIndex = curPawn.TryGetComp<CompBodyAnimator>().ActorIndex;
                     float offsetX = 0, offsetZ = 0, rotation = 0;
 
-                    if (curActor.offsetsByDefName.ContainsKey(curPawn.def.defName)) {
-                        offsetX = curActor.offsetsByDefName[curPawn.def.defName].x;
-                        offsetZ = curActor.offsetsByDefName[curPawn.def.defName].y;
+                    if (AnimationSettings.offsets.ContainsKey(def.defName + curPawn.def.defName + ActorIndex)) {
+                        offsetX = AnimationSettings.offsets[def.defName + curPawn.def.defName + ActorIndex].x;
+                        offsetZ = AnimationSettings.offsets[def.defName + curPawn.def.defName + ActorIndex].y;
                     } else {
-                        curActor.offsetsByDefName.Add(curPawn.def.defName, new Vector2(0, 0));
+                        AnimationSettings.offsets.Add(def.defName + curPawn.def.defName + ActorIndex, new Vector2(0, 0));
                     }
 
-                    if (curActor.rotationByDefName.ContainsKey(curPawn.def.defName)) {
-                        rotation = curActor.rotationByDefName[curPawn.def.defName];
+                    if (AnimationSettings.rotation.ContainsKey(def.defName + curPawn.def.defName + ActorIndex)) {
+                        rotation = AnimationSettings.rotation[def.defName + curPawn.def.defName + ActorIndex];
                     }
                     else {
-                        curActor.rotationByDefName.Add(curPawn.def.defName, 180);
+                        AnimationSettings.rotation.Add(def.defName + curPawn.def.defName + ActorIndex, 0);
                     }
 
 
@@ -72,12 +72,13 @@ namespace Rimworld_Animations {
                         rotation = 0;
                     }
 
-                    if (offsetX != curActor.offsetsByDefName[curPawn.def.defName].x || offsetZ != curActor.offsetsByDefName[curPawn.def.defName].y) {
-                        curActor.offsetsByDefName[curPawn.def.defName] = new Vector2(offsetX, offsetZ);
+                    if (offsetX != AnimationSettings.offsets[def.defName + curPawn.def.defName + ActorIndex].x || offsetZ != AnimationSettings.offsets[def.defName + curPawn.def.defName + ActorIndex].y) {
+                        AnimationSettings.offsets[def.defName + curPawn.def.defName + ActorIndex] = new Vector2(offsetX, offsetZ);
+
                     }
 
-                    if(rotation != curActor.rotationByDefName[curPawn.def.defName]) {
-                        curActor.rotationByDefName[curPawn.def.defName] = rotation;
+                    if(rotation != AnimationSettings.rotation[def.defName + curPawn.def.defName + ActorIndex]) {
+                        AnimationSettings.rotation[def.defName + curPawn.def.defName + ActorIndex] = rotation;
                     }
 
                 }
@@ -92,6 +93,25 @@ namespace Rimworld_Animations {
 
             base.DoWindowContents(inRect);
 
+        }
+
+        public override void PreOpen() {
+            base.PreOpen();
+            if(AnimationSettings.offsets == null) {
+                Log.Message("New offsets");
+                AnimationSettings.offsets = new Dictionary<string, Vector2>();
+            }
+
+            if(AnimationSettings.rotation == null) {
+                Log.Message("New rotation");
+                AnimationSettings.rotation = new Dictionary<string, float>();
+            }
+        }
+
+        public override void PostClose() {
+            base.PostClose();
+
+            LoadedModManager.GetMod<RJW_Animations>().WriteSettings();
         }
     }
 }

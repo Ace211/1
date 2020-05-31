@@ -13,7 +13,8 @@ namespace Rimworld_Animations {
         public static bool orgasmQuiver, rapeShiver, soundOverride = true, hearts = true, controlGenitalRotation = false, applySemenOnAnimationOrgasm = false, fastAnimForQuickie = false;
         public static float shiverIntensity = 2f;
 
-        public static Dictionary<string, Vector2> offsetsByDefName;
+        public static Dictionary<string, Vector2> offsets = new Dictionary<string, Vector2>();
+        public static Dictionary<string, float> rotation = new Dictionary<string, float>();
 
         public override void ExposeData() {
 
@@ -27,9 +28,16 @@ namespace Rimworld_Animations {
             Scribe_Values.Look(ref applySemenOnAnimationOrgasm, "applySemenOnOrgasm", false);
             Scribe_Values.Look(ref soundOverride, "rjwAnimSoundOverride", true);
             Scribe_Values.Look(ref shiverIntensity, "shiverIntensity", 2f);
-
             //todo: save offsetsByDefName
-            
+
+            Scribe_Collections.Look(ref offsets, "animationOffsets");
+            Scribe_Collections.Look(ref rotation, "rotationOffsets");
+
+
+
+            //needs to be rewritten
+            //probably somewhere in options?
+
         }
 
     }
@@ -38,6 +46,7 @@ namespace Rimworld_Animations {
 
         public RJW_Animations(ModContentPack content) : base(content) {
             GetSettings<AnimationSettings>();
+
         }
 
         public override void DoSettingsWindowContents(Rect inRect) {
