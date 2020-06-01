@@ -88,6 +88,7 @@
     <Compile Include="Source\Defs\AnimationDef.cs" />
     <Compile Include="Source\JobDrivers\JobDriver_SexBaseRecieverLovedForAnimation.cs" />
     <Compile Include="Source\JobDrivers\JobDriver_SexCasualForAnimation.cs" />
+    <Compile Include="Source\MainTabWindows\WorldComponent_UpdateMainTab.cs" />
     <Compile Include="Source\MainTabWindows\MainTabWindow_OffsetConfigure.cs" />
     <Compile Include="Source\MainTabWindows\OffsetMainButtonDefOf.cs" />
     <Compile Include="Source\Patches\HarmonyPatch_AlienRace.cs" />
