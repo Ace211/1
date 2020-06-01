@@ -8,6 +8,8 @@
     <tabWindowClass>Rimworld_Animations.MainTabWindow_OffsetConfigure</tabWindowClass>
     <order>54</order>
     <buttonVisible>false</buttonVisible>
+    <iconPath>UI/MainTab</iconPath>
+    <minimized>true</minimized>
   </MainButtonDef>
 
 </Defs>
