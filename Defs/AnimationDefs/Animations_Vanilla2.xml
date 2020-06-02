@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--This is just because the last vanilla got too long-->
+
+<Defs>
+<!--
+  <Rimworld_Animations.AnimationDef>
+    <defName>Missionary</defName>
+    <label>missionary</label>
+    <sounds>true</sounds>
+    <sexTypes>
+      <li>Anal</li>
+      <li>Vaginal</li>
+    </sexTypes>
+
+    <actors>
+
+      <li>
+        <defNames>
+          <li>Human</li>
+        </defNames>
+        <isFucked>true</isFucked>
+        <initiator>false</initiator>
+        <bodyTypeOffset>
+          <Hulk>(-0.2, 0)</Hulk>
+        </bodyTypeOffset>
+      </li>
+
+      <li>
+        <defNames>
+          <li>Human</li>
+        </defNames>
+        <isFucking>true</isFucking>
+        <initiator>true</initiator>
+        <controlGenitalAngle>true</controlGenitalAngle>
+        <bodyTypeOffset>
+          <Hulk>(0, 0.2)</Hulk>
+        </bodyTypeOffset>
+      </li>
+
+    </actors>
+
+    <animationStages>
+      <li>
+        <stageName>breathing</stageName>
+        <isLooping>true</isLooping>
+        <playTimeTicks>1340</playTimeTicks>
+        <stageIndex>0</stageIndex>
+        <animationClips>
+          <li Class="Rimworld_Animations.PawnAnimationClip">
+            <keyframes>
+              <li>
+                <tickDuration>40</tickDuration>
+                <bodyAngle>-77.75698</bodyAngle>
+                <headAngle>-61.0781555</headAngle>
+                <genitalAngle>0</genitalAngle>
+                <bodyOffsetZ>0.102672577</bodyOffsetZ>
+                <bodyOffsetX>-0.293373376</bodyOffsetX>
+                <headBob>0</headBob>
+                <bodyFacing>1</bodyFacing>
+                <headFacing>1</headFacing>
+                <soundEffect/>
+                <quiver>false</quiver>
+              </li>
+              <li>
+                <tickDuration>40</tickDuration>
+                <bodyAngle>-68.58234</bodyAngle>
+                <headAngle>-51.9035034</headAngle>
+                <genitalAngle>0</genitalAngle>
+                <bodyOffsetZ>0.112280637</bodyOffsetZ>
+                <bodyOffsetX>-0.270739377</bodyOffsetX>
+                <headBob>0</headBob>
+                <bodyFacing>1</bodyFacing>
+                <headFacing>1</headFacing>
+                <soundEffect/>
+                <quiver>false</quiver>
+              </li>
+              <li>
+                <tickDuration>1</tickDuration>
+                <bodyAngle>-77.75698</bodyAngle>
+                <headAngle>-61.0781555</headAngle>
+                <genitalAngle>0</genitalAngle>
+                <bodyOffsetZ>0.102672577</bodyOffsetZ>
+                <bodyOffsetX>-0.293373376</bodyOffsetX>
+                <headBob>0</headBob>
+                <bodyFacing>1</bodyFacing>
+                <headFacing>1</headFacing>
+                <soundEffect/>
+                <quiver>false</quiver>
+              </li>
+            </keyframes>
+          </li>
+          <li Class="Rimworld_Animations.PawnAnimationClip">
+            <layer>LayingPawn</layer>
+            <keyframes>
+              <li>
+                <tickDuration>40</tickDuration>
+                <bodyAngle>-12.2784309</bodyAngle>
+                <headAngle>-9.951447</headAngle>
+                <genitalAngle>0</genitalAngle>
+                <bodyOffsetZ>0.2986659</bodyOffsetZ>
+                <bodyOffsetX>0.185442165</bodyOffsetX>
+                <headBob>0</headBob>
+                <bodyFacing>3</bodyFacing>
+                <headFacing>3</headFacing>
+                <soundEffect/>
+                <quiver>false</quiver>
+              </li>
+              <li>
+                <tickDuration>40</tickDuration>
+                <bodyAngle>-12.2784309</bodyAngle>
+                <headAngle>-14.1778421</headAngle>
+                <genitalAngle>0</genitalAngle>
+                <bodyOffsetZ>0.3229217</bodyOffsetZ>
+                <bodyOffsetX>0.181031</bodyOffsetX>
+                <headBob>0</headBob>
+                <bodyFacing>3</bodyFacing>
+                <headFacing>3</headFacing>
+                <soundEffect/>
+                <quiver>false</quiver>
+              </li>
+              <li>
+                <tickDuration>1</tickDuration>
+                <bodyAngle>-12.2784309</bodyAngle>
+                <headAngle>-9.951447</headAngle>
+                <genitalAngle>0</genitalAngle>
+                <bodyOffsetZ>0.2986659</bodyOffsetZ>
+                <bodyOffsetX>0.185442165</bodyOffsetX>
+                <headBob>0</headBob>
+                <bodyFacing>3</bodyFacing>
+                <headFacing>3</headFacing>
+                <soundEffect/>
+                <quiver>false</quiver>
+              </li>
+            </keyframes>
+          </li>
+        </animationClips>
+      </li>
+    </animationStages>
+
+  </Rimworld_Animations.AnimationDef>
+  -->
+</Defs>

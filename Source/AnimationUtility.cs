@@ -78,10 +78,10 @@ namespace Rimworld_Animations {
 
                     //TESTING ANIMATIONS ONLY REMEMBER TO COMMENT OUT BEFORE PUSH
                     /*
-                    if (x.defName != "Doggystyle")
+                    if (x.defName != "Missionary")
                         return false;
-                    */
                     
+                    */
 
                     if (x.actors[i].isFucking && !rjw.xxx.can_fuck(localParticipants[i])) {
                         Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " can't fuck");
