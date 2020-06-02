@@ -19,23 +19,26 @@ namespace Rimworld_Animations {
             //aggressors last
             participants = participants.OrderBy(p => p.jobs.curDriver is rjw.JobDriver_SexBaseInitiator).ToList();
 
-            //fucked first, fucking second
-            participants = participants.OrderBy(p => rjw.xxx.can_fuck(p)).ToList();
-
-            if(rjw.RJWPreferenceSettings.Malesex == rjw.RJWPreferenceSettings.AllowedSex.Nohomo) {
-                participants = participants.OrderBy(x => rjw.xxx.is_male(x)).ToList();
-            }
-
+            //animal anims don't matter who is initiator
+            participants = participants.OrderBy(p => rjw.xxx.is_animal(p)).ToList();
             List<Pawn> localParticipants = new List<Pawn>(participants);
 
             IEnumerable<AnimationDef> options = DefDatabase<AnimationDef>.AllDefs.Where((AnimationDef x) => {
+
+
 
                 if (x.actors.Count != localParticipants.Count) {
                     return false;
                 }
                 for (int i = 0; i < x.actors.Count; i++) {
 
-                    if((x.actors[i].blacklistedRaces != null) && x.actors[i].blacklistedRaces.Contains(localParticipants[i].def.defName)) {
+                    if (rjw.RJWPreferenceSettings.Malesex == rjw.RJWPreferenceSettings.AllowedSex.Nohomo) {
+                        if (rjw.xxx.is_male(localParticipants[i]) && x.actors[i].isFucked) {
+                            return false;
+                        }
+                }
+
+                    if ((x.actors[i].blacklistedRaces != null) && x.actors[i].blacklistedRaces.Contains(localParticipants[i].def.defName)) {
                         if (rjw.RJWSettings.DevMode) {
                             Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " is blacklisted");
                         }

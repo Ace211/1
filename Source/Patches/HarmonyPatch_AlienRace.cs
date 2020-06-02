@@ -77,10 +77,8 @@ namespace Rimworld_Animations {
 
 				
 
-				Vector2 bodyOffset = (portrait ? offset?.portraitBodyTypes ?? offset?.bodyTypes : offset?.bodyTypes)?.FirstOrDefault(predicate: to => to.bodyType == pawn.story.bodyType)
-								   ?.offset ?? Vector2.zero;
-				Vector2 crownOffset = (portrait ? offset?.portraitCrownTypes ?? offset?.crownTypes : offset?.crownTypes)?.FirstOrDefault(predicate: to => to.crownType == alienComp.crownType)
-									?.offset ?? Vector2.zero;
+				Vector2 bodyOffset = ((!portrait) ? offset?.bodyTypes : (offset?.portraitBodyTypes ?? offset?.bodyTypes))?.FirstOrDefault((AlienPartGenerator.BodyTypeOffset to) => to.bodyType == pawn.story.bodyType)?.offset ?? Vector2.zero;
+				Vector2 crownOffset = ((!portrait) ? offset?.crownTypes : (offset?.portraitCrownTypes ?? offset?.crownTypes))?.FirstOrDefault((AlienPartGenerator.CrownTypeOffset to) => to.crownType == alienComp.crownType)?.offset ?? Vector2.zero;
 
 				//Defaults for tails 
 				//south 0.42f, -0.3f, -0.22f

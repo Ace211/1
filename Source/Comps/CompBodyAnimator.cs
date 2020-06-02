@@ -38,6 +38,8 @@ namespace Rimworld_Animations {
         private bool mirror = false, quiver = false, shiver = false;
         private int actor;
 
+        private int lastDrawFrame = -1;
+
         private int animTicks = 0, stageTicks = 0, clipTicks = 0;
         private int curStage = 0;
         private float clipPercent = 0;
@@ -259,6 +261,10 @@ namespace Rimworld_Animations {
 
         public void calculateDrawValues() {
 
+            if(Find.TickManager.TickRateMultiplier > 1 && (lastDrawFrame + 1 >= RealTime.frameCount || RealTime.deltaTime < 0.05f)) {
+                return;
+            }
+
             deltaPos = new Vector3(clip.BodyOffsetX.Evaluate(clipPercent) * (mirror ? -1 : 1), clip.layer.AltitudeFor(), clip.BodyOffsetZ.Evaluate(clipPercent));
 
             if (AnimationSettings.offsets != null && AnimationSettings.offsets.ContainsKey(CurrentAnimation.defName + pawn.def.defName + ActorIndex)) {
@@ -306,6 +312,8 @@ namespace Rimworld_Animations {
                 headFacing = headFacing.Opposite;
             }
             headBob = new Vector3(0, 0, clip.HeadBob.Evaluate(clipPercent));
+
+            lastDrawFrame = RealTime.frameCount;
 
         }
 
