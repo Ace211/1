@@ -104,6 +104,8 @@ namespace Rimworld_Animations {
         }
         public void StartAnimation(AnimationDef anim, int actor, bool mirror = false, bool shiver = false, bool fastAnimForQuickie = false) {
 
+            isAnimating = true;
+
             AlienRaceOffset raceOffset = anim?.actors[actor]?.raceOffsets?.Find(x => x.defName == pawn.def.defName);
 
             if (raceOffset != null) {
@@ -153,8 +155,6 @@ namespace Rimworld_Animations {
 
             //tick once for initialization
             tickAnim();
-
-            isAnimating = true;
 
         }
         public override void CompTick() {

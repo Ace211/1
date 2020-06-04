@@ -114,7 +114,6 @@
     <Content Include="Defs\AnimationDefs\Animations_Masturbate.xml" />
     <Content Include="Defs\AnimationDefs\Animations_Multi.xml" />
     <Content Include="Defs\AnimationDefs\Animations_vanilla.xml" />
-    <Content Include="Defs\AnimationDefs\Animations_Vanilla2.xml" />
     <Content Include="Defs\JobDefs\Jobs_SexForAnim.xml" />
     <Content Include="Defs\MainTabDefs\MainButtonDef.xml" />
     <Content Include="Defs\SoundDefs\Sounds_Sex.xml" />
