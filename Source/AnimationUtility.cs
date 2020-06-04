@@ -19,8 +19,10 @@ namespace Rimworld_Animations {
             //aggressors last
             participants = participants.OrderBy(p => p.jobs.curDriver is rjw.JobDriver_SexBaseInitiator).ToList();
 
-            //animal anims don't matter who is initiator
-            participants = participants.OrderBy(p => rjw.xxx.is_animal(p)).ToList();
+            //pawns that can fuck first
+            participants = participants.OrderBy(p => rjw.xxx.can_fuck(p)).ToList();
+
+
             List<Pawn> localParticipants = new List<Pawn>(participants);
 
             IEnumerable<AnimationDef> options = DefDatabase<AnimationDef>.AllDefs.Where((AnimationDef x) => {
