@@ -104,8 +104,6 @@ namespace Rimworld_Animations {
         }
         public void StartAnimation(AnimationDef anim, int actor, bool mirror = false, bool shiver = false, bool fastAnimForQuickie = false) {
 
-            isAnimating = true;
-
             AlienRaceOffset raceOffset = anim?.actors[actor]?.raceOffsets?.Find(x => x.defName == pawn.def.defName);
 
             if (raceOffset != null) {
@@ -153,8 +151,11 @@ namespace Rimworld_Animations {
 
             controlGenitalAngle = anim.actors[actor].controlGenitalAngle;
 
+            isAnimating = true;
             //tick once for initialization
             tickAnim();
+
+            
 
         }
         public override void CompTick() {
@@ -261,9 +262,9 @@ namespace Rimworld_Animations {
 
         public void calculateDrawValues() {
 
-            if(Find.TickManager.TickRateMultiplier > 1 && (lastDrawFrame + 1 >= RealTime.frameCount || RealTime.deltaTime < 0.05f)) {
+            /*if(Find.TickManager.TickRateMultiplier > 1 && (lastDrawFrame + 1 >= RealTime.frameCount || RealTime.deltaTime < 0.05f)) {
                 return;
-            }
+            }*/
 
             deltaPos = new Vector3(clip.BodyOffsetX.Evaluate(clipPercent) * (mirror ? -1 : 1), clip.layer.AltitudeFor(), clip.BodyOffsetZ.Evaluate(clipPercent));
 

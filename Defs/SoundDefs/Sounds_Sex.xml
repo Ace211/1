@@ -188,8 +188,8 @@
           </li>
         </grains>
         <volumeRange>
-          <min>15</min>
-          <max>25</max>
+          <min>45</min>
+          <max>75</max>
         </volumeRange>
         <pitchRange>
           <min>1.4</min>
@@ -197,7 +197,7 @@
         </pitchRange>
         <distRange>
           <min>0</min>
-          <max>25</max>
+          <max>100</max>
         </distRange>
         <repeatMode>NeverTwice</repeatMode>
         <sustainLoop>false</sustainLoop>
