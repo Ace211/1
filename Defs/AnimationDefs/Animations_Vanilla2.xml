@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
 <Defs>
+  <!--
   <Rimworld_Animations.AnimationDef>
     <defName>Missionary</defName>
     <label>missionary</label>
@@ -10,7 +12,6 @@
     </sexTypes>
     <actors>
       <li>
-        <!--each type cooresponds to an animation clip in each animationStage-->
         <defNames>
           <li>Human</li>
         </defNames>
@@ -370,4 +371,7 @@
       </li>
     </animationStages>
   </Rimworld_Animations.AnimationDef>
-</Defs>
+  -->
+  </Defs>
+
+  
