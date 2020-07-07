@@ -56,7 +56,8 @@ namespace Rimworld_Animations {
                             return false;
                         }
                         
-                    } else {
+                    }
+                    else if (!x.actors[i].bodyDefTypes.Contains(localParticipants[i].RaceProps.body)) {
 
                         if (!x.actors[i].defNames.Contains(localParticipants[i].def.defName)) {
 

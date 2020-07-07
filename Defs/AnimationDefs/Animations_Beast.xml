@@ -36,6 +36,10 @@
           <li>AEXP_CatMaineCoon</li>
           <li>AEXP_CatSphynx</li>
         </defNames>
+        <bodyDefTypes>
+          <li>QuadrupedAnimalWithHooves</li>
+          <li>QuadrupedAnimalWithPawsAndTail</li>
+        </bodyDefTypes>
         <isFucking>true</isFucking>
         <initiator>true</initiator>
       </li>
