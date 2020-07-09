@@ -19,8 +19,10 @@ namespace Rimworld_Animations {
             //aggressors last
             participants = participants.OrderBy(p => p.jobs.curDriver is rjw.JobDriver_SexBaseInitiator).ToList();
 
-            //pawns that can fuck first
+            //pawns that can fuck last
             participants = participants.OrderBy(p => rjw.xxx.can_fuck(p)).ToList();
+
+            participants = participants.OrderByDescending(p => rjw.GenderHelper.GetSex(p) == rjw.GenderHelper.Sex.futa).ToList();
 
 
             List<Pawn> localParticipants = new List<Pawn>(participants);
@@ -72,22 +74,60 @@ namespace Rimworld_Animations {
                             return false;
                         }
                     }
+                    //genitals checking
+                    if(x.actors[i].requiredGenitals != null) {
+                        if (x.actors[i].requiredGenitals.Contains("Vagina")) {
 
-                    if(x.actors[i].requiredGenitals != null && x.actors[i].requiredGenitals.Contains("Vagina")) {
+                            if (!rjw.Genital_Helper.has_vagina(localParticipants[i])) {
+                                Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have vagina");
+                                return false;
+                            }
 
-                        if (!rjw.Genital_Helper.has_vagina(localParticipants[i])) {
-                            Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have vagina");
-                            return false;
-                        } 
+                        }
 
+                        if (x.actors[i].requiredGenitals.Contains("Penis")) {
+
+                            if (!(rjw.Genital_Helper.has_multipenis(localParticipants[i]) || rjw.Genital_Helper.has_penis_infertile(localParticipants[i]) || rjw.Genital_Helper.has_penis_fertile(localParticipants[i]))) {
+                                Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have penis");
+                                return false;
+                            }
+
+                        }
+
+                        if (x.actors[i].requiredGenitals.Contains("Mouth")) {
+
+                            if (!rjw.Genital_Helper.has_mouth(localParticipants[i])) {
+                                Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have mouth");
+                                return false;
+                            }
+
+                        }
+
+                        if (x.actors[i].requiredGenitals.Contains("Anus")) {
+
+                            if (!rjw.Genital_Helper.has_anus(localParticipants[i])) {
+                                Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have anus");
+                                return false;
+                            }
+
+                        }
+
+                        if(x.actors[i].requiredGenitals.Contains("Breasts")) {
+                            if (!rjw.Genital_Helper.can_do_breastjob(localParticipants[i])) {
+                                Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have breasts");
+                                return false;
+                            }
+                        }
                     }
+
+                    
 
                     //TESTING ANIMATIONS ONLY REMEMBER TO COMMENT OUT BEFORE PUSH
                     /*
                     if (x.defName != "Missionary")
                         return false;
                     */
-                   
+
 
                     if (x.actors[i].isFucking && !rjw.xxx.can_fuck(localParticipants[i])) {
                         Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " can't fuck");
