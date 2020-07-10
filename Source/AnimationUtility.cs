@@ -118,6 +118,49 @@ namespace Rimworld_Animations {
                                 return false;
                             }
                         }
+
+                        if (x.actors[i].requiredGenitals.Contains("NoVagina")) {
+
+                            if (rjw.Genital_Helper.has_vagina(localParticipants[i])) {
+                                Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " has vagina");
+                                return false;
+                            }
+
+                        }
+
+                        if (x.actors[i].requiredGenitals.Contains("NoPenis")) {
+
+                            if ((rjw.Genital_Helper.has_multipenis(localParticipants[i]) || rjw.Genital_Helper.has_penis_infertile(localParticipants[i]) || rjw.Genital_Helper.has_penis_fertile(localParticipants[i]))) {
+                                Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " has penis");
+                                return false;
+                            }
+
+                        }
+
+                        if (x.actors[i].requiredGenitals.Contains("NoMouth")) {
+
+                            if (rjw.Genital_Helper.has_mouth(localParticipants[i])) {
+                                Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " has mouth");
+                                return false;
+                            }
+
+                        }
+
+                        if (x.actors[i].requiredGenitals.Contains("NoAnus")) {
+
+                            if (rjw.Genital_Helper.has_anus(localParticipants[i])) {
+                                Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " has anus");
+                                return false;
+                            }
+
+                        }
+
+                        if (x.actors[i].requiredGenitals.Contains("NoBreasts")) {
+                            if (rjw.Genital_Helper.can_do_breastjob(localParticipants[i])) {
+                                Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " has breasts");
+                                return false;
+                            }
+                        }
                     }
 
                     
