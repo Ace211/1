@@ -29,7 +29,7 @@ namespace Rimworld_Animations {
 
 				__instance.Animate(pawn, pawn2);
 
-				if (!AnimationSettings.soundOverride || !pawn.TryGetComp<CompBodyAnimator>().isAnimating) {
+				if (!AnimationSettings.soundOverride || pawn.TryGetComp<CompBodyAnimator>() == null || !pawn.TryGetComp<CompBodyAnimator>().isAnimating) {
 					__instance.PlaySexSound();
 				}
 

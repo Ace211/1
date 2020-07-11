@@ -19,10 +19,10 @@ namespace Rimworld_Animations {
             //aggressors last
             participants = participants.OrderBy(p => p.jobs.curDriver is rjw.JobDriver_SexBaseInitiator).ToList();
 
+            participants = participants.OrderByDescending(p => rjw.GenderHelper.GetSex(p) == rjw.GenderHelper.Sex.futa).ToList();
+
             //pawns that can fuck last
             participants = participants.OrderBy(p => rjw.xxx.can_fuck(p)).ToList();
-
-            participants = participants.OrderByDescending(p => rjw.GenderHelper.GetSex(p) == rjw.GenderHelper.Sex.futa).ToList();
 
 
             List<Pawn> localParticipants = new List<Pawn>(participants);
