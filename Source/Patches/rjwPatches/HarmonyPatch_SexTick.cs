@@ -25,6 +25,8 @@ namespace Rimworld_Animations {
 			
 			if (pawn.IsHashIntervalTick(__instance.ticks_between_thrusts)) {
 
+				__instance.ChangePsyfocus(pawn, pawn2);
+
 				__instance.Animate(pawn, pawn2);
 
 				if (!AnimationSettings.soundOverride || !pawn.TryGetComp<CompBodyAnimator>().isAnimating) {

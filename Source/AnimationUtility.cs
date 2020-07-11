@@ -167,7 +167,7 @@ namespace Rimworld_Animations {
 
                     //TESTING ANIMATIONS ONLY REMEMBER TO COMMENT OUT BEFORE PUSH
                     /*
-                    if (x.defName != "Missionary")
+                    if (x.defName != "Horse_Cowgirl")
                         return false;
                     */
 
