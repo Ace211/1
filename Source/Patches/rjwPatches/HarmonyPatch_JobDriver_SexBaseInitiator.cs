@@ -55,15 +55,15 @@ namespace Rimworld_Animations {
 				bool quickie = (__instance is JobDriver_SexQuick) && AnimationSettings.fastAnimForQuickie;
 
 				if (bed != null) {
-					RerollAnimations(Target, __instance.duration, bed as Thing, __instance.sexType, quickie);
+					RerollAnimations(Target, __instance.duration, bed as Thing, __instance.sexType, quickie, sexProps: __instance.Sexprops);
 				}
 				else {
-					RerollAnimations(Target, __instance.duration, sexType: __instance.sexType, fastAnimForQuickie: quickie);
+					RerollAnimations(Target, __instance.duration, sexType: __instance.sexType, fastAnimForQuickie: quickie, sexProps: __instance.Sexprops);
 				}
 			}
 		}
 
-		public static void RerollAnimations(Pawn pawn, int duration, Thing bed = null, xxx.rjwSextype sexType = xxx.rjwSextype.None, bool fastAnimForQuickie = false) {
+		public static void RerollAnimations(Pawn pawn, int duration, Thing bed = null, xxx.rjwSextype sexType = xxx.rjwSextype.None, bool fastAnimForQuickie = false, rjw.SexProps sexProps = null) {
 
 			if(pawn == null || !(pawn.jobs?.curDriver is JobDriver_SexBaseReciever)) {
 				Log.Message("Error: Tried to reroll animations when pawn isn't sexing");
@@ -76,7 +76,7 @@ namespace Rimworld_Animations {
 				pawnsToAnimate = pawnsToAnimate.Append(pawn).ToList();
 			}
 
-			AnimationDef anim = AnimationUtility.tryFindAnimation(ref pawnsToAnimate, sexType);
+			AnimationDef anim = AnimationUtility.tryFindAnimation(ref pawnsToAnimate, sexType, sexProps);
 
 			if (anim != null) {
 

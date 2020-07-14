@@ -14,10 +14,12 @@ namespace Rimworld_Animations {
          Note: always make the list in this order:
              Female pawns, animal female pawns, male pawns, animal male pawns
         */
-        public static AnimationDef tryFindAnimation(ref List<Pawn> participants, rjw.xxx.rjwSextype sexType = 0) {
+        public static AnimationDef tryFindAnimation(ref List<Pawn> participants, rjw.xxx.rjwSextype sexType = 0, rjw.SexProps sexProps = null) {
 
             //aggressors last
             participants = participants.OrderBy(p => p.jobs.curDriver is rjw.JobDriver_SexBaseInitiator).ToList();
+
+            participants = participants.OrderBy(p => p == sexProps.Giver).ToList();
 
             participants = participants.OrderByDescending(p => rjw.GenderHelper.GetSex(p) == rjw.GenderHelper.Sex.futa).ToList();
 
@@ -28,7 +30,6 @@ namespace Rimworld_Animations {
             List<Pawn> localParticipants = new List<Pawn>(participants);
 
             IEnumerable<AnimationDef> options = DefDatabase<AnimationDef>.AllDefs.Where((AnimationDef x) => {
-
 
 
                 if (x.actors.Count != localParticipants.Count) {
@@ -191,7 +192,15 @@ namespace Rimworld_Animations {
 
                     //if the animation not for initiators, but an initiator is playing it
 
-                    if (x.actors[i].initiator && !(localParticipants[i].jobs.curDriver is rjw.JobDriver_SexBaseInitiator)) {
+                    if(sexProps != null) {
+
+                        if(x.actors[i].initiator && localParticipants[i] == sexProps.Reciever) {
+                            initiatorsAlignWithSexType = false;
+                        }
+
+                    }
+
+                    else if (x.actors[i].initiator && !(localParticipants[i].jobs.curDriver is rjw.JobDriver_SexBaseInitiator)) {
                         initiatorsAlignWithSexType = false;
                     }
                 }
@@ -203,7 +212,15 @@ namespace Rimworld_Animations {
 
                     //if the animation not for initiators, but an initiator is playing it
 
-                    if (x.actors[i].initiator && !(localParticipants[i].jobs.curDriver is rjw.JobDriver_SexBaseInitiator)) {
+                    if (sexProps != null) {
+
+                        if (x.actors[i].initiator && localParticipants[i] == sexProps.Giver) {
+                            initiatorsAlignWithSexType = false;
+                        }
+
+                    }
+
+                    else if (x.actors[i].initiator && !(localParticipants[i].jobs.curDriver is rjw.JobDriver_SexBaseInitiator)) {
                         initiatorsAlignWithSexType = false;
                     }
                 }
