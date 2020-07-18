@@ -23,8 +23,7 @@ namespace Rimworld_Animations {
 			}
 
 			if(__instance is JobDriver_JoinInBed) {
-				Log.Warning("Tried to start wrong JobDriver with Rimworld-Animations installed. If you see this warning soon after installing this mod, it's fine and animated sex will start soon. If you see this a long time after installing, that's a problem.");	
-				return;
+				Log.Warning("Playing regular RJW joininbed jobdriver, if it animates properly ignore this warning");	
 			}
 
 			Pawn pawn = __instance.pawn;
