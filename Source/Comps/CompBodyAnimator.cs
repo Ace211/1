@@ -45,7 +45,7 @@ namespace Rimworld_Animations {
         private float clipPercent = 0;
 
         public Vector3 anchor, deltaPos, headBob;
-        public float bodyAngle, headAngle, genitalAngle;
+        public float bodyAngle, headAngle, genitalAngle = 0;
         public Rot4 headFacing, bodyFacing;
 
         public bool controlGenitalAngle = false;
