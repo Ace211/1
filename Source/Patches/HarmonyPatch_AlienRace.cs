@@ -79,9 +79,9 @@ namespace Rimworld_Animations {
 				
 
 				Vector2 bodyOffset = (portrait ? offset?.portraitBodyTypes ?? offset?.bodyTypes : offset?.bodyTypes)?.FirstOrDefault(predicate: to => to.bodyType == pawn.story.bodyType)
-								   ?.offset ?? Vector2.zero;
-				Vector2 crownOffset = (portrait ? offset?.portraitCrownTypes ?? offset?.crownTypes : offset?.crownTypes)?.FirstOrDefault(predicate: to => to.crownType == alienComp.crownType)
-									?.offset ?? Vector2.zero;
+                                   ?.offset ?? Vector2.zero;
+                Vector2 crownOffset = (portrait ? offset?.portraitCrownTypes ?? offset?.crownTypes : offset?.crownTypes)?.FirstOrDefault(predicate: to => to.crownType == alienComp.crownType)
+                                    ?.offset ?? Vector2.zero;
 
 				//Defaults for tails 
 				//south 0.42f, -0.3f, -0.22f
@@ -130,7 +130,7 @@ namespace Rimworld_Animations {
 				else {
 
 					Quaternion addonRotation = quat;
-					if (AnimationSettings.controlGenitalRotation && pawnAnimator.controlGenitalAngle && ba.hediffGraphics[0] != null && (ba.hediffGraphics[0].path.Contains("Penis") || ba.hediffGraphics[0].path.Contains("penis"))) {
+					if (AnimationSettings.controlGenitalRotation && pawnAnimator.controlGenitalAngle && ba.hediffGraphics[0]?.path != null && (ba.hediffGraphics[0].path.Contains("Penis") || ba.hediffGraphics[0].path.Contains("penis"))) {
 						addonRotation = Quaternion.AngleAxis(angle: pawnAnimator.genitalAngle, axis: Vector3.up);
 					}
 

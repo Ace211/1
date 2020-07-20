@@ -38,13 +38,15 @@ namespace Rimworld_Animations {
         private bool mirror = false, quiver = false, shiver = false;
         private int actor;
 
+        private int lastDrawFrame = -1;
+
         private int animTicks = 0, stageTicks = 0, clipTicks = 0;
         private int curStage = 0;
         private float clipPercent = 0;
 
-        public Vector3 anchor, deltaPos, headBob;
-        public float bodyAngle, headAngle, genitalAngle;
-        public Rot4 headFacing, bodyFacing;
+        public Vector3 anchor = Vector3.zero, deltaPos = Vector3.zero, headBob = Vector3.zero;
+        public float bodyAngle = 0, headAngle = 0, genitalAngle = 0;
+        public Rot4 headFacing = Rot4.North, bodyFacing = Rot4.North;
 
         public bool controlGenitalAngle = false;
 
@@ -102,8 +104,6 @@ namespace Rimworld_Animations {
         }
         public void StartAnimation(AnimationDef anim, int actor, bool mirror = false, bool shiver = false, bool fastAnimForQuickie = false) {
 
-            isAnimating = true;
-
             AlienRaceOffset raceOffset = anim?.actors[actor]?.raceOffsets?.Find(x => x.defName == pawn.def.defName);
 
             if (raceOffset != null) {
@@ -151,8 +151,11 @@ namespace Rimworld_Animations {
 
             controlGenitalAngle = anim.actors[actor].controlGenitalAngle;
 
+            isAnimating = true;
             //tick once for initialization
             tickAnim();
+
+            
 
         }
         public override void CompTick() {
@@ -259,6 +262,10 @@ namespace Rimworld_Animations {
 
         public void calculateDrawValues() {
 
+            /*if(Find.TickManager.TickRateMultiplier > 1 && (lastDrawFrame + 1 >= RealTime.frameCount || RealTime.deltaTime < 0.05f)) {
+                return;
+            }*/
+
             deltaPos = new Vector3(clip.BodyOffsetX.Evaluate(clipPercent) * (mirror ? -1 : 1), clip.layer.AltitudeFor(), clip.BodyOffsetZ.Evaluate(clipPercent));
 
             if (AnimationSettings.offsets != null && AnimationSettings.offsets.ContainsKey(CurrentAnimation.defName + pawn.def.defName + ActorIndex)) {
@@ -306,6 +313,8 @@ namespace Rimworld_Animations {
                 headFacing = headFacing.Opposite;
             }
             headBob = new Vector3(0, 0, clip.HeadBob.Evaluate(clipPercent));
+
+            lastDrawFrame = RealTime.frameCount;
 
         }
 
