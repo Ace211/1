@@ -44,9 +44,9 @@ namespace Rimworld_Animations {
         private int curStage = 0;
         private float clipPercent = 0;
 
-        public Vector3 anchor, deltaPos, headBob;
-        public float bodyAngle, headAngle, genitalAngle = 0;
-        public Rot4 headFacing, bodyFacing;
+        public Vector3 anchor = Vector3.zero, deltaPos = Vector3.zero, headBob = Vector3.zero;
+        public float bodyAngle = 0, headAngle = 0, genitalAngle = 0;
+        public Rot4 headFacing = Rot4.North, bodyFacing = Rot4.North;
 
         public bool controlGenitalAngle = false;
 
