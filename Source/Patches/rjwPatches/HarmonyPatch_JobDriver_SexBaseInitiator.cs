@@ -22,10 +22,6 @@ namespace Rimworld_Animations {
 				return;
 			}
 
-			if(__instance is JobDriver_JoinInBed) {
-				Log.Warning("Playing regular RJW joininbed jobdriver, if it animates properly ignore this warning");	
-			}
-
 			Pawn pawn = __instance.pawn;
 
 			Building_Bed bed = __instance.Bed;

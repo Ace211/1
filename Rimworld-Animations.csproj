@@ -104,6 +104,7 @@
     <Compile Include="Source\Patches\rjwPatches\HarmonyPatch_DrawSemen.cs" />
     <Compile Include="Source\Patches\rjwPatches\HarmonyPatch_JobDriver_SexBaseInitiator.cs" />
     <Compile Include="Source\Patches\rjwPatches\HarmonyPatch_JoinInBedGiveJob.cs" />
+    <Compile Include="Source\Patches\rjwPatches\HarmonyPatch_PlayAnimJoinInBedRMB.cs" />
     <Compile Include="Source\Patches\rjwPatches\HarmonyPatch_SexTick.cs" />
     <Compile Include="Source\Patches\rjwPatches\HarmonyPatch_WorkGiverSex.cs" />
     <Compile Include="Source\Settings\AnimationSettings.cs" />
