@@ -18,7 +18,7 @@ namespace Rimworld_Animations {
 			 These particular jobs need special code
 			 don't play anim for now
 			 */
-			if(__instance is JobDriver_Masturbate_Bed || __instance is JobDriver_Masturbate_Quick || __instance is JobDriver_ViolateCorpse) {
+			if(__instance is JobDriver_Masturbate || __instance is JobDriver_ViolateCorpse) {
 				return;
 			}
 
@@ -26,6 +26,7 @@ namespace Rimworld_Animations {
 
 			Building_Bed bed = __instance.Bed;
 
+			/*
 			if (__instance is JobDriver_BestialityForFemale)
 				bed = (__instance as JobDriver_BestialityForFemale).Bed;
 			else if (__instance is JobDriver_WhoreIsServingVisitors) {
@@ -34,10 +35,12 @@ namespace Rimworld_Animations {
 			else if (__instance is JobDriver_SexCasualForAnimation) {
 				bed = (__instance as JobDriver_SexCasualForAnimation).Bed;
 			}
-			else if (__instance is JobDriver_Masturbate_Bed)
-				bed = (__instance as JobDriver_Masturbate_Bed).Bed;
+			else if (__instance is JobDriver_Masturbate)
+				bed = (__instance as JobDriver_Masturbate).Bed;
 			else if (__instance is JobDriver_Rape)
 				bed = (__instance?.Partner?.jobs?.curDriver as JobDriver_Sex)?.Bed;
+			
+			*/
 
 			if ((__instance.Target as Pawn)?.jobs?.curDriver is JobDriver_SexBaseReciever) {
 
