@@ -51,6 +51,8 @@ namespace Rimworld_Animations {
 
 		public static List<string> rjwLovinDefNames = new List<string>{
 			"Lovin",
+			"Quickie",
+			"GettingQuickie",
 			"JoinInBed",
 			"JoinInBedAnimation",
 			"GettinLovedAnimation",
@@ -59,9 +61,10 @@ namespace Rimworld_Animations {
 			"GettinSucked",
 			"GettinRaped",
 			"ViolateCorpse",
-			"Masturbate_Bed",
-			"Masturbate_Quick",
+			"RJW_Masturbate",
 			"GettinBred",
+			"Breed",
+			"RJW_Mate",
 			"Bestiality",
 			"BestialityForFemale",
 			"StruggleInBondageGear",
