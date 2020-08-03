@@ -130,7 +130,7 @@ namespace Rimworld_Animations {
 				else {
 
 					Quaternion addonRotation = quat;
-					if (AnimationSettings.controlGenitalRotation && pawnAnimator.controlGenitalAngle && ba.hediffGraphics[0]?.path != null && (ba.hediffGraphics[0].path.Contains("Penis") || ba.hediffGraphics[0].path.Contains("penis"))) {
+					if (AnimationSettings.controlGenitalRotation && pawnAnimator.controlGenitalAngle && ba?.hediffGraphics != null && ba.hediffGraphics.Count != 0 && ba.hediffGraphics[0]?.path != null && (ba.hediffGraphics[0].path.Contains("Penis") || ba.hediffGraphics[0].path.Contains("penis"))) {
 						addonRotation = Quaternion.AngleAxis(angle: pawnAnimator.genitalAngle, axis: Vector3.up);
 					}
 
