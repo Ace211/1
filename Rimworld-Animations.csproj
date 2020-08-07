@@ -108,6 +108,8 @@
     <Compile Include="Source\Settings\AnimationSettings.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="About\About.xml" />
+    <Content Include="About\Manifest.xml" />
     <Content Include="Defs\AnimationDefs\Animations_Beast.xml" />
     <Content Include="Defs\AnimationDefs\Animations_Lesbian.xml" />
     <Content Include="Defs\AnimationDefs\Animations_Masturbate.xml" />
