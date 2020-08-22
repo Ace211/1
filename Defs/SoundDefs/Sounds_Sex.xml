@@ -6,6 +6,7 @@
 		<context>MapOnly</context>
 		<eventNames />
 		<maxSimultaneous>1</maxSimultaneous>
+		<maxVoices>1</maxVoices>
 		<subSounds>
 			<li>
 				<grains>
@@ -34,6 +35,7 @@
 		<context>MapOnly</context>
 		<eventNames />
 		<maxSimultaneous>1</maxSimultaneous>
+		<maxVoices>1</maxVoices>
 		<subSounds>
 			<li>
 				<grains>
@@ -62,6 +64,7 @@
 		<context>MapOnly</context>
 		<eventNames />
 		<maxSimultaneous>1</maxSimultaneous>
+		<maxVoices>1</maxVoices>
 		<subSounds>
 			<li>
 				<grains>
@@ -118,6 +121,7 @@
     <context>MapOnly</context>
     <eventNames />
     <maxSimultaneous>1</maxSimultaneous>
+    <maxVoices>1</maxVoices>
     <subSounds>
       <li>
         <grains>
@@ -168,6 +172,7 @@
     <context>MapOnly</context>
     <eventNames />
     <maxSimultaneous>1</maxSimultaneous>
+    <maxVoices>1</maxVoices>
     <subSounds>
       <li>
         <grains>

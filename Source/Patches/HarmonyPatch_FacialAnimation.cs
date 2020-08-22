@@ -72,6 +72,12 @@ namespace Rimworld_Animations {
 			"UseFM"
 		};
 
+		public static List<string> rjwRapeDefNames = new List<string> {
+			"RapeComfortPawn",
+			"RandomRape",
+			"RapeEnemy"
+		};
+
 
 		public static bool Prefix_IsSameA(JobDef job, string ___jobDef, ref bool __result) {
 
@@ -79,6 +85,11 @@ namespace Rimworld_Animations {
 				__result = true;
 				return false;
 			}
+			else if (___jobDef != null && ___jobDef == "WaitCombat" && job?.defName != null && rjwRapeDefNames.Contains(job?.defName)) {
+				__result = true;
+				return false;
+			}
+
 
 			return true;
 		}
@@ -86,6 +97,10 @@ namespace Rimworld_Animations {
 		public static bool Prefix_IsSameB(string jobName, string ___jobDef, ref bool __result) {
 
 			if (___jobDef != null && ___jobDef == "Lovin" && jobName != null && rjwLovinDefNames.Contains(jobName)) {
+				__result = true;
+				return false;
+			}
+			if (___jobDef != null && ___jobDef == "WaitCombat" && jobName != null && rjwRapeDefNames.Contains(jobName)) {
 				__result = true;
 				return false;
 			}
