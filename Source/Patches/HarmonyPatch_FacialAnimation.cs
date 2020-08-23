@@ -85,7 +85,7 @@ namespace Rimworld_Animations {
 				__result = true;
 				return false;
 			}
-			else if (___jobDef != null && ___jobDef == "WaitCombat" && job?.defName != null && rjwRapeDefNames.Contains(job?.defName)) {
+			else if (___jobDef != null && ___jobDef == "Wait_Combat" && job?.defName != null && rjwRapeDefNames.Contains(job?.defName)) {
 				__result = true;
 				return false;
 			}
@@ -100,7 +100,7 @@ namespace Rimworld_Animations {
 				__result = true;
 				return false;
 			}
-			if (___jobDef != null && ___jobDef == "WaitCombat" && jobName != null && rjwRapeDefNames.Contains(jobName)) {
+			if (___jobDef != null && ___jobDef == "Wait_Combat" && jobName != null && rjwRapeDefNames.Contains(jobName)) {
 				__result = true;
 				return false;
 			}
