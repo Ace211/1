@@ -3,12 +3,12 @@
 <ModMetaData>
 	<name>Rimworld-Animations</name>
 	<author>C0ffee</author>
-  <url>https://gitgud.io/Platinumspoons/rimworld-animations/</url>
+  <url>https://gitgud.io/c0ffeeeeeeee/rimworld-animations</url>
 	<supportedVersions>
 		<li>1.1</li>
     <li>1.2</li>
 	</supportedVersions>
-	<packageId>platinumspoons.rimworld.animations</packageId>
+	<packageId>c0ffee.rimworld.animations</packageId>
 	<modDependencies>
 		<li>
 			<packageId>brrainz.harmony</packageId>
