@@ -194,7 +194,7 @@ namespace Rimworld_Animations {
 
                     if(sexProps != null) {
 
-                        if(x.actors[i].initiator && localParticipants[i] == sexProps.Reciever) {
+                        if((x.actors[i].initiator && localParticipants[i] == sexProps.Reciever) || (!x.actors[i].initiator && localParticipants[i] == sexProps.Giver)) {
                             initiatorsAlignWithSexType = false;
                         }
 
