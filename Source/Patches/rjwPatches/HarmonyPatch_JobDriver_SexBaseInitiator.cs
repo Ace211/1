@@ -64,7 +64,7 @@ namespace Rimworld_Animations {
 		public static void RerollAnimations(Pawn pawn, int duration, Thing bed = null, xxx.rjwSextype sexType = xxx.rjwSextype.None, bool fastAnimForQuickie = false, rjw.SexProps sexProps = null) {
 
 			if(pawn == null || !(pawn.jobs?.curDriver is JobDriver_SexBaseReciever)) {
-				Log.Message("Error: Tried to reroll animations when pawn isn't sexing");
+				Log.Error("Error: Tried to reroll animations when pawn isn't sexing");
 				return;
 			}
 
@@ -80,7 +80,7 @@ namespace Rimworld_Animations {
 
 				bool mirror = GenTicks.TicksGame % 2 == 0;
 
-				Log.Message("Now playing " + anim.defName + (mirror ? " mirrored" : ""));
+				Log.Message("Now playing " + anim.defName + (AnimationSettings.debugMode && mirror ? " mirrored" : ""));
 
 				IntVec3 pos = pawn.Position;
 
@@ -106,7 +106,7 @@ namespace Rimworld_Animations {
 				} 
 			}
 			else {
-				Log.Message("Anim not found");
+				Log.Message("No animation found");
 				//if pawn isn't already animating,
 				if (!pawn.TryGetComp<CompBodyAnimator>().isAnimating) {
 					(pawn.jobs.curDriver as JobDriver_SexBaseReciever).increase_time(duration);

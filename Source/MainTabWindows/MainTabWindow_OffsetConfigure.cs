@@ -98,12 +98,14 @@ namespace Rimworld_Animations {
         public override void PreOpen() {
             base.PreOpen();
             if(AnimationSettings.offsets == null) {
-                Log.Message("New offsets");
+                if (AnimationSettings.debugMode)
+                    Log.Message("New offsets");
                 AnimationSettings.offsets = new Dictionary<string, Vector2>();
             }
 
             if(AnimationSettings.rotation == null) {
-                Log.Message("New rotation");
+                if (AnimationSettings.debugMode)
+                    Log.Message("New rotation");
                 AnimationSettings.rotation = new Dictionary<string, float>();
             }
         }

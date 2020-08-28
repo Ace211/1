@@ -12,7 +12,7 @@ namespace Rimworld_Animations {
     public class AnimationSettings : ModSettings {
 
         public static bool orgasmQuiver, rapeShiver, soundOverride = true, hearts = true, controlGenitalRotation = false, applySemenOnAnimationOrgasm = false, fastAnimForQuickie = false;
-        public static bool offsetTab = false;
+        public static bool offsetTab = false, debugMode = false;
         public static float shiverIntensity = 2f;
 
         public static Dictionary<string, Vector2> offsets = new Dictionary<string, Vector2>();
@@ -22,6 +22,7 @@ namespace Rimworld_Animations {
 
             base.ExposeData();
 
+            Scribe_Values.Look(ref debugMode, "AnimsDebugMode", false);
             Scribe_Values.Look(ref offsetTab, "EnableOffsetTab", false);
             Scribe_Values.Look(ref controlGenitalRotation, "controlGenitalRotation", false);
             Scribe_Values.Look(ref orgasmQuiver, "orgasmQuiver");
@@ -74,6 +75,8 @@ namespace Rimworld_Animations {
 
             listingStandard.Label("Shiver/Quiver Intensity (default 2): " + AnimationSettings.shiverIntensity);
             AnimationSettings.shiverIntensity = listingStandard.Slider(AnimationSettings.shiverIntensity, 0.0f, 12f);
+
+            listingStandard.CheckboxLabeled("Debug Mode", ref AnimationSettings.debugMode);
 
            
             listingStandard.End();

@@ -44,18 +44,16 @@ namespace Rimworld_Animations {
                 }
 
                     if ((x.actors[i].blacklistedRaces != null) && x.actors[i].blacklistedRaces.Contains(localParticipants[i].def.defName)) {
-                        if (rjw.RJWSettings.DevMode) {
+                        if(AnimationSettings.debugMode)
                             Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " is blacklisted");
-                        }
                         return false;
                     }
 
                     if(x.actors[i].defNames.Contains("Human")) {
                         if (!rjw.xxx.is_human(localParticipants[i])) {
-                            if(rjw.RJWSettings.DevMode) {
+                            if (AnimationSettings.debugMode)
                                 Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " is not human");
-                            }
-                            
+
                             return false;
                         }
                         
@@ -69,7 +67,8 @@ namespace Rimworld_Animations {
                                 foreach(String defname in x.actors[i].defNames) {
                                     animInfo += defname + ", ";
                                 }
-                                Log.Message(animInfo);
+                                if (AnimationSettings.debugMode)
+                                    Log.Message(animInfo);
                             }
 
                             return false;
@@ -80,7 +79,8 @@ namespace Rimworld_Animations {
                         if (x.actors[i].requiredGenitals.Contains("Vagina")) {
 
                             if (!rjw.Genital_Helper.has_vagina(localParticipants[i])) {
-                                Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have vagina");
+                                if (AnimationSettings.debugMode)
+                                    Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have vagina");
                                 return false;
                             }
 
@@ -89,7 +89,8 @@ namespace Rimworld_Animations {
                         if (x.actors[i].requiredGenitals.Contains("Penis")) {
 
                             if (!(rjw.Genital_Helper.has_multipenis(localParticipants[i]) || rjw.Genital_Helper.has_penis_infertile(localParticipants[i]) || rjw.Genital_Helper.has_penis_fertile(localParticipants[i]))) {
-                                Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have penis");
+                                if (AnimationSettings.debugMode)
+                                    Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have penis");
                                 return false;
                             }
 
@@ -98,7 +99,8 @@ namespace Rimworld_Animations {
                         if (x.actors[i].requiredGenitals.Contains("Mouth")) {
 
                             if (!rjw.Genital_Helper.has_mouth(localParticipants[i])) {
-                                Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have mouth");
+                                if (AnimationSettings.debugMode)
+                                    Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have mouth");
                                 return false;
                             }
 
@@ -107,7 +109,8 @@ namespace Rimworld_Animations {
                         if (x.actors[i].requiredGenitals.Contains("Anus")) {
 
                             if (!rjw.Genital_Helper.has_anus(localParticipants[i])) {
-                                Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have anus");
+                                if (AnimationSettings.debugMode)
+                                    Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have anus");
                                 return false;
                             }
 
@@ -115,7 +118,8 @@ namespace Rimworld_Animations {
 
                         if(x.actors[i].requiredGenitals.Contains("Breasts")) {
                             if (!rjw.Genital_Helper.can_do_breastjob(localParticipants[i])) {
-                                Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have breasts");
+                                if (AnimationSettings.debugMode)
+                                    Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have breasts");
                                 return false;
                             }
                         }
@@ -123,7 +127,8 @@ namespace Rimworld_Animations {
                         if (x.actors[i].requiredGenitals.Contains("NoVagina")) {
 
                             if (rjw.Genital_Helper.has_vagina(localParticipants[i])) {
-                                Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " has vagina");
+                                if (AnimationSettings.debugMode)
+                                    Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " has vagina");
                                 return false;
                             }
 
@@ -132,7 +137,8 @@ namespace Rimworld_Animations {
                         if (x.actors[i].requiredGenitals.Contains("NoPenis")) {
 
                             if ((rjw.Genital_Helper.has_multipenis(localParticipants[i]) || rjw.Genital_Helper.has_penis_infertile(localParticipants[i]) || rjw.Genital_Helper.has_penis_fertile(localParticipants[i]))) {
-                                Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " has penis");
+                                if (AnimationSettings.debugMode)
+                                    Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " has penis");
                                 return false;
                             }
 
@@ -141,7 +147,8 @@ namespace Rimworld_Animations {
                         if (x.actors[i].requiredGenitals.Contains("NoMouth")) {
 
                             if (rjw.Genital_Helper.has_mouth(localParticipants[i])) {
-                                Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " has mouth");
+                                if (AnimationSettings.debugMode)
+                                    Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " has mouth");
                                 return false;
                             }
 
@@ -150,7 +157,8 @@ namespace Rimworld_Animations {
                         if (x.actors[i].requiredGenitals.Contains("NoAnus")) {
 
                             if (rjw.Genital_Helper.has_anus(localParticipants[i])) {
-                                Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " has anus");
+                                if (AnimationSettings.debugMode)
+                                    Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " has anus");
                                 return false;
                             }
 
@@ -158,7 +166,8 @@ namespace Rimworld_Animations {
 
                         if (x.actors[i].requiredGenitals.Contains("NoBreasts")) {
                             if (rjw.Genital_Helper.can_do_breastjob(localParticipants[i])) {
-                                Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " has breasts");
+                                if (AnimationSettings.debugMode)
+                                    Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " has breasts");
                                 return false;
                             }
                         }
@@ -174,12 +183,14 @@ namespace Rimworld_Animations {
 
 
                     if (x.actors[i].isFucking && !rjw.xxx.can_fuck(localParticipants[i])) {
-                        Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " can't fuck");
+                        if (AnimationSettings.debugMode)
+                            Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " can't fuck");
                         return false;
                     }
 
                     if (x.actors[i].isFucked && !rjw.xxx.can_be_fucked(localParticipants[i])) {
-                        Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " can't be fucked");
+                        if (AnimationSettings.debugMode)
+                            Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " can't be fucked");
                         return false;
                     }
                 }
@@ -229,21 +240,25 @@ namespace Rimworld_Animations {
 
 
             if (optionsWithSexTypeAndInitiator.Any()) {
-                Log.Message("Selecting animation for rjwSexType " + sexType.ToStringSafe() + " and initiators...");
+                if (AnimationSettings.debugMode)
+                    Log.Message("Selecting animation for rjwSexType " + sexType.ToStringSafe() + " and initiators...");
                 return optionsWithSexType.RandomElement();
             }
 
             if (optionsWithSexType.Any()) {
-                Log.Message("Selecting animation for rjwSexType " + sexType.ToStringSafe() + "...");
+                if (AnimationSettings.debugMode)
+                    Log.Message("Selecting animation for rjwSexType " + sexType.ToStringSafe() + "...");
                 return optionsWithSexType.RandomElement();
             }
 
             if(optionsWithInitiator.Any()) {
-                Log.Message("Selecting animation for initiators...");
+                if (AnimationSettings.debugMode)
+                    Log.Message("Selecting animation for initiators...");
             }
 
             if (options != null && options.Any()) {
-                Log.Message("Randomly selecting animation...");
+                if (AnimationSettings.debugMode)
+                    Log.Message("Randomly selecting animation...");
                 return options.RandomElement();
             }
             else
