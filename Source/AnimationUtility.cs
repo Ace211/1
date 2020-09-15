@@ -242,7 +242,7 @@ namespace Rimworld_Animations {
             if (optionsWithSexTypeAndInitiator.Any()) {
                 if (AnimationSettings.debugMode)
                     Log.Message("Selecting animation for rjwSexType " + sexType.ToStringSafe() + " and initiators...");
-                return optionsWithSexType.RandomElement();
+                return optionsWithSexTypeAndInitiator.RandomElement();
             }
 
             if (optionsWithSexType.Any()) {
