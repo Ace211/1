@@ -50,7 +50,7 @@ namespace Rimworld_Animations {
                     }
 
 
-                    listingStandard.Label("Offset for race " + curPawn.def.defName + " in actor position " + curPawn.TryGetComp<CompBodyAnimator>().ActorIndex + (curPawn.TryGetComp<CompBodyAnimator>().Mirror ? " mirrored" : ""));
+                    listingStandard.Label("Offset for race " + curPawn.def.defName + " in actor position " + curPawn.TryGetComp<CompBodyAnimator>().ActorIndex + " for animation " + def.label + (curPawn.TryGetComp<CompBodyAnimator>().Mirror ? " mirrored" : ""));
 
                     if(curPawn.def.defName == "Human") {
                         listingStandard.Label("Warning--You generally don't want to change human offsets, only alien offsets");
@@ -82,7 +82,6 @@ namespace Rimworld_Animations {
                     }
 
                 }
-
 
             }
             else {

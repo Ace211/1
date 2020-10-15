@@ -88,7 +88,7 @@ namespace Rimworld_Animations {
 
                         if (x.actors[i].requiredGenitals.Contains("Penis")) {
 
-                            if (!(rjw.Genital_Helper.has_multipenis(localParticipants[i]) || rjw.Genital_Helper.has_penis_infertile(localParticipants[i]) || rjw.Genital_Helper.has_penis_fertile(localParticipants[i]))) {
+                            if (!(rjw.Genital_Helper.has_multipenis(localParticipants[i]) || rjw.Genital_Helper.has_penis_infertile(localParticipants[i]) || rjw.Genital_Helper.has_penis_fertile(localParticipants[i])  || rjw.Genital_Helper.has_ovipositorM(localParticipants[i]))) {
                                 if (AnimationSettings.debugMode)
                                     Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have penis");
                                 return false;
@@ -197,6 +197,8 @@ namespace Rimworld_Animations {
                 return true;
             });
             List<AnimationDef> optionsWithSexType = options.ToList().FindAll(x => x.sexTypes.Contains(sexType));
+
+            /*
             List<AnimationDef> optionsWithSexTypeAndInitiator = optionsWithSexType.FindAll(x => {
                 bool initiatorsAlignWithSexType = true;
                 for (int i = 0; i < x.actors.Count; i++) {
@@ -217,6 +219,7 @@ namespace Rimworld_Animations {
                 }
                 return initiatorsAlignWithSexType;
             });
+
             List<AnimationDef> optionsWithInitiator = options.ToList().FindAll(x => {
                 bool initiatorsAlignWithSexType = true;
                 for (int i = 0; i < x.actors.Count; i++) {
@@ -237,24 +240,26 @@ namespace Rimworld_Animations {
                 }
                 return initiatorsAlignWithSexType;
             });
-
-
+            */
+            /*
             if (optionsWithSexTypeAndInitiator.Any()) {
                 if (AnimationSettings.debugMode)
                     Log.Message("Selecting animation for rjwSexType " + sexType.ToStringSafe() + " and initiators...");
                 return optionsWithSexTypeAndInitiator.RandomElement();
             }
-
+            */
             if (optionsWithSexType.Any()) {
                 if (AnimationSettings.debugMode)
                     Log.Message("Selecting animation for rjwSexType " + sexType.ToStringSafe() + "...");
                 return optionsWithSexType.RandomElement();
             }
 
+            /*
             if(optionsWithInitiator.Any()) {
                 if (AnimationSettings.debugMode)
                     Log.Message("Selecting animation for initiators...");
             }
+            */
 
             if (options != null && options.Any()) {
                 if (AnimationSettings.debugMode)
