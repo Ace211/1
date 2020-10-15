@@ -74,6 +74,14 @@ namespace Rimworld_Animations {
 				pawnsToAnimate = pawnsToAnimate.Append(pawn).ToList();
 			}
 
+			for(int i = 0; i < pawnsToAnimate.Count; i++) {
+
+				if(pawnsToAnimate[i].TryGetComp<CompBodyAnimator>() == null) {
+					Log.Error("Error: " + pawnsToAnimate[i].Name + " of race " + pawnsToAnimate[i].def.defName + " does not have CompBodyAnimator attached!");
+					break;
+				}
+			}
+
 			AnimationDef anim = AnimationUtility.tryFindAnimation(ref pawnsToAnimate, sexType, sexProps);
 
 			if (anim != null) {
