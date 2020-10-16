@@ -88,9 +88,9 @@ namespace Rimworld_Animations {
 
                         if (x.actors[i].requiredGenitals.Contains("Penis")) {
 
-                            if (!(rjw.Genital_Helper.has_multipenis(localParticipants[i]) || rjw.Genital_Helper.has_penis_infertile(localParticipants[i]) || rjw.Genital_Helper.has_penis_fertile(localParticipants[i])  || rjw.Genital_Helper.has_ovipositorM(localParticipants[i]))) {
+                            if (!(rjw.Genital_Helper.has_multipenis(localParticipants[i]) || rjw.Genital_Helper.has_penis_infertile(localParticipants[i]) || rjw.Genital_Helper.has_penis_fertile(localParticipants[i])  || rjw.Genital_Helper.has_ovipositorM(localParticipants[i]) || rjw.Genital_Helper.has_ovipositorF(localParticipants[i]))) {
                                 if (AnimationSettings.debugMode)
-                                    Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have penis");
+                                    Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have penis or ovipositor");
                                 return false;
                             }
 
