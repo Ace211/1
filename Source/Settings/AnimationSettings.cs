@@ -71,7 +71,7 @@ namespace Rimworld_Animations {
             listingStandard.CheckboxLabeled("Enable Rape Shiver", ref AnimationSettings.rapeShiver);
             listingStandard.CheckboxLabeled("Enable hearts during lovin'", ref AnimationSettings.hearts);
 
-            listingStandard.CheckboxLabeled("Enable Offset Tab", ref AnimationSettings.offsetTab);
+            listingStandard.CheckboxLabeled("Enable Animation Manager Tab", ref AnimationSettings.offsetTab);
 
             listingStandard.Label("Shiver/Quiver Intensity (default 2): " + AnimationSettings.shiverIntensity);
             AnimationSettings.shiverIntensity = listingStandard.Slider(AnimationSettings.shiverIntensity, 0.0f, 12f);
