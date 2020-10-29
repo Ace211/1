@@ -376,6 +376,29 @@ namespace Rimworld_Animations {
         public void shiftActorPositionAndRestartAnimation() {
             actor = (actor == anim.actors.Count - 1 ? 0 : actor + 1);
 
+            if (pawn?.story?.bodyType != null) {
+                if (pawn.story.bodyType == BodyTypeDefOf.Fat && anim?.actors[actor]?.bodyTypeOffset?.Fat != null) {
+                    anchor.x += anim.actors[actor].bodyTypeOffset.Fat.Value.x * (mirror ? -1f : 1f);
+                    anchor.z += anim.actors[actor].bodyTypeOffset.Fat.Value.y;
+                }
+                else if (pawn.story.bodyType == BodyTypeDefOf.Female && anim?.actors[actor]?.bodyTypeOffset?.Female != null) {
+                    anchor.x += anim.actors[actor].bodyTypeOffset.Female.Value.x * (mirror ? -1f : 1f);
+                    anchor.z += anim.actors[actor].bodyTypeOffset.Female.Value.y;
+                }
+                else if (pawn.story.bodyType == BodyTypeDefOf.Male && anim?.actors[actor]?.bodyTypeOffset?.Male != null) {
+                    anchor.x += anim.actors[actor].bodyTypeOffset.Male.Value.x * (mirror ? -1f : 1f);
+                    anchor.z += anim.actors[actor].bodyTypeOffset.Male.Value.y;
+                }
+                else if (pawn.story.bodyType == BodyTypeDefOf.Thin && anim?.actors[actor]?.bodyTypeOffset?.Thin != null) {
+                    anchor.x += anim.actors[actor].bodyTypeOffset.Thin.Value.x * (mirror ? -1f : 1f);
+                    anchor.z += anim.actors[actor].bodyTypeOffset.Thin.Value.y;
+                }
+                else if (pawn.story.bodyType == BodyTypeDefOf.Hulk && anim?.actors[actor]?.bodyTypeOffset?.Hulk != null) {
+                    anchor.x += anim.actors[actor].bodyTypeOffset.Hulk.Value.x * (mirror ? -1f : 1f);
+                    anchor.z += anim.actors[actor].bodyTypeOffset.Hulk.Value.y;
+                }
+            }
+
             curStage = 0;
             animTicks = 0;
             stageTicks = 0;
