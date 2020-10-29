@@ -80,14 +80,17 @@ namespace Rimworld_Animations {
                         }
 
                         for(int i = 0; i < curPawn.TryGetComp<CompBodyAnimator>().actorsInCurrentAnimation.Count; i++) {
-                            curPawn.TryGetComp<CompBodyAnimator>().actorsInCurrentAnimation[i].TryGetComp<CompBodyAnimator>()?.shiftActorPositionAndRestartAnimation();
+
+                            Pawn actor = curPawn.TryGetComp<CompBodyAnimator>().actorsInCurrentAnimation[i];
+
+                            actor.TryGetComp<CompBodyAnimator>()?.shiftActorPositionAndRestartAnimation();
 
                             //reset the clock time of every pawn in animation
-                            if(curPawn.TryGetComp<CompBodyAnimator>().actorsInCurrentAnimation[i].jobs.curDriver is rjw.JobDriver_Sex) {
-                                (curPawn.TryGetComp<CompBodyAnimator>().actorsInCurrentAnimation[i].jobs.curDriver as rjw.JobDriver_Sex).ticks_left = def.animationTimeTicks;
-                                (curPawn.TryGetComp<CompBodyAnimator>().actorsInCurrentAnimation[i].jobs.curDriver as rjw.JobDriver_Sex).ticksLeftThisToil = def.animationTimeTicks;
-                                (curPawn.TryGetComp<CompBodyAnimator>().actorsInCurrentAnimation[i].jobs.curDriver as rjw.JobDriver_Sex).duration = def.animationTimeTicks;
-                                (curPawn.TryGetComp<CompBodyAnimator>().actorsInCurrentAnimation[i].jobs.curDriver as rjw.JobDriver_Sex).ticks_remaining = def.animationTimeTicks;
+                            if(actor.jobs.curDriver is rjw.JobDriver_Sex) {
+                                (actor.jobs.curDriver as rjw.JobDriver_Sex).ticks_left = def.animationTimeTicks;
+                                (actor.jobs.curDriver as rjw.JobDriver_Sex).ticksLeftThisToil = def.animationTimeTicks;
+                                (actor.jobs.curDriver as rjw.JobDriver_Sex).duration = def.animationTimeTicks;
+                                (actor.jobs.curDriver as rjw.JobDriver_Sex).ticks_remaining = def.animationTimeTicks;
                             }
 
                         }
