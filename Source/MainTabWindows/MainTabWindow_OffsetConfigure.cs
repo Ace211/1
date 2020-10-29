@@ -11,7 +11,7 @@ namespace Rimworld_Animations {
     class MainTabWindow_OffsetConfigure : MainTabWindow
     {
 
-        public override Vector2 RequestedTabSize => new Vector2(505, 340);
+        public override Vector2 RequestedTabSize => new Vector2(505, 380);
         public override void DoWindowContents(Rect inRect) {
 
             Rect position = new Rect(inRect.x, inRect.y, inRect.width, inRect.height);
@@ -20,7 +20,7 @@ namespace Rimworld_Animations {
             Listing_Standard listingStandard = new Listing_Standard();
             listingStandard.Begin(position);
 
-            listingStandard.Label("Offset Manager");
+            listingStandard.Label("Animation Manager");
 
             listingStandard.GapLine();
 
@@ -70,6 +70,20 @@ namespace Rimworld_Animations {
                         offsetX = 0;
                         offsetZ = 0;
                         rotation = 0;
+                    }
+
+                    listingStandard.GapLine();
+
+                    if(listingStandard.ButtonText("Shift Actors")) {
+                        
+                        if(AnimationSettings.debugMode) {
+                            Log.Message("Shifting actors in animation...");
+                        }
+
+                        for(int i = 0; i < curPawn.TryGetComp<CompBodyAnimator>().actorsInCurrentAnimation.Count; i++) {
+                            curPawn.TryGetComp<CompBodyAnimator>().actorsInCurrentAnimation[i].TryGetComp<CompBodyAnimator>()?.shiftActorPositionAndRestartAnimation();
+                        }
+
                     }
 
                     if (offsetX != AnimationSettings.offsets[def.defName + curPawn.def.defName + ActorIndex].x || offsetZ != AnimationSettings.offsets[def.defName + curPawn.def.defName + ActorIndex].y) {

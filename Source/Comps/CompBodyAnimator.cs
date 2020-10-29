@@ -29,6 +29,7 @@ namespace Rimworld_Animations {
                     SexUtility.DrawNude(pawn);
                 } else {
                     pawn.Drawer.renderer.graphics.ResolveAllGraphics();
+                    actorsInCurrentAnimation = null;
                 }
 
                 PortraitsCache.SetDirty(pawn);
@@ -47,6 +48,8 @@ namespace Rimworld_Animations {
         public Vector3 anchor = Vector3.zero, deltaPos = Vector3.zero, headBob = Vector3.zero;
         public float bodyAngle = 0, headAngle = 0, genitalAngle = 0;
         public Rot4 headFacing = Rot4.North, bodyFacing = Rot4.North;
+
+        public List<Pawn> actorsInCurrentAnimation;
 
         public bool controlGenitalAngle = false;
 
@@ -102,8 +105,9 @@ namespace Rimworld_Animations {
                 anchor = thing.Position.ToVector3Shifted();
             }
         }
-        public void StartAnimation(AnimationDef anim, int actor, bool mirror = false, bool shiver = false, bool fastAnimForQuickie = false) {
+        public void StartAnimation(AnimationDef anim, List<Pawn> actors, int actor, bool mirror = false, bool shiver = false, bool fastAnimForQuickie = false) {
 
+            actorsInCurrentAnimation = actors;
             AlienRaceOffset raceOffset = anim?.actors[actor]?.raceOffsets?.Find(x => x.defName == pawn.def.defName);
 
             if (raceOffset != null) {
@@ -198,7 +202,7 @@ namespace Rimworld_Animations {
             if (animTicks < anim.animationTimeTicks) {
                 tickStage();
             } else {
-
+                
                 isAnimating = false;
             }
         }
@@ -326,7 +330,6 @@ namespace Rimworld_Animations {
 
         }
 
-
         public AnimationDef CurrentAnimation {
             get {
                 return anim;
@@ -368,6 +371,19 @@ namespace Rimworld_Animations {
             Scribe_Values.Look(ref headFacing, "bodyFacing");
 
             Scribe_Values.Look(ref quiver, "orgasmQuiver");                             
+        }
+
+        public void shiftActorPositionAndRestartAnimation() {
+            actor = (actor == anim.actors.Count - 1 ? 0 : actor + 1);
+
+            curStage = 0;
+            animTicks = 0;
+            stageTicks = 0;
+            clipTicks = 0;
+
+            controlGenitalAngle = anim.actors[actor].controlGenitalAngle;
+
+            tickAnim();
         }
 
     }
