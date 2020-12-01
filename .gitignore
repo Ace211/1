@@ -338,3 +338,13 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/Source/Patches/PawnAnimationPatches/HarmonyPatch_Pawn_DrawTracker.cs
+/Source/Patches/PawnAnimationPatches/HarmonyPatch_PawnRotation.cs
+/Source/Patches/PawnAnimationPatches/HarmonyPatch_PawnRenderer.cs
+/Source/Patches/OtherModPatches/HarmonyPatch_ShowHairWithHats.cs
+/Source/Patches/OtherModPatches/HarmonyPatch_FacialAnimation.cs
+/Source/Patches/OtherModPatches/HarmonyPatch_DontShaveYourHead.cs
+/Source/Patches/OtherModPatches/HarmonyPatch_CSL.cs
+/Source/Patches/OtherModPatches/HarmonyPatch_AlienRace.cs
+/Source/Patches/ThingAnimationPatches/HarmonyPatch_ThingDrawAt.cs
+/Defs/AnimationDefs/Animations_SexToys.xml

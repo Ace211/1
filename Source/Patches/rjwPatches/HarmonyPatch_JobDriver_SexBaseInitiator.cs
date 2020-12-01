@@ -121,8 +121,6 @@ namespace Rimworld_Animations {
 					//they'll just do the thrusting anim
 				}
 			}
-
-
 		}
 	}
 
