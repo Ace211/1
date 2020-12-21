@@ -45,7 +45,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="RJW">
-      <HintPath>..\rjw-master\1.1\Assemblies\RJW.dll</HintPath>
+      <HintPath>..\RJW\1.1\Assemblies\RJW.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -94,6 +94,7 @@
     <Compile Include="Source\Patches\HarmonyPatch_CSL.cs" />
     <Compile Include="Source\Patches\HarmonyPatch_DontShaveYourHead.cs" />
     <Compile Include="Source\Patches\HarmonyPatch_FacialAnimation.cs" />
+    <Compile Include="Source\Patches\HarmonyPatch_HatsDisplaySelection.cs" />
     <Compile Include="Source\Patches\HarmonyPatch_PawnRenderer.cs" />
     <Compile Include="Source\Patches\HarmonyPatch_PawnRotation.cs" />
     <Compile Include="Source\Patches\HarmonyPatch_Pawn_DrawTracker.cs" />

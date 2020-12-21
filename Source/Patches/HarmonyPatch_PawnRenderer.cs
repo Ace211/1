@@ -13,24 +13,22 @@ using System.Reflection.Emit;
 namespace Rimworld_Animations {
 
 	[HarmonyPatch(typeof(PawnRenderer), "RenderPawnInternal", new Type[]
-	{
-		typeof(Vector3),
-		typeof(float),
-		typeof(bool),
-		typeof(Rot4),
-		typeof(Rot4),
-		typeof(RotDrawMode),
-		typeof(bool),
-		typeof(bool),
-		typeof(bool)
-	})]
-	
-	public static class HarmonyPatch_PawnRenderer
-    {
+		{
+			typeof(Vector3),
+			typeof(float),
+			typeof(bool),
+			typeof(Rot4),
+			typeof(Rot4),
+			typeof(RotDrawMode),
+			typeof(bool),
+			typeof(bool),
+			typeof(bool)
+		}
+	)]
+	public static class HarmonyPatch_PawnRenderer {
 
 		[HarmonyBefore(new string[] { "showhair.kv.rw", "erdelf.HumanoidAlienRaces", "Nals.FacialAnimation" })]
-		public static void Prefix(PawnRenderer __instance, ref Vector3 rootLoc, ref float angle, bool renderBody, ref Rot4 bodyFacing, ref Rot4 headFacing, RotDrawMode bodyDrawType, bool portrait, bool headStump, bool invisible)
-		{
+		public static void Prefix(PawnRenderer __instance, ref Vector3 rootLoc, ref float angle, bool renderBody, ref Rot4 bodyFacing, ref Rot4 headFacing, RotDrawMode bodyDrawType, bool portrait, bool headStump, bool invisible) {
 			PawnGraphicSet graphics = __instance.graphics;
 			Pawn pawn = graphics.pawn;
 			CompBodyAnimator bodyAnim = pawn.TryGetComp<CompBodyAnimator>();
@@ -39,12 +37,43 @@ namespace Rimworld_Animations {
 				graphics.ResolveAllGraphics();
 			}
 
-			
+
 			if (bodyAnim != null && bodyAnim.isAnimating && !portrait && pawn.Map == Find.CurrentMap) {
 				bodyAnim.tickGraphics(graphics);
 				bodyAnim.animatePawn(ref rootLoc, ref angle, ref bodyFacing, ref headFacing);
 
 			}
+		}
+	}
+
+	[StaticConstructorOnStartup]
+	public static class HarmonyPatch_Animate
+    {
+
+		static HarmonyPatch_Animate() {
+
+			if (LoadedModManager.RunningModsListForReading.Any(x => x.Name == "Hats Display Selection")) {
+				HarmonyPatch_HatsDisplaySelection.PatchHatsDisplaySelectionArgs();
+			}
+			else {
+				PatchRimworldFunctionsNormally();
+			}
+		}
+
+		static void PatchRimworldFunctionsNormally() {
+			(new Harmony("rjw")).Patch(AccessTools.Method(typeof(PawnRenderer), "RenderPawnInternal", parameters: new Type[]
+				{
+					typeof(Vector3),
+					typeof(float),
+					typeof(bool),
+					typeof(Rot4),
+					typeof(Rot4),
+					typeof(RotDrawMode),
+					typeof(bool),
+					typeof(bool),
+					typeof(bool)
+				}),
+				transpiler: new HarmonyMethod(AccessTools.Method(typeof(HarmonyPatch_Animate), "Transpiler")));
 		}
 
 		[HarmonyAfter(new string[] { "showhair.kv.rw", "erdelf.HumanoidAlienRaces", "Nals.FacialAnimation" })]
