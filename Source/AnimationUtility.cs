@@ -75,105 +75,11 @@ namespace Rimworld_Animations {
                         }
                     }
                     //genitals checking
-                    if(x.actors[i].requiredGenitals != null) {
-                        if (x.actors[i].requiredGenitals.Contains("Vagina")) {
 
-                            if (!rjw.Genital_Helper.has_vagina(localParticipants[i])) {
-                                if (AnimationSettings.debugMode)
-                                    Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have vagina");
-                                return false;
-                            }
-
-                        }
-
-                        if (x.actors[i].requiredGenitals.Contains("Penis")) {
-
-                            if (!(rjw.Genital_Helper.has_multipenis(localParticipants[i]) || rjw.Genital_Helper.has_penis_infertile(localParticipants[i]) || rjw.Genital_Helper.has_penis_fertile(localParticipants[i])  || rjw.Genital_Helper.has_ovipositorM(localParticipants[i]) || rjw.Genital_Helper.has_ovipositorF(localParticipants[i]))) {
-                                if (AnimationSettings.debugMode)
-                                    Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have penis or ovipositor");
-                                return false;
-                            }
-
-                        }
-
-                        if (x.actors[i].requiredGenitals.Contains("Mouth")) {
-
-                            if (!rjw.Genital_Helper.has_mouth(localParticipants[i])) {
-                                if (AnimationSettings.debugMode)
-                                    Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have mouth");
-                                return false;
-                            }
-
-                        }
-
-                        if (x.actors[i].requiredGenitals.Contains("Anus")) {
-
-                            if (!rjw.Genital_Helper.has_anus(localParticipants[i])) {
-                                if (AnimationSettings.debugMode)
-                                    Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have anus");
-                                return false;
-                            }
-
-                        }
-
-                        if(x.actors[i].requiredGenitals.Contains("Breasts")) {
-                            if (!rjw.Genital_Helper.can_do_breastjob(localParticipants[i])) {
-                                if (AnimationSettings.debugMode)
-                                    Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " doesn't have breasts");
-                                return false;
-                            }
-                        }
-
-                        if (x.actors[i].requiredGenitals.Contains("NoVagina")) {
-
-                            if (rjw.Genital_Helper.has_vagina(localParticipants[i])) {
-                                if (AnimationSettings.debugMode)
-                                    Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " has vagina");
-                                return false;
-                            }
-
-                        }
-
-                        if (x.actors[i].requiredGenitals.Contains("NoPenis")) {
-
-                            if ((rjw.Genital_Helper.has_multipenis(localParticipants[i]) || rjw.Genital_Helper.has_penis_infertile(localParticipants[i]) || rjw.Genital_Helper.has_penis_fertile(localParticipants[i]))) {
-                                if (AnimationSettings.debugMode)
-                                    Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " has penis");
-                                return false;
-                            }
-
-                        }
-
-                        if (x.actors[i].requiredGenitals.Contains("NoMouth")) {
-
-                            if (rjw.Genital_Helper.has_mouth(localParticipants[i])) {
-                                if (AnimationSettings.debugMode)
-                                    Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " has mouth");
-                                return false;
-                            }
-
-                        }
-
-                        if (x.actors[i].requiredGenitals.Contains("NoAnus")) {
-
-                            if (rjw.Genital_Helper.has_anus(localParticipants[i])) {
-                                if (AnimationSettings.debugMode)
-                                    Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " has anus");
-                                return false;
-                            }
-
-                        }
-
-                        if (x.actors[i].requiredGenitals.Contains("NoBreasts")) {
-                            if (rjw.Genital_Helper.can_do_breastjob(localParticipants[i])) {
-                                if (AnimationSettings.debugMode)
-                                    Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " has breasts");
-                                return false;
-                            }
-                        }
+                    if(!GenitalCheckForPawn(x.actors[i].requiredGenitals, localParticipants[i], out string failReason)) {
+                        Debug.Log("Didn't select " + x.defName + ", " + localParticipants[i].Name + " " + failReason);
+                        return false;
                     }
-
-                    
 
                     //TESTING ANIMATIONS ONLY REMEMBER TO COMMENT OUT BEFORE PUSH
                     /*
@@ -196,58 +102,13 @@ namespace Rimworld_Animations {
                 }
                 return true;
             });
-            List<AnimationDef> optionsWithSexType = options.ToList().FindAll(x => x.sexTypes.Contains(sexType));
-
-            /*
-            List<AnimationDef> optionsWithSexTypeAndInitiator = optionsWithSexType.FindAll(x => {
-                bool initiatorsAlignWithSexType = true;
-                for (int i = 0; i < x.actors.Count; i++) {
-
-                    //if the animation not for initiators, but an initiator is playing it
-
-                    if(sexProps != null) {
-
-                        if((x.actors[i].initiator && localParticipants[i] == sexProps.Reciever) || (!x.actors[i].initiator && localParticipants[i] == sexProps.Giver)) {
-                            initiatorsAlignWithSexType = false;
-                        }
-
-                    }
-
-                    else if (x.actors[i].initiator && !(localParticipants[i].jobs.curDriver is rjw.JobDriver_SexBaseInitiator)) {
-                        initiatorsAlignWithSexType = false;
-                    }
-                }
-                return initiatorsAlignWithSexType;
-            });
-
-            List<AnimationDef> optionsWithInitiator = options.ToList().FindAll(x => {
-                bool initiatorsAlignWithSexType = true;
-                for (int i = 0; i < x.actors.Count; i++) {
-
-                    //if the animation not for initiators, but an initiator is playing it
-
-                    if (sexProps != null) {
-
-                        if (x.actors[i].initiator && localParticipants[i] == sexProps.Giver) {
-                            initiatorsAlignWithSexType = false;
-                        }
-
-                    }
-
-                    else if (x.actors[i].initiator && !(localParticipants[i].jobs.curDriver is rjw.JobDriver_SexBaseInitiator)) {
-                        initiatorsAlignWithSexType = false;
-                    }
-                }
-                return initiatorsAlignWithSexType;
-            });
-            */
-            /*
-            if (optionsWithSexTypeAndInitiator.Any()) {
+            List<AnimationDef> optionsWithInteractionType = options.ToList().FindAll(x => x.interactionDefTypes != null && x.interactionDefTypes.Contains(sexProps.DictionaryKey));
+            if (optionsWithInteractionType.Any()) {
                 if (AnimationSettings.debugMode)
-                    Log.Message("Selecting animation for rjwSexType " + sexType.ToStringSafe() + " and initiators...");
-                return optionsWithSexTypeAndInitiator.RandomElement();
+                    Log.Message("Selecting animation for interaction type " + sexProps.DictionaryKey.defName + "...");
+                return optionsWithInteractionType.RandomElement();
             }
-            */
+            List<AnimationDef> optionsWithSexType = options.ToList().FindAll(x => x.sexTypes.Contains(sexType));
             if (optionsWithSexType.Any()) {
                 if (AnimationSettings.debugMode)
                     Log.Message("Selecting animation for rjwSexType " + sexType.ToStringSafe() + "...");
@@ -307,6 +168,101 @@ namespace Rimworld_Animations {
                 pawnHeadPosition.y = loc.y;
                 GenDraw.DrawMeshNowOrLater(mesh, pawnHeadPosition, Quaternion.AngleAxis(pawnAnimator.headAngle, Vector3.up), material, portrait);
             }
+        }
+
+        public static bool GenitalCheckForPawn(List<string> requiredGenitals, Pawn pawn, out string failReason) {
+
+            failReason = null;
+            if (requiredGenitals != null) {
+                if (requiredGenitals.Contains("Vagina")) {
+
+                    if (!rjw.Genital_Helper.has_vagina(pawn)) {
+                        failReason = "missing vagina";
+                        return false;
+                    }
+
+                }
+
+                if (requiredGenitals.Contains("Penis")) {
+
+                    if (!(rjw.Genital_Helper.has_multipenis(pawn) || rjw.Genital_Helper.has_penis_infertile(pawn) || rjw.Genital_Helper.has_penis_fertile(pawn) || rjw.Genital_Helper.has_ovipositorM(pawn) || rjw.Genital_Helper.has_ovipositorF(pawn))) {
+                        failReason = "missing penis";
+                        return false;
+                    }
+
+                }
+
+                if (requiredGenitals.Contains("Mouth")) {
+
+                    if (!rjw.Genital_Helper.has_mouth(pawn)) {
+                        failReason = "missing mouth";
+                        return false;
+                    }
+
+                }
+
+                if (requiredGenitals.Contains("Anus")) {
+
+                    if (!rjw.Genital_Helper.has_anus(pawn)) {
+                        failReason = "missing anus";
+                        return false;
+                    }
+
+                }
+
+                if (requiredGenitals.Contains("Breasts")) {
+                    if (!rjw.Genital_Helper.can_do_breastjob(pawn)) {
+                        failReason = "missing breasts";
+                        return false;
+                    }
+                }
+
+                if (requiredGenitals.Contains("NoVagina")) {
+
+                    if (rjw.Genital_Helper.has_vagina(pawn)) {
+                        failReason = "missing vagina";
+                        return false;
+                    }
+
+                }
+
+                if (requiredGenitals.Contains("NoPenis")) {
+
+                    if ((rjw.Genital_Helper.has_multipenis(pawn) || rjw.Genital_Helper.has_penis_infertile(pawn) || rjw.Genital_Helper.has_penis_fertile(pawn))) {
+                        failReason = "missing penis";
+                        return false;
+                    }
+
+                }
+
+                if (requiredGenitals.Contains("NoMouth")) {
+
+                    if (rjw.Genital_Helper.has_mouth(pawn)) {
+                        failReason = "has mouth";
+                        return false;
+                    }
+
+                }
+
+                if (requiredGenitals.Contains("NoAnus")) {
+
+                    if (rjw.Genital_Helper.has_anus(pawn)) {
+                        failReason = "has anus";
+                        return false;
+                    }
+
+                }
+
+                if (requiredGenitals.Contains("NoBreasts")) {
+                    if (rjw.Genital_Helper.can_do_breastjob(pawn)) {
+                        failReason = "has breasts";
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+
         }
     }
 }
