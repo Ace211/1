@@ -8,6 +8,12 @@
       <li>Anal</li>
       <li>Vaginal</li>
     </sexTypes>
+
+    <interactionDefTypes>
+      <li>VaginalBreeding</li>
+      <li>AnalBreeding</li>
+    </interactionDefTypes>
+    
     <actors>
       <li>
         <defNames>
@@ -1154,6 +1160,12 @@
       <li>Anal</li>
       <li>Vaginal</li>
     </sexTypes>
+
+    <interactionDefTypes>
+      <li>RequestVaginalBreeding</li>
+      <li>RequestAnalBreeding</li>
+    </interactionDefTypes>
+    
     <actors>
       <li>
         <defNames>

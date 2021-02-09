@@ -9,6 +9,16 @@
       <li>Vaginal</li>
       <li>Anal</li>
     </sexTypes>
+
+    <interactionDefTypes>
+      <li>AnalSex</li>
+      <li>AnalSexF</li>
+      <li>AnalRape</li>
+      <li>VaginalSex</li>
+      <li>VaginalSexF</li>
+      <li>VaginalRape</li>
+    </interactionDefTypes>
+    
     <actors>
       <li>
         <!--each type cooresponds to an animation clip in each animationStage-->
@@ -461,14 +471,30 @@
     <sounds>true</sounds>
     <sexTypes>
       <li>Oral</li>
+      <li>Fellatio</li>
     </sexTypes>
     <interactionDefTypes>
       <li>Handjob</li>
-      <li>Breastjob</li>
-      <li>Fellatio</li>
-      <li>Beakjob</li>
+      <li>HandjobF</li>
       <li>HandjobRape</li>
+      <li>HandjobRapeF</li>
+      
+      <li>Breastjob</li>
+      <li>BreastjobF</li>
       <li>BreastjobRape</li>
+      <li>BreastjobRapeF</li>
+      
+      <li>Fellatio</li>
+      <li>FellatioF</li>
+      <li>FellatioRape</li>
+      <li>FellatioRapeF</li>
+      
+      <li>Beakjob</li>
+      <li>BeakjobF</li>
+      <li>BeakjobRape</li>
+      <li>BeakjobRapeF</li>
+      
+
     </interactionDefTypes>
     <actors>
       <li>
@@ -889,6 +915,14 @@
       <li>Anal</li>
       <li>Vaginal</li>
     </sexTypes>
+    <interactionDefTypes>
+      <li>AnalSex</li>
+      <li>AnalSexF</li>
+      <li>AnalRape</li>
+      <li>VaginalSex</li>
+      <li>VaginalSexF</li>
+      <li>VaginalRape</li>
+    </interactionDefTypes>
     <actors>
       <li>
         <!--each type cooresponds to an animation clip in each animationStage-->
@@ -1997,6 +2031,15 @@
       <li>Anal</li>
       <li>Vaginal</li>
     </sexTypes>
+
+    <interactionDefTypes>
+      <li>AnalSex</li>
+      <li>AnalSexF</li>
+      <li>AnalRapeF</li>
+      <li>VaginalSex</li>
+      <li>VaginalSexF</li>
+      <li>VaginalRapeF</li>
+    </interactionDefTypes>
     
     <actors>
       

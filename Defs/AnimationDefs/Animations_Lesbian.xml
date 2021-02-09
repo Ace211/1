@@ -678,13 +678,25 @@
     <sexTypes>
       <li>Oral</li>
       <li>Fingering</li>
+      <li>Cunnilingus</li>
     </sexTypes>
     <interactionDefTypes>
-      <li>Fingering</li>
-      <li>Fisting</li>
+      
       <li>Cunnilingus</li>
+      <li>CunnilingusF</li>
+      <li>CunnilingusRape</li>
+      <li>CunnilingusRapeF</li>
+
+      <li>Fingering</li>
+      <li>FingeringF</li>
       <li>FingeringRape</li>
+      <li>FingeringRapeF</li>
+
+      <li>Fisting</li>
+      <li>FistingF</li>
       <li>FistingRape</li>
+      <li>FistingRapeF</li>
+      
     </interactionDefTypes>
     <actors>
       <li>
