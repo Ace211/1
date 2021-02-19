@@ -108,7 +108,7 @@ namespace Rimworld_Animations {
                     Log.Message("Selecting animation for interaction type " + sexProps.DictionaryKey.defName + "...");
                 return optionsWithInteractionType.RandomElement();
             }
-            List<AnimationDef> optionsWithSexType = options.ToList().FindAll(x => x.sexTypes.Contains(sexType));
+            List<AnimationDef> optionsWithSexType = options.ToList().FindAll(x => x.sexTypes != null && x.sexTypes.Contains(sexType));
             if (optionsWithSexType.Any()) {
                 if (AnimationSettings.debugMode)
                     Log.Message("Selecting animation for rjwSexType " + sexType.ToStringSafe() + "...");
