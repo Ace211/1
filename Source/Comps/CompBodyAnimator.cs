@@ -345,32 +345,32 @@ namespace Rimworld_Animations {
         public override void PostExposeData() {
             base.PostExposeData();
             
-            Scribe_Defs.Look(ref anim, "anim");
+            Scribe_Defs.Look(ref anim, "RJWAnimations-Anim");
 
-            Scribe_Values.Look(ref animTicks, "animTicks", 1);
-            Scribe_Values.Look(ref stageTicks, "stageTicks", 1);
-            Scribe_Values.Look(ref clipTicks, "clipTicks", 1);
-            Scribe_Values.Look(ref clipPercent, "clipPercent", 1);
+            Scribe_Values.Look(ref animTicks, "RJWAnimations-animTicks", 1);
+            Scribe_Values.Look(ref stageTicks, "RJWAnimations-stageTicks", 1);
+            Scribe_Values.Look(ref clipTicks, "RJWAnimations-clipTicks", 1);
+            Scribe_Values.Look(ref clipPercent, "RJWAnimations-clipPercent", 1);
 
-            Scribe_Values.Look(ref mirror, "mirror");
+            Scribe_Values.Look(ref mirror, "RJWAnimations-mirror");
 
-            Scribe_Values.Look(ref curStage, "curStage", 0);
-            Scribe_Values.Look(ref actor, "actor");
+            Scribe_Values.Look(ref curStage, "RJWAnimations-curStage", 0);
+            Scribe_Values.Look(ref actor, "RJWAnimations-actor");
 
-            Scribe_Values.Look(ref Animating, "Animating");
-            Scribe_Values.Look(ref anchor, "anchor");
-            Scribe_Values.Look(ref deltaPos, "deltaPos");
-            Scribe_Values.Look(ref headBob, "headBob");
-            Scribe_Values.Look(ref bodyAngle, "bodyAngle");
-            Scribe_Values.Look(ref headAngle, "headAngle");
+            Scribe_Values.Look(ref Animating, "RJWAnimations-Animating");
+            Scribe_Values.Look(ref anchor, "RJWAnimations-anchor");
+            Scribe_Values.Look(ref deltaPos, "RJWAnimations-deltaPos");
+            Scribe_Values.Look(ref headBob, "RJWAnimations-headBob");
+            Scribe_Values.Look(ref bodyAngle, "RJWAnimations-bodyAngle");
+            Scribe_Values.Look(ref headAngle, "RJWAnimations-headAngle");
 
-            Scribe_Values.Look(ref genitalAngle, "GenitalAngle");
-            Scribe_Values.Look(ref controlGenitalAngle, "controlGenitalAngle");
+            Scribe_Values.Look(ref genitalAngle, "RJWAnimations-GenitalAngle");
+            Scribe_Values.Look(ref controlGenitalAngle, "RJWAnimations-controlGenitalAngle");
 
-            Scribe_Values.Look(ref headFacing, "headFacing");
-            Scribe_Values.Look(ref headFacing, "bodyFacing");
+            Scribe_Values.Look(ref headFacing, "RJWAnimations-headFacing");
+            Scribe_Values.Look(ref headFacing, "RJWAnimations-bodyFacing");
 
-            Scribe_Values.Look(ref quiver, "orgasmQuiver");                             
+            Scribe_Values.Look(ref quiver, "RJWAnimations-orgasmQuiver");                             
         }
 
         public void shiftActorPositionAndRestartAnimation() {

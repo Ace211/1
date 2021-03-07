@@ -16,15 +16,12 @@ namespace Rimworld_Animations {
         */
         public static AnimationDef tryFindAnimation(ref List<Pawn> participants, rjw.xxx.rjwSextype sexType = 0, rjw.SexProps sexProps = null) {
 
-            //aggressors last
-            participants = participants.OrderBy(p => p.jobs.curDriver is rjw.JobDriver_SexBaseInitiator).ToList();
-
-            participants = participants.OrderBy(p => p == sexProps.Giver).ToList();
-
-            participants = participants.OrderByDescending(p => rjw.GenderHelper.GetSex(p) == rjw.GenderHelper.Sex.futa).ToList();
-
-            //pawns that can fuck last
-            participants = participants.OrderBy(p => rjw.xxx.can_fuck(p)).ToList();
+            participants =
+                participants.OrderBy(p => p.jobs.curDriver is rjw.JobDriver_SexBaseInitiator)
+                .OrderBy(p => p == sexProps.Giver)
+                .OrderByDescending(p => rjw.GenderHelper.GetSex(p) == rjw.GenderHelper.Sex.futa)
+                .OrderBy(p => rjw.xxx.can_fuck(p))
+                .ToList();
 
 
             List<Pawn> localParticipants = new List<Pawn>(participants);
@@ -220,7 +217,7 @@ namespace Rimworld_Animations {
                 if (requiredGenitals.Contains("NoVagina")) {
 
                     if (rjw.Genital_Helper.has_vagina(pawn)) {
-                        failReason = "missing vagina";
+                        failReason = "has vagina";
                         return false;
                     }
 
@@ -229,7 +226,7 @@ namespace Rimworld_Animations {
                 if (requiredGenitals.Contains("NoPenis")) {
 
                     if ((rjw.Genital_Helper.has_multipenis(pawn) || rjw.Genital_Helper.has_penis_infertile(pawn) || rjw.Genital_Helper.has_penis_fertile(pawn))) {
-                        failReason = "missing penis";
+                        failReason = "has penis";
                         return false;
                     }
 

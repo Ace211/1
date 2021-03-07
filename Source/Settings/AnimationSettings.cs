@@ -22,20 +22,20 @@ namespace Rimworld_Animations {
 
             base.ExposeData();
 
-            Scribe_Values.Look(ref debugMode, "AnimsDebugMode", false);
-            Scribe_Values.Look(ref offsetTab, "EnableOffsetTab", false);
-            Scribe_Values.Look(ref controlGenitalRotation, "controlGenitalRotation", false);
-            Scribe_Values.Look(ref orgasmQuiver, "orgasmQuiver");
-            Scribe_Values.Look(ref fastAnimForQuickie, "fastAnimForQuickie");
-            Scribe_Values.Look(ref rapeShiver, "rapeShiver");
-            Scribe_Values.Look(ref hearts, "heartsOnLovin");
-            Scribe_Values.Look(ref applySemenOnAnimationOrgasm, "applySemenOnOrgasm", false);
-            Scribe_Values.Look(ref soundOverride, "rjwAnimSoundOverride", true);
-            Scribe_Values.Look(ref shiverIntensity, "shiverIntensity", 2f);
+            Scribe_Values.Look(ref debugMode, "RJWAnimations-AnimsDebugMode", false);
+            Scribe_Values.Look(ref offsetTab, "RJWAnimations-EnableOffsetTab", false);
+            Scribe_Values.Look(ref controlGenitalRotation, "RJWAnimations-controlGenitalRotation", false);
+            Scribe_Values.Look(ref orgasmQuiver, "RJWAnimations-orgasmQuiver");
+            Scribe_Values.Look(ref fastAnimForQuickie, "RJWAnimations-fastAnimForQuickie");
+            Scribe_Values.Look(ref rapeShiver, "RJWAnimations-rapeShiver");
+            Scribe_Values.Look(ref hearts, "RJWAnimation-sheartsOnLovin");
+            Scribe_Values.Look(ref applySemenOnAnimationOrgasm, "RJWAnimations-applySemenOnOrgasm", false);
+            Scribe_Values.Look(ref soundOverride, "RJWAnimations-rjwAnimSoundOverride", true);
+            Scribe_Values.Look(ref shiverIntensity, "RJWAnimations-shiverIntensity", 2f);
             //todo: save offsetsByDefName
 
-            Scribe_Collections.Look(ref offsets, "animationOffsets");
-            Scribe_Collections.Look(ref rotation, "rotationOffsets");
+            Scribe_Collections.Look(ref offsets, "RJWAnimations-animationOffsets");
+            Scribe_Collections.Look(ref rotation, "RJWAnimations-rotationOffsets");
 
 
 
