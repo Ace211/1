@@ -198,7 +198,13 @@ namespace Rimworld_Animations {
 
             if (!isAnimating) return;
 
+            if (anim == null) {
+                isAnimating = false;
+                return;
+            }
+
             animTicks++;
+            
             if (animTicks < anim.animationTimeTicks) {
                 tickStage();
             } else {
