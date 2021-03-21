@@ -244,17 +244,33 @@ namespace Rimworld_Animations {
 
             //play sound effect
             if(rjw.RJWSettings.sounds_enabled && clip.SoundEffects.ContainsKey(clipTicks) && AnimationSettings.soundOverride) {
-                SoundDef.Named(clip.SoundEffects[clipTicks]).PlayOneShot(new TargetInfo(pawn.Position, pawn.Map));
+                
 
-                if (AnimationSettings.applySemenOnAnimationOrgasm && (pawn?.jobs?.curDriver is JobDriver_Sex) && clip.SoundEffects[clipTicks] == "Cum") {
+                SoundInfo sound = new TargetInfo(pawn.Position, pawn.Map);
+                string soundEffectName = clip.SoundEffects[clipTicks];
 
-                    Pawn partner = (pawn.jobs.curDriver as JobDriver_Sex)?.Partner;
 
-                    if(anim.sexTypes.Contains((pawn.jobs.curDriver as JobDriver_Sex).sexType)) {
-                        SemenHelper.calculateAndApplySemen(pawn, partner, (pawn.jobs.curDriver as JobDriver_Sex).sexType);
-                    }
-                        
+                if ((pawn.jobs.curDriver as JobDriver_Sex).isAnimalOnAnimal)
+                {
+                    sound.volumeFactor *= RJWSettings.sounds_animal_on_animal_volume;
                 }
+
+                if(soundEffectName.StartsWith("Voiceline_"))
+                {
+                    sound.volumeFactor *= RJWSettings.sounds_voice_volume;
+                }
+
+                if (clip.SoundEffects[clipTicks] == "Cum") {
+
+                    sound.volumeFactor *= RJWSettings.sounds_cum_volume;
+                    considerApplyingSemen();
+                        
+                } else
+                {
+                    sound.volumeFactor *= RJWSettings.sounds_sex_volume;
+                }
+
+                SoundDef.Named(soundEffectName).PlayOneShot(sound);
 
             }
             if(AnimationSettings.orgasmQuiver && clip.quiver.ContainsKey(clipTicks)) {
@@ -268,6 +284,19 @@ namespace Rimworld_Animations {
             clipPercent = (float)clipTicks / (float)clip.duration;
 
             calculateDrawValues();
+        }
+
+        public void considerApplyingSemen()
+        {
+            if(AnimationSettings.applySemenOnAnimationOrgasm && (pawn?.jobs?.curDriver is JobDriver_Sex))
+            {
+                Pawn partner = (pawn.jobs.curDriver as JobDriver_Sex)?.Partner;
+
+                if (anim.sexTypes.Contains((pawn.jobs.curDriver as JobDriver_Sex).sexType))
+                {
+                    SemenHelper.calculateAndApplySemen(pawn, partner, (pawn.jobs.curDriver as JobDriver_Sex).sexType);
+                }
+            }
         }
 
         public void calculateDrawValues() {
