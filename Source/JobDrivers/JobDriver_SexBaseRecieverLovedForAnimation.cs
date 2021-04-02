@@ -47,13 +47,34 @@ namespace Rimworld_Animations {
 			yield return Toils_Reserve.Reserve(ibed, Bed.SleepingSlotsCount, 0);
 
 			Toil get_loved = new Toil();
-			get_loved.FailOn(() => Partner.CurJobDef != DefDatabase<JobDef>.GetNamed("JoinInBedAnimation", true));
+			get_loved.FailOn(() => {
+
+				for (int i = 0; i < parteners.Count; i++)
+                {
+					if (parteners[i].CurJobDef != DefDatabase<JobDef>.GetNamed("JoinInBedAnimation", true))
+                    {
+						return true;
+                    }
+				}
+
+				return false;
+
+			});
 			get_loved.defaultCompleteMode = ToilCompleteMode.Never;
 			get_loved.socialMode = RandomSocialMode.Off;
 			get_loved.handlingFacing = true;
 			get_loved.AddPreTickAction(delegate {
 				if (pawn.IsHashIntervalTick(ticks_between_hearts))
 					MoteMaker.ThrowMetaIcon(pawn.Position, pawn.Map, ThingDefOf.Mote_Heart);
+			});
+			get_loved.AddEndCondition(() =>
+			{
+				if (parteners.Count <= 0)
+				{
+					return JobCondition.Succeeded;
+				}
+				return JobCondition.Ongoing;
+
 			});
 			get_loved.AddFinishAction(delegate {
 				if (xxx.is_human(pawn))
