@@ -92,10 +92,8 @@ namespace Rimworld_Animations {
 
 				IntVec3 pos = pawn.Position;
 
-				Log.Message("Pawns count:" + pawnsToAnimate.Count + "Selected Anims Count: " + anim.actors.Count);
 				if(pawnsToAnimate.Count > anim.actors.Count)
                 {
-					Log.Warning("Too many pawns for this anim. Stopping other actors...");
 					for(int i = anim.actors.Count; i < pawnsToAnimate.Count; i++)
                     {
 						pawnsToAnimate[i].TryGetComp<CompBodyAnimator>().isAnimating = false;
