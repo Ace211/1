@@ -51,13 +51,17 @@ namespace Rimworld_Animations {
     {
 
 		static HarmonyPatch_Animate() {
-
+			/* hats display selection patch -- broken
 			if (LoadedModManager.RunningModsListForReading.Any(x => x.Name == "Hats Display Selection")) {
 				HarmonyPatch_HatsDisplaySelection.PatchHatsDisplaySelectionArgs();
 			}
 			else {
 				PatchRimworldFunctionsNormally();
-			}
+			}*/
+
+
+			PatchRimworldFunctionsNormally();
+
 		}
 
 		static void PatchRimworldFunctionsNormally() {
