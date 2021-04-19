@@ -90,7 +90,6 @@ namespace Rimworld_Animations {
                                 (actor.jobs.curDriver as rjw.JobDriver_Sex).ticks_left = def.animationTimeTicks;
                                 (actor.jobs.curDriver as rjw.JobDriver_Sex).ticksLeftThisToil = def.animationTimeTicks;
                                 (actor.jobs.curDriver as rjw.JobDriver_Sex).duration = def.animationTimeTicks;
-                                (actor.jobs.curDriver as rjw.JobDriver_Sex).ticks_remaining = def.animationTimeTicks;
                             }
 
                         }
