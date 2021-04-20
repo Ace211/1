@@ -64,7 +64,6 @@ namespace Rimworld_Animations {
                     pawn.TryGetComp<CompBodyAnimator>().isAnimating = false;
                 }
 
-                ticks_left--;
                 if(Gen.IsHashIntervalTick(pawn, ticks_between_hearts)) {
                     MoteMaker.ThrowMetaIcon(pawn.Position, pawn.Map, ThingDefOf.Mote_Heart);
                 }

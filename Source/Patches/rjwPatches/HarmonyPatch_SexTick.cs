@@ -1,53 +1,86 @@
-﻿using System;
+﻿using HarmonyLib;
+using rjw;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HarmonyLib;
-using RimWorld;
 using Verse;
-using rjw;
-using Verse.Sound;
+using Verse.AI;
 
-namespace Rimworld_Animations {
+namespace Rimworld_Animations
+{
+    [HarmonyPatch(typeof(JobDriver_Sex), "SexTick")]
+    public class HarmonyPatch_SexTick
+    {
+        public static bool Prefix(JobDriver_Sex __instance, Pawn pawn, Thing target)
+        {
 
-	[HarmonyPatch(typeof(JobDriver_Sex), "SexTick")]
-	public static class HarmonyPatch_SexTick {
+			Log.Message(pawn.Name + " ticks left: " + __instance.ticks_left);
+			Log.Message(pawn.Name + " sex ticks: " + __instance.sex_ticks);
 
-		public static bool Prefix(ref JobDriver_Sex __instance, ref Pawn pawn, ref Thing target, ref bool pawnnude, ref bool partnernude) {
+			if (!(target is Pawn) || 
+				!(
+				(target as Pawn)?.jobs?.curDriver is JobDriver_SexBaseReciever 
+				&& 
+				((target as Pawn).jobs.curDriver as JobDriver_SexBaseReciever).parteners.Any() 
+				&& 
+				((target as Pawn).jobs.curDriver as JobDriver_SexBaseReciever).parteners[0] == pawn))
+            {
 
-			Pawn pawn2 = target as Pawn;
+				__instance.ticks_left--;
+                __instance.sex_ticks--;
+                __instance.Orgasm();
 
-			if (pawn == null || pawn2 == null) {
-				return true;
+                return false;
+            }
+
+            return true;
+        }
+
+    }
+
+    [HarmonyPatch(typeof(JobDriver_Sex), "Orgasm")]
+    public class HarmonyPatch_Orgasm
+    {
+        public static bool Prefix(JobDriver_Sex __instance)
+        {
+			//todo: remove this code on next update
+			if (__instance.pawn.jobs.curDriver is JobDriver_SexBaseRecieverLoved ||
+				__instance.pawn.jobs.curDriver is JobDriver_SexBaseRecieverRaped) return true;
+
+			if (__instance.sex_ticks > __instance.orgasmstick)
+			{
+				return false;
 			}
+			__instance.orgasms++;
+			__instance.PlayCumSound();
+			__instance.PlayOrgasmVoice();
+			__instance.CalculateSatisfactionPerTick();
 
-			
-			if (pawn.IsHashIntervalTick(__instance.ticks_between_thrusts)) {
-
-				__instance.ChangePsyfocus(pawn, pawn2);
-
-				__instance.Animate(pawn, pawn2);
-
-				if (!AnimationSettings.soundOverride || pawn.TryGetComp<CompBodyAnimator>() == null || !pawn.TryGetComp<CompBodyAnimator>().isAnimating) {
-					__instance.PlaySexSound();
-				}
-
-				if (!__instance.isRape) {
-					pawn.GainComfortFromCellIfPossible();
-					pawn2?.GainComfortFromCellIfPossible();
-				}
+			if (__instance.pawn?.jobs?.curDriver is JobDriver_SexBaseInitiator)
+			{
+				SexUtility.SatisfyPersonal(__instance.pawn, __instance.Partner, __instance.sexType, __instance.isRape, true, __instance.satisfaction);
 			}
-			if (!xxx.has_quirk(pawn, "Endytophile")) {
-				if (pawnnude) {
-					SexUtility.DrawNude(pawn);
+			else
+			{
+				if (__instance.pawn?.jobs?.curDriver is JobDriver_SexBaseReciever)
+				{
+					Pawn pawn = __instance.pawn;
+					Pawn_JobTracker jobs3 = __instance.pawn.jobs;
+					SexUtility.SatisfyPersonal(pawn, (__instance.pawn.jobs.curDriver as JobDriver_SexBaseReciever).parteners.FirstOrFallback(null), __instance.sexType, false, false, __instance.satisfaction);
 				}
-				if (pawn2 != null && partnernude) {
-					SexUtility.DrawNude(pawn2);
-				}
+
+			}
+			Log.Message(xxx.get_pawnname(__instance.pawn) + " Orgasmed", false);
+			__instance.sex_ticks = __instance.Roll_Orgasm_Duration_Reset();
+			if (__instance.neverendingsex)
+			{
+				__instance.ticks_left = __instance.duration;
 			}
 
 			return false;
 		}
-	}
+
+    }
 }

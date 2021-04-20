@@ -45,7 +45,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="RJW">
-      <HintPath>..\rjw-master\1.2\Assemblies\RJW.dll</HintPath>
+      <HintPath>..\RJW\1.2\Assemblies\RJW.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -105,6 +105,7 @@
     <Compile Include="Source\Patches\rjwPatches\HarmonyPatch_JobDriver_SexBaseInitiator.cs" />
     <Compile Include="Source\Patches\rjwPatches\HarmonyPatch_JoinInBedGiveJob.cs" />
     <Compile Include="Source\Patches\rjwPatches\HarmonyPatch_PlayAnimJoinInBedRMB.cs" />
+    <Compile Include="Source\Patches\rjwPatches\HarmonyPatch_PlaySexSounds.cs" />
     <Compile Include="Source\Patches\rjwPatches\HarmonyPatch_SexTick.cs" />
     <Compile Include="Source\Patches\rjwPatches\HarmonyPatch_WorkGiverSex.cs" />
     <Compile Include="Source\Settings\AnimationSettings.cs" />

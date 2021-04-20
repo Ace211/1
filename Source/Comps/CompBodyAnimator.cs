@@ -159,9 +159,8 @@ namespace Rimworld_Animations {
             //tick once for initialization
             tickAnim();
 
-            
-
         }
+
         public override void CompTick() {
 
             base.CompTick();
@@ -208,8 +207,16 @@ namespace Rimworld_Animations {
             if (animTicks < anim.animationTimeTicks) {
                 tickStage();
             } else {
+
+                if(LoopNeverending())
+                {
+                    ResetOnLoop();
+                } else
+                {
+                    isAnimating = false;
+                }
                 
-                isAnimating = false;
+                
             }
         }
 
@@ -227,9 +234,16 @@ namespace Rimworld_Animations {
             }
 
             if(curStage >= anim.animationStages.Count) {
-                isAnimating = false;
-                pawn.jobs.curDriver.ReadyForNextToil();
-                
+                if (LoopNeverending())
+                {
+                    ResetOnLoop();
+                }
+                else
+                {
+                    isAnimating = false;
+                    pawn.jobs.curDriver.ReadyForNextToil();
+                }
+
             } else {
                 tickClip();
             }
@@ -444,5 +458,26 @@ namespace Rimworld_Animations {
             tickAnim();
         }
 
+        public bool LoopNeverending()
+        {
+            if(pawn?.jobs?.curDriver != null && 
+                (pawn.jobs.curDriver is JobDriver_Sex) && (pawn.jobs.curDriver as JobDriver_Sex).neverendingsex ||
+                (pawn.jobs.curDriver is JobDriver_SexBaseReciever) && (pawn.jobs.curDriver as JobDriver_Sex).Partner?.jobs?.curDriver != null && ((pawn.jobs.curDriver as JobDriver_Sex).Partner.jobs.curDriver as JobDriver_Sex).neverendingsex)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public void ResetOnLoop()
+        {
+            curStage = 1;
+            animTicks = 0;
+            stageTicks = 0;
+            clipTicks = 0;
+
+            tickAnim();
+        }
     }
 }

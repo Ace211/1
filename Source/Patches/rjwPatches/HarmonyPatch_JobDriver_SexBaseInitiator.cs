@@ -13,7 +13,6 @@ namespace Rimworld_Animations {
     [HarmonyPatch(typeof(JobDriver_SexBaseInitiator), "Start")]
     static class HarmonyPatch_JobDriver_SexBaseInitiator_Start {
         public static void Postfix(ref JobDriver_SexBaseInitiator __instance) {
-
 			/*
 			 These particular jobs need special code
 			 don't play anim for now
@@ -52,16 +51,31 @@ namespace Rimworld_Animations {
 
 				bool quickie = (__instance is JobDriver_SexQuick) && AnimationSettings.fastAnimForQuickie;
 
+				int preAnimDuration = __instance.duration;
+				int AnimationTimeTicks = 0;
+
+
 				if (bed != null) {
-					RerollAnimations(Target, __instance.duration, bed as Thing, __instance.sexType, quickie, sexProps: __instance.Sexprops);
-				}
+                    RerollAnimations(Target, out AnimationTimeTicks, bed as Thing, __instance.sexType, quickie, sexProps: __instance.Sexprops);
+                }
 				else {
-					RerollAnimations(Target, __instance.duration, sexType: __instance.sexType, fastAnimForQuickie: quickie, sexProps: __instance.Sexprops);
+					RerollAnimations(Target, out AnimationTimeTicks, sexType: __instance.sexType, fastAnimForQuickie: quickie, sexProps: __instance.Sexprops);
 				}
+
+
+				//Modify Orgasm ticks to only orgasm as many times as RJW stock orgasm allows
+				if(AnimationTimeTicks != 0)
+                {
+					__instance.orgasmstick = preAnimDuration * __instance.orgasmstick / AnimationTimeTicks;
+				}
+				
+
 			}
 		}
 
-		public static void RerollAnimations(Pawn pawn, int duration, Thing bed = null, xxx.rjwSextype sexType = xxx.rjwSextype.None, bool fastAnimForQuickie = false, rjw.SexProps sexProps = null) {
+		public static void RerollAnimations(Pawn pawn, out int AnimationTimeTicks, Thing bed = null, xxx.rjwSextype sexType = xxx.rjwSextype.None, bool fastAnimForQuickie = false, rjw.SexProps sexProps = null) {
+
+			AnimationTimeTicks = 0;
 
 			if(pawn == null || !(pawn.jobs?.curDriver is JobDriver_SexBaseReciever)) {
 				Log.Error("Error: Tried to reroll animations when pawn isn't sexing");
@@ -88,8 +102,6 @@ namespace Rimworld_Animations {
 
 				bool mirror = GenTicks.TicksGame % 2 == 0;
 
-				Log.Message("Now playing " + anim.defName + (AnimationSettings.debugMode && mirror ? " mirrored" : ""));
-
 				IntVec3 pos = pawn.Position;
 
 				if(pawnsToAnimate.Count > anim.actors.Count)
@@ -112,9 +124,14 @@ namespace Rimworld_Animations {
 
 					bool shiver = pawnsToAnimate[i].jobs.curDriver is JobDriver_SexBaseRecieverRaped;
 					pawnsToAnimate[i].TryGetComp<CompBodyAnimator>().StartAnimation(anim, pawnsToAnimate, i, mirror, shiver, fastAnimForQuickie);
+
 					(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).ticks_left = anim.animationTimeTicks;
-					(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).ticksLeftThisToil = anim.animationTimeTicks;
+					(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).sex_ticks = anim.animationTimeTicks;
 					(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).duration = anim.animationTimeTicks;
+
+
+					AnimationTimeTicks = anim.animationTimeTicks;
+
 					if(!AnimationSettings.hearts) {
 						(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).ticks_between_hearts = Int32.MaxValue;
 					}
