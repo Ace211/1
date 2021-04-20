@@ -16,9 +16,6 @@ namespace Rimworld_Animations
         public static bool Prefix(JobDriver_Sex __instance, Pawn pawn, Thing target)
         {
 
-			Log.Message(pawn.Name + " ticks left: " + __instance.ticks_left);
-			Log.Message(pawn.Name + " sex ticks: " + __instance.sex_ticks);
-
 			if (!(target is Pawn) || 
 				!(
 				(target as Pawn)?.jobs?.curDriver is JobDriver_SexBaseReciever 
