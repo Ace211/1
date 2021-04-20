@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using RimWorld;
 using rjw;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,23 @@ namespace Rimworld_Animations
                 __instance.sex_ticks--;
                 __instance.Orgasm();
 
-                return false;
+
+				if (pawn.IsHashIntervalTick(__instance.ticks_between_thrusts))
+				{
+					__instance.ChangePsyfocus(pawn, target);
+					__instance.Animate(pawn, target);
+					__instance.PlaySexSound();
+					if (!__instance.isRape)
+					{
+						pawn.GainComfortFromCellIfPossible(false);
+						if (target is Pawn)
+						{
+							(target as Pawn).GainComfortFromCellIfPossible(false);
+						}
+					}
+				}
+
+				return false;
             }
 
             return true;
