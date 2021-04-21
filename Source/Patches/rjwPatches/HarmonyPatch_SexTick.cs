@@ -44,6 +44,10 @@ namespace Rimworld_Animations
 							(target as Pawn).GainComfortFromCellIfPossible(false);
 						}
 					}
+					if(!__instance.isEndytophile)
+                    {
+						SexUtility.DrawNude(pawn, false);
+                    }
 				}
 
 				return false;

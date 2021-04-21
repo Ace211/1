@@ -104,14 +104,10 @@ namespace Rimworld_Animations {
 
 				IntVec3 pos = pawn.Position;
 
-				if(pawnsToAnimate.Count > anim.actors.Count)
-                {
-					for(int i = anim.actors.Count; i < pawnsToAnimate.Count; i++)
-                    {
-						pawnsToAnimate[i].TryGetComp<CompBodyAnimator>().isAnimating = false;
-                    }
-
-                }
+				for (int i = 0; i < anim.actors.Count; i++)
+				{
+					pawnsToAnimate[i].TryGetComp<CompBodyAnimator>().isAnimating = false;
+				}
 
 				for (int i = 0; i < pawnsToAnimate.Count; i++) {
 
