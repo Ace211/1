@@ -53,8 +53,7 @@ namespace Rimworld_Animations {
 				if (!ba.CanDrawAddon(pawn: pawn)) continue;
 
 				AlienPartGenerator.RotationOffset offset;
-				if (ba.drawnInBed) {
-
+				if (ba.drawnInBed || ba.alignWithHead) {
 					offset = pawnAnimator.headFacing == Rot4.South ?
 														ba.offsets.south :
 														pawnAnimator.headFacing == Rot4.North ?
@@ -92,7 +91,7 @@ namespace Rimworld_Animations {
 				float moffsetY = ba.inFrontOfBody ? 0.3f + ba.layerOffset : -0.3f - ba.layerOffset;
 				float num = ba.angle;
 
-				if ((ba.drawnInBed ? pawnAnimator.headFacing : rotation) == Rot4.North) {
+				if ((ba.drawnInBed || ba.alignWithHead ? pawnAnimator.headFacing : rotation) == Rot4.North) {
 					moffsetX = 0f;
 					if (ba.layerInvert)
 						moffsetY = -moffsetY;
@@ -104,7 +103,7 @@ namespace Rimworld_Animations {
 				moffsetX += bodyOffset.x + crownOffset.x;
 				moffsetZ += bodyOffset.y + crownOffset.y;
 
-				if ((ba.drawnInBed ? pawnAnimator.headFacing : rotation) == Rot4.East) {
+				if ((ba.drawnInBed || ba.alignWithHead ? pawnAnimator.headFacing : rotation) == Rot4.East) {
 					moffsetX = -moffsetX;
 					num = -num; //Angle
 				}
@@ -114,7 +113,7 @@ namespace Rimworld_Animations {
 				//Angle calculation to not pick the shortest, taken from Quaternion.Angle and modified
 
 				//assume drawnInBed means headAddon
-				if (ba.drawnInBed && pawn.TryGetComp<CompBodyAnimator>() != null && pawn.TryGetComp<CompBodyAnimator>().isAnimating) {
+				if (ba.drawnInBed || ba.alignWithHead && pawn.TryGetComp<CompBodyAnimator>() != null && pawn.TryGetComp<CompBodyAnimator>().isAnimating) {
 
 					Quaternion headQuatInAnimation = Quaternion.AngleAxis(pawnAnimator.headAngle, Vector3.up);
 					Rot4 headRotInAnimation = pawnAnimator.headFacing;
