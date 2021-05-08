@@ -88,10 +88,13 @@ namespace Rimworld_Animations {
 
 				float moffsetX = 0.42f;
 				float moffsetZ = -0.22f;
+
+				float layerOffset = offset?.layerOffset ?? ba.layerOffset;
+
 				float moffsetY = ba.inFrontOfBody ? 0.3f + ba.layerOffset : -0.3f - ba.layerOffset;
 				float num = ba.angle;
 
-				if ((ba.drawnInBed || ba.alignWithHead ? pawnAnimator.headFacing : rotation) == Rot4.North) {
+				if (((ba.drawnInBed || ba.alignWithHead) ? pawnAnimator.headFacing : rotation) == Rot4.North) {
 					moffsetX = 0f;
 					if (ba.layerInvert)
 						moffsetY = -moffsetY;
@@ -100,10 +103,8 @@ namespace Rimworld_Animations {
 					num = 0;
 				}
 
-				moffsetX += bodyOffset.x + crownOffset.x;
-				moffsetZ += bodyOffset.y + crownOffset.y;
 
-				if ((ba.drawnInBed || ba.alignWithHead ? pawnAnimator.headFacing : rotation) == Rot4.East) {
+				if (((ba.drawnInBed || ba.alignWithHead) ? pawnAnimator.headFacing : rotation) == Rot4.East) {
 					moffsetX = -moffsetX;
 					num = -num; //Angle
 				}
@@ -113,6 +114,9 @@ namespace Rimworld_Animations {
 				//Angle calculation to not pick the shortest, taken from Quaternion.Angle and modified
 
 				//assume drawnInBed means headAddon
+				Graphic addonGraphic = alienComp.addonGraphics[i];
+				addonGraphic.drawSize = (portrait && ba.drawSizePortrait != Vector2.zero ? ba.drawSizePortrait : ba.drawSize) * (ba.scaleWithPawnDrawsize ? alienComp.customDrawSize : Vector2.one) * 1.5f;
+
 				if (ba.drawnInBed || ba.alignWithHead && pawn.TryGetComp<CompBodyAnimator>() != null && pawn.TryGetComp<CompBodyAnimator>().isAnimating) {
 
 					Quaternion headQuatInAnimation = Quaternion.AngleAxis(pawnAnimator.headAngle, Vector3.up);
@@ -120,8 +124,8 @@ namespace Rimworld_Animations {
 					Vector3 headPositionInAnimation = pawnAnimator.getPawnHeadPosition() - pawn.Drawer.renderer.BaseHeadOffsetAt(pawnAnimator.headFacing).RotatedBy(angle: Mathf.Acos(f: Quaternion.Dot(a: Quaternion.identity, b: headQuatInAnimation)) * 2f * 57.29578f);
 
 
-					GenDraw.DrawMeshNowOrLater(mesh: alienComp.addonGraphics[index: i].MeshAt(rot: headRotInAnimation), loc: headPositionInAnimation + offsetVector.RotatedBy(angle: Mathf.Acos(f: Quaternion.Dot(a: Quaternion.identity, b: headQuatInAnimation)) * 2f * 57.29578f),
-						quat: Quaternion.AngleAxis(angle: num, axis: Vector3.up) * headQuatInAnimation, mat: alienComp.addonGraphics[index: i].MatAt(rot: pawnAnimator.headFacing), drawNow: portrait);
+					GenDraw.DrawMeshNowOrLater(mesh: addonGraphic.MeshAt(rot: headRotInAnimation), loc: headPositionInAnimation + offsetVector.RotatedBy(angle: Mathf.Acos(f: Quaternion.Dot(a: Quaternion.identity, b: headQuatInAnimation)) * 2f * 57.29578f),
+						quat: Quaternion.AngleAxis(angle: num, axis: Vector3.up) * headQuatInAnimation, mat: addonGraphic.MatAt(rot: pawnAnimator.headFacing), drawNow: portrait);
 
 				}
 
@@ -132,8 +136,8 @@ namespace Rimworld_Animations {
 						addonRotation = Quaternion.AngleAxis(angle: pawnAnimator.genitalAngle, axis: Vector3.up);
 					}
 
-					GenDraw.DrawMeshNowOrLater(mesh: alienComp.addonGraphics[index: i].MeshAt(rot: rotation), loc: vector + offsetVector.RotatedBy(angle: Mathf.Acos(f: Quaternion.Dot(a: Quaternion.identity, b: quat)) * 2f * 57.29578f),
-					quat: Quaternion.AngleAxis(angle: num, axis: Vector3.up) * addonRotation, mat: alienComp.addonGraphics[index: i].MatAt(rot: rotation), drawNow: portrait);
+					GenDraw.DrawMeshNowOrLater(mesh: addonGraphic.MeshAt(rot: rotation), loc: vector + offsetVector.RotatedBy(angle: Mathf.Acos(f: Quaternion.Dot(a: Quaternion.identity, b: quat)) * 2f * 57.29578f),
+					quat: Quaternion.AngleAxis(angle: num, axis: Vector3.up) * addonRotation, mat: addonGraphic.MatAt(rot: rotation), drawNow: portrait);
 
 				}
 
