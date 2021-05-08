@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +19,33 @@ namespace Rimworld_Animations {
 
             (new Harmony("rjw")).Patch(AccessTools.Method(AccessTools.TypeByName("HatDisplaySelection.Patch"), "DrawHatWithHair"),
                 transpiler: new HarmonyMethod(AccessTools.Method(typeof(HarmonyPatch_HatsDisplaySelection), "ReplaceDrawMeshOrLaterWithAnimate")));
+
+            (new Harmony("rjw")).Patch(AccessTools.Method(AccessTools.TypeByName("HatDisplaySelection.Patch"), "DrawHeadApparelWithHair"),
+                prefix: new HarmonyMethod(AccessTools.Method(typeof(HarmonyPatch_HatsDisplaySelection), "PrefixPatchForDrawHeadApparelWithHair")));
+
+
         }
+
+        public static void PrefixPatchForDrawHeadApparelWithHair(PawnRenderer renderer, ref Vector3 rootLoc, ref float angle, bool renderBody, ref Rot4 bodyFacing, ref Rot4 headFacing, RotDrawMode bodyDrawType, bool portrait, bool headStump, bool invisible)
+        {
+            PawnGraphicSet graphics = renderer.graphics;
+            Pawn pawn = graphics.pawn;
+            CompBodyAnimator bodyAnim = pawn.TryGetComp<CompBodyAnimator>();
+
+            if (!graphics.AllResolved)
+            {
+                graphics.ResolveAllGraphics();
+            }
+
+
+            if (bodyAnim != null && bodyAnim.isAnimating && !portrait && pawn.Map == Find.CurrentMap)
+            {
+                bodyAnim.tickGraphics(graphics);
+                bodyAnim.animatePawn(ref rootLoc, ref angle, ref bodyFacing, ref headFacing);
+
+            }
+        }
+
 
         public static IEnumerable<CodeInstruction> ReplaceDrawMeshOrLaterWithAnimate(IEnumerable<CodeInstruction> instructions) {
 
@@ -44,4 +70,4 @@ namespace Rimworld_Animations {
         }
 
     }
-}*/
+}

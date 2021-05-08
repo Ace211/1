@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<loadFolders>
+	<default>
+		<li>/</li>
+		<li IfModActive="velc.HatsDisplaySelection">Patch_HatsDisplaySelection</li>
+
+	</default>
+</loadFolders>

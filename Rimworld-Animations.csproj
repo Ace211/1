@@ -122,6 +122,7 @@
     <Content Include="Defs\JobDefs\Jobs_SexForAnim.xml" />
     <Content Include="Defs\MainTabDefs\MainButtonDef.xml" />
     <Content Include="Defs\SoundDefs\Sounds_Sex.xml" />
+    <Content Include="LoadFolders.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

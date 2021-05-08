@@ -11,12 +11,12 @@ using Verse;
 using Verse.Sound;
 
 namespace Rimworld_Animations {
-    class CompBodyAnimator : ThingComp
+    public class CompBodyAnimator : ThingComp
     {
         public Pawn pawn => base.parent as Pawn;
         public PawnGraphicSet Graphics;
         
-        public CompProperties_BodyAnimator Props => (CompProperties_BodyAnimator)(object)base.props;
+        //public CompProperties_BodyAnimator Props => (CompProperties_BodyAnimator)(object)base.props;
 
         public bool isAnimating {
             get {

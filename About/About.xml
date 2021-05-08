@@ -28,10 +28,6 @@
       <downloadUrl>https://www.loverslab.com/topic/110270-mod-rimjobworld/</downloadUrl>
     </li>
 	</modDependencies>
-	<incompatibleWith>
-		<li>velc.HatsDisplaySelection</li>
-		<!-- custom rendering transpilers too complicated to patch -->
-	</incompatibleWith>
 	<loadAfter>
 		<li>UnlimitedHugs.HugsLib</li>
 		<li>brrainz.harmony</li>
