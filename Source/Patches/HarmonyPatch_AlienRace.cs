@@ -53,8 +53,8 @@ namespace Rimworld_Animations {
 				if (!ba.CanDrawAddon(pawn: pawn)) continue;
 
 				AlienPartGenerator.RotationOffset offset;
-
-				offset = ((ba.drawnInBed || ba.alignWithHead) ? pawnAnimator.headFacing : rotation) == Rot4.South ?
+				if (ba.drawnInBed || ba.alignWithHead) {
+					offset = pawnAnimator.headFacing == Rot4.South ?
 														ba.offsets.south :
 														pawnAnimator.headFacing == Rot4.North ?
 															ba.offsets.north :
@@ -62,7 +62,19 @@ namespace Rimworld_Animations {
 															ba.offsets.east :
 															ba.offsets.west;
 
+				} else {
 
+					offset = rotation == Rot4.South ?
+										ba.offsets.south :
+										rotation == Rot4.North ?
+											ba.offsets.north :
+											rotation == Rot4.East ?
+											ba.offsets.east :
+											ba.offsets.west;
+
+				}
+
+				
 
 				Vector2 bodyOffset = (portrait ? offset?.portraitBodyTypes ?? offset?.bodyTypes : offset?.bodyTypes)?.FirstOrDefault(predicate: to => to.bodyType == pawn.story.bodyType)
                                    ?.offset ?? Vector2.zero;
