@@ -121,12 +121,13 @@ namespace Rimworld_Animations {
 					bool shiver = pawnsToAnimate[i].jobs.curDriver is JobDriver_SexBaseRecieverRaped;
 					pawnsToAnimate[i].TryGetComp<CompBodyAnimator>().StartAnimation(anim, pawnsToAnimate, i, mirror, shiver, fastAnimForQuickie);
 
-					(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).ticks_left = anim.animationTimeTicks;
-					(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).sex_ticks = anim.animationTimeTicks;
-					(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).duration = anim.animationTimeTicks;
+					int animTicks = anim.animationTimeTicks - (fastAnimForQuickie ? anim.animationStages[0].playTimeTicks : 0);
+					(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).ticks_left = animTicks;
+					(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).sex_ticks = animTicks;
+					(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).duration = animTicks;
 
 
-					AnimationTimeTicks = anim.animationTimeTicks;
+					AnimationTimeTicks = animTicks;
 
 					if(!AnimationSettings.hearts) {
 						(pawnsToAnimate[i].jobs.curDriver as JobDriver_Sex).ticks_between_hearts = Int32.MaxValue;

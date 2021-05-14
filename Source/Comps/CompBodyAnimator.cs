@@ -15,7 +15,7 @@ namespace Rimworld_Animations {
     {
         public Pawn pawn => base.parent as Pawn;
         public PawnGraphicSet Graphics;
-        
+
         //public CompProperties_BodyAnimator Props => (CompProperties_BodyAnimator)(object)base.props;
 
         public bool isAnimating {
@@ -25,7 +25,7 @@ namespace Rimworld_Animations {
             set {
                 Animating = value;
 
-                if(value == true) {
+                if (value == true) {
                     SexUtility.DrawNude(pawn);
                 } else {
                     pawn.Drawer.renderer.graphics.ResolveAllGraphics();
@@ -54,7 +54,13 @@ namespace Rimworld_Animations {
         public bool controlGenitalAngle = false;
 
         private AnimationDef anim;
-        private AnimationStage stage => anim.animationStages[curStage];
+        private AnimationStage stage {
+            get
+            {
+                return anim.animationStages[curStage];
+            }
+            
+        }
         private PawnAnimationClip clip => (PawnAnimationClip)stage.animationClips[actor];
 
         public bool Mirror {
@@ -144,9 +150,16 @@ namespace Rimworld_Animations {
             this.actor = actor;
             this.anim = anim;
             this.mirror = mirror;
-
-            curStage = fastAnimForQuickie ? 1 : 0;
-            animTicks = 0;
+            if(fastAnimForQuickie)
+            {
+                curStage = 1;
+                animTicks = anim.animationStages[0].playTimeTicks;
+            } else
+            {
+                curStage = 0;
+                animTicks = 0;
+            }
+            
             stageTicks = 0;
             clipTicks = 0;
 
@@ -222,6 +235,13 @@ namespace Rimworld_Animations {
 
         public void tickStage()
         {
+
+            if(stage == null)
+            {
+                isAnimating = false;
+                return;
+            }
+
             stageTicks++;
 
             if(stageTicks >= stage.playTimeTicks) {
@@ -321,9 +341,11 @@ namespace Rimworld_Animations {
 
             deltaPos = new Vector3(clip.BodyOffsetX.Evaluate(clipPercent) * (mirror ? -1 : 1), clip.layer.AltitudeFor(), clip.BodyOffsetZ.Evaluate(clipPercent));
 
-            if (AnimationSettings.offsets != null && AnimationSettings.offsets.ContainsKey(CurrentAnimation.defName + pawn.def.defName + ActorIndex)) {
-                deltaPos.x += AnimationSettings.offsets[CurrentAnimation.defName + pawn.def.defName + ActorIndex].x * (mirror ? -1 : 1);
-                deltaPos.z += AnimationSettings.offsets[CurrentAnimation.defName + pawn.def.defName + ActorIndex].y;
+            string bodyTypeDef = (pawn.story?.bodyType != null) ? pawn.story.bodyType.ToString() : "";
+
+            if (AnimationSettings.offsets != null && AnimationSettings.offsets.ContainsKey(CurrentAnimation.defName + pawn.def.defName + bodyTypeDef + ActorIndex)) {
+                deltaPos.x += AnimationSettings.offsets[CurrentAnimation.defName + pawn.def.defName + bodyTypeDef + ActorIndex].x * (mirror ? -1 : 1);
+                deltaPos.z += AnimationSettings.offsets[CurrentAnimation.defName + pawn.def.defName + bodyTypeDef + ActorIndex].y;
             }
 
 
@@ -334,8 +356,8 @@ namespace Rimworld_Animations {
                 genitalAngle = clip.GenitalAngle.Evaluate(clipPercent) * (mirror ? -1 : 1);
             }
 
-            if (AnimationSettings.rotation != null && AnimationSettings.rotation.ContainsKey(CurrentAnimation.defName + pawn.def.defName + ActorIndex)) {
-                float offsetRotation = AnimationSettings.rotation[CurrentAnimation.defName + pawn.def.defName + ActorIndex] * (Mirror ? -1 : 1);
+            if (AnimationSettings.rotation != null && AnimationSettings.rotation.ContainsKey(CurrentAnimation.defName + pawn.def.defName + bodyTypeDef + ActorIndex)) {
+                float offsetRotation = AnimationSettings.rotation[CurrentAnimation.defName + pawn.def.defName + bodyTypeDef + ActorIndex] * (Mirror ? -1 : 1);
                 genitalAngle += offsetRotation;
                 bodyAngle += offsetRotation;
                 headAngle += offsetRotation;

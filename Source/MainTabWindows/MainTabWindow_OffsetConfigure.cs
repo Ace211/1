@@ -35,21 +35,23 @@ namespace Rimworld_Animations {
                     int ActorIndex = curPawn.TryGetComp<CompBodyAnimator>().ActorIndex;
                     float offsetX = 0, offsetZ = 0, rotation = 0;
 
-                    if (AnimationSettings.offsets.ContainsKey(def.defName + curPawn.def.defName + ActorIndex)) {
-                        offsetX = AnimationSettings.offsets[def.defName + curPawn.def.defName + ActorIndex].x;
-                        offsetZ = AnimationSettings.offsets[def.defName + curPawn.def.defName + ActorIndex].y;
+                    string bodyTypeDef = (curPawn.story?.bodyType != null) ? curPawn.story.bodyType.ToString() : "";
+
+                    if (AnimationSettings.offsets.ContainsKey(def.defName + curPawn.def.defName + bodyTypeDef + ActorIndex)) {
+                        offsetX = AnimationSettings.offsets[def.defName + curPawn.def.defName + bodyTypeDef + ActorIndex].x;
+                        offsetZ = AnimationSettings.offsets[def.defName + curPawn.def.defName + bodyTypeDef + ActorIndex].y;
                     } else {
-                        AnimationSettings.offsets.Add(def.defName + curPawn.def.defName + ActorIndex, new Vector2(0, 0));
+                        AnimationSettings.offsets.Add(def.defName + curPawn.def.defName + bodyTypeDef + ActorIndex, new Vector2(0, 0));
                     }
 
-                    if (AnimationSettings.rotation.ContainsKey(def.defName + curPawn.def.defName + ActorIndex)) {
-                        rotation = AnimationSettings.rotation[def.defName + curPawn.def.defName + ActorIndex];
+                    if (AnimationSettings.rotation.ContainsKey(def.defName + curPawn.def.defName + bodyTypeDef + ActorIndex)) {
+                        rotation = AnimationSettings.rotation[def.defName + curPawn.def.defName + bodyTypeDef + ActorIndex];
                     }
                     else {
-                        AnimationSettings.rotation.Add(def.defName + curPawn.def.defName + ActorIndex, 0);
+                        AnimationSettings.rotation.Add(def.defName + curPawn.def.defName + bodyTypeDef + ActorIndex, 0);
                     }
 
-                    listingStandard.Label("Name: " + curPawn.Name + " Race: " + curPawn.def.defName + " Actor Index: " + curPawn.TryGetComp<CompBodyAnimator>().ActorIndex + " Animation: " + def.label + (curPawn.TryGetComp<CompBodyAnimator>().Mirror ? " mirrored" : ""));
+                    listingStandard.Label("Name: " + curPawn.Name + " Race: " + curPawn.def.defName + " Actor Index: " + curPawn.TryGetComp<CompBodyAnimator>().ActorIndex + " Body Type (if any): " + bodyTypeDef + " Animation: " + def.label + (curPawn.TryGetComp<CompBodyAnimator>().Mirror ? " mirrored" : ""));
 
                     if(curPawn.def.defName == "Human") {
                         listingStandard.Label("Warning--You generally don't want to change human offsets, only alien offsets");
@@ -96,13 +98,15 @@ namespace Rimworld_Animations {
 
                     }
 
-                    if (offsetX != AnimationSettings.offsets[def.defName + curPawn.def.defName + ActorIndex].x || offsetZ != AnimationSettings.offsets[def.defName + curPawn.def.defName + ActorIndex].y) {
-                        AnimationSettings.offsets[def.defName + curPawn.def.defName + ActorIndex] = new Vector2(offsetX, offsetZ);
+                    
+
+                    if (offsetX != AnimationSettings.offsets[def.defName + curPawn.def.defName + bodyTypeDef + ActorIndex].x || offsetZ != AnimationSettings.offsets[def.defName + curPawn.def.defName + bodyTypeDef + ActorIndex].y) {
+                        AnimationSettings.offsets[def.defName + curPawn.def.defName + bodyTypeDef + ActorIndex] = new Vector2(offsetX, offsetZ);
 
                     }
 
-                    if(rotation != AnimationSettings.rotation[def.defName + curPawn.def.defName + ActorIndex]) {
-                        AnimationSettings.rotation[def.defName + curPawn.def.defName + ActorIndex] = rotation;
+                    if(rotation != AnimationSettings.rotation[def.defName + curPawn.def.defName + bodyTypeDef + ActorIndex]) {
+                        AnimationSettings.rotation[def.defName + curPawn.def.defName + bodyTypeDef + ActorIndex] = rotation;
                     }
 
                 }

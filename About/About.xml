@@ -6,7 +6,7 @@
   <url>https://gitgud.io/c0ffeeeeeeee/rimworld-animations</url>
 	<supportedVersions>
 		<li>1.1</li>
-    <li>1.2</li>
+		<li>1.2</li>
 	</supportedVersions>
 	<packageId>c0ffee.rimworld.animations</packageId>
 	<modDependencies>
@@ -31,7 +31,7 @@
 	<loadAfter>
 		<li>UnlimitedHugs.HugsLib</li>
 		<li>brrainz.harmony</li>
-    <li>rim.job.world</li>
+		<li>rim.job.world</li>
 	</loadAfter>
 	<description>
     Rimworld Animations! Hurray!
