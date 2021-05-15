@@ -31,6 +31,7 @@
         <defNames>
           <li>Human</li>
         </defNames>
+		<controlGenitalAngle>true</controlGenitalAngle>
         <isFucking>true</isFucking>
         <initiator>true</initiator>
         <bodyTypeOffset>
@@ -257,6 +258,7 @@
             <layer>LayingPawn</layer>
             <keyframes>
               <li>
+				<genitalAngle>27</genitalAngle>
                 <headBob>0</headBob>
                 <tickDuration>10</tickDuration>
                 <bodyAngle>16.6</bodyAngle>
@@ -286,6 +288,7 @@
                 <bodyFacing>1</bodyFacing>
                 <headFacing>1</headFacing>
                 <headBob>0</headBob>
+			    <genitalAngle>27</genitalAngle>
               </li>
             </keyframes>
           </li>
@@ -334,6 +337,7 @@
             <layer>LayingPawn</layer>
             <keyframes>
               <li>
+				<genitalAngle>27</genitalAngle>
                 <tickDuration>8</tickDuration>
                 <bodyAngle>11</bodyAngle>
                 <bodyOffsetX>-0.217</bodyOffsetX>
@@ -363,6 +367,7 @@
                 <bodyFacing>1</bodyFacing>
                 <headFacing>1</headFacing>
                 <headBob>0</headBob>
+				<genitalAngle>27</genitalAngle>
               </li>
             </keyframes>
           </li>
@@ -422,6 +427,7 @@
             <layer>LayingPawn</layer>
             <keyframes>
               <li>
+				<genitalAngle>27</genitalAngle>
                 <tickDuration>8</tickDuration>
                 <bodyAngle>11</bodyAngle>
                 <bodyOffsetX>-0.217</bodyOffsetX>
@@ -458,6 +464,7 @@
                 <bodyFacing>1</bodyFacing>
                 <headFacing>1</headFacing>
                 <headBob>0</headBob>
+				<genitalAngle>27</genitalAngle>
               </li>
             </keyframes>
           </li>
@@ -940,6 +947,7 @@
         </defNames>
         <initiator>true</initiator>
         <isFucking>true</isFucking>
+		<controlGenitalAngle>true</controlGenitalAngle>
         <bodyTypeOffset>
           <Hulk>(0, 0.2)</Hulk>
         </bodyTypeOffset>
@@ -991,6 +999,7 @@
             <layer>LayingPawn</layer>
             <keyframes>
               <li>
+				<genitalAngle>6</genitalAngle>
                 <tickDuration>30</tickDuration>
                 <bodyAngle>-3.18</bodyAngle>
                 <headAngle>-0.41</headAngle>
@@ -1001,6 +1010,7 @@
                 <headBob>0</headBob>
               </li>
               <li>
+				<genitalAngle>40</genitalAngle>
                 <soundEffect>Fuck</soundEffect>
                 <tickDuration>29</tickDuration>
                 <bodyAngle>17.11</bodyAngle>
@@ -1020,6 +1030,7 @@
                 <bodyFacing>3</bodyFacing>
                 <headFacing>3</headFacing>
                 <headBob>0</headBob>
+				<genitalAngle>6</genitalAngle>
               </li>
             </keyframes>
           </li>
@@ -1657,6 +1668,7 @@
             <layer>LayingPawn</layer>
             <keyframes>
               <li>
+				<genitalAngle>6</genitalAngle>
                 <tickDuration>13</tickDuration>
                 <bodyAngle>-3.18</bodyAngle>
                 <headAngle>-0.41</headAngle>
@@ -1667,6 +1679,7 @@
                 <headBob>0</headBob>
               </li>
               <li>
+				<genitalAngle>40</genitalAngle>
                 <soundEffect>Fuck</soundEffect>
                 <tickDuration>12</tickDuration>
                 <bodyAngle>17.11</bodyAngle>
@@ -1686,6 +1699,7 @@
                 <bodyFacing>3</bodyFacing>
                 <headFacing>3</headFacing>
                 <headBob>0</headBob>
+				<genitalAngle>6</genitalAngle>
               </li>
             </keyframes>
           </li>
@@ -1880,6 +1894,7 @@
             <layer>LayingPawn</layer>
             <keyframes>
               <li>
+				  <genitalAngle>6</genitalAngle>
                 <tickDuration>7</tickDuration>
                 <bodyAngle>-3.18</bodyAngle>
                 <headAngle>-0.41</headAngle>
@@ -1890,6 +1905,7 @@
                 <headBob>0</headBob>
               </li>
               <li>
+				  <genitalAngle>40</genitalAngle>
                 <soundEffect>Fuck</soundEffect>
                 <tickDuration>7</tickDuration>
                 <bodyAngle>17.11</bodyAngle>
@@ -1901,6 +1917,7 @@
                 <headBob>0</headBob>
               </li>
               <li>
+				<genitalAngle>6</genitalAngle>
                 <tickDuration>1</tickDuration>
                 <bodyAngle>-3.18</bodyAngle>
                 <headAngle>-0.41</headAngle>
@@ -1912,6 +1929,7 @@
               </li>
 
               <li>
+				<genitalAngle>6</genitalAngle>
                 <tickDuration>7</tickDuration>
                 <bodyAngle>-3.18</bodyAngle>
                 <headAngle>-0.41</headAngle>
@@ -1922,6 +1940,7 @@
                 <headBob>0</headBob>
               </li>
               <li>
+				  <genitalAngle>40</genitalAngle>
                 <soundEffect>Fuck</soundEffect>
                 <tickDuration>7</tickDuration>
                 <bodyAngle>17.11</bodyAngle>
@@ -1933,6 +1952,7 @@
                 <headBob>0</headBob>
               </li>
               <li>
+				<genitalAngle>6</genitalAngle>
                 <tickDuration>1</tickDuration>
                 <bodyAngle>-3.18</bodyAngle>
                 <headAngle>-0.41</headAngle>
@@ -1944,6 +1964,7 @@
               </li>
 
               <li>
+				<genitalAngle>6</genitalAngle>
                 <tickDuration>7</tickDuration>
                 <bodyAngle>-3.18</bodyAngle>
                 <headAngle>-0.41</headAngle>
@@ -1954,6 +1975,7 @@
                 <headBob>0</headBob>
               </li>
               <li>
+				<genitalAngle>40</genitalAngle>
                 <soundEffect>Fuck</soundEffect>
                 <tickDuration>7</tickDuration>
                 <bodyAngle>17.11</bodyAngle>
@@ -1965,6 +1987,7 @@
                 <headBob>0</headBob>
               </li>
               <li>
+				<genitalAngle>6</genitalAngle>
                 <tickDuration>1</tickDuration>
                 <bodyAngle>-3.18</bodyAngle>
                 <headAngle>-0.41</headAngle>
@@ -1976,16 +1999,18 @@
               </li>
 
               <li>
-                <tickDuration>7</tickDuration>
-                <bodyAngle>-3.18</bodyAngle>
-                <headAngle>-0.41</headAngle>
-                <bodyOffsetX>0.122</bodyOffsetX>
-                <bodyOffsetZ>0.356</bodyOffsetZ>
-                <bodyFacing>3</bodyFacing>
-                <headFacing>3</headFacing>
-                <headBob>0</headBob>
-              </li>
-              <li>
+				  <genitalAngle>6</genitalAngle>
+				  <tickDuration>7</tickDuration>
+				  <bodyAngle>-3.18</bodyAngle>
+				  <headAngle>-0.41</headAngle>
+				  <bodyOffsetX>0.122</bodyOffsetX>
+				  <bodyOffsetZ>0.356</bodyOffsetZ>
+				  <bodyFacing>3</bodyFacing>
+				  <headFacing>3</headFacing>
+				  <headBob>0</headBob>
+			  </li>
+			  <li>
+				<genitalAngle>40</genitalAngle>
                 <soundEffect>Cum</soundEffect>
                 <tickDuration>75</tickDuration>
                 <bodyAngle>17.11</bodyAngle>
@@ -1997,6 +2022,7 @@
                 <headBob>0</headBob>
               </li>
               <li>
+				<genitalAngle>40</genitalAngle>
                 <tickDuration>27</tickDuration>
                 <bodyAngle>17.11</bodyAngle>
                 <headAngle>-2.87</headAngle>
@@ -2007,6 +2033,7 @@
                 <headBob>0</headBob>
               </li>
               <li>
+				  <genitalAngle>6</genitalAngle>
                 <tickDuration>1</tickDuration>
                 <bodyAngle>-3.18</bodyAngle>
                 <headAngle>-0.41</headAngle>
@@ -2252,7 +2279,7 @@
             <layer>LayingPawn</layer>
             <keyframes>
               <li>
-                <tickDuration>33</tickDuration>
+                <tickDuration>16</tickDuration>
                 <bodyAngle>180</bodyAngle>
                 <headAngle>180</headAngle>
                 <bodyOffsetX>0</bodyOffsetX>
@@ -2262,17 +2289,39 @@
                 <headBob>0</headBob>
                 <genitalAngle>0</genitalAngle>
               </li>
+			<li>
+				<tickDuration>17</tickDuration>
+				<bodyAngle>180</bodyAngle>
+				<headAngle>180</headAngle>
+				<bodyOffsetX>0</bodyOffsetX>
+				<bodyOffsetZ>-0.347</bodyOffsetZ>
+				<bodyFacing>2</bodyFacing>
+				<headFacing>2</headFacing>
+				<headBob>0.015</headBob>
+				<genitalAngle>-15</genitalAngle>
+			</li>
               <li>
-                <tickDuration>33</tickDuration>
+                <tickDuration>16</tickDuration>
                 <bodyAngle>180</bodyAngle>
                 <headAngle>180</headAngle>
                 <bodyOffsetX>0</bodyOffsetX>
-                <bodyOffsetZ>-0.313</bodyOffsetZ>
+                <bodyOffsetZ>-0.331</bodyOffsetZ>
                 <bodyFacing>2</bodyFacing>
                 <headFacing>2</headFacing>
-                <headBob>0.045</headBob>
+                <headBob>0.03</headBob>
                 <genitalAngle>0</genitalAngle>
               </li>
+			<li>
+				<tickDuration>17</tickDuration>
+				<bodyAngle>180</bodyAngle>
+				<headAngle>180</headAngle>
+				<bodyOffsetX>0</bodyOffsetX>
+				<bodyOffsetZ>-0.315</bodyOffsetZ>
+				<bodyFacing>2</bodyFacing>
+				<headFacing>2</headFacing>
+				<headBob>0.045</headBob>
+				<genitalAngle>15</genitalAngle>
+			</li>
               <li>
                 <tickDuration>1</tickDuration>
                 <bodyAngle>180</bodyAngle>
@@ -2284,6 +2333,127 @@
                 <headBob>0</headBob>
                 <genitalAngle>0</genitalAngle>
               </li>
+				<li>
+					<tickDuration>16</tickDuration>
+					<bodyAngle>180</bodyAngle>
+					<headAngle>180</headAngle>
+					<bodyOffsetX>0</bodyOffsetX>
+					<bodyOffsetZ>-0.363</bodyOffsetZ>
+					<bodyFacing>2</bodyFacing>
+					<headFacing>2</headFacing>
+					<headBob>0</headBob>
+					<genitalAngle>0</genitalAngle>
+				</li>
+				<li>
+					<tickDuration>17</tickDuration>
+					<bodyAngle>180</bodyAngle>
+					<headAngle>180</headAngle>
+					<bodyOffsetX>0</bodyOffsetX>
+					<bodyOffsetZ>-0.347</bodyOffsetZ>
+					<bodyFacing>2</bodyFacing>
+					<headFacing>2</headFacing>
+					<headBob>0.015</headBob>
+					<genitalAngle>-15</genitalAngle>
+				</li>
+				<li>
+					<tickDuration>16</tickDuration>
+					<bodyAngle>180</bodyAngle>
+					<headAngle>180</headAngle>
+					<bodyOffsetX>0</bodyOffsetX>
+					<bodyOffsetZ>-0.331</bodyOffsetZ>
+					<bodyFacing>2</bodyFacing>
+					<headFacing>2</headFacing>
+					<headBob>0.03</headBob>
+					<genitalAngle>0</genitalAngle>
+				</li>
+				<li>
+					<tickDuration>17</tickDuration>
+					<bodyAngle>180</bodyAngle>
+					<headAngle>180</headAngle>
+					<bodyOffsetX>0</bodyOffsetX>
+					<bodyOffsetZ>-0.315</bodyOffsetZ>
+					<bodyFacing>2</bodyFacing>
+					<headFacing>2</headFacing>
+					<headBob>0.045</headBob>
+					<genitalAngle>15</genitalAngle>
+				</li>
+				<li>
+					<tickDuration>1</tickDuration>
+					<bodyAngle>180</bodyAngle>
+					<headAngle>180</headAngle>
+					<bodyOffsetX>0</bodyOffsetX>
+					<bodyOffsetZ>-0.363</bodyOffsetZ>
+					<bodyFacing>2</bodyFacing>
+					<headFacing>2</headFacing>
+					<headBob>0</headBob>
+					<genitalAngle>0</genitalAngle>
+				</li>
+				<li>
+					<tickDuration>33</tickDuration>
+					<bodyAngle>180</bodyAngle>
+					<headAngle>180</headAngle>
+					<bodyOffsetX>0</bodyOffsetX>
+					<bodyOffsetZ>-0.363</bodyOffsetZ>
+					<bodyFacing>2</bodyFacing>
+					<headFacing>2</headFacing>
+					<headBob>0</headBob>
+					<genitalAngle>0</genitalAngle>
+				</li>
+				<li>
+					<tickDuration>33</tickDuration>
+					<bodyAngle>180</bodyAngle>
+					<headAngle>180</headAngle>
+					<bodyOffsetX>0</bodyOffsetX>
+					<bodyOffsetZ>-0.315</bodyOffsetZ>
+					<bodyFacing>2</bodyFacing>
+					<headFacing>2</headFacing>
+					<headBob>0.045</headBob>
+					<genitalAngle>0</genitalAngle>
+				</li>
+				<li>
+					<tickDuration>1</tickDuration>
+					<bodyAngle>180</bodyAngle>
+					<headAngle>180</headAngle>
+					<bodyOffsetX>0</bodyOffsetX>
+					<bodyOffsetZ>-0.363</bodyOffsetZ>
+					<bodyFacing>2</bodyFacing>
+					<headFacing>2</headFacing>
+					<headBob>0</headBob>
+					<genitalAngle>0</genitalAngle>
+				</li>
+				<li>
+					<tickDuration>33</tickDuration>
+					<bodyAngle>180</bodyAngle>
+					<headAngle>180</headAngle>
+					<bodyOffsetX>0</bodyOffsetX>
+					<bodyOffsetZ>-0.363</bodyOffsetZ>
+					<bodyFacing>2</bodyFacing>
+					<headFacing>2</headFacing>
+					<headBob>0</headBob>
+					<genitalAngle>0</genitalAngle>
+				</li>
+				<li>
+					<tickDuration>33</tickDuration>
+					<bodyAngle>180</bodyAngle>
+					<headAngle>180</headAngle>
+					<bodyOffsetX>0</bodyOffsetX>
+					<bodyOffsetZ>-0.315</bodyOffsetZ>
+					<bodyFacing>2</bodyFacing>
+					<headFacing>2</headFacing>
+					<headBob>0.045</headBob>
+					<genitalAngle>0</genitalAngle>
+				</li>
+				<li>
+					<tickDuration>1</tickDuration>
+					<bodyAngle>180</bodyAngle>
+					<headAngle>180</headAngle>
+					<bodyOffsetX>0</bodyOffsetX>
+					<bodyOffsetZ>-0.363</bodyOffsetZ>
+					<bodyFacing>2</bodyFacing>
+					<headFacing>2</headFacing>
+					<headBob>0</headBob>
+					<genitalAngle>0</genitalAngle>
+				</li>
             </keyframes>
           </li>
         </animationClips>

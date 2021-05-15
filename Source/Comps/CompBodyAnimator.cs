@@ -428,7 +428,7 @@ namespace Rimworld_Animations {
             Scribe_Values.Look(ref curStage, "RJWAnimations-curStage", 0);
             Scribe_Values.Look(ref actor, "RJWAnimations-actor");
 
-            Scribe_Values.Look(ref Animating, "RJWAnimations-Animating");
+            Animating = false;
             Scribe_Values.Look(ref anchor, "RJWAnimations-anchor");
             Scribe_Values.Look(ref deltaPos, "RJWAnimations-deltaPos");
             Scribe_Values.Look(ref headBob, "RJWAnimations-headBob");

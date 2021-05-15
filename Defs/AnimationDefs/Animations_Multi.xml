@@ -18,6 +18,7 @@
         <defNames>
           <li>Human</li>
         </defNames>
+		  <controlGenitalAngle>true</controlGenitalAngle>
         <isFucking>true</isFucking>
         <initiator>true</initiator>
       </li>
@@ -25,6 +26,7 @@
         <defNames>
           <li>Human</li>
         </defNames>
+		<controlGenitalAngle>true</controlGenitalAngle>
         <isFucking>true</isFucking>
         <initiator>true</initiator>
       </li>
@@ -78,6 +80,7 @@
             <layer>LayingPawn</layer>
             <keyframes>
               <li>
+				<genitalAngle>-10</genitalAngle>
                 <tickDuration>30</tickDuration>
                 <bodyAngle>12</bodyAngle>
                 <headAngle>-14.1</headAngle>
@@ -98,6 +101,7 @@
                 <headBob>0</headBob>
               </li>
               <li>
+				<genitalAngle>-10</genitalAngle>
                 <tickDuration>1</tickDuration>
                 <bodyAngle>12</bodyAngle>
                 <headAngle>-14.1</headAngle>
@@ -114,6 +118,7 @@
             <layer>LayingPawn</layer>
             <keyframes>
               <li>
+				<genitalAngle>43</genitalAngle>
                 <tickDuration>27</tickDuration>
                 <bodyAngle>8.7</bodyAngle>
                 <headAngle>15.1</headAngle>
@@ -135,6 +140,7 @@
                 <headBob>0</headBob>
               </li>
               <li>
+				<genitalAngle>43</genitalAngle>
                 <tickDuration>1</tickDuration>
                 <bodyAngle>8.7</bodyAngle>
                 <headAngle>15.1</headAngle>
@@ -205,6 +211,7 @@
             <layer>LayingPawn</layer>
             <keyframes>
               <li>
+				<genitalAngle>-10</genitalAngle>
                 <tickDuration>13</tickDuration>
                 <bodyAngle>12</bodyAngle>
                 <headAngle>-14.1</headAngle>
@@ -225,6 +232,7 @@
                 <headBob>0</headBob>
               </li>
               <li>
+				<genitalAngle>-10</genitalAngle>
                 <tickDuration>1</tickDuration>
                 <bodyAngle>12</bodyAngle>
                 <headAngle>-14.1</headAngle>
@@ -241,6 +249,7 @@
             <layer>LayingPawn</layer>
             <keyframes>
               <li>
+				  <genitalAngle>43</genitalAngle>
                 <tickDuration>13</tickDuration>
                 <bodyAngle>8.7</bodyAngle>
                 <headAngle>15.1</headAngle>
@@ -262,6 +271,7 @@
                 <headBob>0</headBob>
               </li>
               <li>
+				  <genitalAngle>43</genitalAngle>
                 <tickDuration>1</tickDuration>
                 <bodyAngle>8.7</bodyAngle>
                 <headAngle>15.1</headAngle>
@@ -417,6 +427,7 @@
             <layer>LayingPawn</layer>
             <keyframes>
               <li>
+				<genitalAngle>-10</genitalAngle>
                 <tickDuration>9</tickDuration>
                 <bodyAngle>9</bodyAngle>
                 <headAngle>-14.1</headAngle>
@@ -518,6 +529,7 @@
                 <bodyFacing>3</bodyFacing>
                 <headFacing>3</headFacing>
                 <headBob>0</headBob>
+				<genitalAngle>-10</genitalAngle>
               </li>
 
             </keyframes>
@@ -527,6 +539,7 @@
             <layer>LayingPawn</layer>
             <keyframes>
               <li>
+				  <genitalAngle>43</genitalAngle>
                 <tickDuration>9</tickDuration>
                 <bodyAngle>8.7</bodyAngle>
                 <headAngle>15.1</headAngle>
@@ -622,6 +635,7 @@
                 <headBob>0</headBob>
               </li>
               <li>
+				<genitalAngle>43</genitalAngle>
                 <tickDuration>1</tickDuration>
                 <bodyAngle>8.7</bodyAngle>
                 <headAngle>15.1</headAngle>
