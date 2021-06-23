@@ -39,7 +39,22 @@ namespace Rimworld_Animations {
                             return false;
                         }
                 }
-
+				if (x.actors[i].requiredGender != null && !x.actors[i].requiredGender.Contains(localParticipants[i].gender.ToStringSafe<Gender>()))
+				{
+					if (AnimationSettings.debugMode)
+					{
+						Log.Message(string.Concat(new string[]
+						{
+							x.defName.ToStringSafe<string>(),
+							" not selected -- ",
+							localParticipants[i].def.defName.ToStringSafe<string>(),
+							" ",
+							localParticipants[i].Name.ToStringSafe<Name>(),
+							" does not match required gender"
+						}), false);
+					}
+					return false;
+				}
                     if ((x.actors[i].blacklistedRaces != null) && x.actors[i].blacklistedRaces.Contains(localParticipants[i].def.defName)) {
                         if(AnimationSettings.debugMode)
                             Log.Message(x.defName.ToStringSafe() + " not selected -- " + localParticipants[i].def.defName.ToStringSafe() + " " + localParticipants[i].Name.ToStringSafe() + " is blacklisted");
