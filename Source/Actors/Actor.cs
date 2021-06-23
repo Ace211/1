@@ -20,6 +20,7 @@ namespace Rimworld_Animations {
         public List<BodyDef> bodyDefTypes = new List<BodyDef>();
         public BodyTypeOffset bodyTypeOffset = new BodyTypeOffset();
         public Vector3 offset = new Vector2(0, 0);
+		public List<string> requiredGender;
 
     }
 }
