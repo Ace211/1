@@ -56,15 +56,14 @@ namespace Rimworld_Animations {
                     if(curPawn.def.defName == "Human") {
                         listingStandard.Label("Warning--You generally don't want to change human offsets, only alien offsets");
                     }
-                    
 
-                    listingStandard.Label("X Offset: " + offsetX);
-                    offsetX = listingStandard.Slider(offsetX, -10, 10);
+                    offsetX = float.Parse(listingStandard.TextEntryLabeled("X Offset: ", offsetX.ToString()));
+                    offsetX = listingStandard.Slider(offsetX, -3, 3);
 
-                    listingStandard.Label("Z Offset: " + offsetZ);
-                    offsetZ = listingStandard.Slider(offsetZ, -10, 10);
+                    offsetZ = float.Parse(listingStandard.TextEntryLabeled("X Offset: ", offsetZ.ToString()));
+                    offsetZ = listingStandard.Slider(offsetZ, -3, 3);
 
-                    listingStandard.Label("Rotation: " + rotation);
+                    rotation = float.Parse(listingStandard.TextEntryLabeled("X Offset: ", rotation.ToString()));
                     rotation = listingStandard.Slider(rotation, -180, 180);
 
                     if(listingStandard.ButtonText("Reset All")) {
