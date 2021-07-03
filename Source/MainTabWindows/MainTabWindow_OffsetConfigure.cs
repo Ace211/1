@@ -60,10 +60,10 @@ namespace Rimworld_Animations {
                     bool mirrored = curPawn.TryGetComp<CompBodyAnimator>().Mirror;
 
                     float.TryParse(listingStandard.TextEntryLabeled("X Offset: ", offsetX.ToString()), out offsetX);
-                    offsetX = listingStandard.Slider(offsetX, -3 * (mirrored ? -1 : 1), 3 * (mirrored ? -1 : 1));
+                    offsetX = listingStandard.Slider(offsetX, -2 * (mirrored ? -1 : 1), 2 * (mirrored ? -1 : 1));
 
                     float.TryParse(listingStandard.TextEntryLabeled("Z Offset: ", offsetZ.ToString()), out offsetZ);
-                    offsetZ = listingStandard.Slider(offsetZ, -3, 3);
+                    offsetZ = listingStandard.Slider(offsetZ, -2, 2);
 
                     float.TryParse(listingStandard.TextEntryLabeled("Rotation: ", rotation.ToString()), out rotation);
                     rotation = listingStandard.Slider(rotation, -180, 180);
