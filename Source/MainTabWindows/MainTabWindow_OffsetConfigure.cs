@@ -62,10 +62,10 @@ namespace Rimworld_Animations {
                     float.TryParse(listingStandard.TextEntryLabeled("X Offset: ", offsetX.ToString()), out offsetX);
                     offsetX = listingStandard.Slider(offsetX, -3 * (mirrored ? -1 : 1), 3 * (mirrored ? -1 : 1));
 
-                    float.TryParse(listingStandard.TextEntryLabeled("X Offset: ", offsetZ.ToString()), out offsetZ);
+                    float.TryParse(listingStandard.TextEntryLabeled("Z Offset: ", offsetZ.ToString()), out offsetZ);
                     offsetZ = listingStandard.Slider(offsetZ, -3, 3);
 
-                    float.TryParse(listingStandard.TextEntryLabeled("X Offset: ", rotation.ToString()), out rotation);
+                    float.TryParse(listingStandard.TextEntryLabeled("Rotation: ", rotation.ToString()), out rotation);
                     rotation = listingStandard.Slider(rotation, -180, 180);
 
                     if(listingStandard.ButtonText("Reset All")) {
