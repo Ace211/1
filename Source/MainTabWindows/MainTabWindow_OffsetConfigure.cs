@@ -57,13 +57,15 @@ namespace Rimworld_Animations {
                         listingStandard.Label("Warning--You generally don't want to change human offsets, only alien offsets");
                     }
 
-                    offsetX = float.Parse(listingStandard.TextEntryLabeled("X Offset: ", offsetX.ToString()));
-                    offsetX = listingStandard.Slider(offsetX, -3, 3);
+                    bool mirrored = curPawn.TryGetComp<CompBodyAnimator>().Mirror;
 
-                    offsetZ = float.Parse(listingStandard.TextEntryLabeled("X Offset: ", offsetZ.ToString()));
+                    float.TryParse(listingStandard.TextEntryLabeled("X Offset: ", offsetX.ToString()), out offsetX);
+                    offsetX = listingStandard.Slider(offsetX, -3 * (mirrored ? -1 : 1), 3 * (mirrored ? -1 : 1));
+
+                    float.TryParse(listingStandard.TextEntryLabeled("X Offset: ", offsetZ.ToString()), out offsetZ);
                     offsetZ = listingStandard.Slider(offsetZ, -3, 3);
 
-                    rotation = float.Parse(listingStandard.TextEntryLabeled("X Offset: ", rotation.ToString()));
+                    float.TryParse(listingStandard.TextEntryLabeled("X Offset: ", rotation.ToString()), out rotation);
                     rotation = listingStandard.Slider(rotation, -180, 180);
 
                     if(listingStandard.ButtonText("Reset All")) {
