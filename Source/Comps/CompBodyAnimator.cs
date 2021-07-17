@@ -422,13 +422,11 @@ namespace Rimworld_Animations {
             Scribe_Values.Look(ref stageTicks, "RJWAnimations-stageTicks", 1);
             Scribe_Values.Look(ref clipTicks, "RJWAnimations-clipTicks", 1);
             Scribe_Values.Look(ref clipPercent, "RJWAnimations-clipPercent", 1);
-
             Scribe_Values.Look(ref mirror, "RJWAnimations-mirror");
 
             Scribe_Values.Look(ref curStage, "RJWAnimations-curStage", 0);
             Scribe_Values.Look(ref actor, "RJWAnimations-actor");
 
-            Animating = false;
             Scribe_Values.Look(ref anchor, "RJWAnimations-anchor");
             Scribe_Values.Look(ref deltaPos, "RJWAnimations-deltaPos");
             Scribe_Values.Look(ref headBob, "RJWAnimations-headBob");

@@ -39,11 +39,6 @@
       <HintPath>..\..\..\..\workshop\content\294100\839005762\1.2\Assemblies\AlienRace.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Assembly-CSharp, Version=1.1.7397.36407, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="RJW">
       <HintPath>..\rjw-master\1.2\Assemblies\RJW.dll</HintPath>
       <Private>False</Private>

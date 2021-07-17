@@ -4,7 +4,7 @@
     <success>Always</success>
     <operations>
       <li Class="PatchOperationConditional">
-        <xpath>/Defs/ThingDef/comps</xpath>
+        <xpath>/Defs/ThingDef[defName="BasePawn"]/comps</xpath>
         <success>Always</success>
         <nomatch Class="PatchOperationAdd">
           <xpath>/Defs/ThingDef</xpath>
