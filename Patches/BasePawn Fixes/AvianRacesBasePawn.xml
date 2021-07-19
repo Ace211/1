@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Avian Races</li>
+			<li>1514158118</li>
+			<li>Avian Races only One Faction</li>
+			<li>1582200954</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>			
+				<li Class="PatchOperationAttributeSet">
+					<xpath>/Defs/AlienRace.ThingDef_AlienRace[defName="Alien_Cassowary"]</xpath>
+					<attribute>ParentName</attribute>
+					<value>BasePawn</value>
+				</li>
+				<li Class="PatchOperationAttributeSet">
+					<xpath>/Defs/AlienRace.ThingDef_AlienRace[defName="Alien_Chicken"]</xpath>
+					<attribute>ParentName</attribute>
+					<value>BasePawn</value>
+				</li>
+				<li Class="PatchOperationAttributeSet">
+					<xpath>/Defs/AlienRace.ThingDef_AlienRace[defName="Alien_Dodo"]</xpath>
+					<attribute>ParentName</attribute>
+					<value>BasePawn</value>
+				</li>
+				<li Class="PatchOperationAttributeSet">
+					<xpath>/Defs/AlienRace.ThingDef_AlienRace[defName="Alien_Owl"]</xpath>
+					<attribute>ParentName</attribute>
+					<value>BasePawn</value>
+				</li>
+				<li Class="PatchOperationAttributeSet">
+					<xpath>/Defs/AlienRace.ThingDef_AlienRace[defName="Alien_Parrot"]</xpath>
+					<attribute>ParentName</attribute>
+					<value>BasePawn</value>
+				</li>
+				<li Class="PatchOperationAttributeSet">
+					<xpath>/Defs/AlienRace.ThingDef_AlienRace[defName="Alien_Penguin"]</xpath>
+					<attribute>ParentName</attribute>
+					<value>BasePawn</value>
+				</li>
+				<li Class="PatchOperationAttributeSet">
+					<xpath>/Defs/AlienRace.ThingDef_AlienRace[defName="Alien_Vulture"]</xpath>
+					<attribute>ParentName</attribute>
+					<value>BasePawn</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+</Patch>
+

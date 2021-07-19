@@ -3,6 +3,7 @@
 	<Operation Class="PatchOperationFindMod">
 		<mods>
 			<li>Rabbie The Moonrabbit race</li>
+			<li>1837246563</li>
 		</mods>
 		<match Class="PatchOperationSequence">
 			<operations>
