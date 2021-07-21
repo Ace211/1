@@ -119,8 +119,6 @@ namespace Rimworld_Animations {
 
             listingStandard.End();
 
-            base.DoWindowContents(inRect);
-
         }
 
         public override void PreOpen() {

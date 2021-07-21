@@ -51,7 +51,7 @@ namespace Rimworld_Animations {
 							" ",
 							localParticipants[i].Name.ToStringSafe<Name>(),
 							" does not match required gender"
-						}), false);
+						}));
 					}
 					return false;
 				}
@@ -275,6 +275,16 @@ namespace Rimworld_Animations {
 
             return true;
 
+        }
+
+        public static Rot4 PawnHeadRotInAnimation(Pawn pawn, Rot4 regularPos)
+        {
+            if(pawn?.TryGetComp<CompBodyAnimator>() != null && pawn.TryGetComp<CompBodyAnimator>().isAnimating)
+            {
+                return pawn.TryGetComp<CompBodyAnimator>().headFacing;
+            }
+
+            return regularPos;
         }
     }
 }

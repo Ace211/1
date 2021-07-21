@@ -32,7 +32,6 @@ namespace Rimworld_Animations {
                     actorsInCurrentAnimation = null;
                 }
 
-                PortraitsCache.SetDirty(pawn);
             }
         }
         private bool Animating = false;
@@ -179,6 +178,9 @@ namespace Rimworld_Animations {
             base.CompTick();
 
             if(isAnimating) {
+
+                GlobalTextureAtlasManager.TryMarkPawnFrameSetDirty(pawn);
+
                 if (pawn.Dead || pawn?.jobs?.curDriver == null || (pawn?.jobs?.curDriver != null && !(pawn?.jobs?.curDriver is rjw.JobDriver_Sex))) {
                     isAnimating = false;
                 }
@@ -187,7 +189,7 @@ namespace Rimworld_Animations {
                 }
             }
         }
-        public void animatePawn(ref Vector3 rootLoc, ref float angle, ref Rot4 bodyFacing, ref Rot4 headFacing) {
+        public void animatePawnBody(ref Vector3 rootLoc, ref float angle, ref Rot4 bodyFacing) {
 
             if(!isAnimating) {
                 return;
@@ -195,18 +197,22 @@ namespace Rimworld_Animations {
             rootLoc = anchor + deltaPos;
             angle = bodyAngle;
             bodyFacing = this.bodyFacing;
-            headFacing = this.headFacing;
-
-
-
 
         }
+
+        public Rot4 AnimateHeadFacing()
+        {
+            return this.headFacing;
+        }
+
 
         public void tickGraphics(PawnGraphicSet graphics) {
             this.Graphics = graphics;
         }
 
         public void tickAnim() {
+
+            
 
             if (!isAnimating) return;
 
@@ -231,6 +237,9 @@ namespace Rimworld_Animations {
                 
                 
             }
+
+
+            
         }
 
         public void tickStage()

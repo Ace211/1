@@ -11,112 +11,74 @@ using System.Reflection;
 using System.Reflection.Emit;
 
 namespace Rimworld_Animations {
-
+	
 	[HarmonyPatch(typeof(PawnRenderer), "RenderPawnInternal", new Type[]
 		{
-			typeof(Vector3),
-			typeof(float),
-			typeof(bool),
-			typeof(Rot4),
-			typeof(Rot4),
-			typeof(RotDrawMode),
-			typeof(bool),
-			typeof(bool),
-			typeof(bool)
-		}
-	)]
-	public static class HarmonyPatch_PawnRenderer {
-
-		[HarmonyBefore(new string[] { "showhair.kv.rw", "erdelf.HumanoidAlienRaces", "Nals.FacialAnimation" })]
-		public static void Prefix(PawnRenderer __instance, ref Vector3 rootLoc, ref float angle, bool renderBody, ref Rot4 bodyFacing, ref Rot4 headFacing, RotDrawMode bodyDrawType, bool portrait, bool headStump, bool invisible) {
-			PawnGraphicSet graphics = __instance.graphics;
-			Pawn pawn = graphics.pawn;
-			CompBodyAnimator bodyAnim = pawn.TryGetComp<CompBodyAnimator>();
-
-			if (!graphics.AllResolved) {
-				graphics.ResolveAllGraphics();
-			}
-
-
-			if (bodyAnim != null && bodyAnim.isAnimating && !portrait && pawn.Map == Find.CurrentMap) {
-				bodyAnim.tickGraphics(graphics);
-				bodyAnim.animatePawn(ref rootLoc, ref angle, ref bodyFacing, ref headFacing);
-
-			}
-		}
-	}
-
-	[StaticConstructorOnStartup]
-	public static class HarmonyPatch_Animate
-    {
-
-		static HarmonyPatch_Animate() {
-			// hats display selection patch -- broken
-			/*
-			if (LoadedModManager.RunningModsListForReading.Any(x => x.Name == "Hats Display Selection")) {
-				HarmonyPatch_HatsDisplaySelection.PatchHatsDisplaySelectionArgs();
-			}
-			else {
-				PatchRimworldFunctionsNormally();
-			}
-			*/
-
-
-			PatchRimworldFunctionsNormally();
-
-		}
-
-
-		static void PatchRimworldFunctionsNormally() {
-			(new Harmony("rjw")).Patch(AccessTools.Method(typeof(PawnRenderer), "RenderPawnInternal", parameters: new Type[]
-				{
 					typeof(Vector3),
 					typeof(float),
 					typeof(bool),
 					typeof(Rot4),
-					typeof(Rot4),
 					typeof(RotDrawMode),
-					typeof(bool),
-					typeof(bool),
-					typeof(bool)
-				}),
-				transpiler: new HarmonyMethod(AccessTools.Method(typeof(HarmonyPatch_Animate), "Transpiler")));
+					typeof(PawnRenderFlags)
 		}
+	)]
+	public static class HarmonyPatch_PawnRenderer
+	{
 
-		[HarmonyAfter(new string[] { "showhair.kv.rw", "erdelf.HumanoidAlienRaces", "Nals.FacialAnimation" })]
-		[HarmonyReversePatch(HarmonyReversePatchType.Snapshot)]
-		public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
+		[HarmonyBefore(new string[] { "showhair.kv.rw", "erdelf.HumanoidAlienRaces", "Nals.FacialAnimation" })]
+		public static void Prefix(PawnRenderer __instance, ref Vector3 rootLoc, ref float angle, bool renderBody, ref Rot4 bodyFacing, RotDrawMode bodyDrawType, PawnRenderFlags flags)
+		{
+			PawnGraphicSet graphics = __instance.graphics;
+			Pawn pawn = graphics.pawn;
+			CompBodyAnimator bodyAnim = pawn.TryGetComp<CompBodyAnimator>();
 
-			MethodInfo drawMeshNowOrLater = AccessTools.Method(typeof(GenDraw), "DrawMeshNowOrLater");
-			FieldInfo headGraphic = AccessTools.Field(typeof(PawnGraphicSet), "headGraphic");
 
+			if (bodyAnim != null && bodyAnim.isAnimating && pawn.Map == Find.CurrentMap)
+			{
+				bodyAnim.animatePawnBody(ref rootLoc, ref angle, ref bodyFacing);
 
-			List<CodeInstruction> codes = instructions.ToList();
-			bool forHead = true;
-			for(int i = 0; i < codes.Count(); i++) {
-
-				//Instead of calling drawmeshnoworlater, add pawn to the stack and call my special static method
-				if (codes[i].OperandIs(drawMeshNowOrLater) && forHead) {
-
-					yield return new CodeInstruction(OpCodes.Ldarg_0);
-					yield return new CodeInstruction(OpCodes.Ldfld, AccessTools.DeclaredField(typeof(PawnRenderer), "pawn"));
-					yield return new CodeInstruction(OpCodes.Call, AccessTools.DeclaredMethod(typeof(AnimationUtility), nameof(AnimationUtility.RenderPawnHeadMeshInAnimation), new Type[] { typeof(Mesh), typeof(Vector3), typeof(Quaternion), typeof(Material), typeof(bool), typeof(Pawn) }));
-
-				}
-				//checking for if(graphics.headGraphic != null)
-				else if (codes[i].opcode == OpCodes.Ldfld && codes[i].OperandIs(headGraphic)) {
-					forHead = true;
-					yield return codes[i];
-				} 
-				//checking for if(renderbody)
-				else if(codes[i].opcode == OpCodes.Ldarg_3) {
-					forHead = false;
-					yield return codes[i];
-				}
-				else {
-					yield return codes[i];
-				}
 			}
 		}
-    }
+
+		public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+		{
+			bool forHead = false;
+
+			foreach (CodeInstruction i in instructions)
+			{
+
+
+
+				
+				if (i.opcode == OpCodes.Ldfld && i.OperandIs(AccessTools.Field(typeof(PawnGraphicSet), "headGraphic")))
+				{
+
+					forHead = true;
+					yield return i;
+				}
+
+				else if (forHead && i.operand == (object)7)
+				{
+
+					yield return new CodeInstruction(OpCodes.Ldarg_0);
+					yield return new CodeInstruction(OpCodes.Ldfld, AccessTools.Field(typeof(PawnRenderer), "pawn"));
+					yield return new CodeInstruction(OpCodes.Ldloc_S, operand: 7);
+					yield return new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(AnimationUtility), "PawnHeadRotInAnimation"));
+				}
+
+				else
+                {
+					yield return i;
+				}
+				
+				
+			}
+
+		}
+
+	}
+
+
+	
+
 }

@@ -65,7 +65,7 @@ namespace Rimworld_Animations {
                 }
 
                 if(Gen.IsHashIntervalTick(pawn, ticks_between_hearts)) {
-                    MoteMaker.ThrowMetaIcon(pawn.Position, pawn.Map, ThingDefOf.Mote_Heart);
+                    FleckMaker.ThrowMetaIcon(pawn.Position, pawn.Map, FleckDefOf.Heart);
                 }
                 SexTick(pawn, Partner);
                 SexUtility.reduce_rest(Partner);

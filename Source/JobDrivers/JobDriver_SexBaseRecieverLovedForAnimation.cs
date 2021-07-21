@@ -65,7 +65,8 @@ namespace Rimworld_Animations {
 			get_loved.handlingFacing = true;
 			get_loved.AddPreTickAction(delegate {
 				if (pawn.IsHashIntervalTick(ticks_between_hearts))
-					MoteMaker.ThrowMetaIcon(pawn.Position, pawn.Map, ThingDefOf.Mote_Heart);
+					FleckMaker.ThrowMetaIcon(pawn.Position, pawn.Map, FleckDefOf.Heart);
+
 			});
 			get_loved.AddEndCondition(() =>
 			{

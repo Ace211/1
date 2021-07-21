@@ -54,7 +54,10 @@ namespace Rimworld_Animations {
             for (int i = 0; i < instructions.Count(); i++) {
 
                 
-                if (codes[i].OperandIs(drawMeshNowOrLater)) {
+                if (codes[i].
+
+
+(drawMeshNowOrLater)) {
 
                     yield return new CodeInstruction(OpCodes.Ldarg_0);
                     yield return new CodeInstruction(OpCodes.Ldfld, AccessTools.DeclaredField(AccessTools.TypeByName("HatDisplaySelection.Patch"), "pawn"));
