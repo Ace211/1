@@ -46,9 +46,6 @@ namespace Rimworld_Animations {
 
 			foreach (CodeInstruction i in instructions)
 			{
-
-
-
 				
 				if (i.opcode == OpCodes.Ldfld && i.OperandIs(AccessTools.Field(typeof(PawnGraphicSet), "headGraphic")))
 				{
@@ -57,13 +54,14 @@ namespace Rimworld_Animations {
 					yield return i;
 				}
 
-				else if (forHead && i.operand == (object)7)
+				else if (forHead && i.opcode == OpCodes.Ldarg_S && i.operand == (object)4)
 				{
 
 					yield return new CodeInstruction(OpCodes.Ldarg_0);
 					yield return new CodeInstruction(OpCodes.Ldfld, AccessTools.Field(typeof(PawnRenderer), "pawn"));
-					yield return new CodeInstruction(OpCodes.Ldloc_S, operand: 7);
+					yield return new CodeInstruction(OpCodes.Ldloc_S, operand: 4);
 					yield return new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(AnimationUtility), "PawnHeadRotInAnimation"));
+				
 				}
 
 				else

@@ -26,24 +26,4 @@ namespace Rimworld_Animations {
 
     }
 
-    [HarmonyPatch(typeof(PawnRenderer), "BodyAngle")]
-    public static class HarmonyPatch_PawnAngle
-    {
-        public static bool Prefix(Pawn ___pawn, ref float __result)
-        {
-
-            if(___pawn.TryGetComp<CompBodyAnimator>().isAnimating)
-            {
-                __result = ___pawn.TryGetComp<CompBodyAnimator>().bodyAngle;
-                return false;
-            }
-
-            return true;
-
-        }
-    }
-
-
-
-
 }

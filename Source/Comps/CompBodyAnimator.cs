@@ -32,6 +32,7 @@ namespace Rimworld_Animations {
                     actorsInCurrentAnimation = null;
                 }
 
+                PortraitsCache.SetDirty(pawn);
             }
         }
         private bool Animating = false;

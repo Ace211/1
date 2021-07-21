@@ -279,6 +279,8 @@ namespace Rimworld_Animations {
 
         public static Rot4 PawnHeadRotInAnimation(Pawn pawn, Rot4 regularPos)
         {
+            Debug.Log("Test");
+
             if(pawn?.TryGetComp<CompBodyAnimator>() != null && pawn.TryGetComp<CompBodyAnimator>().isAnimating)
             {
                 return pawn.TryGetComp<CompBodyAnimator>().headFacing;
