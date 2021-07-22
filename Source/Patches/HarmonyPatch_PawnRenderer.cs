@@ -38,35 +38,32 @@ namespace Rimworld_Animations {
 				bodyAnim.animatePawnBody(ref rootLoc, ref angle, ref bodyFacing);
 
 			}
-		}
 
+		}
+		
 		public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
 		{
-			bool forHead = false;
-
-			foreach (CodeInstruction i in instructions)
+			List<CodeInstruction> ins = instructions.ToList();
+			
+			for(int i = 0; i < instructions.Count(); i++)
 			{
 				
-				if (i.opcode == OpCodes.Ldfld && i.OperandIs(AccessTools.Field(typeof(PawnGraphicSet), "headGraphic")))
-				{
+				if (i - 3 >= 0 && ins[i - 3].opcode == OpCodes.Call && ins[i - 3].operand != null && ins[i - 3].OperandIs(AccessTools.DeclaredMethod(typeof(PawnRenderer), "BaseHeadOffsetAt")))
+                {
 
-					forHead = true;
-					yield return i;
-				}
-
-				else if (forHead && i.opcode == OpCodes.Ldarg_S && i.operand == (object)4)
-				{
-
+					yield return new CodeInstruction(OpCodes.Ldloca, (object)0);
+					yield return new CodeInstruction(OpCodes.Ldloca, (object)7);
+					yield return new CodeInstruction(OpCodes.Ldloca, (object)6);
 					yield return new CodeInstruction(OpCodes.Ldarg_0);
-					yield return new CodeInstruction(OpCodes.Ldfld, AccessTools.Field(typeof(PawnRenderer), "pawn"));
-					yield return new CodeInstruction(OpCodes.Ldloc_S, operand: 4);
-					yield return new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(AnimationUtility), "PawnHeadRotInAnimation"));
-				
-				}
+					yield return new CodeInstruction(OpCodes.Ldfld, AccessTools.DeclaredField(typeof(PawnRenderer), "pawn"));
+					yield return new CodeInstruction(OpCodes.Call, AccessTools.DeclaredMethod(typeof(AnimationUtility), "AdjustHead"));
+					yield return ins[i];
+					//headFacing equals true
+                }
 
 				else
                 {
-					yield return i;
+					yield return ins[i];
 				}
 				
 				
@@ -75,7 +72,6 @@ namespace Rimworld_Animations {
 		}
 
 	}
-
 
 	
 

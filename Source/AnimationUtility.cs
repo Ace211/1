@@ -143,21 +143,32 @@ namespace Rimworld_Animations {
                 return null;
         }
 
-        public static void RenderPawnHeadMeshInAnimation(Mesh mesh, Vector3 loc, Quaternion quaternion, Material material, bool portrait, Pawn pawn) {
+        public static void RenderPawnHeadMeshInAnimation1(Mesh mesh, Vector3 loc, Quaternion quaternion, Material material, bool drawNow, Pawn pawn) {
 
-            if(pawn == null || pawn.Map != Find.CurrentMap) {
-                GenDraw.DrawMeshNowOrLater(mesh, loc, quaternion, material, portrait);
+            if (pawn == null || pawn.Map != Find.CurrentMap) {
+                GenDraw.DrawMeshNowOrLater(mesh, loc, quaternion, material, drawNow);
                 return;
             }
 
             CompBodyAnimator pawnAnimator = pawn.TryGetComp<CompBodyAnimator>();
 
-            if (pawnAnimator == null || !pawnAnimator.isAnimating || portrait) {
-                GenDraw.DrawMeshNowOrLater(mesh, loc, quaternion, material, portrait);
+            if (pawnAnimator == null || !pawnAnimator.isAnimating) {
+                GenDraw.DrawMeshNowOrLater(mesh, loc, quaternion, material, drawNow);
             } else {
                 Vector3 pawnHeadPosition = pawnAnimator.getPawnHeadPosition();
                 pawnHeadPosition.y = loc.y;
-                GenDraw.DrawMeshNowOrLater(mesh, pawnHeadPosition, Quaternion.AngleAxis(pawnAnimator.headAngle, Vector3.up), material, portrait);
+                GenDraw.DrawMeshNowOrLater(MeshPool.humanlikeHeadSet.MeshAt(pawnAnimator.headFacing), pawnHeadPosition, Quaternion.AngleAxis(pawnAnimator.headAngle, Vector3.up), material, true);
+            }
+        }
+
+        public static void AdjustHead(ref Quaternion quat, ref Rot4 bodyFacing, ref Vector3 pos, Pawn pawn)
+        {
+            CompBodyAnimator anim = pawn.TryGetComp<CompBodyAnimator>();
+            if (anim.isAnimating)
+            {
+                bodyFacing = anim.headFacing;
+                quat = Quaternion.AngleAxis(anim.headAngle, Vector3.up);
+                pos = anim.getPawnHeadOffset();
             }
         }
 

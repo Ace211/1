@@ -411,6 +411,12 @@ namespace Rimworld_Animations {
 
         }
 
+        public Vector3 getPawnHeadOffset()
+        {
+            return Quaternion.AngleAxis(bodyAngle, Vector3.up) * (pawn.Drawer.renderer.BaseHeadOffsetAt(headFacing) + headBob);
+            
+        }
+
         public AnimationDef CurrentAnimation {
             get {
                 return anim;
