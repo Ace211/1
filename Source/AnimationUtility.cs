@@ -161,12 +161,15 @@ namespace Rimworld_Animations {
             }
         }
 
-        public static void AdjustHead(ref Quaternion quat, ref Rot4 bodyFacing, ref Vector3 pos, Pawn pawn)
+        public static void AdjustHead(ref Quaternion quat, ref Rot4 bodyFacing, ref Vector3 pos, ref float angle, Pawn pawn, PawnRenderFlags flags)
         {
+            if (flags.FlagSet(PawnRenderFlags.Portrait)) return;
+
             CompBodyAnimator anim = pawn.TryGetComp<CompBodyAnimator>();
             if (anim.isAnimating)
             {
                 bodyFacing = anim.headFacing;
+                angle = anim.headAngle;
                 quat = Quaternion.AngleAxis(anim.headAngle, Vector3.up);
                 pos = anim.getPawnHeadOffset();
             }

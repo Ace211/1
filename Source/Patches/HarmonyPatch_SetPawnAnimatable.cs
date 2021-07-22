@@ -16,7 +16,7 @@ namespace Rimworld_Animations
 	{
 		static bool ClearCache(Pawn pawn)
 		{
-			return pawn.IsInvisible() || pawn.TryGetComp<CompBodyAnimator>().isAnimating;
+			return pawn.IsInvisible() ||  pawn.TryGetComp<CompBodyAnimator>().isAnimating;
 		}
 
 		public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
@@ -27,6 +27,7 @@ namespace Rimworld_Animations
 			{
 				if (i.OperandIs(AccessTools.Method(typeof(PawnUtility), "IsInvisible")))
 				{
+
 					yield return new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(PawnRenderer_RenderPawnAt_Patch), "ClearCache"));
 				}
 				else

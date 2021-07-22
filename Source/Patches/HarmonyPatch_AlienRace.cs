@@ -22,6 +22,7 @@ namespace Rimworld_Animations {
 							prefix: new HarmonyMethod(AccessTools.Method(typeof(HarmonyPatch_AlienRace), "Prefix_StopResolveAllGraphicsWhileSex")));
 
 						(new Harmony("rjw")).Patch(AccessTools.Method(AccessTools.TypeByName("AlienRace.HarmonyPatches"), "DrawAddons"),
+							//transpiler: new HarmonyMethod(AccessTools.Method(typeof(HarmonyPatch_AlienRace), "Transpiler_HeadRotation")),
 							prefix: new HarmonyMethod(AccessTools.Method(typeof(HarmonyPatch_AlienRace), "Prefix_AnimateHeadAddons")));
 					}
 				}))();
@@ -39,8 +40,32 @@ namespace Rimworld_Animations {
 			return true;
 		}
 
-		public static bool Prefix_AnimateHeadAddons(bool portrait, Vector3 vector, Vector3 headOffset, Pawn pawn, Quaternion quat, Rot4 rotation, bool invisible) {
+		public static float RotateHeadAddon(float initialRotation, Pawn pawn)
+        {
+			return pawn.TryGetComp<CompBodyAnimator>().headAngle + initialRotation;
+        }
 
+		public static IEnumerable<CodeInstruction> Transpiler_HeadRotation(IEnumerable<CodeInstruction> instructions)
+        {
+			List<CodeInstruction> ins = instructions.ToList();
+			for (int i = 0; i < ins.Count; i++)
+            {
+
+				yield return ins[i];
+
+				if(ins[i].opcode == OpCodes.Stloc_S && ins[i].OperandIs((object)6))
+                {
+					yield return new CodeInstruction(OpCodes.Ldloc_S, (object)6);
+					yield return new CodeInstruction(OpCodes.Ldarg_S, (object)4);
+					yield return new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(HarmonyPatch_AlienRace), "RotateHeadAddon"));
+					yield return new CodeInstruction(OpCodes.Stloc_S, (object)6);
+
+                }
+            }
+        }
+
+		public static bool Prefix_AnimateHeadAddons(PawnRenderFlags renderFlags, ref Vector3 vector, ref Vector3 headOffset, Pawn pawn, ref Quaternion quat, ref Rot4 rotation) {
+			/* old patch for 1.2
 			if (portrait || pawn.TryGetComp<CompBodyAnimator>() == null || !pawn.TryGetComp<CompBodyAnimator>().isAnimating) return true;
 			if (!(pawn.def is ThingDef_AlienRace alienProps) || invisible) return false;
 
@@ -52,29 +77,9 @@ namespace Rimworld_Animations {
 				AlienPartGenerator.BodyAddon ba = addons[index: i];
 				if (!ba.CanDrawAddon(pawn: pawn)) continue;
 
-				AlienPartGenerator.RotationOffset offset;
-				if (ba.drawnInBed || ba.alignWithHead) {
-					offset = pawnAnimator.headFacing == Rot4.South ?
-														ba.offsets.south :
-														pawnAnimator.headFacing == Rot4.North ?
-															ba.offsets.north :
-															pawnAnimator.headFacing == Rot4.East ?
-															ba.offsets.east :
-															ba.offsets.west;
+				AlienPartGenerator.RotationOffset offset = ba.defaultOffsets.GetOffset((ba.drawnInBed || ba.alignWithHead) ? pawnAnimator.headFacing : rotation);
+				Vector3 a = (offset != null) ? offset.GetOffset(renderFlags.FlagSet(PawnRenderFlags.Portrait), pawn.story.bodyType, comp.crownType) : Vector3.zero;
 
-				} else {
-
-					offset = rotation == Rot4.South ?
-										ba.offsets.south :
-										rotation == Rot4.North ?
-											ba.offsets.north :
-											rotation == Rot4.East ?
-											ba.offsets.east :
-											ba.offsets.west;
-
-				}
-
-				
 
 				Vector2 bodyOffset = (portrait ? offset?.portraitBodyTypes ?? offset?.bodyTypes : offset?.bodyTypes)?.FirstOrDefault(predicate: to => to.bodyType == pawn.story.bodyType)
                                    ?.offset ?? Vector2.zero;
@@ -145,8 +150,59 @@ namespace Rimworld_Animations {
 
 				
 			}
+			
 
-			return false;
+			CompBodyAnimator pawnAnimator = pawn.TryGetComp<CompBodyAnimator>();
+
+			ThingDef_AlienRace thingDef_AlienRace = pawn.def as ThingDef_AlienRace;
+			if (thingDef_AlienRace == null || renderFlags.FlagSet(PawnRenderFlags.Invisible))
+			{
+				return false;
+			}
+			List<AlienPartGenerator.BodyAddon> bodyAddons = thingDef_AlienRace.alienRace.generalSettings.alienPartGenerator.bodyAddons;
+			AlienPartGenerator.AlienComp comp = pawn.GetComp<AlienPartGenerator.AlienComp>();
+			for (int i = 0; i < bodyAddons.Count; i++)
+			{
+				AlienPartGenerator.BodyAddon bodyAddon = bodyAddons[i];
+				if (bodyAddon.CanDrawAddon(pawn))
+				{
+					AlienPartGenerator.RotationOffset offset = bodyAddon.defaultOffsets.GetOffset((bodyAddon.drawnInBed || bodyAddon.alignWithHead) ? pawnAnimator.headFacing : rotation);
+					Vector3 a = (offset != null) ? offset.GetOffset(renderFlags.FlagSet(PawnRenderFlags.Portrait), pawn.story.bodyType, comp.crownType) : Vector3.zero;
+					AlienPartGenerator.RotationOffset offset2 = bodyAddon.offsets.GetOffset((bodyAddon.drawnInBed || bodyAddon.alignWithHead) ? pawnAnimator.headFacing : rotation);
+					Vector3 vector2 = a + ((offset2 != null) ? offset2.GetOffset(renderFlags.FlagSet(PawnRenderFlags.Portrait), pawn.story.bodyType, comp.crownType) : Vector3.zero);
+					vector2.y = (bodyAddon.inFrontOfBody ? (0.3f + vector2.y) : (-0.3f - vector2.y));
+					float num = bodyAddon.angle;
+					if (rotation == Rot4.North)
+					{
+						if (bodyAddon.layerInvert)
+						{
+							vector2.y = -vector2.y;
+						}
+						num = 0f;
+					}
+					if (rotation == Rot4.East)
+					{
+						num = -num;
+						vector2.x = -vector2.x;
+					}
+					Graphic graphic = comp.addonGraphics[i];
+					graphic.drawSize = ((renderFlags.FlagSet(PawnRenderFlags.Portrait) && bodyAddon.drawSizePortrait != Vector2.zero) ? bodyAddon.drawSizePortrait : bodyAddon.drawSize) * (bodyAddon.scaleWithPawnDrawsize ? (bodyAddon.alignWithHead ? (renderFlags.FlagSet(PawnRenderFlags.Portrait) ? comp.customPortraitHeadDrawSize : comp.customHeadDrawSize) : (renderFlags.FlagSet(PawnRenderFlags.Portrait) ? comp.customPortraitDrawSize : comp.customDrawSize)) : Vector2.one) * 1.5f;
+					GenDraw.DrawMeshNowOrLater(graphic.MeshAt(rotation), vector + (bodyAddon.alignWithHead ? headOffset : Vector3.zero) + vector2.RotatedBy(Mathf.Acos(Quaternion.Dot(Quaternion.identity, quat)) * 2f * 57.29578f), Quaternion.AngleAxis(num, Vector3.up) * quat, graphic.MatAt(rotation, null), renderFlags.FlagSet(PawnRenderFlags.DrawNow));
+				}
+			}
+
+			*/
+			CompBodyAnimator anim = pawn.TryGetComp<CompBodyAnimator>();
+			if (anim.isAnimating)
+            {
+				headOffset = anim.getPawnHeadOffset();
+				quat = Quaternion.AngleAxis(anim.headAngle * 5, Vector3.up);
+				rotation = anim.headFacing;
+            }
+
+			return true;
+
+
 		}
 	}
 }
