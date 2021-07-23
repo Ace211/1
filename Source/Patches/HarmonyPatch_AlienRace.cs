@@ -229,7 +229,7 @@ namespace Rimworld_Animations {
 			CompBodyAnimator anim = pawn.TryGetComp<CompBodyAnimator>();
 			if (anim.isAnimating)
             {
-				headOffset = anim.getPawnHeadOffset();
+				//headOffset = anim.getPawnHeadOffset();
 				quat = Quaternion.AngleAxis(anim.bodyAngle, Vector3.up);
             }
 			
