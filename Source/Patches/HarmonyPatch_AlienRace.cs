@@ -16,11 +16,11 @@ namespace Rimworld_Animations {
 
 		
 
-		public static void RenderHeadAddonInAnimation(Mesh mesh, Vector3 loc, Quaternion quat, Material mat, bool drawNow, Graphic graphic, AlienPartGenerator.BodyAddon bodyAddon, Vector3 v, float num, Vector3 headOffset, Pawn pawn)
+		public static void RenderHeadAddonInAnimation(Mesh mesh, Vector3 loc, Quaternion quat, Material mat, bool drawNow, Graphic graphic, AlienPartGenerator.BodyAddon bodyAddon, Vector3 v, float num, Vector3 headOffset, Pawn pawn, PawnRenderFlags renderFlags)
         {
 
 			CompBodyAnimator pawnAnimator = pawn.TryGetComp<CompBodyAnimator>();
-			if (pawnAnimator.isAnimating && (bodyAddon.drawnInBed || bodyAddon.alignWithHead))
+			if (!renderFlags.FlagSet(PawnRenderFlags.Portrait) && pawnAnimator.isAnimating && (bodyAddon.drawnInBed || bodyAddon.alignWithHead))
             {
 
 				Quaternion headQuatInAnimation = Quaternion.AngleAxis(pawnAnimator.headAngle, Vector3.up);
@@ -39,6 +39,7 @@ namespace Rimworld_Animations {
 				GenDraw.DrawMeshNowOrLater(mesh, loc, quat, mat, drawNow);
 			}
 		}
+		/*
 		public static Rot4 AdjustRotationValueForHeadAddon(Rot4 rotation, AlienPartGenerator.BodyAddon bodyAddon, Pawn pawn)
         {
 			CompBodyAnimator anim = pawn.TryGetComp<CompBodyAnimator>();
@@ -53,7 +54,7 @@ namespace Rimworld_Animations {
             }
 
 
-        }
+        }*/
 			
 
 		public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
@@ -74,10 +75,12 @@ namespace Rimworld_Animations {
 					yield return new CodeInstruction(OpCodes.Ldloc, (object)6); //num
 					yield return new CodeInstruction(OpCodes.Ldarg, (object)2); //headOffset
 					yield return new CodeInstruction(OpCodes.Ldarg, (object)3); //pawn
+					yield return new CodeInstruction(OpCodes.Ldarg, (object)0); //renderflags
 
 					yield return new CodeInstruction(OpCodes.Call, AccessTools.DeclaredMethod(typeof(HarmonyPatch_AlienRace), "RenderHeadAddonInAnimation"));
 
                 }
+				/*
 				else if(ins[i].opcode == OpCodes.Ldarg_S && ins[i].OperandIs((object)5)) //rotation
                 {
 					yield return ins[i];
@@ -85,7 +88,7 @@ namespace Rimworld_Animations {
 					yield return new CodeInstruction(OpCodes.Ldarg, (object)3); //pawn
 					yield return new CodeInstruction(OpCodes.Call, AccessTools.DeclaredMethod(typeof(HarmonyPatch_AlienRace), "AdjustRotationValueForHeadAddon"));
 
-                }
+                }*/
 				
 				else
                 {
@@ -227,7 +230,7 @@ namespace Rimworld_Animations {
 
 			
 			CompBodyAnimator anim = pawn.TryGetComp<CompBodyAnimator>();
-			if (anim.isAnimating)
+			if (!renderFlags.FlagSet(PawnRenderFlags.Portrait) && anim.isAnimating)
             {
 				//headOffset = anim.getPawnHeadOffset();
 				quat = Quaternion.AngleAxis(anim.bodyAngle, Vector3.up);
