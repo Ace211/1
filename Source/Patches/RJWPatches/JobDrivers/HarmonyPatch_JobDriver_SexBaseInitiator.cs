@@ -25,29 +25,9 @@ namespace Rimworld_Animations {
 
 			Building_Bed bed = __instance.Bed;
 
-			/*
-			if (__instance is JobDriver_BestialityForFemale)
-				bed = (__instance as JobDriver_BestialityForFemale).Bed;
-			else if (__instance is JobDriver_WhoreIsServingVisitors) {
-				bed = (__instance as JobDriver_WhoreIsServingVisitors).Bed;
-			}
-			else if (__instance is JobDriver_SexCasualForAnimation) {
-				bed = (__instance as JobDriver_SexCasualForAnimation).Bed;
-			}
-			else if (__instance is JobDriver_Masturbate)
-				bed = (__instance as JobDriver_Masturbate).Bed;
-			else if (__instance is JobDriver_Rape)
-				bed = (__instance?.Partner?.jobs?.curDriver as JobDriver_Sex)?.Bed;
-			
-			*/
-
 			if ((__instance.Target as Pawn)?.jobs?.curDriver is JobDriver_SexBaseReciever) {
 
 				Pawn Target = __instance.Target as Pawn;
-
-				if (!(Target.jobs.curDriver as JobDriver_SexBaseReciever).parteners.Contains(pawn)) {
-					(Target.jobs.curDriver as JobDriver_SexBaseReciever).parteners.Add(pawn);
-				}
 
 				bool quickie = (__instance is JobDriver_SexQuick) && AnimationSettings.fastAnimForQuickie;
 
