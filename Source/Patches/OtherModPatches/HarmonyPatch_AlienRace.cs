@@ -11,6 +11,7 @@ using Verse;
 using AlienRace;
 
 namespace Rimworld_Animations {
+
     [HarmonyPatch(typeof(AlienRace.HarmonyPatches), "DrawAddons")]
     public static class HarmonyPatch_AlienRace {
 
@@ -71,11 +72,23 @@ namespace Rimworld_Animations {
             }
         }
 
+		public static bool Prefix(PawnRenderFlags renderFlags, ref Vector3 vector, ref Vector3 headOffset, Pawn pawn, ref Quaternion quat, ref Rot4 rotation)
+		{
+
+			CompBodyAnimator anim = pawn.TryGetComp<CompBodyAnimator>();
+			if (!renderFlags.FlagSet(PawnRenderFlags.Portrait) && anim.isAnimating)
+			{
+				quat = Quaternion.AngleAxis(anim.bodyAngle, Vector3.up);
+			}
+
+			return true;
+
+		}
 	}
 
 	[HarmonyPatch(typeof(PawnGraphicSet), "ResolveApparelGraphics")]
 	public static class HarmonyPatch_ResolveApparelGraphics
-    {
+	{
 		public static bool Prefix(ref Pawn ___pawn)
 		{
 
@@ -87,3 +100,5 @@ namespace Rimworld_Animations {
 		}
 	}
 }
+
+

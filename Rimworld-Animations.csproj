@@ -108,6 +108,7 @@
   <ItemGroup>
     <Content Include="1.1\Assemblies\Rimworld-Animations.dll" />
     <Content Include="1.2\Assemblies\Rimworld-Animations.dll" />
+    <Content Include="1.3\Assemblies\Rimworld-Animations.dll" />
     <Content Include="About\About.xml" />
     <Content Include="About\Manifest.xml" />
     <Content Include="Defs\AnimationDefs\Animations_Beast.xml" />
@@ -121,7 +122,6 @@
     <Content Include="LoadFolders.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="1.3\Assemblies\" />
     <Folder Include="Defs\JobDefs\" />
     <Folder Include="Source\JobDrivers\" />
   </ItemGroup>
