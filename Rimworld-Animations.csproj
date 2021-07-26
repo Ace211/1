@@ -90,12 +90,12 @@
     <Compile Include="Source\Patches\OtherModPatches\HarmonyPatch_DontShaveYourHead.cs" />
     <Compile Include="Source\Patches\OtherModPatches\HarmonyPatch_FacialAnimation.cs" />
     <Compile Include="Source\Patches\OtherModPatches\HarmonyPatch_HatsDisplaySelection.cs" />
+    <Compile Include="Source\Patches\OtherModPatches\HarmonyPatch_ShowHairWithHats.cs" />
     <Compile Include="Source\Patches\RimworldPatches\HarmonyPatch_HeadHair.cs" />
     <Compile Include="Source\Patches\RimworldPatches\HarmonyPatch_PawnRenderer.cs" />
     <Compile Include="Source\Patches\RimworldPatches\HarmonyPatch_PawnRotation.cs" />
     <Compile Include="Source\Patches\RimworldPatches\HarmonyPatch_Pawn_DrawTracker.cs" />
     <Compile Include="Source\Patches\RimworldPatches\HarmonyPatch_SetPawnAnimatable.cs" />
-    <Compile Include="Source\Patches\OtherModPatches\HarmonyPatch_ShowHairWithHats.cs" />
     <Compile Include="Source\Patches\Harmony_PatchAll.cs" />
     <Compile Include="Source\Patches\RJWPatches\JobDrivers\HarmonyPatch_JobDriver_JoinInBed.cs" />
     <Compile Include="Source\Patches\RJWPatches\JobDrivers\HarmonyPatch_JobDriver_SexBaseInitiator.cs" />
