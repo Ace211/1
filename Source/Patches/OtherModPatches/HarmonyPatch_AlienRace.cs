@@ -19,7 +19,7 @@ namespace Rimworld_Animations {
         {
 
 			CompBodyAnimator pawnAnimator = pawn.TryGetComp<CompBodyAnimator>();
-			if (!renderFlags.FlagSet(PawnRenderFlags.Portrait) && pawnAnimator.isAnimating && (bodyAddon.drawnInBed || bodyAddon.alignWithHead))
+			if (pawnAnimator != null && !renderFlags.FlagSet(PawnRenderFlags.Portrait) && pawnAnimator.isAnimating && (bodyAddon.drawnInBed || bodyAddon.alignWithHead))
             {
 
 				Quaternion headQuatInAnimation = Quaternion.AngleAxis(pawnAnimator.headAngle, Vector3.up);
@@ -67,16 +67,24 @@ namespace Rimworld_Animations {
                 {
 					yield return ins[i];
 				}
-
-
             }
         }
 
 		public static bool Prefix(PawnRenderFlags renderFlags, ref Vector3 vector, ref Vector3 headOffset, Pawn pawn, ref Quaternion quat, ref Rot4 rotation)
 		{
-
+			if(pawn == null)
+            {
+				return true;
+			}
+				
 			CompBodyAnimator anim = pawn.TryGetComp<CompBodyAnimator>();
-			if (!renderFlags.FlagSet(PawnRenderFlags.Portrait) && anim.isAnimating)
+
+			if(anim == null)
+            {
+				return true;
+            }
+
+			if (anim != null && !renderFlags.FlagSet(PawnRenderFlags.Portrait) && anim.isAnimating)
 			{
 				quat = Quaternion.AngleAxis(anim.bodyAngle, Vector3.up);
 			}
