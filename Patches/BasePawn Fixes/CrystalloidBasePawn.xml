@@ -8,52 +8,9 @@
 		<match Class="PatchOperationSequence">
 			<operations>
 				<li Class="PatchOperationReplace">
-					<xpath>/Defs/ThingDef[@Name="BaseCrystal"]</xpath>
-					<value>
-						<ThingDef Name="BaseCrystal" ParentName="BasePawn" Abstract="True">
-							<statBases>
-							  <PsychicSensitivity>1.1</PsychicSensitivity>
-							  <ToxicSensitivity>0</ToxicSensitivity>
-							  <Flammability>0.33</Flammability>
-							  <Mass>70</Mass>
-							  <ArmorRating_Heat>0.70</ArmorRating_Heat>
-							  <ComfyTemperatureMin>-100</ComfyTemperatureMin>
-							  <ComfyTemperatureMax>250</ComfyTemperatureMax>
-							</statBases>
-							<race>
-							  <bloodDef>FilthCrystalBlood</bloodDef>
-							  <fleshType>Crystalloid</fleshType>
-							  <useMeatFrom>Human</useMeatFrom>
-							  <needsRest>false</needsRest>
-							  <hasGenders>false</hasGenders>
-							  <foodType>None</foodType>
-							  <trainability>None</trainability>
-							</race>
-						</ThingDef>
-					</value>
-				</li>
-				<li Class="PatchOperationReplace">
 					<xpath>/Defs/ThingDef[@Name="CrystalBasePawn"]</xpath>
 					<value>
 						<ThingDef Name="CrystalBasePawn" ParentName="BasePawn" Abstract="True">
-							<statBases>
-							  <PsychicSensitivity>1.1</PsychicSensitivity>
-							  <ToxicSensitivity>0</ToxicSensitivity>
-							  <Flammability>0.33</Flammability>
-							  <Mass>70</Mass>
-							  <ArmorRating_Heat>0.70</ArmorRating_Heat>
-							  <ComfyTemperatureMin>-100</ComfyTemperatureMin>
-							  <ComfyTemperatureMax>250</ComfyTemperatureMax>
-							</statBases>
-							<race>
-							  <bloodDef>FilthCrystalBlood</bloodDef>
-							  <fleshType>Crystalloid</fleshType>
-							  <useMeatFrom>Human</useMeatFrom>
-							  <needsRest>false</needsRest>
-							  <hasGenders>false</hasGenders>
-							  <foodType>None</foodType>
-							  <trainability>None</trainability>
-							</race>
 						</ThingDef>
 					</value>
 				</li>
