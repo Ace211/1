@@ -15,6 +15,12 @@
 							<statBases>
 								<Mass>70</Mass>
 							</statBases>
+							<inspectorTabs Inherit="false">
+								<li>ITab_Pawn_Health</li>
+								<li>ITab_Pawn_Gear</li>
+								<li>ITab_Pawn_Guest</li>
+								<li>ITab_Pawn_Prisoner</li>
+							</inspectorTabs>
 						</ThingDef>
 					</value>
 				</li>
