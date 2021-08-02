@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Android tiers</li>
+			<li>1386412863</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[@Name="BasePawnMech"]</xpath>
+					<value>
+						<ThingDef Name="BasePawnMech" ParentName="BasePawn" Abstract="True">
+							<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+							<statBases>
+								<Mass>70</Mass>
+							</statBases>
+							<inspectorTabs Inherit="false">
+								<li>ITab_Pawn_Health</li>
+								<li>ITab_Pawn_Gear</li>
+								<li>ITab_Pawn_Guest</li>
+								<li>ITab_Pawn_Prisoner</li>
+							</inspectorTabs>
+						</ThingDef>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+</Patch>
+
