@@ -24,11 +24,11 @@ namespace Rimworld_Animations {
 
 				Quaternion headQuatInAnimation = Quaternion.AngleAxis(pawnAnimator.headAngle, Vector3.up);
 				Rot4 headRotInAnimation = pawnAnimator.headFacing;
-				Vector3 headPositionInAnimation = pawnAnimator.getPawnHeadPosition() - pawn.Drawer.renderer.BaseHeadOffsetAt(pawnAnimator.headFacing).RotatedBy(angle: Mathf.Acos(f: Quaternion.Dot(a: Quaternion.identity, b: headQuatInAnimation)) * 2f * 57.29578f);
+				Vector3 headPositionInAnimation = pawnAnimator.getPawnHeadPosition();
 
 				headPositionInAnimation.y = loc.y;
 
-				GenDraw.DrawMeshNowOrLater(mesh: graphic.MeshAt(rot: headRotInAnimation), loc: headPositionInAnimation + (bodyAddon.alignWithHead ? headOffset : Vector3.zero) + v.RotatedBy(angle: Mathf.Acos(f: Quaternion.Dot(a: Quaternion.identity, b: headQuatInAnimation)) * 2f * 57.29578f),
+				GenDraw.DrawMeshNowOrLater(mesh: graphic.MeshAt(rot: headRotInAnimation), loc: headPositionInAnimation + (bodyAddon.alignWithHead ? headOffset : Vector3.zero),
 					quat: Quaternion.AngleAxis(angle: num, axis: Vector3.up) * headQuatInAnimation, mat: graphic.MatAt(rot: pawnAnimator.headFacing), drawNow: drawNow);
 			}
 
