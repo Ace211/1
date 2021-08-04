@@ -405,7 +405,7 @@ namespace Rimworld_Animations {
 
         public Vector3 getPawnHeadPosition() {
 
-            Vector3 headPos = anchor + deltaPos + Quaternion.AngleAxis(bodyAngle, Vector3.up) * (pawn.Drawer.renderer.BaseHeadOffsetAt(headFacing) + headBob);
+            Vector3 headPos = anchor + deltaPos + headBob;
 
             return headPos;
 
