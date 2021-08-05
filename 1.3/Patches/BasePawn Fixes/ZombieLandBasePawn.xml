@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Zombieland</li>
+			<li>928376710</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[@Name="BaseZombie"]</xpath>
+					<value>
+						<ThingDef Name="BaseZombie" ParentName="BasePawn" Abstract="True">
+							<thingClass>ZombieLand.Zombie</thingClass>
+							<selectable>false</selectable>
+							<statBases>
+								<Mass>70</Mass>
+								<Flammability>1</Flammability>
+								<ComfyTemperatureMin>-60</ComfyTemperatureMin>
+								<ComfyTemperatureMax>200</ComfyTemperatureMax>
+								<PsychicSensitivity>0</PsychicSensitivity>
+								<ToxicSensitivity>0</ToxicSensitivity>
+								<MeatAmount>0</MeatAmount>
+								<LeatherAmount>0</LeatherAmount>
+								<CarryingCapacity>0</CarryingCapacity>
+								<SocialImpact>0</SocialImpact>
+							</statBases>
+							<inspectorTabs Inherit="false" />
+							<race>
+								<fleshType>Normal</fleshType>
+								<needsRest>false</needsRest>
+								<hasGenders>true</hasGenders>
+								<foodType>Corpse</foodType>
+								<meatColor>(44,58,44)</meatColor>
+								<canBePredatorPrey>true</canBePredatorPrey>
+								<gestationPeriodDays>0</gestationPeriodDays>
+							</race>
+						</ThingDef>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+</Patch>
+
