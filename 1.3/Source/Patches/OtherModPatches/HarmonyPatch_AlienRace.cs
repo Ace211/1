@@ -45,7 +45,6 @@ namespace Rimworld_Animations {
 
 					{
 						orassan = true;
-						Log.Message(bodyAddon.bodyPart);
 
 						orassanv = new Vector3(0, 0, 0.23f);
 						if (pawnAnimator.headFacing == Rot4.North)
