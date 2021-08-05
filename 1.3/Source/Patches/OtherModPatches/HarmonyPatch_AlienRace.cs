@@ -51,6 +51,16 @@ namespace Rimworld_Animations {
 						if (pawnAnimator.headFacing == Rot4.North)
 						{
 							orassanv.z -= 0.1f;
+							orassanv.y += 1f;
+
+							if(bodyAddon.bodyPart.Contains("left"))
+                            {
+								orassanv.x += 0.03f;
+                            } else
+                            {
+								orassanv.x -= 0.03f;
+							}
+
 						}
 						else if (pawnAnimator.headFacing == Rot4.East)
 						{
