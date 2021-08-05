@@ -36,6 +36,11 @@ namespace Rimworld_Animations {
                 {
 					orassan = true;
 
+					if(bodyAddon.path.Contains("closed"))
+                    {
+						return;
+                    }
+
 					if (bodyAddon.bodyPart.Contains("ear"))
 
 					{
