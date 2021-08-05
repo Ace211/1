@@ -23,32 +23,13 @@ namespace Rimworld_Animations {
             {
 
 				Quaternion headQuatInAnimation = Quaternion.AngleAxis(pawnAnimator.headAngle, Vector3.up);
-				Quaternion bodyQuatInAnimation = Quaternion.AngleAxis(pawnAnimator.bodyAngle, Vector3.up);
 				Rot4 headRotInAnimation = pawnAnimator.headFacing;
 				Vector3 headPositionInAnimation = pawnAnimator.getPawnHeadPosition();
 
 				headPositionInAnimation.y = loc.y;
 
-				AlienPartGenerator.AlienComp comp = pawn.GetComp<AlienPartGenerator.AlienComp>();
-				AlienPartGenerator.RotationOffset offset = bodyAddon.defaultOffsets.GetOffset(pawnAnimator.headFacing);
-				AlienPartGenerator.RotationOffset offset2 = bodyAddon.offsets.GetOffset(pawnAnimator.headFacing);
-
-				Vector3 a = (offset != null) ? offset.GetOffset(renderFlags.FlagSet(PawnRenderFlags.Portrait), pawn.story.bodyType, comp.crownType) : Vector3.zero;
-				var vec = a + ((offset2 != null) ? offset2.GetOffset(renderFlags.FlagSet(PawnRenderFlags.Portrait), pawn.story.bodyType, comp.crownType) : Vector3.zero);
-				vec.y = (bodyAddon.inFrontOfBody ? (0.3f + vec.y) : (-0.3f - vec.y));
-				if (headRotInAnimation == Rot4.North)
-				{
-					if (bodyAddon.layerInvert)
-					{
-						vec.y = -vec.y;
-					}
-				}
-				if (headRotInAnimation == Rot4.East)
-				{
-					vec.x = -vec.x;
-				}
-				GenDraw.DrawMeshNowOrLater(mesh: graphic.MeshAt(rot: headRotInAnimation), loc: headPositionInAnimation + (bodyAddon.alignWithHead ? headOffset : Vector3.zero) + vec.RotatedBy(Mathf.Acos(Quaternion.Dot(Quaternion.identity, bodyQuatInAnimation)) * 2f * 57.29578f),
-					quat: Quaternion.AngleAxis(angle: num, axis: Vector3.up) * headQuatInAnimation, mat: graphic.MatAt(rot: pawnAnimator.headFacing), drawNow: drawNow);
+				GenDraw.DrawMeshNowOrLater(mesh: graphic.MeshAt(rot: headRotInAnimation), loc: headPositionInAnimation, //+ (bodyAddon.alignWithHead ? headOffset : Vector3.zero) + v.RotatedBy(Mathf.Acos(Quaternion.Dot(Quaternion.identity, quat)) * 2f * 57.29578f),
+					quat: Quaternion.AngleAxis(angle: num, axis: Vector3.up) * headQuatInAnimation, mat: graphic.MatAt(rot: pawnAnimator.headFacing), drawNow: drawNow);;
 			}
 
 			else
@@ -56,14 +37,16 @@ namespace Rimworld_Animations {
 				GenDraw.DrawMeshNowOrLater(mesh, loc, quat, mat, drawNow);
 			}
 		}
+			
 
 		public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
 			List<CodeInstruction> ins = instructions.ToList();
-			Type[] type = new Type[] { typeof(Mesh), typeof(Vector3), typeof(Quaternion), typeof(Material), typeof(bool) };
-
 			for (int i = 0; i < ins.Count; i++)
             {
+
+				Type[] type = new Type[] { typeof(Mesh), typeof(Vector3), typeof(Quaternion), typeof(Material), typeof(bool) };
+
 
 				if (ins[i].OperandIs(AccessTools.Method(typeof(GenDraw), "DrawMeshNowOrLater", type)))
                 {
