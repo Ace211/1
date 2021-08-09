@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>[1.3]Littluna Race</li>
+			<li>2569091688</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[@Name="HAR_Littluna_BaseNRPawn"]</xpath>
+					<value>
+						<ThingDef Name="HAR_Littluna_BaseNRPawn" ParentName="BasePawn" Abstract="True">
+							<comps>
+								<li Class="CompSummonSlave.CSS_CompProperties_SummonSlave">
+									0AutoLabel>リーサルサモン(自動召喚)</AutoLabel>
+									<AutoDesc>ONにした場合、このキャラクターが徴兵状態かつ周囲に敵対キャラクターがいると強力な存在が自動召喚されます。再召喚には1年のクールタイムが発生します。</AutoDesc>
+									<AutoIconPath>Icon/Command/LL_AutoSummon</AutoIconPath>
+									<CommandName>CSS_SummonSlave</CommandName>
+									<CommandLabel>リーサルサモン(任意召喚)</CommandLabel>
+									<CommandDesc>強力な存在を任意召喚します。再召喚には1年のクールタイムが発生します。</CommandDesc>
+									<CommandIconPath>Icon/Command/LL_SummonSlave</CommandIconPath>
+									<Cooldown>900000</Cooldown><!--■召喚の再使用までの時間-->
+									<Level>Littluna_Artificial</Level><!--■召喚レベル参照用HediffDef-->
+									<!--■Lv1-->
+									<SummonCount>1</SummonCount><!--■召喚数-->
+									<SlaveList>
+										<li>HAR_LL_M_a_Kind</li>
+									</SlaveList>
+									<!--■Lv2-->
+									<SummonCount2>1</SummonCount2><!--■召喚レベル2のとき召喚する対象の数-->
+									<SlaveList2><!--■召喚レベル2のとき召喚する対象のThingDef-->
+										<li>HAR_LL_M_a_Kind</li>
+									</SlaveList2>
+									<!--■Lv3-->
+									<SummonCount3>1</SummonCount3><!--■召喚レベル3のとき召喚する対象の数-->
+									<SlaveList3><!--■召喚レベル3のとき召喚する対象のThingDef-->
+										<li>HAR_LL_M_a_Kind</li>
+									</SlaveList3>
+									<!--■Lv4-->
+									<SummonCount4>1</SummonCount4><!--■召喚レベル4のとき召喚する対象の数-->
+									<SlaveList4><!--■召喚レベル4のとき召喚する対象のThingDef-->
+										<li>HAR_LL_M_a_Kind</li>
+									</SlaveList4>
+									<!--■Lv5-->
+									<SummonCount5>1</SummonCount5><!--■召喚レベル5のとき召喚する対象の数-->
+									<SlaveList5><!--■召喚レベル5のとき召喚する対象のThingDef-->
+										<li>HAR_LL_M_a_Kind</li>
+									</SlaveList5>
+									<SearchLength>300</SearchLength><!--■自動召喚索敵距離-->
+									<CastTime>3</CastTime><!--■詠唱時間-->
+									<SummonEffect>CSS_SummonEffect</SummonEffect>
+								  </li>
+								</comps>
+						</ThingDef>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+</Patch>
