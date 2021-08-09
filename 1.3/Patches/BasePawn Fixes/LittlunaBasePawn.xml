@@ -13,7 +13,7 @@
 						<ThingDef Name="HAR_Littluna_BaseNRPawn" ParentName="BasePawn" Abstract="True">
 							<comps>
 								<li Class="CompSummonSlave.CSS_CompProperties_SummonSlave">
-									0AutoLabel>リーサルサモン(自動召喚)</AutoLabel>
+									<0AutoLabel>リーサルサモン(自動召喚)</AutoLabel>
 									<AutoDesc>ONにした場合、このキャラクターが徴兵状態かつ周囲に敵対キャラクターがいると強力な存在が自動召喚されます。再召喚には1年のクールタイムが発生します。</AutoDesc>
 									<AutoIconPath>Icon/Command/LL_AutoSummon</AutoIconPath>
 									<CommandName>CSS_SummonSlave</CommandName>
