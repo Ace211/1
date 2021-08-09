@@ -7,10 +7,63 @@
 		</mods>
 		<match Class="PatchOperationSequence">
 			<operations>
-				<li Class="PatchOperationAttributeSet">
-					<xpath>/Defs/AlienRace.ThingDef_AlienRace[defName="HAR_Nearmaere"]</xpath>
-					<attribute>ParentName</attribute>
-					<value>BasePawn</value>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[@Name="HAR_Nearmaere_BaseNRPawn"]</xpath>
+					<value>
+						<ThingDef Name="HAR_Nearmaere_BaseNRPawn" ParentName="BasePawn" Abstract="True">
+							<comps>
+								<li Class="CompSummonSlave.CSS_CompProperties_SummonSlave">
+									<AutoLabel>ナイトパレード(自動召喚)</AutoLabel>
+									<AutoDesc>ONにした場合、このキャラクターが徴兵状態かつ周囲に敵対キャラクターがいると眷属が自動召喚されます。眷属のLv・召喚数は「人工種族」のLvによって変動し再召喚には2日のクールタイムが発生します。</AutoDesc>
+									<AutoIconPath>Icon/Command/AutoSummon</AutoIconPath>
+									<CommandName>CSS_SummonSlave</CommandName>
+									<CommandLabel>ナイトパレード(任意召喚)</CommandLabel>
+									<CommandDesc>眷属を任意召喚します。眷属のLv・召喚数は「人工種族」のLvによって変動し再召喚には2日のクールタイムが発生します。</CommandDesc>
+									<CommandIconPath>Icon/Command/SummonSlave</CommandIconPath>
+									<Cooldown>120000</Cooldown><!--■召喚の再使用までの時間-->
+									<Level>Nearmaere_Artificial</Level><!--■召喚レベル参照用HediffDef-->
+									<!--■Lv1-->
+									<SummonCount>1</SummonCount><!--■召喚数-->
+									<SlaveList>
+										<li>HAR_M_NightStalker_Kind</li>
+										<li>HAR_M_NightGaunts_Kind</li>
+										<li>HAR_M_Nightmare_Kind</li>
+									</SlaveList>
+									<!--■Lv2-->
+									<SummonCount2>2</SummonCount2><!--■召喚レベル2のとき召喚する対象の数-->
+									<SlaveList2><!--■召喚レベル2のとき召喚する対象のThingDef-->
+										<li>HAR_M_NightStalker_Kind_b</li>
+										<li>HAR_M_NightGaunts_Kind_b</li>
+										<li>HAR_M_Nightmare_Kind_b</li>
+									</SlaveList2>
+									<!--■Lv3-->
+									<SummonCount3>2</SummonCount3><!--■召喚レベル3のとき召喚する対象の数-->
+									<SlaveList3><!--■召喚レベル3のとき召喚する対象のThingDef-->
+										<li>HAR_M_NightStalker_Kind_c</li>
+										<li>HAR_M_NightGaunts_Kind_c</li>
+										<li>HAR_M_Nightmare_Kind_c</li>
+									</SlaveList3>
+									<!--■Lv4-->
+									<SummonCount4>3</SummonCount4><!--■召喚レベル4のとき召喚する対象の数-->
+									<SlaveList4><!--■召喚レベル4のとき召喚する対象のThingDef-->
+										<li>HAR_M_NightStalker_Kind_d</li>
+										<li>HAR_M_NightGaunts_Kind_d</li>
+										<li>HAR_M_Nightmare_Kind_d</li>
+									</SlaveList4>
+									<!--■Lv5-->
+									<SummonCount5>3</SummonCount5><!--■召喚レベル5のとき召喚する対象の数-->
+									<SlaveList5><!--■召喚レベル5のとき召喚する対象のThingDef-->
+										<li>HAR_M_NightStalker_Kind_e</li>
+										<li>HAR_M_NightGaunts_Kind_e</li>
+										<li>HAR_M_Nightmare_Kind_e</li>
+									</SlaveList5>
+									<SearchLength>300</SearchLength><!--■自動召喚索敵距離-->
+									<CastTime>3</CastTime><!--■詠唱時間-->
+									<SummonEffect>CSS_SummonEffect</SummonEffect>
+								</li>
+							</comps>
+						</ThingDef>
+					</value>
 				</li>
 			</operations>
 		</match>
