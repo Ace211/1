@@ -13,12 +13,12 @@
 						<ThingDef Name="HAR_Neclose_BaseNRPawn" ParentName="BasePawn" Abstract="True">
 							<comps>
 								<li Class="CompSummonSlave.CSS_CompProperties_SummonSlave">
-									<AutoLabel>ヘルタースケルター(自動召喚)</AutoLabel>
-									<AutoDesc>ONにした場合、このキャラクターが徴兵状態かつ周囲に敵対キャラクターがいると眷属が自動召喚されます。眷属の召喚数は「人工種族」のLvによって変動し再召喚には1日のクールタイムが発生します。</AutoDesc>
+									<AutoLabel>Helter Skelter(Auto)</AutoLabel>
+									<AutoDesc>If set to ON, the genus will be automatically summoned if this character is drafted and there are hostile characters around. The number of summons of the genus varies depending on the Lvl of the "artificial race", and a cool time of one day will occur for resummoning.</AutoDesc>
 									<AutoIconPath>Icon/Command/AutoSummon</AutoIconPath>
 									<CommandName>CSS_SummonSlave</CommandName>
-									<CommandLabel>ヘルタースケルター(任意召喚)</CommandLabel>
-									<CommandDesc>眷属を任意召喚します。眷属の召喚数は「人工種族」のLvによって変動し再召喚には1日のクールタイムが発生します。</CommandDesc>
+									<CommandLabel>Helter Skelter(Neclose)</CommandLabel>
+									<CommandDesc>Arbitrarily summon a genus. The number of summons of the genus varies depending on the Lv of the "artificial race", and a cool time of one day will occur for resummoning.</CommandDesc>
 									<CommandIconPath>Icon/Command/SummonSlave</CommandIconPath>
 									<Cooldown>60000</Cooldown><!--■召喚の再使用までの時間-->
 									<Level>Neclose_Artificial</Level><!--■召喚レベル参照用HediffDef-->

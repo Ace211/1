@@ -13,12 +13,12 @@
 						<ThingDef Name="HAR_Littluna_BaseNRPawn" ParentName="BasePawn" Abstract="True">
 							<comps>
 								<li Class="CompSummonSlave.CSS_CompProperties_SummonSlave">
-									<AutoLabel>リーサルサモン(自動召喚)</AutoLabel>
-									<AutoDesc>ONにした場合、このキャラクターが徴兵状態かつ周囲に敵対キャラクターがいると強力な存在が自動召喚されます。再召喚には1年のクールタイムが発生します。</AutoDesc>
+									<AutoLabel>Lethal Summon (Auto)</AutoLabel>
+									<AutoDesc>If set to on, a powerful entity will be automatically summoned as soon as this character gets drafted and there hostile characters around. But be aware: The cooldown time for this ability is one year.</AutoDesc>
 									<AutoIconPath>Icon/Command/LL_AutoSummon</AutoIconPath>
 									<CommandName>CSS_SummonSlave</CommandName>
-									<CommandLabel>リーサルサモン(任意召喚)</CommandLabel>
-									<CommandDesc>強力な存在を任意召喚します。再召喚には1年のクールタイムが発生します。</CommandDesc>
+									<CommandLabel>Lethal Summon (voluntary summon)</CommandLabel>
+									<CommandDesc>Arbitrarily summon a powerful being. But be aware: The cooldown time for this ability is one year.</CommandDesc>
 									<CommandIconPath>Icon/Command/LL_SummonSlave</CommandIconPath>
 									<Cooldown>900000</Cooldown><!--■召喚の再使用までの時間-->
 									<Level>Littluna_Artificial</Level><!--■召喚レベル参照用HediffDef-->

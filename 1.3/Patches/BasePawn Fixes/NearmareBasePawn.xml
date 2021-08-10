@@ -13,12 +13,12 @@
 						<ThingDef Name="HAR_Nearmaere_BaseNRPawn" ParentName="BasePawn" Abstract="True">
 							<comps>
 								<li Class="CompSummonSlave.CSS_CompProperties_SummonSlave">
-									<AutoLabel>ナイトパレード(自動召喚)</AutoLabel>
-									<AutoDesc>ONにした場合、このキャラクターが徴兵状態かつ周囲に敵対キャラクターがいると眷属が自動召喚されます。眷属のLv・召喚数は「人工種族」のLvによって変動し再召喚には2日のクールタイムが発生します。</AutoDesc>
+									<AutoLabel>Night Parade (Auto)</AutoLabel>
+									<AutoDesc>If set to "ON", the user will automatically cast "Night Parade" while drafted if there are hostiles in the vicinity. The level and number of summoned creatures are dependent on the level of "Artificial Race". Cooldown: 2 days.</AutoDesc>
 									<AutoIconPath>Icon/Command/AutoSummon</AutoIconPath>
 									<CommandName>CSS_SummonSlave</CommandName>
-									<CommandLabel>ナイトパレード(任意召喚)</CommandLabel>
-									<CommandDesc>眷属を任意召喚します。眷属のLv・召喚数は「人工種族」のLvによって変動し再召喚には2日のクールタイムが発生します。</CommandDesc>
+									<CommandLabel>Night Parade</CommandLabel>
+									<CommandDesc>Summons otherworldly creatures to attack enemies. The level and number of summoned creatures are dependent on the level of "Artificial Race". Cooldown: 2 days.</CommandDesc>
 									<CommandIconPath>Icon/Command/SummonSlave</CommandIconPath>
 									<Cooldown>120000</Cooldown><!--■召喚の再使用までの時間-->
 									<Level>Nearmaere_Artificial</Level><!--■召喚レベル参照用HediffDef-->
