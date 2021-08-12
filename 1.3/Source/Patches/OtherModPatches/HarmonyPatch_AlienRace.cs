@@ -47,7 +47,7 @@ namespace Rimworld_Animations {
 						orassan = true;
 
 						orassanv = new Vector3(0, 0, 0.23f);
-						if (pawnAnimator.headFacing == Rot4.North)
+						if (pawnAnimator.headFacing == Rot4.North || pawnAnimator.headFacing == Rot4.South)
 						{
 							orassanv.z -= 0.1f;
 							orassanv.y += 1f;
@@ -69,12 +69,6 @@ namespace Rimworld_Animations {
 						{
 							orassanv.x = 0.12f;
 						}
-
-						else
-                        {
-							orassanv.z -= 0.03f;
-                        }
-
 						orassanv = orassanv.RotatedBy(pawnAnimator.headAngle);
 					}
 				}
