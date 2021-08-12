@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Add Elona Imouto Race</li>
+			<li>1863723112</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationAttributeSet">
+					<xpath>/Defs/AlienRace.ThingDef_AlienRace[defName="Elona_Imouto"]</xpath>
+					<attribute>ParentName</attribute>
+					<value>BasePawn</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+</Patch>

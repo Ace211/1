@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Autocleaner</li>
+			<li>2051042827</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[@Name="BaseBaseAutocleaner"]</xpath>
+					<value>
+						<ThingDef Name="BaseBaseAutocleaner" ParentName="BasePawn" Abstract="True">
+							<inspectorTabs Inherit="false">
+							  <li>ITab_Pawn_Health</li>
+							  <li>ITab_Pawn_Log</li>
+							</inspectorTabs>
+						</ThingDef>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+</Patch>
+
