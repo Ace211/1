@@ -63,11 +63,11 @@ namespace Rimworld_Animations {
 						}
 						else if (pawnAnimator.headFacing == Rot4.East)
 						{
-							orassanv.x -= 0.12f;
+							orassanv.x -= 0.1f;
 						}
 						else if (pawnAnimator.headFacing == Rot4.West)
 						{
-							orassanv.x = 0.12f;
+							orassanv.x = 0.1f;
 						}
 						else
                         {
