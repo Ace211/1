@@ -76,11 +76,11 @@ namespace Rimworld_Animations {
 
 							if (bodyAddon.bodyPart.Contains("right"))
 							{
-								orassanv.x += 0.03f;
+								orassanv.x += 0.05f;
 							}
 							else
 							{
-								orassanv.x -= 0.03f;
+								orassanv.x -= 0.05f;
 							}
 						}
 						orassanv = orassanv.RotatedBy(pawnAnimator.headAngle);
