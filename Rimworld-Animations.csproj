@@ -118,6 +118,11 @@
     <Content Include="1.3\Defs\AnimationDefs\Animations_Vanilla2.xml" />
     <Content Include="1.3\Defs\MainTabDefs\MainButtonDef.xml" />
     <Content Include="1.3\Defs\SoundDefs\Sounds_Sex.xml" />
+    <Content Include="Languages\PortugueseBrazilian\DefInjected\MainButtonDef\MainButtonDef.xml" />
+    <Content Include="Languages\PortugueseBrazilian\DefInjected\Rimworld_Animations.AnimationDef\Animations_Beast.xml" />
+    <Content Include="Languages\PortugueseBrazilian\DefInjected\Rimworld_Animations.AnimationDef\Animations_Lesbian.xml" />
+    <Content Include="Languages\PortugueseBrazilian\DefInjected\Rimworld_Animations.AnimationDef\Animations_Multi.xml" />
+    <Content Include="Languages\PortugueseBrazilian\DefInjected\Rimworld_Animations.AnimationDef\Animations_vanilla.xml" />
     <Content Include="LoadFolders.xml" />
   </ItemGroup>
   <ItemGroup>
