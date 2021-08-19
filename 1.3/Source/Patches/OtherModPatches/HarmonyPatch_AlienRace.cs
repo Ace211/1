@@ -31,7 +31,7 @@ namespace Rimworld_Animations {
 
 				Vector3 orassanv = Vector3.zero;
 				bool orassan = false;
-
+				/*
 				if ((pawn.def as ThingDef_AlienRace).defName == "Alien_Orassan")
                 {
 					orassan = true;
@@ -86,12 +86,13 @@ namespace Rimworld_Animations {
 						orassanv = orassanv.RotatedBy(pawnAnimator.headAngle);
 					}
 				}
-					
-					
+				*/
 
-				
+				float quatDot = Quaternion.Dot(Quaternion.identity, quat);
+				if (quat.eulerAngles.y > 180f) quatDot = -quatDot;
 
-				GenDraw.DrawMeshNowOrLater(mesh: graphic.MeshAt(rot: headRotInAnimation), loc: headPositionInAnimation + orassanv + (bodyAddon.alignWithHead && !orassan ? headOffset : Vector3.zero),// + v.RotatedBy(Mathf.Acos(Quaternion.Dot(Quaternion.identity, quat)) * 2f * 57.29578f),
+
+				GenDraw.DrawMeshNowOrLater(mesh: graphic.MeshAt(rot: headRotInAnimation), loc: headPositionInAnimation + orassanv + (bodyAddon.alignWithHead && !orassan ? headOffset : Vector3.zero) + v.RotatedBy(Mathf.Acos(quatDot) * 2f * 57.29578f),
 					quat: Quaternion.AngleAxis(angle: num, axis: Vector3.up) * headQuatInAnimation, mat: graphic.MatAt(rot: pawnAnimator.headFacing), drawNow: drawNow);;
 			}
 
