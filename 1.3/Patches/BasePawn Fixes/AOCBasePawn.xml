@@ -8,7 +8,7 @@
 		<match Class="PatchOperationSequence">
 			<operations>
 				<li Class="PatchOperationAttributeSet">
-					<xpath>/Defs/AlienRace.ThingDef_AlienRace[defName="BaseAOCPawn"]</xpath>
+					<xpath>/Defs/AlienRace.ThingDef_AlienRace[defName="AOC"]</xpath>
 					<attribute>ParentName</attribute>
 					<value>BasePawn</value>
 				</li>
