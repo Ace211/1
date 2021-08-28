@@ -18,7 +18,7 @@ namespace Rimworld_Animations {
 
             participants =
                 participants.OrderBy(p => p.jobs.curDriver is rjw.JobDriver_SexBaseInitiator)
-                .OrderBy(p => p == sexProps.Giver)
+                .OrderBy(p => p == sexProps.giver)
                 .OrderByDescending(p => rjw.GenderHelper.GetSex(p) == rjw.GenderHelper.Sex.futa)
                 .OrderBy(p => rjw.xxx.can_fuck(p))
                 .ToList();
@@ -114,10 +114,10 @@ namespace Rimworld_Animations {
                 }
                 return true;
             });
-            List<AnimationDef> optionsWithInteractionType = options.ToList().FindAll(x => x.interactionDefTypes != null && x.interactionDefTypes.Contains(sexProps.DictionaryKey));
+            List<AnimationDef> optionsWithInteractionType = options.ToList().FindAll(x => x.interactionDefTypes != null && x.interactionDefTypes.Contains(sexProps.sexType.ToStringSafe()));
             if (optionsWithInteractionType.Any()) {
                 if (AnimationSettings.debugMode)
-                    Log.Message("Selecting animation for interaction type " + sexProps.DictionaryKey.defName + "...");
+                    Log.Message("Selecting animation for interaction type " + sexProps.sexType.ToStringSafe() + "...");
                 return optionsWithInteractionType.RandomElement();
             }
             List<AnimationDef> optionsWithSexType = options.ToList().FindAll(x => x.sexTypes != null && x.sexTypes.Contains(sexType));

@@ -36,10 +36,10 @@ namespace Rimworld_Animations {
 
 
 				if (bed != null) {
-                    RerollAnimations(Target, out AnimationTimeTicks, bed as Thing, __instance.sexType, quickie, sexProps: __instance.Sexprops);
+                    RerollAnimations(Target, out AnimationTimeTicks, bed as Thing, __instance.Sexprops.sexType, quickie, sexProps: __instance.Sexprops);
                 }
 				else {
-					RerollAnimations(Target, out AnimationTimeTicks, sexType: __instance.sexType, fastAnimForQuickie: quickie, sexProps: __instance.Sexprops);
+					RerollAnimations(Target, out AnimationTimeTicks, sexType: __instance.Sexprops.sexType, fastAnimForQuickie: quickie, sexProps: __instance.Sexprops);
 				}
 
 

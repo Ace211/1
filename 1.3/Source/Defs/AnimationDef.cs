@@ -14,7 +14,7 @@ namespace Rimworld_Animations {
         public int animationTimeTicks = 0; //do not set manually
         public bool sounds = false;
         public List<rjw.xxx.rjwSextype> sexTypes = null;
-        public List<InteractionDef> interactionDefTypes = null;
+        public List<String> interactionDefTypes = null;
 
         public override void PostLoad() {
             base.PostLoad();

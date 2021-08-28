@@ -334,11 +334,10 @@ namespace Rimworld_Animations {
         {
             if(AnimationSettings.applySemenOnAnimationOrgasm && (pawn?.jobs?.curDriver is JobDriver_Sex))
             {
-                Pawn partner = (pawn.jobs.curDriver as JobDriver_Sex)?.Partner;
 
-                if (anim.sexTypes.Contains((pawn.jobs.curDriver as JobDriver_Sex).sexType))
+                if (anim.sexTypes.Contains((pawn.jobs.curDriver as JobDriver_Sex).Sexprops.sexType))
                 {
-                    SemenHelper.calculateAndApplySemen(pawn, partner, (pawn.jobs.curDriver as JobDriver_Sex).sexType);
+                    SemenHelper.calculateAndApplySemen((pawn.jobs.curDriver as JobDriver_Sex).Sexprops);
                 }
             }
         }

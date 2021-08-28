@@ -13,7 +13,7 @@ using Verse.AI;
 namespace Rimworld_Animations
 {
 
-    [HarmonyPatch(typeof(xxx), "in_same_bed")]
+    [HarmonyPatch(typeof(Bed_Utility), "in_same_bed")]
     public static class HarmonyPatch_JobDriver_InSameBedPatch
     {
 
@@ -44,7 +44,7 @@ namespace Rimworld_Animations
             var toils = __result.ToList();
 
             Toil goToPawnInBed = Toils_Goto.GotoThing(__instance.iTarget, PathEndMode.OnCell);
-            goToPawnInBed.FailOn(() => !RestUtility.InBed(__instance.Partner) && __instance.Partner.CurJobDef != xxx.gettin_loved && !xxx.in_same_bed(__instance.Partner, __instance.pawn));
+            goToPawnInBed.FailOn(() => !RestUtility.InBed(__instance.Partner) && __instance.Partner.CurJobDef != xxx.gettin_loved && !Bed_Utility.in_same_bed(__instance.Partner, __instance.pawn));
 
             toils[1] = goToPawnInBed;
 
