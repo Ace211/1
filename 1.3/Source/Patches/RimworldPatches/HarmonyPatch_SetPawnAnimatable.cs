@@ -16,7 +16,7 @@ namespace Rimworld_Animations
 	{
 		static bool ClearCache(Pawn pawn)
 		{
-			return pawn.IsInvisible() || pawn.TryGetComp<CompBodyAnimator>().isAnimating;
+			return pawn.IsInvisible() || (pawn.TryGetComp<CompBodyAnimator>() != null && pawn.TryGetComp<CompBodyAnimator>().isAnimating);
 		}
 
 		public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
