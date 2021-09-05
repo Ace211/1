@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>/Defs/ThingDef[@Name="CassowaryPawn"]/comps</xpath>
+        <success>Always</success>
+	    <match Class="PatchOperationAdd">
+		  <xpath>/Defs/ThingDef[Name="CassowaryPawn"]/comps</xpath>
+		  <value>
+		    <li Class="Rimworld_Animations.CompProperties_BodyAnimator" />
+		  </value>
+	    </match>
+      </li>
+	  <li Class="PatchOperationConditional">
+        <xpath>/Defs/ThingDef[@Name="ChickenPawn"]/comps</xpath>
+        <success>Always</success>
+	    <match Class="PatchOperationAdd">
+		  <xpath>/Defs/ThingDef[Name="ChickenPawn"]/comps</xpath>
+		  <value>
+		    <li Class="Rimworld_Animations.CompProperties_BodyAnimator" />
+		  </value>
+	    </match>
+      </li>
+	  <li Class="PatchOperationConditional">
+        <xpath>/Defs/ThingDef[@Name="DodoPawn"]/comps</xpath>
+        <success>Always</success>
+	    <match Class="PatchOperationAdd">
+		  <xpath>/Defs/ThingDef[Name="DodoPawn"]/comps</xpath>
+		  <value>
+		    <li Class="Rimworld_Animations.CompProperties_BodyAnimator" />
+		  </value>
+	    </match>
+      </li>
+	  <li Class="PatchOperationConditional">
+        <xpath>/Defs/ThingDef[@Name="OwlPawn"]/comps</xpath>
+        <success>Always</success>
+	    <match Class="PatchOperationAdd">
+		  <xpath>/Defs/ThingDef[Name="OwlPawn"]/comps</xpath>
+		  <value>
+		    <li Class="Rimworld_Animations.CompProperties_BodyAnimator" />
+		  </value>
+	    </match>
+      </li>
+	  <li Class="PatchOperationConditional">
+        <xpath>/Defs/ThingDef[@Name="ParrotPawn"]/comps</xpath>
+        <success>Always</success>
+	    <match Class="PatchOperationAdd">
+		  <xpath>/Defs/ThingDef[Name="ParrotPawn"]/comps</xpath>
+		  <value>
+		    <li Class="Rimworld_Animations.CompProperties_BodyAnimator" />
+		  </value>
+	    </match>
+      </li>
+	  <li Class="PatchOperationConditional">
+        <xpath>/Defs/ThingDef[@Name="PenguinPawn"]/comps</xpath>
+        <success>Always</success>
+	    <match Class="PatchOperationAdd">
+		  <xpath>/Defs/ThingDef[Name="PenguinPawn"]/comps</xpath>
+		  <value>
+		    <li Class="Rimworld_Animations.CompProperties_BodyAnimator" />
+		  </value>
+	    </match>
+      </li>
+	  <li Class="PatchOperationConditional">
+        <xpath>/Defs/ThingDef[@Name="VulturePawn"]/comps</xpath>
+        <success>Always</success>
+	    <match Class="PatchOperationAdd">
+		  <xpath>/Defs/ThingDef[Name="VulturePawn"]/comps</xpath>
+		  <value>
+		    <li Class="Rimworld_Animations.CompProperties_BodyAnimator" />
+		  </value>
+	    </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>
