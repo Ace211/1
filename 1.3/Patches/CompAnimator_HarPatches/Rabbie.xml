@@ -7,7 +7,7 @@
         <xpath>/Defs/ThingDef[@Name="RB_PawnBase"]/comps</xpath>
         <success>Always</success>
 	    <match Class="PatchOperationAdd">
-		  <xpath>/Defs/ThingDef[Name="RB_PawnBase"]/comps</xpath>
+		  <xpath>/Defs/ThingDef[@Name="RB_PawnBase"]/comps</xpath>
 		  <value>
 		    <li Class="Rimworld_Animations.CompProperties_BodyAnimator" />
 		  </value>
