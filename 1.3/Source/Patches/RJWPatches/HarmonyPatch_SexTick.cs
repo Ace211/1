@@ -36,7 +36,7 @@ namespace Rimworld_Animations
 					__instance.ChangePsyfocus(pawn, target);
 					__instance.Animate(pawn, target);
 					__instance.PlaySexSound();
-					if (!__instance.isRape)
+					if (!__instance.Sexprops.isRape)
 					{
 						pawn.GainComfortFromCellIfPossible(false);
 						if (target is Pawn)
