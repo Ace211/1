@@ -31,7 +31,7 @@ namespace Rimworld_Animations
 					yield return new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(PawnRenderer_RenderPawnAt_Patch), "ClearCache"));
 				}
 				else
-				{ 
+				{  
 					yield return i;
 				}
 			}
