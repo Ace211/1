@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>/Defs/ThingDef[@Name="BasePawnSimple"]/comps</xpath>
+        <success>Always</success>
+	    <match Class="PatchOperationAdd">
+		  <xpath>/Defs/ThingDef[@Name="BasePawnSimple"]/comps</xpath>
+		  <value>
+		    <li Class="Rimworld_Animations.CompProperties_BodyAnimator" />
+		  </value>
+	    </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>
