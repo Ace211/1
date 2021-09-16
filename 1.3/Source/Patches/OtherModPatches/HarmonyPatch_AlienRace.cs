@@ -44,9 +44,9 @@ namespace Rimworld_Animations {
                 {
 					forceDrawForBody = true;
                 }
-				AlienPartGenerator.RotationOffset offset = ba.defaultOffsets.GetOffset(ba.drawnInBed || ba.alignWithHead ? pawnAnimator.headFacing : pawnAnimator.bodyFacing);
+				AlienPartGenerator.RotationOffset offset = ba.defaultOffsets.GetOffset((ba.drawnInBed && !forceDrawForBody) || ba.alignWithHead ? pawnAnimator.headFacing : pawnAnimator.bodyFacing);
 				Vector3 a = (offset != null) ? offset.GetOffset(renderFlags.FlagSet(PawnRenderFlags.Portrait), pawn.story.bodyType, comp.crownType) : Vector3.zero;
-				AlienPartGenerator.RotationOffset offset2 = ba.offsets.GetOffset(ba.drawnInBed || ba.alignWithHead ? pawnAnimator.headFacing : pawnAnimator.bodyFacing);
+				AlienPartGenerator.RotationOffset offset2 = ba.offsets.GetOffset((ba.drawnInBed && !forceDrawForBody) || ba.alignWithHead ? pawnAnimator.headFacing : pawnAnimator.bodyFacing);
 				Vector3 vector2 = a + ((offset2 != null) ? offset2.GetOffset(renderFlags.FlagSet(PawnRenderFlags.Portrait), pawn.story.bodyType, comp.crownType) : Vector3.zero);
 				vector2.y = (ba.inFrontOfBody ? (0.3f + vector2.y) : (-0.3f - vector2.y));
 				float num = ba.angle;
