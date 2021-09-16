@@ -374,6 +374,7 @@ namespace Rimworld_Animations {
 
 
             //don't go past 360 or less than 0
+            
             if (bodyAngle < 0) bodyAngle = 360 - ((-1f*bodyAngle) % 360);
             if (bodyAngle > 360) bodyAngle %= 360;
 
@@ -382,7 +383,7 @@ namespace Rimworld_Animations {
             if (headAngle > 360) headAngle %= 360;
 
             if (genitalAngle < 0) genitalAngle = 360 - ((-1f * genitalAngle) % 360);
-            if (genitalAngle > 360) genitalAngle %= 360;
+            if (genitalAngle > 360) genitalAngle %= 360; 
 
 
             bodyFacing = mirror ? new Rot4((int)clip.BodyFacing.Evaluate(clipPercent)).Opposite : new Rot4((int)clip.BodyFacing.Evaluate(clipPercent));
