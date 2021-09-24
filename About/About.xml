@@ -39,23 +39,9 @@
 		<li>brrainz.harmony</li>
 		<li>erdelf.humanoidalienraces</li>
 		<li>nals.facialanimation</li>
-		<li>Daemon976.FacialAnimationplus</li>
-		<li>rim.job.world</li>
-		<li>shauaputa.rimnudeworld</li>
-		<li>shauaputa.rimnudeworldzoo</li>
-		<li>OTYOTY.NudePatchForRimNudeWorld.UnofficialUpdate</li>
-		<li>otyoty.sizedapparel</li>
-		<li>abraxas.rjw.racesupport</li>
-		<li>rjw.sexperience</li>
-		<li>rjw.menstruation</li>
-		<li>otyoty.rjwsymbols</li>
-		<li>rimworld.ekss.rjwex</li>
-		<li>lustlicentia.rjwlabs</li>
-		<li>rjw.milk.humanoid</li>
+		<li>com.yayo.yayoAni</li>
 	</loadAfter>
 	<loadBefore>
-		<li>dubwise.dubsperformanceanalyzer</li>
-		<li>krkr.rocketman</li>
 	</loadBefore>
 	<incompatibleWith>
 		<li>velc.HatsDisplaySelection</li>
