@@ -93,11 +93,15 @@ namespace Rimworld_Animations {
 					Quaternion addonRotation = Quaternion.AngleAxis(pawnAnimator.bodyAngle, Vector3.up);
 					if (AnimationSettings.controlGenitalRotation && pawnAnimator.controlGenitalAngle && ba?.hediffGraphics != null && ba.hediffGraphics.Count != 0 && ba.hediffGraphics[0]?.path != null && (ba.hediffGraphics[0].path.Contains("Penis") || ba.hediffGraphics[0].path.Contains("penis")))
 					{
-						addonRotation = Quaternion.AngleAxis(angle: pawnAnimator.genitalAngle, axis: Vector3.up);
+						GenDraw.DrawMeshNowOrLater(mesh: addonGraphic.MeshAt(rot: rotation), loc: vector + (ba.alignWithHead ? headOffset : Vector3.zero) + vector2.RotatedBy(angle: Mathf.Acos(f: Quaternion.Dot(a: Quaternion.identity, b: addonRotation)) * 2f * 57.29578f),
+						quat: Quaternion.AngleAxis(angle: pawnAnimator.genitalAngle, axis: Vector3.up), mat: addonGraphic.MatAt(rot: rotation), renderFlags.FlagSet(PawnRenderFlags.DrawNow));
 					}
-					
-					GenDraw.DrawMeshNowOrLater(mesh: addonGraphic.MeshAt(rot: rotation), loc: vector + (ba.alignWithHead ? headOffset : Vector3.zero) + vector2.RotatedBy(angle: Mathf.Acos(f: Quaternion.Dot(a: Quaternion.identity, b: addonRotation)) * 2f * 57.29578f),
-					quat: Quaternion.AngleAxis(angle: num, axis: Vector3.up) * addonRotation, mat: addonGraphic.MatAt(rot: rotation), renderFlags.FlagSet(PawnRenderFlags.DrawNow));
+
+					else
+                    {
+						GenDraw.DrawMeshNowOrLater(mesh: addonGraphic.MeshAt(rot: rotation), loc: vector + (ba.alignWithHead ? headOffset : Vector3.zero) + vector2.RotatedBy(angle: Mathf.Acos(f: Quaternion.Dot(a: Quaternion.identity, b: addonRotation)) * 2f * 57.29578f),
+						quat: Quaternion.AngleAxis(angle: num, axis: Vector3.up) * addonRotation, mat: addonGraphic.MatAt(rot: rotation), renderFlags.FlagSet(PawnRenderFlags.DrawNow));
+					}
 
 				}
 
