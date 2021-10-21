@@ -65,8 +65,8 @@ namespace Rimworld_Animations {
 				}
 				Graphic addonGraphic = comp.addonGraphics[i];
 
+				addonGraphic.drawSize = ((renderFlags.FlagSet(PawnRenderFlags.Portrait) && ba.drawSizePortrait != Vector2.zero) ? ba.drawSizePortrait : ba.drawSize) * (ba.scaleWithPawnDrawsize ? (ba.alignWithHead ? (renderFlags.FlagSet(PawnRenderFlags.Portrait) ? comp.customPortraitHeadDrawSize : comp.customHeadDrawSize) : (renderFlags.FlagSet(PawnRenderFlags.Portrait) ? comp.customPortraitDrawSize : comp.customDrawSize)) : Vector2.one) * 1.5f;
 
-				
 
 				if ((ba.drawnInBed && !forceDrawForBody) || ba.alignWithHead)
 				{
