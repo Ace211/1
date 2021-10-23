@@ -65,8 +65,7 @@ namespace Rimworld_Animations {
 				}
 				Graphic addonGraphic = comp.addonGraphics[i];
 
-
-				
+				addonGraphic.drawSize = ((renderFlags.FlagSet(PawnRenderFlags.Portrait) && ba.drawSizePortrait != Vector2.zero) ? ba.drawSizePortrait : ba.drawSize) * (ba.scaleWithPawnDrawsize ? (ba.alignWithHead ? (renderFlags.FlagSet(PawnRenderFlags.Portrait) ? comp.customPortraitHeadDrawSize : comp.customHeadDrawSize) : (renderFlags.FlagSet(PawnRenderFlags.Portrait) ? comp.customPortraitDrawSize : comp.customDrawSize)) : Vector2.one) * 1.5f;
 
 				if ((ba.drawnInBed && !forceDrawForBody) || ba.alignWithHead)
 				{
@@ -82,7 +81,8 @@ namespace Rimworld_Animations {
 					}
 
 					*/
-					GenDraw.DrawMeshNowOrLater(mesh: addonGraphic.MeshAt(rot: pawnAnimator.headFacing), loc: vector + (ba.alignWithHead ? headOffset : Vector3.zero) + vector2.RotatedBy(angle: Mathf.Acos(f: Quaternion.Dot(a: Quaternion.identity, b: addonRotation)) * 2f * 57.29578f),
+
+					GenDraw.DrawMeshNowOrLater(mesh: addonGraphic.MeshAt(rot: pawnAnimator.headFacing), loc: vector + (ba.alignWithHead || ba.drawnInBed ? headOffset : Vector3.zero) + vector2.RotatedBy(angle: Mathf.Acos(f: Quaternion.Dot(a: Quaternion.identity, b: addonRotation)) * 2f * 57.29578f),
 					quat: Quaternion.AngleAxis(angle: num, axis: Vector3.up) * addonRotation, mat: addonGraphic.MatAt(rot: pawnAnimator.headFacing), renderFlags.FlagSet(PawnRenderFlags.DrawNow));
 
 					
