@@ -13,27 +13,6 @@ using Verse.AI;
 namespace Rimworld_Animations
 {
 
-    [HarmonyPatch(typeof(Bed_Utility), "in_same_bed")]
-    public static class HarmonyPatch_JobDriver_InSameBedPatch
-    {
-
-        public static bool Prefix(Pawn partner, ref bool __result)
-        {
-
-            if(partner != null && partner.CurJobDef == xxx.casual_sex)
-            {
-                __result = true;
-                return false;
-            }
-
-            return true;
-
-        }
-
-
-
-    }
-
     [HarmonyPatch(typeof(JobDriver_JoinInBed), "MakeNewToils")]
     public static class HarmonyPatch_JobDriver_JoinInBed
     {
