@@ -23,7 +23,7 @@ namespace Rimworld_Animations {
 		}
 
 
-		public static bool Prefix_AnimateHeadAddons(PawnRenderFlags renderFlags, Vector3 vector, Vector3 headOffset, Pawn pawn, Quaternion quat, Rot4 rotation)
+		public static bool Prefix_AnimateHeadAddons(PawnRenderFlags renderFlags, Vector3 vector /*rootloc*/, Vector3 headOffset, Pawn pawn, Quaternion quat, Rot4 rotation)
 		{
 
 			if (renderFlags.FlagSet(PawnRenderFlags.Portrait) || pawn.TryGetComp<CompBodyAnimator>() == null || !pawn.TryGetComp<CompBodyAnimator>().isAnimating) return true;
@@ -71,7 +71,7 @@ namespace Rimworld_Animations {
 				{
 					
 					Quaternion addonRotation = Quaternion.AngleAxis(pawnAnimator.headAngle < 0 ? 360 - (360 % pawnAnimator.headAngle) : pawnAnimator.headAngle, Vector3.up);
-
+					var pseudoRootLoc = addonRotation * pawn.Drawer.renderer.BaseHeadOffsetAt(pawnAnimator.headFacing);
 					/* 
 					 * 
 					 * genital rotation is borked
@@ -82,7 +82,7 @@ namespace Rimworld_Animations {
 
 					*/
 
-					GenDraw.DrawMeshNowOrLater(mesh: addonGraphic.MeshAt(rot: pawnAnimator.headFacing), loc: vector + (ba.alignWithHead || ba.drawnInBed ? headOffset : Vector3.zero) + vector2.RotatedBy(angle: Mathf.Acos(f: Quaternion.Dot(a: Quaternion.identity, b: addonRotation)) * 2f * 57.29578f),
+					GenDraw.DrawMeshNowOrLater(mesh: addonGraphic.MeshAt(rot: pawnAnimator.headFacing), loc: vector /*rootloc*/ + (ba.alignWithHead ? headOffset : headOffset - addonRotation * pawn.Drawer.renderer.BaseHeadOffsetAt(pawnAnimator.headFacing)) + vector2.RotatedBy(angle: Mathf.Acos(f: Quaternion.Dot(a: Quaternion.identity, b: addonRotation)) * 2f * 57.29578f),
 					quat: Quaternion.AngleAxis(angle: num, axis: Vector3.up) * addonRotation, mat: addonGraphic.MatAt(rot: pawnAnimator.headFacing), renderFlags.FlagSet(PawnRenderFlags.DrawNow));
 
 					
