@@ -171,7 +171,7 @@ namespace Rimworld_Animations {
                 bodyFacing = anim.headFacing;
                 angle = anim.headAngle;
                 quat = Quaternion.AngleAxis(anim.headAngle, Vector3.up);
-                //pos = anim.getPawnHeadOffset();
+                pos = anim.getPawnHeadOffset();
 
             }
         }

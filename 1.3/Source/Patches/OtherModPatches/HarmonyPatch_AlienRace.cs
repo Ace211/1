@@ -71,7 +71,6 @@ namespace Rimworld_Animations {
 				{
 					
 					Quaternion addonRotation = Quaternion.AngleAxis(pawnAnimator.headAngle < 0 ? 360 - (360 % pawnAnimator.headAngle) : pawnAnimator.headAngle, Vector3.up);
-					var pseudoRootLoc = addonRotation * pawn.Drawer.renderer.BaseHeadOffsetAt(pawnAnimator.headFacing);
 					/* 
 					 * 
 					 * genital rotation is borked
