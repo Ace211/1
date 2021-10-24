@@ -19,7 +19,6 @@ namespace Rimworld_Animations {
             participants =
                 participants.OrderBy(p => p.jobs.curDriver is rjw.JobDriver_SexBaseInitiator)
                 .OrderBy(p => p == sexProps.giver)
-                .OrderByDescending(p => rjw.GenderHelper.GetSex(p) == rjw.GenderHelper.Sex.futa)
                 .OrderBy(p => rjw.xxx.can_fuck(p))
                 .ToList();
 
