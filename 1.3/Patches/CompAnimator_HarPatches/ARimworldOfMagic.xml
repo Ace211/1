@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+  <Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>/Defs/ThingDef[@Name="TM_Base_Demon"]/comps</xpath>
+        <success>Always</success>
+	    <match Class="PatchOperationAdd">
+		  <xpath>/Defs/ThingDef[@Name="TM_Base_Demon"]/comps</xpath>
+		  <value>
+		    <li Class="Rimworld_Animations.CompProperties_BodyAnimator" />
+		  </value>
+	    </match>
+      </li>
+	  <li Class="PatchOperationConditional">
+        <xpath>/Defs/ThingDef[@Name="TM_Base_Elemental"]/comps</xpath>
+        <success>Always</success>
+	    <match Class="PatchOperationAdd">
+		  <xpath>/Defs/ThingDef[@Name="TM_Base_Elemental"]/comps</xpath>
+		  <value>
+		    <li Class="Rimworld_Animations.CompProperties_BodyAnimator" />
+		  </value>
+	    </match>
+      </li>
+	  <li Class="PatchOperationConditional">
+        <xpath>/Defs/ThingDef[@Name="TM_Base_Minion"]/comps</xpath>
+        <success>Always</success>
+	    <match Class="PatchOperationAdd">
+		  <xpath>/Defs/ThingDef[@Name="TM_Base_Minion"]/comps</xpath>
+		  <value>
+		    <li Class="Rimworld_Animations.CompProperties_BodyAnimator" />
+		  </value>
+	    </match>
+      </li>
+	  <li Class="PatchOperationConditional">
+        <xpath>/Defs/ThingDef[@Name="TM_Base_Sentinel"]/comps</xpath>
+        <success>Always</success>
+	    <match Class="PatchOperationAdd">
+		  <xpath>/Defs/ThingDef[@Name="TM_Base_Sentinel"]/comps</xpath>
+		  <value>
+		    <li Class="Rimworld_Animations.CompProperties_BodyAnimator" />
+		  </value>
+	    </match>
+      </li>
+	  <li Class="PatchOperationConditional">
+        <xpath>/Defs/ThingDef[@Name="TM_Skeletal_Base"]/comps</xpath>
+        <success>Always</success>
+	    <match Class="PatchOperationAdd">
+		  <xpath>/Defs/ThingDef[@Name="TM_Skeletal_Base"]/comps</xpath>
+		  <value>
+		    <li Class="Rimworld_Animations.CompProperties_BodyAnimator" />
+		  </value>
+	    </match>
+      </li>
+	  <li Class="PatchOperationConditional">
+        <xpath>/Defs/ThingDef[@Name="TM_Base_SpiritAnimal"]/comps</xpath>
+        <success>Always</success>
+	    <match Class="PatchOperationAdd">
+		  <xpath>/Defs/ThingDef[@Name="TM_Base_SpiritAnimal"]/comps</xpath>
+		  <value>
+		    <li Class="Rimworld_Animations.CompProperties_BodyAnimator" />
+		  </value>
+	    </match>
+      </li>
+	  <li Class="PatchOperationConditional">
+        <xpath>/Defs/ThingDef[@Name="TM_Base_SummonedPawn"]/comps</xpath>
+        <success>Always</success>
+	    <match Class="PatchOperationAdd">
+		  <xpath>/Defs/ThingDef[@Name="TM_Base_SummonedPawn"]/comps</xpath>
+		  <value>
+		    <li Class="Rimworld_Animations.CompProperties_BodyAnimator" />
+		  </value>
+	    </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>
