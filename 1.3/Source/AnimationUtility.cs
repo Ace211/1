@@ -9,6 +9,7 @@ using rjw.Modules.Interactions.Objects;
 using UnityEngine;
 using Verse;
 using Verse.AI;
+using rjw.Modules.Interactions.Enums;
 
 namespace Rimworld_Animations {
     public static class AnimationUtility {
@@ -20,6 +21,14 @@ namespace Rimworld_Animations {
 
 
             InteractionWithExtension interaction = InteractionHelper.GetWithExtension(sexProps.dictionaryKey);
+
+
+            if(interaction.HasInteractionTag(InteractionTag.Reverse))
+            {
+                Pawn buffer = participants[1];
+                participants[1] = participants[0];
+                participants[0] = buffer;
+            }
 
             participants =
                 participants.OrderBy(p => p.jobs.curDriver is rjw.JobDriver_SexBaseInitiator)
