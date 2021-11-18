@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RimWorld;
+using rjw.Modules.Interactions.Helpers;
+using rjw.Modules.Interactions.Objects;
 using UnityEngine;
 using Verse;
 using Verse.AI;
@@ -16,9 +18,11 @@ namespace Rimworld_Animations {
         */
         public static AnimationDef tryFindAnimation(ref List<Pawn> participants, rjw.xxx.rjwSextype sexType = 0, rjw.SexProps sexProps = null) {
 
+
+            InteractionWithExtension interaction = InteractionHelper.GetWithExtension(sexProps.dictionaryKey);
+
             participants =
                 participants.OrderBy(p => p.jobs.curDriver is rjw.JobDriver_SexBaseInitiator)
-                .OrderBy(p => p == sexProps.giver)
                 .OrderBy(p => rjw.xxx.can_fuck(p))
                 .ToList();
 

@@ -83,7 +83,7 @@ namespace Rimworld_Animations {
 				bool mirror = GenTicks.TicksGame % 2 == 0;
 
 				IntVec3 pos = pawn.Position;
-
+				
 				for (int i = 0; i < anim.actors.Count; i++)
 				{
 					pawnsToAnimate[i].TryGetComp<CompBodyAnimator>().isAnimating = false;

@@ -113,7 +113,10 @@ namespace Rimworld_Animations {
         }
         public void StartAnimation(AnimationDef anim, List<Pawn> actors, int actor, bool mirror = false, bool shiver = false, bool fastAnimForQuickie = false) {
 
-            actorsInCurrentAnimation = actors;
+            if (anim.actors.Count <= actor)
+            {
+                return;
+            }
             AlienRaceOffset raceOffset = anim?.actors[actor]?.raceOffsets?.Find(x => x.defName == pawn.def.defName);
 
             if (raceOffset != null) {
